@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html Lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>Home</title>
+        <meta property="og:title" content="tanos, the home page.">
+        <meta property="og:locale" content="en_US">
+        <meta name="description" content="im tanos, a full-stack developer">
+        <meta property="og:description" content="im tanos, a full-stack developer">
+        <meta property="og:image:type" content="image/webp">
+
+    </head>
+    <body>
+        <div class="profile-name">tanos</div>
+        
+        <a href="github/index.html" aria-label="github" target="_blank" class="links" id="gh">GitHub</a>
+        <a onclick="alert('My discord is tanos#4079')" aria-label="discord" target="_blank", class="links" id="dc">Discord</a>
+        
+        <a style="display: none;" onclick="changeFontTo('Arial')" aria-label="settings" target="_blank", class="links" id="cft">Change font to Arial 💔</a>
+        <a style="display: none;" onclick="ChangeColors()" aria-label="settings" target="_blank", class="links" id="stlm">Switch to light mode 🔆</a>
+        <a style="display: none;" onclick="DestroySite()" aria-label="settings" target="_blank", class="links" id="ds">Destroy site 💥</a>
+
+        <div class="littleline"></div>
+
+        <a style="display: none;" href="https://paypal.me/tanospaypal" aria-label="settings" target="_blank", class="links" id="pp">Donate to me if u want☕</a>
+        <a style="display: none;" onclick="GoBack()" aria-label="settings" target="_blank", class="links" id="gb">Go back 👋</a>
+        
+        <a onclick="sitesettings()" aria-label="sitesettings" target="_blank", class="links" id="ss">Site settings</a>
+
+        <div class="footer">with ❤ made by tanos</div>
+
+        <div class="cursor"></div>        
+    </body>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        function DestroySite() {
+            sitesettings()
+            document.querySelectorAll("*").forEach(element => { 
+                element.style.display = "None"
+            })
+        }
+
+        function ChangeColors() {
+            // fuck light mode fr
+            if(document.getElementById("stlm").innerHTML == "Switch to light mode 🔆") {
+                if (cursor.classList.contains('bigclickL')) {
+                  cursor.classList.remove("bigclickL");
+                  void cursor.offsetWidth; 
+                  cursor.classList.add("bigclickL");
+                } else {
+                  cursor.classList.add("bigclickL");
+                }
+                document.querySelectorAll("body").forEach(element => { 
+                    element.style.backgroundColor = "#FDFDF5";
+                })
+                document.getElementById("stlm").innerHTML = "Switch to dark mode 🌑"
+            } else {
+                if (cursor.classList.contains('bigclickD')) {
+                  cursor.classList.remove("bigclickD");
+                  void cursor.offsetWidth; 
+                  cursor.classList.add("bigclickD");
+                } else {
+                  cursor.classList.add("bigclickD");
+                }
+                document.querySelectorAll("body").forEach(element => { 
+                    element.style.backgroundColor = "#242424";
+                })
+                document.getElementById("stlm").innerHTML = "Switch to light mode 🔆"
+            }
+        }
+
+        function changeFontTo(font) {
+            document.querySelectorAll("*").forEach(element => { 
+                element.style.fontFamily = font;
+            })
+            
+            if (document.getElementById("cft").innerHTML == "Change font to Product Sans 💝") {
+                document.querySelectorAll("*").forEach(element => { 
+                    element.style.fontFamily = "ProductSans";
+                })
+            }
+
+            if (document.getElementById("cft").innerHTML != "Change font to Product Sans 💝") {
+                document.getElementById("cft").innerHTML = "Change font to Product Sans 💝"
+            } else {
+                document.getElementById("cft").innerHTML = "Change font to Arial 💔"
+            }
+        }
+
+        const cursor = document.querySelector('.cursor');
+
+        window.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.pageX + 'px';
+          cursor.style.top = e.pageY + 'px';
+          cursor.setAttribute('data-fromTop', (cursor.offsetTop - scrollY));
+        });
+
+        window.addEventListener('scroll', () => {
+          const fromTop = cursor.getAttribute('data-fromTop');
+          cursor.style.top = scrollY + parseInt(fromTop) + 'px';
+          console.log(scrollY);
+        });
+
+        window.addEventListener('click', () => {
+          if (cursor.classList.contains('click')) {
+            cursor.classList.remove("click");
+            void cursor.offsetWidth; 
+            cursor.classList.add("click");
+          } else {
+            cursor.classList.add("click");
+          }
+        });
+
+        function GoBack() {
+          if (cursor.classList.contains('bigclick')) {
+            cursor.classList.remove("bigclick");
+            void cursor.offsetWidth; 
+            cursor.classList.add("bigclick");
+          } else {
+            cursor.classList.add("bigclick");
+          }
+          document.getElementById("dc").style.display = "block";
+          document.getElementById("gh").style.display = "block";
+          document.getElementById("ss").style.display = "block";
+          document.getElementById("cft").style.display = "none";
+          document.getElementById("stlm").style.display = "none";
+          document.getElementById("ds").style.display = "none";
+          document.getElementById("pp").style.display = "none";
+          document.getElementById("gb").style.display = "none";
+        }
+
+        function sitesettings() {
+          if (cursor.classList.contains('bigclick')) {
+            cursor.classList.remove("bigclick");
+            void cursor.offsetWidth; 
+            cursor.classList.add("bigclick");
+          } else {
+            cursor.classList.add("bigclick");
+          }
+          document.getElementById("dc").style.display = "None";
+          document.getElementById("gh").style.display = "None";
+          document.getElementById("ss").style.display = "None";
+          document.getElementById("cft").style.display = "block";
+          document.getElementById("stlm").style.display = "block";
+          document.getElementById("ds").style.display = "block";
+          document.getElementById("pp").style.display = "block";
+          document.getElementById("gb").style.display = "block";
+        }
+    </script>
+</html>

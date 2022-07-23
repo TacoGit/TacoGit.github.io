@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'ProductSans';
+    src: url('../ProductSans.ttf');
+  }
+
+* {
+    font-family: 'ProductSans';
+}
+
+body {
+    background-color: var(--background);
+    color:white;
+    font-family: 'ProductSans';
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+body {
+    background-color: #242424;
+}
+
+*{
+    cursor: none;
+}
+
+img {
+    size: 60%;
+}
+
+.profile-name {
+    text-align: center;
+    padding: 30px;
+    font-size: 50px;
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid white;
+    border-width: 2px;
+    border-radius: 100px;
+    width: 300px;
+    font-size: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.littleline {
+    text-align: center;
+    margin-top: 20px;
+    padding: 1px;
+    background-color: rgb(255, 255, 255,0.6);
+    border-radius: 100px;
+    width: 75px;
+    font-size: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: color 1s;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+a:hover {
+    color: black;
+    background: white;
+}
+
+.cursor{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+.cursor::after,.cursor::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+}
+
+.cursor::before{
+    background-color: rgb(255, 255, 255);
+    filter: blur();
+}
+
+.cursor.click::before{
+    animation: click 0.7s ease forwards;
+    background-color: rgb(255, 255, 255);
+}
+
+.cursor.bigclick::before{
+    animation: bigclick 3s ease forwards;
+    background-color: rgb(255, 255, 255);
+    filter: blur();
+}
+
+.cursor.bigclickL::before{
+    animation: bigclick 3s ease forwards;
+    background-color: #FDFDF5;
+    filter: blur();
+}
+
+.cursor.bigclickD::before{
+    animation: bigclick 3s ease forwards;
+    background-color: #242424;
+    filter: blur();
+}
+
+@keyframes click{
+    0%{
+       opacity: 1;
+       transform:translate(-50%, -50%) scale(1);
+    }
+    100%{
+       opacity: 0;
+       transform: translate(-50%, -50%) scale(6);
+    }
+}
+
+@keyframes bigclick{
+    0%{
+       opacity: 1;
+       transform:translate(-50%, -50%) scale(1);
+    }
+    100%{
+       opacity: 0;
+       transform: translate(-50%, -50%) scale(2000);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    visibility: hidden;
+}
