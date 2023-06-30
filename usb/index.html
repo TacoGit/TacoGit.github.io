@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"
+  style="--accentColor:#4873b3; --darkreader-text--accentColor:#6f9cc5;" class=" xbudcupw idc0_343">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Ventoy USB maker</title>
+  <link href="styles/fontawesome.css" rel="stylesheet" type="text/css" />
+  <link href="styles/core.css" rel="stylesheet" type="text/css" />
+  <link href="styles/home.css" rel="stylesheet" type="text/css" />
+  <script src="colors.js" defer></script>
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <main>
+      <div id="content--wrapper">
+        <div id="content">
+          <h1>
+            Welcome to <span class="accent-fun">tUSB</span>!
+          </h1>
+          <p style="font-family: 'Roboto', sans-serif">
+            A simple tool to create a ventoy USB
+          </p>
+          <button class="highlighted" id="continue" onclick="window.location = './size/'">
+            Start Creating ➜
+          </button>
+          <div class="updater" style="display: block;">
+            <span class="latest">The builder is currently stable to use.</span>
+          </div>
+          <div class="actions">
+            <a href="./settings"><i class="social-icon fa-xl fa-solid fa-gear"></i></a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    ws.onopen = () => {
+      checkForUpdates();
+    };
+  </script>
+</body>
+
+</html>

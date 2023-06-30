@@ -2,13 +2,22 @@
     font-family: 'ProductSans';
     src: url('../ProductSans.ttf');
   }
+@font-face {
+    font-family: 'MetropolisBold';
+    src: url('./fonts/Metropolis-Bold.otf');
+  }
+@font-face {
+    font-family: 'Metropolis';
+    src: url('./fonts/Metropolis-Regular.otf');
+  }
 
 * {
-    font-family: 'ProductSans';
+  scroll-behavior: smooth;
+  font-family: 'MetropolisBold';
 }
 
 body {
-    background-color: var(--background);
+    scroll-behavior: smooth;
     color:white;
     font-family: 'ProductSans';
     font-size: 15px;
@@ -16,11 +25,13 @@ body {
 }
 
 body {
-    background-color: #242424;
-}
-
-*{
-    cursor: none;
+    /*background-color: #27282c;*/
+    scroll-behavior: smooth;
+    background: #0d0414 url('unknown\ \(1\).jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 img {
@@ -37,14 +48,16 @@ img {
     text-align: center;
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid white;
-    border-width: 2px;
-    border-radius: 100px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    background: #012640;
     width: 300px;
     font-size: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 400;
 }
 
 .littleline {
@@ -67,6 +80,7 @@ a {
 }
 
 .footer {
+  font-family: Metropolis;
     text-align: center;
     margin-top: 40px;
     font-size: 20px;
@@ -111,21 +125,9 @@ a:hover {
 }
 
 .cursor.bigclick::before{
-    animation: bigclick 3s ease forwards;
+    animation: click 1s ease forwards;
     background-color: rgb(255, 255, 255);
-    filter: blur();
-}
-
-.cursor.bigclickL::before{
-    animation: bigclick 3s ease forwards;
-    background-color: #FDFDF5;
-    filter: blur();
-}
-
-.cursor.bigclickD::before{
-    animation: bigclick 3s ease forwards;
-    background-color: #242424;
-    filter: blur();
+    filter: invert();
 }
 
 @keyframes click{

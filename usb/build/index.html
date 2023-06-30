@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Build your ventoy USB</title>
+  <link href="../styles/fontawesome.css" rel="stylesheet" type="text/css" />
+  <link href="../styles/core.css" rel="stylesheet" type="text/css" />
+  <link href="../styles/patches.css" rel="stylesheet" type="text/css" />
+  <script src="../index.js"></script>
+  <script src="../colors.js" defer></script>
+</head>
+
+<body>
+  <div id="container">
+    <main>
+      <header>
+        <h1>Select tools to include</h1>
+        <span class="left"></span>
+        <div>
+          <button onclick="toggle(true)">Select All</button>
+          <button onclick="toggle(false)">Deselect all</button>
+        </div>
+        <div>
+          <input class="searchBox" id="search" type="text" placeholder="Search for a patch..." />
+        </div>
+      </header>
+      <div id="content--wrapper">
+        <div id="content">
+          <ul id="patchList">
+            <li>
+              <input class="select" id="select-patch-1" data-patch-name="is" data-excluded="0" type="checkbox">
+              <label for="select-patch-1">
+                <span style="float:right;"><strong></strong></span>
+                <span><strong class="patchName">Operating Images</strong></span>
+                <span class="patch-description">Windows and more install medias</span>
+              </label>
+            </li>
+            <li>
+              <input class="select" id="select-patch-0" data-patch-name="pa" data-excluded="0" type="checkbox">
+              <label for="select-patch-0">
+                <span style="float:right;"><strong></strong></span>
+                <span><strong class="patchName">Portable Applications</strong></span>
+                <span class="patch-description">Applications like Treesize Pro</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="../settings"><i class="social-icon fa-xl fa-solid fa-gear"></i></a>
+      <span class="right"></span>
+      <button onclick="history.back()">Back</button>
+      <button class="highlighted" id="continue" onclick="setPatches();">
+        Continue
+      </button>
+    </footer>
+  </div>
+</body>
+<script>
+  ws.onopen = () => loadPatches();
+</script>
+
+</html>

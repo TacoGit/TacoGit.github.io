@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset=UTF-8">
+
+  <title>paste &middot; base64 pastebin</title>
+  <!-- Credits to Paste.SH! -->
+  <!-- Credits to Paste.SH! -->
+  <!-- Credits to Paste.SH! -->
+  <!-- Credits to Paste.SH! -->
+  <!-- Credits to Paste.SH! -->
+  <style>
+    * {
+      background-color: #181a1b;
+      color: #d8d4cf;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #x {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      border: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0.5em;
+      height: 97%;
+      font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    }
+
+    textarea:focus,
+    textarea:active,
+    textarea:disabled {
+      background-color: #181a1b;
+      color: #d8d4cf;
+      border: 0;
+      outline: none;
+    }
+
+    #command {
+      display: none;
+      position: absolute;
+      float: left;
+      bottom: 0;
+      left: 0;
+      padding-bottom: 0.25em;
+    }
+
+    #command input {
+      border: 0;
+      outline: none;
+      font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Couri er New, monospace;
+    }
+
+    #controls {
+      position: absolute;
+      clear: both;
+      bottom: 0;
+      padding-bottom: 0.25em;
+      right: 0.5em;
+      color: #aaa;
+    }
+
+    i {
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <textarea onkeyup="reURL()" id=x>Javascript is not enabled, text may not save.</textarea>
+  <div id="command"><input type="text" id="cmd" value=":"></div>
+  <div id="controls"><span id="status"></span> &nbsp;&nbsp; <a href="#raw" oncontextmenu='rawme(this)'
+      onclick='alert("This will show the unencrypted data in the location bar (base64 encoded). Only use this for saving locally, do not share the data: URL."); rawme(this)'>raw</a>
+    &bull; <a href="#" onclick="window.location.hash = '';window.location.reload();">new</a></div>
+</body>
+
+<script>
+  var text
+  var base64
+
+  var hash = window.location.hash
+  hash = hash.substring(1);
+
+  document.getElementById("x").value = decodeURIComponent(escape(window.atob(hash)));
+
+  if (hash == "" || hash == " ")
+    document.getElementById("x").value = "This site is encrypted with Base64. Simply type or paste code here and share the URL.";
+
+  function reURL() {
+    console.log("changing")
+    text = document.getElementById("x").value;
+    base64 = btoa(unescape(encodeURIComponent(text)));
+    window.location.hash = '#' + base64;
+  }
+
+  //// incase
+  // Encode
+  function utoa(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+  }
+
+  // Decode
+  function atou(str) {
+    return decodeURIComponent(escape(window.atob(str)));
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+
+</html>

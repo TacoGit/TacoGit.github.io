@@ -1,0 +1,78 @@
+html.black
+  input[type='checkbox'].select
+  + label:not(input[type='checkbox'].select:checked + label),
+html.black .searchBox {
+  background-color: black !important;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'].select:checked + label {
+  background: var(--accentColor);
+  box-shadow: inset 0px 0px 0px 1px #ddd;
+  border-color: #ddd;
+}
+
+.patch-description {
+  display: inline-block;
+  width: 100%;
+}
+
+input[type='checkbox'].select + label {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--textColor);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  background-color: var(--interactableColor);
+  cursor: pointer;
+  border: 2px solid #dddddd2e;
+  transition: 200ms;
+}
+
+input[type='checkbox'].select + label:hover {
+  box-shadow: inset 0px 0px 0px 1px #ddd;
+  border-color: #ddd;
+}
+
+ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.searchBox {
+  width: 100%;
+  color: var(--textColor);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  background-color: var(--interactableColor);
+  border: 2px solid #dddddd2e;
+  font-size: 14px;
+  margin-top: 5px;
+  user-select: auto;
+}
+
+.no-root {
+  float: right;
+}
+
+@media only screen and (max-width: 700px) {
+  li .no-root {
+    display: block;
+    float: none;
+    border-bottom: 2px solid;
+    padding-bottom: 4.5px;
+    margin-bottom: 4.5px;
+  }
+}

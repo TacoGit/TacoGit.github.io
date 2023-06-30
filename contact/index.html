@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tanos">
+  <meta name="generator" content="contact">
+  <title>contact tanos</title>
+
+  <link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../jquery.js"></script>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+
+  <style>
+    @media (min-width: 992px) {
+      .rounded-lg-3 {
+        border-radius: .3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="elementOne" style="opacity:1;" class="px-4 py-5 my-5 text-center">
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Need to contact tanos? Press the 'Contact Now' button to go in queue!</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" onclick="enterQueue()" class="btn btn-primary btn-lg px-5 gap-3">Contact Now</button>
+        </div>
+      </div>
+    </div>
+    <div id="elementTwo" style="display: none;opacity:0;" class="px-4 py-5 my-5 text-center">
+      <div class="col-lg-6 mx-auto">
+        <p class="display-5 fw-bold">You are placed in queue</p>
+        <p class="lead mb-4">There are <a id="users">10000</a> people waiting right now. (<a id="hours">2</a> hour(s))
+        </p>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+<script>
+  var subtractBy = 1
+  setInterval(function () {
+    document.getElementById("hours").innerHTML == document.getElementById("hours").innerHTML - 0.1
+    if (document.getElementById("users").innerHTML == 5) {
+      subtractBy = 0.1
+    }
+    if (document.getElementById("users").innerHTML == 4) {
+      subtractBy = 0.01
+    }
+    if (document.getElementById("users").innerHTML == 3) {
+      subtractBy = 0.001
+    }
+    if (document.getElementById("users").innerHTML == 2) {
+      subtractBy = 0.0001
+    }
+    if (document.getElementById("users").innerHTML == 1) {
+      subtractBy = 0.00001
+    }
+    if (document.getElementById("users").innerHTML < 0) {
+      return alert("tanos is currently offline soryr")
+      window.location.href = "tanos.gq"
+    }
+    document.getElementById("users").innerHTML = document.getElementById("users").innerHTML - subtractBy
+  }, 6000);
+
+  function enterQueue() {
+    document.getElementById("users").innerHTML = Math.floor(Math.random() * 1920);
+    PlaySound = function () {
+      var audio = new Audio('radio.mp3');
+      audio.loop = false;
+      audio.play();
+    }
+    PlaySound()
+    document.getElementById("elementOne").style.display = "none";
+    $("#elementOne").animate({
+      opacity: "0"
+    }, 300);
+    $("#elementTwo").animate({
+      opacity: "1"
+    }, 300);
+    document.getElementById("elementTwo").style.display = "block";
+  }
+</script>
+
+</html>

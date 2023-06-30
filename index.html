@@ -1,154 +1,485 @@
 <!DOCTYPE html>
 <html Lang='en'>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/styles.css">
-        <title>Home</title>
-        <meta property="og:title" content="tanos, the home page.">
-        <meta property="og:locale" content="en_US">
-        <meta name="description" content="im tanos, a full-stack developer">
-        <meta property="og:description" content="im tanos, a full-stack developer">
-        <meta property="og:image:type" content="image/webp">
 
-    </head>
-    <body>
-        <div class="profile-name">tanos</div>
-        
-        <a href="github/index.html" aria-label="github" target="_blank" class="links" id="gh">GitHub</a>
-        <a onclick="alert('My discord is tanos#4079')" aria-label="discord" target="_blank", class="links" id="dc">Discord</a>
-        
-        <a style="display: none;" onclick="changeFontTo('Arial')" aria-label="settings" target="_blank", class="links" id="cft">Change font to Arial 💔</a>
-        <a style="display: none;" onclick="ChangeColors()" aria-label="settings" target="_blank", class="links" id="stlm">Switch to light mode 🔆</a>
-        <a style="display: none;" onclick="DestroySite()" aria-label="settings" target="_blank", class="links" id="ds">Destroy site 💥</a>
+<!-- 
+  
+**                                                                  **
+  Hey, welcome to my site.
+  There are custom functions ready for playing around with
+  CopyText() GenerateParticles() and DestroySite()
+  If you dont know what your doing, try to figure out what ur doing.
+**                                                                  **
 
-        <div class="littleline"></div>
+**                                                                  **
+  This site has some playful apis (not made by us)
+**                                                                  **
+  
+!-->
 
-        <a style="display: none;" href="https://paypal.me/tanospaypal" aria-label="settings" target="_blank", class="links" id="pp">Donate to me if u want☕</a>
-        <a style="display: none;" onclick="GoBack()" aria-label="settings" target="_blank", class="links" id="gb">Go back 👋</a>
-        
-        <a onclick="sitesettings()" aria-label="sitesettings" target="_blank", class="links" id="ss">Site settings</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>Home</title>
+  <meta property="og:title" content="tanos, the home page.">
+  <meta property="og:locale" content="en_US">
+  <meta name="description" content="im tanos, a full-stack developer">
+  <meta property="og:description" content="im tanos, a full-stack developer">
+  <meta property="og:image:type" content="image/webp">
+  <script src="jquery.js"></script>
+  <script src="play.js"></script>
+</head>
 
-        <div class="footer">with ❤ made by tanos</div>
+<body>
+  <div id="profile-name" class="profile-name">tanos</div>
 
-        <div class="cursor"></div>        
-    </body>
+  <a onclick="CopyText('tanos#4079')" style="display: none; opacity:0;" class="links" id="dcNAME">tanos#4079</a>
+  <a onclick="CopyText('916798305390964778')" style="display: none; opacity:0;" class="links"
+    id="dcID">916798305390964778</a>
+  <a onclick="CopyText('Sat, 04 Dec 2021 21:09:09 UTC')" style="display: none; opacity:0;" class="links" id="dcAGE">Sat,
+    04 Dec 2021 21:09:09 UTC</a>
 
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
+  <!-- Projects !-->
+  <a style="display: none; opacity: 0;" href="https://github.com/TacoGit/betterPluginInstaller" aria-label="bpi"
+    target="_blank" class="links" id="bpi">betterPluginInstaller</a>
 
-        function DestroySite() {
-            sitesettings()
-            document.querySelectorAll("*").forEach(element => { 
-                element.style.display = "None"
-            })
-        }
+  <a style="display: none; opacity: 0;" href="https://github.com/TacoGit/ezWindows" aria-label="ezwindows"
+    target="_blank" , class="links" id="ezw">
+    ezWindows</a>
 
-        function ChangeColors() {
-            // fuck light mode fr
-            if(document.getElementById("stlm").innerHTML == "Switch to light mode 🔆") {
-                if (cursor.classList.contains('bigclickL')) {
-                  cursor.classList.remove("bigclickL");
-                  void cursor.offsetWidth; 
-                  cursor.classList.add("bigclickL");
-                } else {
-                  cursor.classList.add("bigclickL");
-                }
-                document.querySelectorAll("body").forEach(element => { 
-                    element.style.backgroundColor = "#FDFDF5";
-                })
-                document.getElementById("stlm").innerHTML = "Switch to dark mode 🌑"
-            } else {
-                if (cursor.classList.contains('bigclickD')) {
-                  cursor.classList.remove("bigclickD");
-                  void cursor.offsetWidth; 
-                  cursor.classList.add("bigclickD");
-                } else {
-                  cursor.classList.add("bigclickD");
-                }
-                document.querySelectorAll("body").forEach(element => { 
-                    element.style.backgroundColor = "#242424";
-                })
-                document.getElementById("stlm").innerHTML = "Switch to light mode 🔆"
-            }
-        }
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/typetester/" aria-label="typetester" target="_blank" ,
+    class="links" id="ttr">
+    TypeTester</a>
 
-        function changeFontTo(font) {
-            document.querySelectorAll("*").forEach(element => { 
-                element.style.fontFamily = font;
-            })
-            
-            if (document.getElementById("cft").innerHTML == "Change font to Product Sans 💝") {
-                document.querySelectorAll("*").forEach(element => { 
-                    element.style.fontFamily = "ProductSans";
-                })
-            }
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/homepage/" aria-label="homepage" target="_blank" ,
+    class="links" id="hmpg">
+    homepage</a>
 
-            if (document.getElementById("cft").innerHTML != "Change font to Product Sans 💝") {
-                document.getElementById("cft").innerHTML = "Change font to Product Sans 💝"
-            } else {
-                document.getElementById("cft").innerHTML = "Change font to Arial 💔"
-            }
-        }
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/setup-pc/" aria-label="homepage" target="_blank" ,
+    class="links" id="stpc">
+    Setup-PC</a>
 
-        const cursor = document.querySelector('.cursor');
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/whattocode/" aria-label="homepage" target="_blank" ,
+    class="links" id="wtc">
+    What To Code</a>
 
-        window.addEventListener('mousemove', (e) => {
-          cursor.style.left = e.pageX + 'px';
-          cursor.style.top = e.pageY + 'px';
-          cursor.setAttribute('data-fromTop', (cursor.offsetTop - scrollY));
-        });
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/age/" aria-label="homepage" target="_blank" ,
+    class="links" id="agmr">
+    Age Memr</a>
 
-        window.addEventListener('scroll', () => {
-          const fromTop = cursor.getAttribute('data-fromTop');
-          cursor.style.top = scrollY + parseInt(fromTop) + 'px';
-          console.log(scrollY);
-        });
+  <a style="display: none; opacity: 0;" href="https://chat.tanos.gq" aria-label="homepage" target="_blank" ,
+    class="links" id="chat">
+    chat dot tanos</a>
 
-        window.addEventListener('click', () => {
-          if (cursor.classList.contains('click')) {
-            cursor.classList.remove("click");
-            void cursor.offsetWidth; 
-            cursor.classList.add("click");
-          } else {
-            cursor.classList.add("click");
-          }
-        });
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/weather" aria-label="homepage" target="_blank" ,
+    class="links" id="wetr">
+    weather</a>
 
-        function GoBack() {
-          if (cursor.classList.contains('bigclick')) {
-            cursor.classList.remove("bigclick");
-            void cursor.offsetWidth; 
-            cursor.classList.add("bigclick");
-          } else {
-            cursor.classList.add("bigclick");
-          }
-          document.getElementById("dc").style.display = "block";
-          document.getElementById("gh").style.display = "block";
-          document.getElementById("ss").style.display = "block";
-          document.getElementById("cft").style.display = "none";
-          document.getElementById("stlm").style.display = "none";
-          document.getElementById("ds").style.display = "none";
-          document.getElementById("pp").style.display = "none";
-          document.getElementById("gb").style.display = "none";
-        }
+  <a style="display: none; opacity: 0;" href="https://status.tanos.gq" aria-label="homepage" target="_blank" ,
+    class="links" id="isdown">
+    tanos.gq status</a>
 
-        function sitesettings() {
-          if (cursor.classList.contains('bigclick')) {
-            cursor.classList.remove("bigclick");
-            void cursor.offsetWidth; 
-            cursor.classList.add("bigclick");
-          } else {
-            cursor.classList.add("bigclick");
-          }
-          document.getElementById("dc").style.display = "None";
-          document.getElementById("gh").style.display = "None";
-          document.getElementById("ss").style.display = "None";
-          document.getElementById("cft").style.display = "block";
-          document.getElementById("stlm").style.display = "block";
-          document.getElementById("ds").style.display = "block";
-          document.getElementById("pp").style.display = "block";
-          document.getElementById("gb").style.display = "block";
-        }
-    </script>
+  <a style="display: none; opacity: 0;" href="https://discord.tanos.gq" aria-label="homepage" target="_blank" ,
+    class="links" id="dbd">
+    Discord Bot Builder</a>
+
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/player" aria-label="homepage" target="_blank" ,
+    class="links" id="mpl">
+    Music Player</a>
+
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/paste" aria-label="homepage" target="_blank" ,
+    class="links" id="pst">
+    PASTE</a>
+
+  <a style="display: none; opacity: 0;" href="https://tanos.gq/ai" aria-label="homepage" target="_blank" , class="links"
+    id="bob">
+    Bob the AI</a>
+
+
+  <!-- Others !-->
+  <a href="github/index.html" aria-label="github" target="_blank" class="links" id="gh">GitHub</a>
+  <a onclick="showDiscord()" aria-label="discord" target="_blank" , class="links" id="dc">Discord</a>
+  <a onclick="showProjects()" aria-label="sitesettings" id="pj" target="_blank" , class="links">Projects</a>
+
+  <a style="display: none;" onclick="DestroySite()" aria-label="settings" target="_blank" , class="links"
+    id="ds">Destroy site 💥</a>
+
+  <div class="littleline"></div>
+
+  <a style="display: none;" href="https://paypal.me/tanospaypal" aria-label="settings" target="_blank" , class="links"
+    id="pp">Donate to me if u want ☕</a>
+  <a style="display: none;" onclick="GoBack()" aria-label="settings" target="_blank" , class="links" id="gb">Go back
+    👋</a>
+  <a style="display: none; opacity:0;" onclick="GoBackCustom()" aria-label="settings" target="_blank" , class="links"
+    id="gbCustom">Go back
+    👋</a>
+
+  <a onclick="sitesettings()" aria-label="sitesettings" target="_blank" , class="links" id="ss">Site settings</a>
+
+  <div class="footer">with <span style="color:#a7a8aa" data-text="Click Me">❤</span> made by tanos</div>
+
+  <div class="cursor"></div>
+</body>
+
+<script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  console.log("pls dont bruteforce my site, thanks")
+
+  function DestroySite() {
+    sitesettings()
+    document.querySelectorAll("*").forEach(element => {
+      element.style.display = "None"
+    })
+  }
+
+  const cursor = document.querySelector('.cursor');
+
+  window.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.pageX + 'px';
+    cursor.style.top = e.pageY + 'px';
+    cursor.setAttribute('data-fromTop', (cursor.offsetTop - scrollY));
+  });
+
+  window.addEventListener('scroll', () => {
+    const fromTop = cursor.getAttribute('data-fromTop');
+    cursor.style.top = scrollY + parseInt(fromTop) + 'px';
+    console.log(scrollY);
+  });
+
+  window.addEventListener('click', () => {
+    if (cursor.classList.contains('click')) {
+      cursor.classList.remove("click");
+      void cursor.offsetWidth;
+      cursor.classList.add("click");
+    } else {
+      cursor.classList.add("click");
+    }
+  });
+
+  function CopyText(whatTo) {
+    navigator.clipboard.writeText(whatTo);
+    alert("Copied Text")
+  }
+
+
+  function showDiscord() {
+    HideAllButtons()
+
+    document.getElementById("profile-name").innerHTML = "tanos: discord"
+
+    setTimeout(function () {
+      document.getElementById("dcNAME").style.display = "block"
+      document.getElementById("dcID").style.display = "block"
+      document.getElementById("dcAGE").style.display = "block"
+      document.getElementById("gbCustom").style.display = "block"
+
+      $("#dcNAME").animate({
+        opacity: "1"
+      }, 300);
+      $("#dcID").animate({
+        opacity: "1"
+      }, 300);
+      $("#dcAGE").animate({
+        opacity: "1"
+      }, 300);
+      $("#gbCustom").animate({
+        opacity: "1"
+      }, 300);
+    }, 300);
+  }
+
+  function showProjects() {
+    HideAllButtons()
+
+    document.getElementById("profile-name").innerHTML = "tanos: projects"
+
+    setTimeout(function () {
+      document.getElementById("ezw").style.display = "block"
+      document.getElementById("bpi").style.display = "block"
+      document.getElementById("gbCustom").style.display = "block"
+      document.getElementById("ttr").style.display = "block"
+      document.getElementById("hmpg").style.display = "block"
+      document.getElementById("stpc").style.display = "block"
+      document.getElementById("agmr").style.display = "block"
+      document.getElementById("chat").style.display = "block"
+      document.getElementById("wtc").style.display = "block"
+      document.getElementById("wetr").style.display = "block"
+      document.getElementById("isdown").style.display = "block"
+      document.getElementById("dbd").style.display = "block"
+      document.getElementById("mpl").style.display = "block"
+      document.getElementById("bob").style.display = "block"
+      document.getElementById("pst").style.display = "block"
+      $("#ezw").animate({
+        opacity: "1"
+      }, 300);
+      $("#ttr").animate({
+        opacity: "1"
+      }, 300);
+      $("#dbd").animate({
+        opacity: "1"
+      }, 300);
+      $("#hmpg").animate({
+        opacity: "1"
+      }, 300);
+      $("#stpc").animate({
+        opacity: "1"
+      }, 300);
+      $("#wtc").animate({
+        opacity: "1"
+      }, 300);
+      $("#pst").animate({
+        opacity: "1"
+      }, 300);
+      $("#wetr").animate({
+        opacity: "1"
+      }, 300);
+      $("#mpl").animate({
+        opacity: "1"
+      }, 300);
+      $("#bob").animate({
+        opacity: "1"
+      }, 300);
+      $("#agmr").animate({
+        opacity: "1"
+      }, 300);
+      $("#chat").animate({
+        opacity: "1"
+      }, 300);
+      $("#bpi").animate({
+        opacity: "1"
+      }, 300);
+      $("#isdown").animate({
+        opacity: "1"
+      }, 300);
+      $("#gbCustom").animate({
+        opacity: "1"
+      }, 300);
+    }, 300);
+  }
+
+  function HideAllButtons() {
+    document.querySelectorAll(".links").forEach(element => {
+      element.animate({
+        opacity: "0"
+      }, 300);
+      setTimeout(function () {
+        element.style.display = "none";
+      }, 300);
+    })
+  }
+
+  function GoBack() {
+    if (cursor.classList.contains('bigclick')) {
+      cursor.classList.remove("bigclick");
+      void cursor.offsetWidth;
+      cursor.classList.add("bigclick");
+    } else {
+      cursor.classList.add("bigclick");
+    }
+    document.getElementById("dc").style.display = "block";
+    document.getElementById("gh").style.display = "block";
+    document.getElementById("ss").style.display = "block";
+    document.getElementById("ds").style.display = "none";
+    document.getElementById("pp").style.display = "none";
+    document.getElementById("gb").style.display = "none";
+    document.getElementById("pj").style.display = "block";
+  }
+  function GoBackCustom() {
+    HideAllButtons()
+    if (cursor.classList.contains('bigclick')) {
+      cursor.classList.remove("bigclick");
+      void cursor.offsetWidth;
+      cursor.classList.add("bigclick");
+    } else {
+      cursor.classList.add("bigclick");
+    }
+
+    setTimeout(function () {
+      document.getElementById("profile-name").innerHTML = "tanos"
+      document.getElementById("dc").style.display = "block";
+      document.getElementById("gh").style.display = "block";
+      document.getElementById("ss").style.display = "block";
+      document.getElementById("ds").style.display = "none";
+      document.getElementById("pp").style.display = "none";
+      document.getElementById("ezw").style.display = "none";
+      document.getElementById("ttr").style.display = "none";
+      document.getElementById("hmpg").style.display = "none";
+      document.getElementById("stpc").style.display = "none";
+      document.getElementById("wtc").style.display = "none";
+      document.getElementById("agmr").style.display = "none";
+      document.getElementById("wetr").style.display = "none";
+      document.getElementById("isdown").style.display = "none";
+      document.getElementById("dbd").style.display = "none";
+      document.getElementById("mpl").style.display = "none";
+      document.getElementById("bob").style.display = "none";
+      document.getElementById("pst").style.display = "none";
+      document.getElementById("chat").style.display = "none";
+      document.getElementById("bpi").style.display = "none";
+      document.getElementById("dcNAME").style.display = "none"
+      document.getElementById("dcID").style.display = "none"
+      document.getElementById("dcAGE").style.display = "none"
+      document.getElementById("gb").style.display = "none";
+      document.getElementById("pj").style.display = "block";
+    }, 300);
+  }
+
+  function sitesettings() {
+    if (cursor.classList.contains('bigclick')) {
+      cursor.classList.remove("bigclick");
+      void cursor.offsetWidth;
+      cursor.classList.add("bigclick");
+    } else {
+      cursor.classList.add("bigclick");
+    }
+    document.getElementById("dc").style.display = "None";
+    document.getElementById("gh").style.display = "None";
+    document.getElementById("ss").style.display = "None";
+    document.getElementById("ds").style.display = "block";
+    document.getElementById("pp").style.display = "block";
+    document.getElementById("gb").style.display = "block";
+    document.getElementById("pj").style.display = "none";
+  }
+</script>
+
+<script>
+  const colors = ['#e31b23']
+  // const shapes = ['square', 'circle', 'triangle', 'heart']
+  const shapes = ['heart']
+
+  const randomIntBetween = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  class Particle {
+    constructor({x, y, rotation, shape, color, size, duration, parent}) {
+      this.x = x
+      this.y = y
+      this.parent = parent
+      this.rotation = rotation
+      this.shape = shape
+      this.color = color
+      this.size = size
+      this.duration = duration
+      this.children = document.createElement('div')
+    }
+
+    draw() {
+      this.children.style.setProperty('--x', this.x + 'px')
+      this.children.style.setProperty('--y', this.y + 'px')
+      this.children.style.setProperty('--r', this.rotation + 'deg')
+      this.children.style.setProperty('--c', this.color)
+      this.children.style.setProperty('--size', this.size + 'px')
+      this.children.style.setProperty('--d', this.duration + 'ms')
+      this.children.className = `shape ${this.shape}`
+      this.parent.append(this.children)
+    }
+
+    animate() {
+      this.draw()
+
+      const timer = setTimeout(() => {
+        this.parent.removeChild(this.children)
+        clearTimeout(timer)
+      }, this.duration)
+    }
+  }
+
+  function animateParticles({total}) {
+    for (let i = 0; i < total; i++) {
+      const particle = new Particle({
+        x: randomIntBetween(-200, 200),
+        y: randomIntBetween(-100, -300),
+        rotation: randomIntBetween(-360 * 5, 360 * 5),
+        shape: shapes[randomIntBetween(0, shapes.length - 1)],
+        color: colors[randomIntBetween(0, colors.length - 1)],
+        size: randomIntBetween(4, 7),
+        duration: randomIntBetween(400, 800),
+        parent
+      })
+      particle.animate()
+    }
+  }
+
+  const parent = document.querySelector('span')
+  parent.addEventListener("touchstart", () => {}, false);
+  parent.addEventListener('click', e => {
+    animateParticles({total: 100})
+  })
+
+  function GenerateParticles(amnt) {
+    animateParticles({total: amnt})
+  }
+</script>
+
+<style>
+  .shape {
+    --size: 8px;
+    position: absolute;
+    top: calc(50% - var(--size));
+    left: calc(50% - var(--size));
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 2);
+    animation: popup var(--d) cubic-bezier(.08, .56, .53, .98) forwards;
+  }
+
+  .square {
+    border-radius: 4px;
+    background-color: var(--c);
+  }
+
+  .circle {
+    border-radius: 50%;
+    background-color: var(--c);
+  }
+
+  .triangle {
+    width: 0px;
+    height: 0px;
+    background-color: none;
+    border-top: var(--size) solid transparent;
+    border-bottom: calc(var(--size) * 2) solid var(--c);
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+  }
+
+  .heart {
+    --size: 6px;
+    background-color: var(--c);
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--c);
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    left: -50%;
+  }
+
+  .heart::after {
+    top: -50%;
+  }
+
+  @keyframes popup {
+    0% {
+      opacity: 0;
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(var(--x), var(--y)) rotate(var(--r));
+    }
+  }
+</style>
+
 </html>

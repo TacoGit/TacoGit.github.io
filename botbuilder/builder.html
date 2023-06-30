@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html class="antialiased [font-feature-settings:&#x27;ss01&#x27;]" lang="en">
+
+<head>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Discord Bot Builder</title>
+  <meta name="description" content="Easily build your discord bot." />
+  <link rel="preload" as="image" href="media/blur-cyan.d28a5585.png" />
+
+  <meta http-equiv="cache-control" content="max-age=31536000" />
+
+  <link rel="stylesheet" href="style.css">
+  <script src="builder.js"></script>
+  <script src="../jquery.js"></script>
+  <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.onload = function () {
+      twemoji.parse(document.body,
+        {folder: 'svg', ext: '.svg'}
+      );
+    }
+  </script>
+  <style>
+    img.emoji {
+      width: 1em;
+      pointer-events: none;
+    }
+  </style>
+  <script>
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
+
+    function updateTheme(theme) {
+      theme = theme ?? window.localStorage.theme ?? 'system'
+
+      /*if (theme === 'dark' || (theme === 'system' && isDarkMode.matches)) {
+        document.documentElement.classList.add('dark')
+      } else if (theme === 'light' || (theme === 'system' && !isDarkMode.matches)) {
+        document.documentElement.classList.remove('dark')
+      }*/
+
+      document.documentElement.classList.add('dark')
+
+      return theme
+    }
+
+    function updateThemeWithoutTransitions(theme) {
+      updateTheme(theme)
+      document.documentElement.classList.add('[&_*]:!transition-none')
+      window.setTimeout(() => {
+        document.documentElement.classList.remove('[&_*]:!transition-none')
+      }, 0)
+    }
+
+    document.documentElement.setAttribute('data-theme', updateTheme())
+
+    new MutationObserver(([{oldValue}]) => {
+      let newValue = document.documentElement.getAttribute('data-theme')
+      if (newValue !== oldValue) {
+        try {
+          window.localStorage.setItem('theme', newValue)
+        } catch {}
+        updateThemeWithoutTransitions(newValue)
+      }
+    }).observe(document.documentElement, {attributeFilter: ['data-theme'], attributeOldValue: true})
+
+    isDarkMode.addEventListener('change', () => updateThemeWithoutTransitions())
+  </script>
+</head>
+
+<body class="bg-white dark:bg-slate-900">
+  <div id="__next">
+    <div class="my-8 flex rounded-3xl p-6 bg-amber-50 dark:bg-slate-800/60 dark:ring-1 dark:ring-slate-300/10"><svg
+        aria-hidden="true" viewBox="0 0 32 32" fill="none"
+        class="h-8 w-8 flex-none [--icon-foreground:theme(colors.amber.900)] [--icon-background:theme(colors.amber.100)]">
+        <defs>
+          <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R15pn6:-gradient"
+            gradientTransform="rotate(65.924 1.519 20.92) scale(25.7391)">
+            <stop stop-color="#FDE68A" offset=".08"></stop>
+            <stop stop-color="#F59E0B" offset=".837"></stop>
+          </radialGradient>
+          <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R15pn6:-gradient-dark"
+            gradientTransform="matrix(0 24.5 -24.5 0 16 5.5)">
+            <stop stop-color="#FDE68A" offset=".08"></stop>
+            <stop stop-color="#F59E0B" offset=".837"></stop>
+          </radialGradient>
+        </defs>
+        <g class="dark:hidden">
+          <circle cx="20" cy="20" r="12" fill="url(#:R15pn6:-gradient)"></circle>
+          <path d="M3 16c0 7.18 5.82 13 13 13s13-5.82 13-13S23.18 3 16 3 3 8.82 3 16Z" fill-opacity="0.5"
+            class="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="m15.408 16.509-1.04-5.543a1.66 1.66 0 1 1 3.263 0l-1.039 5.543a.602.602 0 0 1-1.184 0Z"
+            class="fill-[var(--icon-foreground)] stroke-[color:var(--icon-foreground)]" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M16 23a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill-opacity="0.5" stroke="currentColor"
+            class="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+        <g class="hidden dark:inline">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M2 16C2 8.268 8.268 2 16 2s14 6.268 14 14-6.268 14-14 14S2 23.732 2 16Zm11.386-4.85a2.66 2.66 0 1 1 5.228 0l-1.039 5.543a1.602 1.602 0 0 1-3.15 0l-1.04-5.543ZM16 20a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"
+            fill="url(#:R15pn6:-gradient-dark)"></path>
+        </g>
+      </svg>
+      <div class="ml-4 flex-auto">
+        <p class="m-0 font-display text-xl text-amber-900 dark:text-amber-500">Oh no! Something bad happened!</p>
+        <div
+          class="prose mt-2.5 text-amber-800 [--tw-prose-underline:theme(colors.amber.400)] [--tw-prose-background:theme(colors.amber.50)] prose-a:text-amber-900 prose-code:text-amber-900 dark:text-slate-300 dark:[--tw-prose-underline:theme(colors.sky.700)] dark:prose-code:text-slate-300">
+          <p>Outdated site! Visit <a style="color: 
+#818cf8;" href="https://discord.tanos.gq">discord.tanos.gq</a> for the
+            latest updates</p>
+        </div>
+      </div>
+    </div>
+    <?xml version="1.0" encoding="iso-8859-1"?>
+    <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+    <div id="fade" class="fade"></div>
+    <header id="hideifmobile"
+      class="sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-transparent">
+      <div class="relative flex flex-grow basis-0 items-center"><a href="#" aria-label="Home page"><svg
+            aria-hidden="true" viewBox="0 0 36 36" fill="none" class="h-9 w-9 lg:hidden">
+            <g fill="none" stroke="#38BDF8" stroke-linejoin="round" stroke-width="3">
+              <path d="M10.308 5L18 17.5 10.308 30 2.615 17.5 10.308 5z"></path>
+              <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z"></path>
+            </g>
+          </svg><svg aria-hidden="true" viewBox="0 0 227 36" fill="none"
+            class="hidden h-9 w-auto fill-slate-700 dark:fill-sky-100 lg:block">
+            <g fill="none" stroke="#38BDF8" stroke-linejoin="round" stroke-width="3">
+              <path d="M10.308 5L18 17.5 10.308 30 2.615 17.5 10.308 5z"></path>
+              <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z"></path>
+            </g>
+          </svg></a></div>
+
+    </header>
+    <div
+      class="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]">
+      <div class="py-16 sm:px-2 lg:relative lg:py-20 lg:px-0">
+        <div
+          class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 px-4 lg:max-w-8xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
+          <div class="relative z-10 md:text-center lg:text-left"><img alt="" src="media/blur-cyan.d28a5585.png"
+              width="530" height="530" decoding="async" data-nimg="1"
+              class="absolute bottom-full right-full -mr-72 -mb-56 opacity-50" style="color:transparent" />
+            <div class="relative">
+              <p
+                class="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
+                The builder is all yours.</p>
+              <p class="mt-3 text-2xl tracking-tight text-slate-400">Scroll down and add what you need
+              </p>
+              <div class="loader">
+                <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px"
+                  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                  <path fill="#fff"
+                    d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25"
+                      to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+                  </path>
+                </svg>
+              </div>
+              <div class="mt-8 flex gap-4 md:justify-center lg:justify-start"><a onclick="generate()" id="genbut"
+                  class="rounded-full bg-sky-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-sky-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/50 active:bg-sky-500">Generate
+                  code</a><a id="genbut2" onclick="LoadMSite_Button()"
+                  class="rounded-full bg-slate-800 py-2 px-4 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-400">Load
+                  mobile site</a></div>
+            </div>
+          </div>
+          <div id="hidethephones"
+            class="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]">
+            <div class="py-16 sm:px-2 lg:relative lg:py-20 lg:px-0">
+              <div
+                class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 px-4 lg:max-w-8xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
+              </div>
+              <div class="relative lg:static xl:pl-10">
+                <div id="hideifmobiletoo"
+                  class="absolute inset-x-[-50vw] -top-32 -bottom-48 [mask-image:linear-gradient(transparent,white,white)] dark:[mask-image:linear-gradient(transparent,white,transparent)] lg:left-[calc(50%+14rem)] lg:right-0 lg:-top-32 lg:-bottom-32 lg:[mask-image:none] lg:dark:[mask-image:linear-gradient(white,white,transparent)]">
+                  <svg aria-hidden="true" viewBox="0 0 668 1069" width="668" height="1069" fill="none"
+                    class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 lg:translate-y-[-60%]">
+                    <defs>
+                      <clipPath id=":R1l6:-clip-path">
+                        <path fill="#fff" transform="rotate(-180 334 534.4)" d="M0 0h668v1068.8H0z"></path>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
+      <div class="hidden lg:relative lg:block lg:flex-none">
+        <div class="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"></div>
+        <div class="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"></div>
+        <div class="absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block"></div>
+        <div class="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5">
+          <nav class="text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16">
+            <ul role="list" class="space-y-9">
+              <li>
+                <h2 id="textbuilding" class="font-display font-medium text-slate-900 dark:text-white">Builder</h2>
+                <ul id="thelist" role="list"
+                  class="mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                  <li class="relative"><a
+                      class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300">Base</a><a
+                      class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300">Commands
+                      (index.js)</a><a
+                      class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300">Commands
+                      Folder (fs)</a>
+                  </li>
+                </ul>
+                <ul id="thelist" role="list"
+                  class="mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                  <li class="relative">
+                  </li>
+                </ul>
+              </li>
+              <li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div id="generator" style="opacity:0;"
+        class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+        <!-- builder.js !-->
+      </div>
+      <div id="buildmenu" style="opacity:1;"
+        class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+        <article>
+          <header class="mb-9 space-y-1">
+            <p class="font-display text-sm font-medium text-sky-500">Builder</p>
+            <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">Base</h1>
+          </header>
+
+          <div class=" prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28
+                    prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem]
+                    prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold
+                    dark:prose-a:text-sky-400 prose-a:no-underline
+                    prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))]
+                    hover:prose-a:[--tw-prose-underline-size:6px] dark:[--tw-prose-background:theme(colors.slate.900)]
+                    dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.sky.800))]
+                    dark:hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900
+                    prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1
+                    dark:prose-pre:ring-slate-300/10 dark:prose-hr:border-slate-800">
+            <div class="not-prose my-12 grid grid-cols-1 gap-6 sm:grid-cols-2" id="buttons">
+              <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+                <div
+                  class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+                </div>
+                <div onclick="add_or_remove('import')" class="relative overflow-hidden rounded-xl p-6"><svg
+                    aria-hidden="true" viewBox="0 0 32 32" fill="none"
+                    class="h-8 w-8 [--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]">
+                    <defs>
+                      <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R1i19n6:-gradient"
+                        gradientTransform="matrix(0 21 -21 0 20 3)">
+                        <stop stop-color="#0EA5E9"></stop>
+                        <stop stop-color="#22D3EE" offset=".527"></stop>
+                        <stop stop-color="#818CF8" offset="1"></stop>
+                      </radialGradient>
+                      <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R1i19n6:-gradient-dark"
+                        gradientTransform="matrix(0 22.75 -22.75 0 16 6.25)">
+                        <stop stop-color="#0EA5E9"></stop>
+                        <stop stop-color="#22D3EE" offset=".527"></stop>
+                        <stop stop-color="#818CF8" offset="1"></stop>
+                      </radialGradient>
+                    </defs>
+                    <g class="dark:hidden">
+                      <circle cx="20" cy="12" r="12" fill="url(#:R1i19n6:-gradient)"></circle>
+                      <g class="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]" fill-opacity="0.5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 5v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z"></path>
+                        <path d="M18 17v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V17a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2Z">
+                        </path>
+                        <path d="M18 5v4a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2Z">
+                        </path>
+                        <path d="M3 25v2a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z">
+                        </path>
+                      </g>
+                    </g>
+                    <g class="hidden dark:inline" fill="url(#:R1i19n6:-gradient-dark)">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3 17V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm16 10v-9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2Zm0-23v5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-8a1 1 0 0 0-1 1ZM3 28v-3a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z">
+                      </path>
+                      <path
+                        d="M2 4v13h2V4H2Zm2-2a2 2 0 0 0-2 2h2V2Zm8 0H4v2h8V2Zm2 2a2 2 0 0 0-2-2v2h2Zm0 13V4h-2v13h2Zm-2 2a2 2 0 0 0 2-2h-2v2Zm-8 0h8v-2H4v2Zm-2-2a2 2 0 0 0 2 2v-2H2Zm16 1v9h2v-9h-2Zm3-3a3 3 0 0 0-3 3h2a1 1 0 0 1 1-1v-2Zm6 0h-6v2h6v-2Zm3 3a3 3 0 0 0-3-3v2a1 1 0 0 1 1 1h2Zm0 9v-9h-2v9h2Zm-3 3a3 3 0 0 0 3-3h-2a1 1 0 0 1-1 1v2Zm-6 0h6v-2h-6v2Zm-3-3a3 3 0 0 0 3 3v-2a1 1 0 0 1-1-1h-2Zm2-18V4h-2v5h2Zm0 0h-2a2 2 0 0 0 2 2V9Zm8 0h-8v2h8V9Zm0 0v2a2 2 0 0 0 2-2h-2Zm0-5v5h2V4h-2Zm0 0h2a2 2 0 0 0-2-2v2Zm-8 0h8V2h-8v2Zm0 0V2a2 2 0 0 0-2 2h2ZM2 25v3h2v-3H2Zm2-2a2 2 0 0 0-2 2h2v-2Zm9 0H4v2h9v-2Zm2 2a2 2 0 0 0-2-2v2h2Zm0 3v-3h-2v3h2Zm-2 2a2 2 0 0 0 2-2h-2v2Zm-9 0h9v-2H4v2Zm-2-2a2 2 0 0 0 2 2v-2H2Z">
+                      </path>
+                    </g>
+                  </svg>
+                  <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                        class="absolute -inset-px rounded-xl"></span>Import Needs</a></h2>
+                  <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">This will allow the code to
+                    interact with
+                    Discord as example</p>
+                  <h3 class="statt" id="importstatus">❌</h3>
+                </div>
+              </div>
+              <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+                <div
+                  class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+                </div>
+                <div onclick="add_or_remove('oratofun')" class="relative overflow-hidden rounded-xl p-6"><svg
+                    aria-hidden="true" viewBox="0 0 32 32" fill="none"
+                    class="h-8 w-8 [--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]">
+                    <defs>
+                      <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R1i19n6:-gradient"
+                        gradientTransform="matrix(0 21 -21 0 20 3)">
+                        <stop stop-color="#0EA5E9"></stop>
+                        <stop stop-color="#22D3EE" offset=".527"></stop>
+                        <stop stop-color="#818CF8" offset="1"></stop>
+                      </radialGradient>
+                      <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R1i19n6:-gradient-dark"
+                        gradientTransform="matrix(0 22.75 -22.75 0 16 6.25)">
+                        <stop stop-color="#0EA5E9"></stop>
+                        <stop stop-color="#22D3EE" offset=".527"></stop>
+                        <stop stop-color="#818CF8" offset="1"></stop>
+                      </radialGradient>
+                    </defs>
+                    <g class="dark:hidden">
+                      <circle cx="20" cy="12" r="12" fill="url(#:R1i19n6:-gradient)"></circle>
+                      <g class="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]" fill-opacity="0.5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 5v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z"></path>
+                        <path d="M18 17v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V17a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2Z">
+                        </path>
+                        <path d="M18 5v4a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2Z">
+                        </path>
+                        <path d="M3 25v2a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z">
+                        </path>
+                      </g>
+                    </g>
+                    <g class="hidden dark:inline" fill="url(#:R1i19n6:-gradient-dark)">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3 17V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm16 10v-9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2Zm0-23v5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-8a1 1 0 0 0-1 1ZM3 28v-3a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z">
+                      </path>
+                      <path
+                        d="M2 4v13h2V4H2Zm2-2a2 2 0 0 0-2 2h2V2Zm8 0H4v2h8V2Zm2 2a2 2 0 0 0-2-2v2h2Zm0 13V4h-2v13h2Zm-2 2a2 2 0 0 0 2-2h-2v2Zm-8 0h8v-2H4v2Zm-2-2a2 2 0 0 0 2 2v-2H2Zm16 1v9h2v-9h-2Zm3-3a3 3 0 0 0-3 3h2a1 1 0 0 1 1-1v-2Zm6 0h-6v2h6v-2Zm3 3a3 3 0 0 0-3-3v2a1 1 0 0 1 1 1h2Zm0 9v-9h-2v9h2Zm-3 3a3 3 0 0 0 3-3h-2a1 1 0 0 1-1 1v2Zm-6 0h6v-2h-6v2Zm-3-3a3 3 0 0 0 3 3v-2a1 1 0 0 1-1-1h-2Zm2-18V4h-2v5h2Zm0 0h-2a2 2 0 0 0 2 2V9Zm8 0h-8v2h8V9Zm0 0v2a2 2 0 0 0 2-2h-2Zm0-5v5h2V4h-2Zm0 0h2a2 2 0 0 0-2-2v2Zm-8 0h8V2h-8v2Zm0 0V2a2 2 0 0 0-2 2h2ZM2 25v3h2v-3H2Zm2-2a2 2 0 0 0-2 2h2v-2Zm9 0H4v2h9v-2Zm2 2a2 2 0 0 0-2-2v2h2Zm0 3v-3h-2v3h2Zm-2 2a2 2 0 0 0 2-2h-2v2Zm-9 0h9v-2H4v2Zm-2-2a2 2 0 0 0 2 2v-2H2Z">
+                      </path>
+                    </g>
+                  </svg>
+                  <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                        class="absolute -inset-px rounded-xl"></span>Customize and Token function</a></h2>
+                  <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Reads a code once ready, also personalizes
+                    <br>your bot
+                    work
+                  </p>
+                  <h3 class="statt" id="onreadystatus">❌</h3>
+                </div>
+              </div>
+
+              <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+                <div
+                  class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+                </div>
+                <div onclick="add_or_remove('tstatu')" class="relative overflow-hidden rounded-xl p-6"><svg
+                    aria-hidden="true" viewBox="0 0 32 32" fill="none"
+                    class="h-8 w-8 [--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]">
+                    <defs>
+                      <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R1i19n6:-gradient"
+                        gradientTransform="matrix(0 21 -21 0 20 3)">
+                        <stop stop-color="#0EA5E9"></stop>
+                        <stop stop-color="#22D3EE" offset=".527"></stop>
+                        <stop stop-color="#818CF8" offset="1"></stop>
+                      </radialGradient>
+                      <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id=":R1i19n6:-gradient-dark"
+                        gradientTransform="matrix(0 22.75 -22.75 0 16 6.25)">
+                        <stop stop-color="#0EA5E9"></stop>
+                        <stop stop-color="#22D3EE" offset=".527"></stop>
+                        <stop stop-color="#818CF8" offset="1"></stop>
+                      </radialGradient>
+                    </defs>
+                    <g class="dark:hidden">
+                      <circle cx="20" cy="12" r="12" fill="url(#:R1i19n6:-gradient)"></circle>
+                      <g class="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]" fill-opacity="0.5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 5v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z"></path>
+                        <path d="M18 17v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V17a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2Z">
+                        </path>
+                        <path d="M18 5v4a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2Z">
+                        </path>
+                        <path d="M3 25v2a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z">
+                        </path>
+                      </g>
+                    </g>
+                    <g class="hidden dark:inline" fill="url(#:R1i19n6:-gradient-dark)">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3 17V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm16 10v-9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2Zm0-23v5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-8a1 1 0 0 0-1 1ZM3 28v-3a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z">
+                      </path>
+                      <path
+                        d="M2 4v13h2V4H2Zm2-2a2 2 0 0 0-2 2h2V2Zm8 0H4v2h8V2Zm2 2a2 2 0 0 0-2-2v2h2Zm0 13V4h-2v13h2Zm-2 2a2 2 0 0 0 2-2h-2v2Zm-8 0h8v-2H4v2Zm-2-2a2 2 0 0 0 2 2v-2H2Zm16 1v9h2v-9h-2Zm3-3a3 3 0 0 0-3 3h2a1 1 0 0 1 1-1v-2Zm6 0h-6v2h6v-2Zm3 3a3 3 0 0 0-3-3v2a1 1 0 0 1 1 1h2Zm0 9v-9h-2v9h2Zm-3 3a3 3 0 0 0 3-3h-2a1 1 0 0 1-1 1v2Zm-6 0h6v-2h-6v2Zm-3-3a3 3 0 0 0 3 3v-2a1 1 0 0 1-1-1h-2Zm2-18V4h-2v5h2Zm0 0h-2a2 2 0 0 0 2 2V9Zm8 0h-8v2h8V9Zm0 0v2a2 2 0 0 0 2-2h-2Zm0-5v5h2V4h-2Zm0 0h2a2 2 0 0 0-2-2v2Zm-8 0h8V2h-8v2Zm0 0V2a2 2 0 0 0-2 2h2ZM2 25v3h2v-3H2Zm2-2a2 2 0 0 0-2 2h2v-2Zm9 0H4v2h9v-2Zm2 2a2 2 0 0 0-2-2v2h2Zm0 3v-3h-2v3h2Zm-2 2a2 2 0 0 0 2-2h-2v2Zm-9 0h9v-2H4v2Zm-2-2a2 2 0 0 0 2 2v-2H2Z">
+                      </path>
+                    </g>
+                  </svg>
+                  <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                        class="absolute -inset-px rounded-xl"></span>Change Status</a></h2>
+                  <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Change status to
+                    <a id="tstatu">Do Not Disturb</a>
+                  </p>
+                  <h3 class="statt" id="statusstatus">(tick to change)</h3>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!--------------------------------------------------------------------------------->
+
+
+          <header class="mb-9 space-y-1">
+            <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">Commands</h1>
+          </header>
+
+          <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+            <div
+              class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+            </div>
+
+            <div onclick="add_or_remove('ping')" class="relative overflow-hidden rounded-xl p-6"><svg version="1.1"
+                id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px"
+                viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                <style type="text/css">
+                  .stone_een {
+                    fill: #1fcced;
+                  }
+
+                  .st0 {
+                    fill: #1fcced;
+                  }
+                </style>
+                <path class="stone_een" d="M15,24c0,2.209-1.791,4-4,4s-4-1.791-4-4s1.791-4,4-4S15,21.791,15,24z M29.475,26.592l-7.225-6.669
+	c2.412-2.897,3.19-5.88,2.361-8.834l-9.76,9.76C15.558,21.712,16,22.8,16,24c0,0.173-0.034,0.336-0.051,0.504
+	c1.335-0.425,2.663-1.163,3.974-2.255l6.677,7.22c0.772,0.835,2.085,0.859,2.887,0.052l0.05-0.05
+	C30.336,28.668,30.308,27.361,29.475,26.592z M11,19c1.196,0,2.281,0.44,3.143,1.143l10.104-10.104
+	c-0.942-2.285-2.844-4.543-5.742-6.72c-1.995-1.498-4.367-2.243-6.721-2.243c-2.858,0-5.691,1.098-7.79,3.282
+	c-4.862,5.057-3.421,11.771,1.594,16.787c0.288,0.288,0.577,0.552,0.866,0.8C7.241,20.213,8.977,19,11,19z" />
+              </svg>
+              <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                    class="absolute -inset-px rounded-xl"></span>Ping Command</a></h2>
+              <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A command that will return Pong!</p>
+              <h3 class="statt" style="color:#fff;opacity: 0.75;" id="pingstatus">❌</h3>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+            <div
+              class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+            </div>
+            <div onclick="add_or_remove('fs')" class="relative overflow-hidden rounded-xl p-6">
+
+
+
+              <?xml version="1.0" encoding="UTF-8"?>
+              <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32px" height="32px"
+                style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g>
+                  <path style="opacity:0.931" fill="#1fcced"
+                    d="M 31.5,6.5 C 31.5,13.5 31.5,20.5 31.5,27.5C 20.8333,28.8333 10.1667,28.8333 -0.5,27.5C -0.5,19.5 -0.5,11.5 -0.5,3.5C 4.08148,2.39322 8.74815,2.22656 13.5,3C 14.1667,3.66667 14.8333,4.33333 15.5,5C 20.882,5.26479 26.2154,5.76479 31.5,6.5 Z" />
+                </g>
+              </svg>
+
+
+              <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                    class="absolute -inset-px rounded-xl"></span>Load FS</a></h2>
+              <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Able to use '.js' commands instead it all being
+                in index.js</p>
+              <h3 class="statt" style="color:#fff;opacity: 0.75;" id="fsstatus">❌</h3>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+            <div
+              class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+            </div>
+            <div onclick="add_or_remove('emo')" class="relative overflow-hidden rounded-xl p-6"><svg
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                role="img" id="footer-sample-full" preserveAspectRatio="xMidYMid meet" viewBox="0 0 42 42" width="42px"
+                height="42px" class="iconify iconify--twemoji">
+                <path fill="#1fcced" d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z">
+                </path>
+                <path
+                  d="M14.747 9.125c.527-1.426 1.736-2.573 3.317-2.573c1.643 0 2.792 1.085 3.318 2.573l6.077 16.867c.186.496.248.931.248 1.147c0 1.209-.992 2.046-2.139 2.046c-1.303 0-1.954-.682-2.264-1.611l-.931-2.915h-8.62l-.93 2.884c-.31.961-.961 1.642-2.232 1.642c-1.24 0-2.294-.93-2.294-2.17c0-.496.155-.868.217-1.023l6.233-16.867zm.34 11.256h5.891l-2.883-8.992h-.062l-2.946 8.992z">
+                </path>
+              </svg>
+              <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                    class="absolute -inset-px rounded-xl"></span>Emojify</a></h2>
+              <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">If 'emojify {text}' is ran, the bot will return
+                the text in emojis</p>
+              <h3 class="statt" style="color:#fff;opacity: 0.75;" id="emojistatus">❌</h3>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+            <div
+              class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+            </div>
+            <div onclick="add_or_remove('embed')" class="relative overflow-hidden rounded-xl p-6">
+
+
+
+              <?xml version="1.0" encoding="UTF-8"?>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px"
+                height="32px" viewBox="0 0 32 32" version="1.1">
+                <g id="surface1">
+                  <path style=" stroke:none;fill-rule:nonzero;fill:#1fcced;fill-opacity:1;"
+                    d="M 28.300781 5.289062 L 3.664062 5.289062 C 1.742188 5.289062 0.175781 6.855469 0.175781 8.777344 L 0.175781 23.355469 C 0.175781 25.28125 1.742188 26.84375 3.664062 26.84375 L 4.917969 26.84375 L 8.175781 30.101562 C 8.378906 30.304688 8.648438 30.410156 8.917969 30.410156 C 9.1875 30.410156 9.457031 30.304688 9.664062 30.101562 L 12.921875 26.84375 L 28.300781 26.84375 C 30.222656 26.84375 31.789062 25.28125 31.789062 23.355469 L 31.789062 8.777344 C 31.789062 6.855469 30.222656 5.289062 28.300781 5.289062 Z M 24.546875 19.636719 L 7.417969 19.636719 C 6.835938 19.636719 6.363281 19.164062 6.363281 18.582031 C 6.363281 18 6.835938 17.527344 7.417969 17.527344 L 24.546875 17.527344 C 25.128906 17.527344 25.601562 18 25.601562 18.582031 C 25.601562 19.164062 25.128906 19.636719 24.546875 19.636719 Z M 24.546875 14.605469 L 7.417969 14.605469 C 6.835938 14.605469 6.363281 14.132812 6.363281 13.550781 C 6.363281 12.96875 6.835938 12.5 7.417969 12.5 L 24.546875 12.5 C 25.128906 12.5 25.601562 12.96875 25.601562 13.550781 C 25.601562 14.132812 25.128906 14.605469 24.546875 14.605469 Z M 24.546875 14.605469 " />
+                </g>
+              </svg>
+
+
+              <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                    class="absolute -inset-px rounded-xl"></span>Embed</a></h2>
+              <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Create a simple embed</p>
+              <h3 class="statt" style="color:#fff;opacity: 0.75;" id="embedstatus">❌</h3>
+            </div>
+
+            <!--------------------------------------------------------------------------------------------------------- -->
+
+          </div>
+
+          <br><br>
+
+          <header class="mb-9 space-y-1">
+            <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">Commands Folder (fs)</h1>
+          </header>
+
+          <div class=" prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28
+                    prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem]
+                    prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold
+                    dark:prose-a:text-sky-400 prose-a:no-underline
+                    prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))]
+                    hover:prose-a:[--tw-prose-underline-size:6px] dark:[--tw-prose-background:theme(colors.slate.900)]
+                    dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.sky.800))]
+                    dark:hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900
+                    prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1
+                    dark:prose-pre:ring-slate-300/10 dark:prose-hr:border-slate-800">
+            <div class="not-prose my-12 grid grid-cols-1 gap-6 sm:grid-cols-2" id="buttons">
+              <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+                <div
+                  class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+                </div>
+                <div onclick="add_or_remove('flipacoin')" class="relative overflow-hidden rounded-xl p-6">
+
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 486 486"
+                    style="enable-background:new 0 0 486 486; fill:#1fcced;" width="32px" height="32px"
+                    xml:space="preserve">
+                    <g>
+                      <g>
+                        <g>
+                          <path d="M243,0C108.8,0,0,108.8,0,243s108.8,243,243,243s243-108.8,243-243S377.2,0,243,0z M312.8,338.8
+				c-10.6,12.9-24.4,21.6-40.5,26c-7,1.9-10.2,5.6-9.8,12.9c0.3,7.2,0,14.3-0.1,21.5c0,6.4-3.3,9.8-9.6,10
+				c-4.1,0.1-8.2,0.2-12.3,0.2c-3.6,0-7.2,0-10.8-0.1c-6.8-0.1-10-4-10-10.6c-0.1-5.2-0.1-10.5-0.1-15.7c-0.1-11.6-0.5-12-11.6-13.8
+				c-14.2-2.3-28.2-5.5-41.2-11.8c-10.2-5-11.3-7.5-8.4-18.3c2.2-8,4.4-16,6.9-23.9c1.8-5.8,3.5-8.4,6.6-8.4c1.8,0,4.1,0.9,7.2,2.5
+				c14.4,7.5,29.7,11.7,45.8,13.7c2.7,0.3,5.4,0.5,8.1,0.5c7.5,0,14.8-1.4,21.9-4.5c17.9-7.8,20.7-28.5,5.6-40.9
+				c-5.1-4.2-11-7.3-17.1-10c-15.7-6.9-32-12.1-46.8-21c-24-14.4-39.2-34.1-37.4-63.3c2-33,20.7-53.6,51-64.6
+				c12.5-4.5,12.6-4.4,12.6-17.4c0-4.4-0.1-8.8,0.1-13.3c0.3-9.8,1.9-11.5,11.7-11.8c1.1,0,2.3,0,3.4,0c1.9,0,3.8,0,5.7,0
+				c0.8,0,1.6,0,2.3,0c18.6,0,18.6,0.8,18.7,20.9c0.1,14.8,0.1,14.8,14.8,17.1c11.3,1.8,22,5.1,32.4,9.7c5.7,2.5,7.9,6.5,6.1,12.6
+				c-2.6,9-5.1,18.1-7.9,27c-1.8,5.4-3.5,7.9-6.7,7.9c-1.8,0-4-0.7-6.8-2.1c-14.4-7-29.5-10.4-45.3-10.4c-2,0-4.1,0.1-6.1,0.2
+				c-4.7,0.3-9.3,0.9-13.7,2.8c-15.6,6.8-18.1,24-4.8,34.6c6.7,5.4,14.4,9.2,22.3,12.5c13.8,5.7,27.6,11.2,40.7,18.4
+				C330.9,250.9,342.1,303.2,312.8,338.8z" />
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                        class="absolute -inset-px rounded-xl"></span>Flip</a></h2>
+                  <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Flip a coin, heads or tails!
+                  </p>
+                  <h3 class="statt" id="flipstatus">❌</h3>
+                </div>
+              </div>
+              <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+                <div
+                  class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+                </div>
+                <div onclick="add_or_remove('ban')" class="relative overflow-hidden rounded-xl p-6">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                    style="enable-background:new 0 0 512 512; fill:#1fcced;" width="32px" height="32px"
+                    xml:space="preserve">
+                    <g>
+                      <g>
+                        <path d="M506.087,191.167c-55.252-55.253-43.381-43.383-78.354-78.355l11.853-11.853c18.86-18.858-9.659-47.436-28.549-28.55
+			l-11.854,11.853c-46.737-46.737-28.715-28.716-78.35-78.349c-7.876-7.878-20.667-7.883-28.549,0l-72.66,72.661
+			c-7.884,7.884-7.884,20.665,0,28.549c49.151,49.152,32.513,32.514,78.349,78.349L176.204,307.239l-17.181-17.182
+			c-7.881-7.883-20.671-7.88-28.549,0L18.959,401.572c-25.28,25.28-25.277,66.191,0,91.467c25.277,25.28,66.193,25.276,91.466,0
+			l111.515-111.515c7.884-7.884,7.884-20.665,0-28.549l-17.188-17.188l121.768-121.768c14.792,14.792,63.281,63.281,78.355,78.355
+			c7.881,7.883,20.664,7.884,28.549,0l72.661-72.661C513.971,211.834,513.971,199.051,506.087,191.167z M300.999,87.291
+			l-22.057,22.055L262.446,92.85l44.112-44.112l16.497,16.496L300.999,87.291z M419.15,249.553l-16.496-16.494l44.112-44.112
+			l16.496,16.496L419.15,249.553z" />
+                      </g>
+                    </g>
+                    <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                          class="absolute -inset-px rounded-xl"></span>Ban</a></h2>
+                    <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Completely remove an user from the server
+                    </p>
+                    <h3 class="statt" id="banstatus">❌</h3>
+                </div>
+              </div>
+              <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
+                <div
+                  class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]">
+                </div>
+                <div onclick="add_or_remove('ascii')" class="relative overflow-hidden rounded-xl p-6">
+
+                  <svg width="32px" height="32px" viewBox="0 0 20 20" style="fill:#1fcced;"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.5 11h-11c-.275 0-.5.225-.5.5v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm0-4h-11c-.275 0-.5.225-.5.5v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-5 8h-6c-.275 0-.5.225-.5.5v1a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm5-12h-11c-.275 0-.5.225-.5.5v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z" />
+                  </svg>
+                  <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white"><a><span
+                        class="absolute -inset-px rounded-xl"></span>Ascii</a></h2>
+                  <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Turn text in to ascii text!
+                  </p>
+                  <h3 class="statt" id="asciistatus">❌</h3>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!--------------------------------------------------------------------------------->
+      </div>
+
+    </div>
+  </div>
+  </article>
+  </div>
+</body>
+
+<script>
+  // fix for most devices
+  document.getElementById("hidethephones").style.display = "none";
+  document.getElementById("generator").style.display = "none";
+
+  function LoadMSite_Button() { //manually
+    document.getElementById('fade').style.opacity = '1'
+    $("#fade").animate({
+      opacity: "0"
+    }, 750);
+    LoadMobileSite();
+    document.getElementById('genbut2').style.display = 'none'
+  }
+
+  function LoadMobileSite() { // if literaly mobile
+    document.getElementById("hideifmobile").style.display = "none";
+    document.getElementById("hideifmobiletoo").style.display = "none";
+    document.getElementById("genbut").style.fontSize = ".755rem";
+    document.getElementById("genbut2").style.fontSize = ".755rem";
+    document.getElementById("genbut2").style.display = "none";
+    document.getElementById("generator").style.display = "none";
+    document.getElementById("hidethephones").style.display = "none";
+    // document.getElementById("errorr").style.width = "300px";
+  }
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    LoadMobileSite();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    $("#fade").animate({
+      opacity: "0"
+    }, 500);
+  });
+</script>
+
+</html>

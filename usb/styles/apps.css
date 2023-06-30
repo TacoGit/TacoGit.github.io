@@ -1,0 +1,50 @@
+/* Make unordered lists actually look good */
+
+ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Styles for the devices */
+
+li {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+/* Hides multiple choice inputs */
+
+input[type='radio'] {
+  display: none;
+}
+
+/* Makes selected list items look selected */
+
+input[type='radio']:checked + label {
+  background: var(--accentColor);
+  box-shadow: inset 0px 0px 0px 1px #ddd;
+  border-color: #ddd;
+}
+
+/* Labels */
+
+input[type='radio'] + label {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: var(--textColor);
+  border-radius: var(--border-radius);
+  padding: 14px;
+  background-color: var(--interactableColor);
+  font-weight: bold;
+  border: 2px solid #dddddd2e;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+input[type='radio'] + label:hover {
+  box-shadow: inset 0px 0px 0px 1px #ddd;
+  border-color: #ddd;
+}

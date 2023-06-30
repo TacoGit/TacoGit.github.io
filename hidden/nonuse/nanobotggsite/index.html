@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Grab icons from https://fontawesomeicons.com/materialdesign/icons !-->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta property="og:locale" content="en_US">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nanobot.gg</title>
+
+  <meta property="og:title" content="nanobot.gg">
+  <meta name="description" content="The Nano-Focused, Multi-Purpose Discord Bot">
+  <meta property="og:description" content="The Nano-Focused, Multi-Purpose Discord Bot">
+
+  <meta content="#209ce9" data-react-helmet="true" name="theme-color" />
+
+  <meta property="og:image:type" content="image/webp">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon" href="./images/logo.ico">
+</head>
+
+<body>
+  <div class="container">
+    <aside>
+      <div class="top">
+        <div class="close" id="close-btn">
+          <span class="material-icons-sharp"> close </span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <a id="d" onclick="change('dashboard')" href="#dashboard" class="active">
+          <span class="material-icons-sharp"> dashboard </span>
+          <h3>Dashboard</h3>
+        </a>
+        <a id="n" onclick="change('ticker')" href="#ticker">
+          <span class="material-icons-sharp"> insights </span>
+          <h3>Nano Ticker</h3>
+        </a>
+        <a id="doc" onclick="change('documentation')" href="#documentation">
+          <span class="material-icons-sharp"> book </span>
+          <h3>Documentation</h3>
+        </a>
+        <a id="e" onclick="change('invite')"
+          href="https://discord.com/oauth2/authorize?client_id=967844118715854908&permissions=8&scope=applications.commands%20bot">
+          <span class="material-icons-sharp"> add_circle </span>
+          <h3>Invite</h3>
+        </a>
+        <a id="b" onclick="change('report')" href="#support">
+          <span class="material-icons-sharp"> report_gmailerrorred </span>
+          <h3>Support</h3>
+        </a>
+        <a id="s" onclick="change('settings')" href="settings.html">
+          <span class="material-icons-sharp"> settings </span>
+          <h3>Settings</h3>
+        </a>
+        <a id="l" onclick="change('logout')" href="#logout">
+          <span class="material-icons-sharp"> logout </span>
+          <h3>Logout</h3>
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <div id="id_dashboard" class="dashboard">
+        <h1>Dashboard</h1>
+
+        <div class="insights">
+          <div class="sales">
+            <span class="material-icons-sharp"> analytics </span>
+            <div class="middle">
+              <div class="left">
+                <h3>Balance</h3>
+                <h1>0.2 nano</h1>
+              </div>
+            </div>
+            <small class="text-muted"> Updated 1 second ago </small>
+          </div>
+
+          <div class="income">
+            <span class="material-icons-sharp"> stacked_line_chart </span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Income</h3>
+                <h1>2 nano</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>44%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted"> Last 24 hours </small>
+          </div>
+
+          <div class="expenses">
+            <!--! check and error !-->
+            <span id="changeablebotstatu" style="transition: 0.2s" class="material-icons-sharp"> error </span>
+            <div class="middle">
+              <div class="left">
+                <h3>Bot status</h3>
+                <h1 id="botstat">Currently Offline</h1>
+              </div>
+            </div>
+            <small id="botustat" class="text-muted"> Last checked 5 minutes ago </small>
+          </div>
+        </div>
+
+        <div class="recent-orders">
+          <h2>Recent Transactions</h2>
+          <table id="recent-orders--table">
+            <thead>
+              <tr>
+                <th>Value</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+          </table>
+          <a href="#">Show All</a>
+        </div>
+      </div>
+
+      <div id="id_invite" style="opacity:0" class="invite">
+        <h1>Sending you to {href}</h1>
+      </div>
+
+      <div id="id_settings" style="opacity:0" class="settings">
+        <h1>Sending you to settings.html, this shouldnt take this long..</h1>
+      </div>
+
+      <div id="id_documentation" style="opacity:0" class="documentation">
+        <h1>Documentation</h1>
+        <h2>test</h2>
+      </div>
+
+      <div id="id_support" style="opacity:0" class="support">
+        <h1>Support</h1>
+
+        <div class="insights">
+          <div class="sales">
+            <span class="material-icons-sharp"> discord </span>
+            <div class="middle">
+              <div class="left">
+                <h3>https://discord.gg/xno</h3>
+                <h1>Community support</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="expenses">
+            <span class="material-icons-sharp"> cottage </span>
+            <div class="middle">
+              <div class="left">
+                <h3>@NanoGiveaway</h3>
+                <h1>Twitter support</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="id_ticker" style="opacity:0" class="ticker">
+          <h1>Nano ticker</h1>
+        </div>
+    </main>
+
+    <div class="right">
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-icons-sharp"> menu </span>
+        </button>
+        <div class="theme-toggler">
+          <span class="material-icons-sharp active"> light_mode </span>
+          <span class="material-icons-sharp"> dark_mode </span>
+        </div>
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b>tanos</b></p>
+            <small class="text-muted">Femto</small>
+          </div>
+          <div class="profile-photo">
+            <img src="./images/profile-1.jpg" style="border-radius: 50%;" alt="Profile Picture" />
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-updates">
+        <h2>Upcoming Releases</h2>
+      </div>
+
+      <div class="sales-analytics">
+        <h2>Sponsors</h2>
+        <div id="analytics">
+        </div>
+        <div class="item add-product">
+          <div>
+            <span class="material-icons-sharp"> add </span>
+            <h3>Suggest</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./constants/recent-order-data.js"></script>
+  <script src="./constants/update-data.js"></script>
+  <script src="./constants/sales-analytics-data.js"></script>
+  <script src="./constants/jquery.js"></script>
+  <script src="./index.js"></script>
+
+  <script>
+    var stop_check = "Stopped"
+    function delay(milliseconds) {
+      return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+      });
+    }
+
+    async function StartCheck() {
+      var i = 0
+      stop_check = "Started"
+      while (i < 10000000) {
+        await delay(1000);
+        if (document.getElementById("botstat").innerHTML == "Currently Online") {
+          document.getElementById("changeablebotstatu").innerHTML = " check "
+        } else {
+          document.getElementById("changeablebotstatu").innerHTML = " error "
+        }
+        if (stop_check == "Stopped") {break}
+        document.getElementById("botustat").innerHTML = " Last Checked 1 second(s) ago"
+      }
+    }
+
+    async function StopCheck() {
+      stop_check = "Stopped"
+    }
+
+    document.addEventListener("DOMContentLoaded", (ev) => {
+      if (window.location.hash) {
+        console.log("reading hash..") // hash is index.html#example
+        console.log(window.location.hash); // #example
+
+        var hash = window.location.hash // make it a var
+        var hash_optimized = hash.substring(1); // remove # from hash
+
+        if (hash_optimized == "dashboard") {
+          console.log("dashboard is automatically without hash, ignore")
+        } else {
+          change(hash_optimized) // do the basics
+        }
+      } else {
+        console.log("no hash, continue")
+      }
+    });
+
+    function change(to) {
+      var is_at = "nil"
+
+      document.getElementById("d").classList.remove("active");
+      document.getElementById("n").classList.remove("active");
+      document.getElementById("b").classList.remove("active");
+      document.getElementById("l").classList.remove("active");
+      document.getElementById("s").classList.remove("active");
+      document.getElementById("e").classList.remove("active");
+      document.getElementById("doc").classList.remove("active");
+
+      document.getElementById("id_dashboard").style.display = "none"
+      document.getElementById("id_invite").style.display = "none"
+      document.getElementById("id_settings").style.display = "none"
+      document.getElementById("id_documentation").style.display = "none"
+      document.getElementById("id_support").style.display = "none"
+      document.getElementById("id_ticker").style.display = "none"
+
+      $(".dashboard").animate({
+        opacity: "0"
+      }, 300);
+      $(".invite").animate({
+        opacity: "0"
+      }, 300);
+      $(".settings").animate({
+        opacity: "0"
+      }, 300);
+      $(".documentation").animate({
+        opacity: "0"
+      }, 300);
+      $(".support").animate({
+        opacity: "0"
+      }, 300);
+      $(".ticker").animate({
+        opacity: "0"
+      }, 300);
+
+      if (to == 'invite' || to == 'invite') {
+        document.getElementById("e").classList.add("active");
+        document.getElementById("id_invite").style.display = "block"
+        document.getElementById("e").click();
+        $(".invite").animate({
+          opacity: "1"
+        }, 150);
+      }
+
+      if (to == 'report' || to == 'support') {
+        document.getElementById("b").classList.add("active");
+        document.getElementById("id_support").style.display = "block"
+        document.getElementById("b").click();
+        $(".support").animate({
+          opacity: "1"
+        }, 150);
+      }
+
+      if (to == 'settings') {
+        document.getElementById("s").classList.add("active");
+        document.getElementById("id_settings").style.display = "block"
+        document.getElementById("s").click();
+        $(".settings").animate({
+          opacity: "1"
+        }, 150);
+      }
+
+      if (to == 'dashboard') {
+        document.getElementById("id_dashboard").style.display = "block"
+        document.getElementById("d").classList.add("active");
+        document.getElementById("d").click();
+        $(".dashboard").animate({
+          opacity: "1"
+        }, 150);
+      }
+
+      if (to == 'documentation') {
+        document.getElementById("id_documentation").style.display = "block"
+        document.getElementById("doc").classList.add("active");
+        document.getElementById("doc").click();
+        $(".documentation").animate({
+          opacity: "1"
+        }, 150);
+      }
+
+      if (to == 'logout') {
+        document.getElementById("l").classList.add("active");
+        document.getElementById("d").click();
+        window.location = "https://tanos.gq/hidden/nonuse/nanobotggsite/#dashboard"
+      }
+
+      if (to == 'ticker') {
+        document.getElementById("id_ticker").style.display = "block"
+        document.getElementById("n").classList.add("active");
+        document.getElementById("n").click();
+        $(".ticker").animate({
+          opacity: "1"
+        }, 150);
+      }
+    }
+  </script>
+</body>
+
+</html>

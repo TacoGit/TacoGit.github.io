@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <title>Music Player</title>
+
+  <script src="../jquery.js"></script>
+  <script src="https://kit.fontawesome.com/4ea6e3ab0b.js" crossorigin="anonymous"></script>
+
+  <style>
+    html,
+    body {
+      overflow: hidden;
+      height: 100%
+    }
+
+    .fullpage {
+      padding-bottom: 0;
+      margin: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column
+    }
+
+    .fullpage .main-header {
+      min-width: 0
+    }
+
+    .fullpage .mobile-action-button {
+      display: block;
+      width: 48%;
+      float: left;
+      text-align: center;
+      margin: 0 4% 10px 0
+    }
+
+    .fullpage .mobile-action-button:nth-child(even) {
+      margin-right: 0
+    }
+
+    .fullpage .jump-view {
+      width: 48%;
+      margin: 0 4% 10px 0;
+      float: left
+    }
+
+    .fullpage .jump-view:nth-child(even) {
+      margin-right: 0
+    }
+
+    .fullpage .jump-view:nth-child(3) {
+      display: none
+    }
+
+    .fullpage .jump-label {
+      display: block
+    }
+
+    .oldie-header {
+      display: none;
+      padding: 5px;
+      background: var(--cp-color-20);
+      color: var(--cp-color-1)
+    }
+
+    html.oldie .oldie-header {
+      display: block
+    }
+
+    html.oldie .main-header {
+      display: none
+    }
+
+    #result-iframe-wrap {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      height: 100%;
+      position: relative;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch
+    }
+
+    html.oldie #result-iframe-wrap {
+      height: 100%;
+      height: calc(100% - 32px)
+    }
+
+    #result {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0;
+      background: var(--cp-color-1);
+      display: block;
+      width: 100%;
+      height: 100%
+    }
+
+    @media(max-width:550px) {
+      @supports(height:100svh) {
+        #result {
+          height: calc(100svh - var(--cp-header-height-small))
+        }
+      }
+    }
+
+    #full-view-ad {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
+      z-index: 1
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <input type="file" id="file-element" accept="audio/mp3" multiple style="display:none;" />
+    
+    <div id="sm" class="mini smallmenu">
+      <p class="minimenuitems">
+        <a id="btn-upload" class="mini import"><i class="fa-solid fa-file-import"></i></a>
+        <a class="mini play" id="btn-play"><i class="fa-solid fa-play"></i></a>
+        <a id="btn-pause" class="mini pause"><i class="fa-solid fa-pause"></i></a>
+        <a id="btn-rain" onclick="nextRain()" class="mini rain"><i class="fa-sharp fa-solid fa-droplet"></i></a>
+        <a id="btn-more" onclick="more()" class="mini more"><i class="fa-solid fa-bars"></i></a>
+      </p>
+
+      <div id="am" class="attachedmenu">
+        <p>
+          <a class="mini note" onclick="notepad()" id="btn-note"><i class="fa-solid fa-note-sticky"></i></a>
+          <a class="mini showclock" onclick="clock()" id="btn-clock"><i class="fa-solid fa-clock"></i></a>
+        </p>
+      </div>
+    </div>
+
+    <div class="notepad" id="note">
+      <textarea placeholder="type here"></textarea>
+    </div>
+    
+    <div class="menu slide-menu-right">
+      <header class="header">
+        <div class="upload-wrap">
+          <form name="form_upload">
+            <input type="file" id="file-element" accept="audio/mp3" multiple style="display:none;" />
+            <a type="button" id="btn-upload" class="btn btn-header" title="Adicionar Músicas"><span
+                class="icon icon-music"></span>&nbsp;&nbsp;&nbsp;Play new song&nbsp;&nbsp;&nbsp;</a>
+          </form>
+        </div>
+      </header>
+
+      <section class="player-wrap">
+        <audio id="player" preload="auto">Browser does not allow audio.</audio>
+
+        <div class="controls-wrap">
+          <a type="button" class="btn player-btn icon icon-repeat" style="display:none;" id="repeat">Repeat</a>
+          <a type="button" class="btn player-btn icon icon-chevron-left" style="display:none;" id="prev">Previous</a>
+          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+              <div class="front">
+                <a type="button" class="btn player-btn icon icon-play large" id="btn-play">Play</a>
+              </div>
+              <div class="back">
+                <a type="button" class="btn player-btn icon icon-pause large" id="btn-pause">Pause</a>
+              </div>
+            </div>
+          </div>
+          <a type="button" class="btn player-btn icon icon-chevron-right" style="display:none;" id="next">Next</a>
+          <a type="button" class="btn player-btn icon icon-random" style="display:none;" id="random">Random</a>
+        </div>
+
+        <div class="music-info" style="display:none;">
+          <div class="loading-wrap">
+            <span id="loading-music" class="loading">Loading.</span>
+          </div>
+          <label id="music-name"> -- </label>
+        </div>
+
+        <div class="timeline-wrap" style="display:none;">
+          <label id="time-count">00:00</label>
+          <input type="range" class="range opaque" min="0" max="100" id="timeline" value="0" step="any">
+          <label id="time">00:00</label>
+        </div>
+
+        <div class="volume-wrap">
+          <a type="button" style="display:none;" class="btn-volume btn player-btn small icon icon-volume-down"></a>
+          <span class="volume-box">
+            <input type="range" class="range" min="0" max="10" id="volume" value="10">
+            <label class="volumeLPos" for="range">Volume</p>
+          </span>
+        </div>
+
+        <div class="splitter"></div>
+
+        <div class="rainform">
+          <a id="rrr" onclick="playRain()">Play Rain Sound<a onclick="nextRain()">></a></a>
+        </div>
+
+        <div class="splitter"></div>
+
+        <p class="link" style="cursor:pointer;" onclick="window.location.href='thanksto.txt'"><u>Credits</u></p>
+
+      </section>
+      <a onclick="closemenu()" class="closemenu">close menu</a>
+    </div>
+    <h1><a id="time">its 12:00</a></h1>
+    <a style="display:none;" onclick="openmenu()" id="om" class="openmenu">open menu</a>
+  </div>
+  <canvas id=canvas1></canvas>
+  <canvas id=canvas2></canvas>
+  <canvas id=canvas3></canvas>
+  <p id="bpm">V1.0</p>
+</body>
+
+<style>
+  #bpm {
+    color: #222222;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 0;
+  }
+
+  body:after {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    -webkit-animation: thunder-bg 6s infinite;
+    animation: thunder-bg 6s infinite;
+  }
+
+  canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #canvas3 {
+    z-index: 5;
+  }
+
+  #canvas2 {
+    z-index: 10;
+  }
+
+  #canvas1 {
+    z-index: 100;
+  }
+
+  @-webkit-keyframes thunder-bg {
+    0% {
+      background-color: rgba(34, 34, 34, 0.9);
+    }
+
+    9% {
+      background-color: rgba(34, 34, 34, 0.9);
+    }
+
+    10% {
+      background-color: rgba(59, 59, 59, 0.3);
+    }
+
+    10.5% {
+      background-color: rgba(34, 34, 34, 0.9);
+    }
+
+    80% {
+      background-color: rgba(34, 34, 34, 0.9);
+    }
+
+    82% {
+      background-color: rgba(59, 59, 59, 0.3);
+    }
+
+    83% {
+      background-color: rgba(34, 34, 34, 0.9);
+    }
+
+    83.5% {
+      background-color: rgba(59, 59, 59, 0.3);
+    }
+
+    100% {
+      background-color: rgba(34, 34, 34, 0.9);
+    }
+  }
+
+  @font-face {
+    font-family: 'googlesans';
+    src: url('GoogleSans-Bold.ttf');
+  }
+
+  .closemenu {
+    position: absolute;
+    opacity: 1;
+    right: 6rem;
+    top: 15px;
+  }
+
+  .openmenu {
+    position: fixed;
+    right: 1%;
+    opacity: 0.5;
+  }
+
+  a {
+    border-radius: 10px;
+    background-color: #333;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  h7,
+  h8,
+  h9,
+  p,
+  f ptext,
+  text,
+  txt,
+  input,
+  value,
+  textbox,
+  richtexteditor,
+  label,
+  link,
+  .link {
+    color: #fff;
+  }
+
+  h1 {
+    font-size: 4rem;
+    color: #fff;
+    position: fixed;
+    opacity: 0.4;
+    top: 80%;
+    left: 2%;
+    transform-origin: right;
+    transform: perspective(800px) rotateY(10deg);
+  }
+
+  body {
+    font-family: 'googlesans';
+    background-color: #222;
+  }
+
+  .container {
+    z-index: 10000;
+    position: absolute;
+  }
+
+  .iframe {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+  }
+
+  body {
+    overflow-x: hidden
+  }
+
+  .volumeLPos {
+    position: absolute;
+    top: -80%;
+    left: 2%;
+    font-size: 1rem;
+  }
+
+  .mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .menu {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    position: fixed;
+    z-index: 1000;
+    background-color: #000;
+    opacity: 0.3;
+    overflow: hidden;
+  }
+
+  .volume-wrap,
+  .timeline-wrap {
+    position: absolute;
+    top: 23%;
+    left: 27%;
+  }
+
+  .slide-menu-right {
+    z-index: 1000;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+  }
+
+  .upload-wrap {
+    position: absolute;
+    top: 8%;
+    left: 25%;
+  }
+
+  .flipper {
+    position: absolute;
+    top: 14%;
+    left: 28%;
+  }
+
+  .toggle-slide-right {
+    z-index: 1000;
+    color: #fff;
+    background: black;
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+  }
+
+  button.close-menu {
+    z-index: 1001;
+    color: #fff;
+    background: black;
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: block;
+    margin: 40px auto;
+    width: 100px;
+  }
+
+  body.smr-open .slide-menu-right {
+    right: 0
+  }
+
+  .splitter {
+    position: absolute;
+    width: 10%;
+    height: 1%;
+    background-color: #222;
+    top: 30%;
+    left: 45%;
+    border-radius: 100px;
+  }
+
+  .link {
+    position: absolute;
+    bottom: 1%;
+    left: 40%;
+  }
+
+  .rainform {
+    position: absolute;
+    top: 35%;
+    left: 22%;
+  }
+
+  .smallmenu {
+    position: fixed;
+    left: 1%;
+    background: #000;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 250px;
+    border-radius: 15px;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 5%;
+  }
+
+  .mini {
+    margin: 3px;
+  }
+
+  .attachedmenu {  
+    opacity: 0;
+    position: fixed;
+    left: 1%;
+    background: #000;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 249.9px;
+    border-radius: 15px;
+    /* opacity: 0.5; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    left: 46.3%;
+    top: 115%;
+  }
+  * {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+  }
+  textarea {
+    width: 266px; height: 262px;
+    background-color: #000;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .notepad {
+    background-color: #000;
+    opacity: 0;
+    margin: 10px;
+    padding: 15px;
+    padding-bottom: 10px;
+    border-radius: 10px;    position: absolute;
+    /* transform: translate(-50%, -50%); */
+    left: 400px;
+    top: 150px;
+    pointer-events: none;
+  }
+</style>
+
+<script src="menu.js"></script>
+<script src="player.js"></script>
+<script src="main.js"></script>
+<script src="rain.js"></script>
+<script src="tempo/music-tempo.min.js"></script>
+  
+</html>

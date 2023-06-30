@@ -1,0 +1,265 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
+
+/* Color Varibles */
+
+:root {
+  --textColor: #e8e6e3;
+  --accentColor: #3a5c8f;
+  --accentColor: #6f9cc5;
+  --primaryColor: #0c0e15;
+  --contrastColor: #1b1e29;
+  --interactableColor: #22242e;
+  --buttonColor: #31333f;
+  --scrollbarColor: #31333f;
+  --icon-foreground: #a29a8e;
+  --icon-background: #1b1e29;
+  --border-radius: 10px;
+}
+:root {
+    --darkreader-text--textColor: #e8e6e3;
+    --darkreader-bg--accentColor: #3a5c8f;
+    --darkreader-text--accentColor: #6f9cc5;
+    --darkreader-bg--primaryColor: #0c0e15;
+    --darkreader-bg--secondaryColor: #000108;
+    --darkreader-bg--contrastColor: #161821;
+    --interactableColor: #2a2d3a;
+    --darkreader-bg--buttonColor: #31333f;
+    --darkreader-bg--scrollbarColor: #31333f;
+    --darkreader-text--icon-foreground: #a29a8e;
+    --darkreader-bg--icon-background: #161821;
+    --border-radius: 10px;
+}
+
+html.black:root {
+  --primaryColor: black;
+}
+
+html.black
+  input[type='radio']
+  + label:not(input[type='radio']:checked + label) {
+  background-color: black;
+}
+
+/*
+ * Makes elements box size include the border,
+ * this prevents elements that have borders
+ * from overlapping with eachother
+ */
+
+* {
+  box-sizing: border-box;
+  /* !! Dont use if you have editable textboxes anywhere !! */
+  /* Disables selection */
+  user-select: none;
+}
+
+/* Fonts for all spans */
+
+span {
+  color: var(--textColor);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+p {
+  color: var(--textColor);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Fonts and styles for headers */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--textColor);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Make BODY and HTML elements inherit :root properies */
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--primaryColor);
+  margin: auto;
+  max-width: 1300px;
+}
+
+/* Styles for container */
+
+div#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+div#container > main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: 20px;
+  background-color: var(--primaryColor);
+}
+
+/* Main content */
+
+@media (min-width: 500px) {
+  div#content--wrapper {
+    padding: 13px !important;
+  }
+}
+
+div#content {
+  height: 100%;
+}
+
+/* Wrapper for the content */
+
+div#content--wrapper {
+  border-radius: var(--border-radius);
+  height: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 0 2px var(--interactableColor);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+/* Content Wrapper Scrollbar */
+
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+/* div#content--wrapper */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 6px solid transparent;
+  background-clip: padding-box;
+  background-color: var(--scrollbarColor);
+}
+
+/* Style for all buttons */
+
+button {
+  border: 0;
+  border-radius: 5px;
+  margin: 10px;
+  color: var(--textColor);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  padding: 10px 20px;
+  background-color: var(--buttonColor);
+  cursor: pointer;
+  transition: 200ms;box-shadow: rgb(43 47 49) 0px 0px 0px 2px;
+}
+
+button:hover {
+  box-shadow: 0 0 0 3px #ddd;
+}
+
+button:focus,
+button:active {
+  box-shadow: 0 0 0 2px #ddd;
+}
+
+.highlighted {
+  background-color: var(--darkreader-bg--accentColor)
+}
+
+/* Styles for alignment */
+
+span.right {
+  margin-left: auto;
+}
+
+span.left {
+  margin-left: auto;
+}
+
+/* Footer for buttons */
+
+footer {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: var(--primaryColor);
+  overflow-y: hidden;
+  overflow-x: auto;
+  box-shadow: 0 -2px 0 0 var(--interactableColor);
+}
+
+footer a {
+  margin-right: 10px;
+}
+
+/* Header for title and optional buttons ( addressed per module ) */
+
+header {
+  margin: 5px;
+}
+
+/* Darken interactable elements on hover to show that they are clickable */
+
+button:hover,
+li:hover,
+i.social-icon:hover {
+  filter: brightness(95%);
+}
+
+/* Darken interactable elements on mouse-down */
+button:active,
+li:active,
+i.social-icon:active {
+  filter: brightness(85%);
+  /* Usage of !important is only to override :hover's filter */
+}
+
+i.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  line-height: 1em;
+  color: var(--icon-foreground);
+  box-shadow: 0 0 0 2px var(--interactableColor);
+  cursor: pointer;
+  transition: 200ms;
+}
+
+i.social-icon:hover {
+  box-shadow: 0 0 0 2px #ddd;
+}
+
+i.social-icon::before {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: 8px;
+  top: 8px;
+  border-radius: 25px;
+  color: var(--icon-foreground);
+}
+
+.disabled {
+  filter: brightness(50%) !important;
+}
+
+.log * {
+  user-select: text;
+}

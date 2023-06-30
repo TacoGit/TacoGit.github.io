@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="a game to improve your typing skills" />
+  <link rel="stylesheet" href="../css/typetester.css" />
+  <script src="../jquery.js"></script>
+  <title>TypeTester</title>
+</head>
+
+<body>
+
+  <div class="startPanel">
+    <h1></h1>
+    <button class="start" id="start" onclick="StartTheGame()">Start</a>
+  </div>
+
+  <div class="main">
+    <h1>TypeTester</h1>
+    <p class="note">Type the given word within 5 seconds</p>
+    <h2 id="word">hello</h2>
+    <input id="userInput" type="text" onFocus="this.select()" autofocus placeholder="start typing " />
+    <span class="overTxt" id="overLbl">Game over, refresh to play again.</span>
+    <section class="container">
+      <p id="timeLeft">5</p>
+      <p id="score">0</p>
+    </section>
+    </main>
+</body>
+
+<script>
+  $(".startPanel").css("display", "block");
+  $(".startPanel").css("pointer-events", "auto");
+  $(".main").css("display", "none");
+  $(".main").css("opacity", "0");
+  $(".main").css("pointer-events", "none");
+
+  document.addEventListener("keyup", function (event) {
+    // play sound
+  });
+
+  function StartTheGame() {
+    $(".main").css("pointer-events", "auto");
+    $(".startPanel").animate({
+      opacity: "0"
+    }, 300);
+
+    $(".main").animate({
+      opacity: "1"
+    }, 300);
+
+    setTimeout(function () {
+      $(".startPanel").css("display", "none");
+      $(".main").css("display", "block");
+    }, 300);
+
+    var input = document.getElementById('userInput');
+    input.focus();
+    input.select();
+  }
+</script>
+<script src="typetester.js"></script>
+
+</html>

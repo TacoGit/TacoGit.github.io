@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>weather</title>
+  <script src="https://kit.fontawesome.com/00c0ef6cb0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <i id="icon" class="fa-solid fa-cloud"></i>
+  </div>
+</body>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fa,
+  i {
+    font-size: 4em !important;
+    margin: 0;
+    position: absolute;
+    top: 43%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+</style>
+
+<script>
+  var from = "Amsterdam"
+
+  fetch('https://api.ipregistry.co/?key=a8mc53olwbxrbpfx')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (payload) {
+      var hash = window.location.hash
+      hash = hash.substring(1);
+      hash = hash.toLowerCase();
+
+      if (hash == "" || hash == " " || hash == '' || hash == undefined || hash == null || hash == " ") {
+        console.log(payload.location.city);
+        from = payload.location.city
+      }
+      else {
+        if (hash == "dark") {
+          document.querySelector("body").style.background = "#000";
+          document.querySelector("i").style.color = "#fff";
+        } else {
+          from = hash
+        }
+      }
+    })
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${from}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const {main, name, sys, weather} = data;
+      var weather_type = `${weather[0]["description"]}`;
+
+      var icon = document.getElementById("icon")
+
+      switch (weather_type) {
+        case 0: break;
+
+        // clouds
+        case "few clouds": icon.className = "fa-solid fa-cloud-sun";
+          break;
+
+        case "scattered clouds": icon.className = "fa-solid fa-cloud";
+          break;
+
+        case "broken clouds": icon.className = "fa-solid fa-cloud";
+          break;
+
+        case "overcast clouds": icon.className = "fa-solid fa-cloud";
+          break;
+
+        // clear
+        case "clear sky": icon.className = "fa-solid fa-sun";
+          break;
+
+        // rain
+        case "light rain": icon.className = "fa-solid fa-cloud-rain";
+          break;
+
+        case "moderate rain": icon.className = "fa-solid fa-cloud-rain";
+          break;
+
+        case "heavy intensity rain": icon.className = "fa-solid fa-cloud-showers-heavy";
+          break;
+
+        case "very heavy rain": icon.className = "fa-solid fa-cloud-showers-heavy";
+          break;
+
+        case "extreme rain": icon.className = "fa-solid fa-cloud-showers-heavy";
+          break;
+
+        case "freezing rain": icon.className = "fa-solid fa-snowflake";
+          break;
+
+        case "light intensity shower rain": icon.className = "fa-solid fa-cloud-showers-heavy";
+          break;
+
+        case "shower rain": icon.className = "fa-solid fa-cloud-showers-heavy";
+          break;
+
+        case "heavy intensity shower rain": icon.className = "fa-solid fa-cloud-showers-heavy";
+          break;
+
+        case "heavy intensity shower rain": icon.className = "ragged shower rain";
+          break;
+
+        default: IconNew(weather_type)
+      }
+
+      let currentDate = new Date();
+      let time = currentDate.getHours()
+
+      if (time >= 18) {
+        console.log("🌙 It is dark outside..")
+        switch (weather_type) {
+          case 0: break;
+
+          case "few clouds": icon.className = "fa-solid fa-cloud-moon";
+            break;
+
+          case "clear sky": icon.className = "fa-solid fa-moon";
+            break;
+
+          default: console.log("oops, whatever")
+        }
+      } else {
+        console.log("☀ It is sunny outside.")
+      }
+
+      console.log(weather_type)
+    })
+
+  function IconNew(weather) {
+    if (weather.includes("rain")) {
+      icon.className = "fa-solid fa-cloud-showers-heavy";
+    } else
+      if (weather.includes("thunderstorm")) {
+        icon.className = "fa-solid fa-cloud-showers-heavy";
+      } else
+        if (weather.includes("drizzle")) {
+          icon.className = "fa-solid fa-cloud-showers-heavy";
+        } else
+          if (weather.includes("snow")) {
+            icon.className = "fa-solid fa-snowflake";
+          } else {
+            icon.className = "fa-solid fa-wind-warning";
+          }
+  }
+</script>
+
+</html>

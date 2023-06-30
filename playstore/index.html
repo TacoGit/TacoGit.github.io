@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Play Store</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto:100,300");
+
+    .grid-container {
+      display: inline-block;
+    }
+
+    .grid-container>* {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    @supports (display: flex) {
+      .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+    }
+
+    @supports (display: grid) and (not (-ms-ime-align: auto)) {
+      .grid-container {
+        display: grid;
+        grid-template-rows: 60px 48px 1fr;
+        grid-template-columns: 200px 1fr;
+      }
+    }
+
+    .flex-container {
+      display: inline-block;
+    }
+
+    .flex-container>* {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .flex-container--vertical>* {
+      display: block;
+      width: 100%;
+    }
+
+    @supports (display: flex) {
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      .flex-container--vertical {
+        flex-direction: column;
+      }
+    }
+
+    /*****************/
+    /** Play Header **/
+    /*****************/
+    .play-header {
+      grid-area: 1/1/span 1/span 2;
+      align-items: center;
+      width: 100%;
+      height: 60px;
+      justify-content: flex-start;
+    }
+
+    @media screen and (max-width: 620px) {
+      .play-header {
+        display: none;
+      }
+    }
+
+    .logo {
+      height: 39px;
+      margin: 0 30px;
+    }
+
+    .logo--small {
+      height: 25px;
+    }
+
+    .logo img {
+      height: 100%;
+    }
+
+    .play-header-search {
+      flex: 1;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .search-bar {
+      width: 100%;
+      max-width: 590px;
+      padding: 0;
+      height: 30px;
+      border: 1px solid #cdcdcd;
+      box-sizing: border-box;
+      font: 16px arial, sans-serif;
+      padding-left: 8px;
+    }
+
+    .search-bar:focus {
+      outline: 1px solid #4486F8;
+    }
+
+    .search-button {
+      outline: none;
+      border: none;
+      color: white;
+      height: 30px;
+      width: 60px;
+      margin-left: -1px;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/122932/google-search-icon-white.png");
+      background-size: 20px;
+      background-color: #4486F8;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    @media screen and (max-width: 1100px) {
+      .play-store-icons {
+        display: none;
+      }
+    }
+
+    .play-store-icon {
+      height: 32px;
+      width: 32px;
+      margin-left: 15px;
+      text-align: center;
+      line-height: 32px;
+    }
+
+    .play-store-icon svg {
+      vertical-align: middle;
+    }
+
+    .play-store-icon--avatar {
+      background: lightblue;
+      border-radius: 50%;
+      color: white;
+      margin-right: 30px;
+    }
+
+    /*****************/
+    /** Apps Header **/
+    /*****************/
+    .apps-header {
+      grid-area: 2/2/span 1/span 2;
+      background: white;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+      align-items: center;
+      flex-wrap: nowrap;
+      z-index: 1;
+      width: calc(100% - 200px);
+      height: 48px;
+    }
+
+    .apps-header .flex-container {
+      flex-wrap: nowrap;
+    }
+
+    @media screen and (max-width: 770px) {
+      .apps-header {
+        grid-area: 2/1/span 1/span 2;
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 620px) {
+      .apps-header {
+        display: none;
+      }
+    }
+
+    .apps-header--small {
+      display: none;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+
+    @media screen and (max-width: 620px) {
+      .apps-header--small {
+        display: flex;
+      }
+    }
+
+    .apps-header-item {
+      line-height: 48px;
+      height: 100%;
+      white-space: nowrap;
+    }
+
+    .app-actions {
+      flex: 1;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 30px;
+    }
+
+    .app-action {
+      margin: 0 10px;
+      height: 30px;
+      outline: none;
+      background: white;
+      border: 1px solid #bababa;
+      border-radius: 2px;
+      padding: 0 7px;
+    }
+
+    .app-action svg {
+      height: 17px;
+    }
+
+    .app-action--settings {
+      padding: 0 14px;
+    }
+
+    .android-tag {
+      grid-area: 2/1/span 1/span 1;
+      background: #689F38;
+      width: 200px;
+      text-transform: capitalize;
+      text-align: center;
+      color: white;
+      line-height: 48px;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .android-tag svg {
+      margin: 0 20px;
+    }
+
+    @media screen and (max-width: 770px) {
+      .android-tag {
+        display: none;
+      }
+    }
+
+    .sticky {
+      position: sticky;
+      top: 0;
+    }
+
+    .header-link {
+      padding: 0 14px;
+      color: #737373;
+      font-weight: 300;
+      color: #737373;
+      font-size: 14px;
+    }
+
+    .header-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+
+    .categories-dropdown {
+      margin-left: 38px;
+      align-items: center;
+    }
+
+    .header-divider {
+      height: 30px;
+      background: #d6d6d6;
+      width: 1px;
+      margin: 5px;
+    }
+
+    /*************/
+    /** Sidebar **/
+    /*************/
+    .sidebar-wrapper {
+      grid-area: 3/1/span 1/span 1;
+      height: 100%;
+      width: 200px;
+      position: relative;
+      vertical-align: top;
+    }
+
+    @media screen and (max-width: 770px) {
+      .sidebar-wrapper {
+        display: none;
+      }
+    }
+
+    .sidebar {
+      top: 48px;
+      background: green;
+      height: 488px;
+      width: 200px;
+      background: rgba(245, 245, 245, 0.95);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+      justify-content: flex-start;
+      grid-template-columns: 24px 1fr;
+      grid-template-rows: 288px 1fr;
+    }
+
+    .sidebar-arrow {
+      grid-area: 1/1/span 1/span 1;
+      background: red;
+      height: 288px;
+      background: white;
+    }
+
+    .sidebar-arrow svg {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .sidebar-top-links {
+      grid-area: 1/2/span 1/span 1;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 6px;
+      vertical-align: top;
+    }
+
+    .sidebar-top-link {
+      padding-left: 23px;
+      box-sizing: border-box;
+    }
+
+    .sidebar-top-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+
+    .sidebar-primary {
+      padding-top: 8px;
+      padding-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .sidebar-primary.selected {
+      color: #689F38;
+      font-weight: 300;
+    }
+
+    .sidebar-secondary {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 14px 0;
+      width: calc(100% - 14px);
+    }
+
+    .sidebar-bottom-links {
+      grid-area: 2/1/span 1/span 2;
+      border-top: 1px solid #d9d9d9;
+      padding: 10px 0;
+      background: #EEE;
+      width: 100%;
+    }
+
+    .sidebar-bottom-link {
+      padding-left: 20px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .sidebar-bottom-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+
+    /**************/
+    /** App Grid **/
+    /**************/
+    .app-grid {
+      grid-area: 3/2/span 1/span 1;
+      grid-template-columns: repeat(auto-fill, 160px);
+      grid-template-rows: 67px 245px;
+      grid-auto-rows: 245px;
+      grid-gap: 10px;
+      justify-content: flex-start;
+      width: calc(99% - 250px);
+      padding-left: 50px;
+    }
+
+    @media screen and (max-width: 770px) {
+      .app-grid {
+        grid-area: 3/1/span 1/span 2;
+        justify-content: center;
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .apps-title {
+      grid-column: -1/1;
+      font-weight: 100;
+      font-size: 28px;
+      width: 100%;
+    }
+
+    .app {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      border-radius: 2px;
+      overflow: hidden;
+      font-size: 13px;
+      position: relative;
+      width: 160px;
+      height: 245px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .app .app-image,
+    .app .app-content {
+      max-width: calc(100% - 20px);
+      padding: 10px;
+    }
+
+    .app:hover .app-image:after {
+      transition: opacity 0.3s;
+      opacity: 1;
+    }
+
+    .app-image {
+      position: relative;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .app-image:after {
+      transition: opacity 0.3s;
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+    }
+
+    .app-image img {
+      max-width: 128px;
+    }
+
+    .app-title {
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .app-title:before {
+      counter-increment: numapps;
+      content: counter(numapps) ". ";
+    }
+
+    .app-title:after {
+      content: "";
+      position: absolute;
+      width: 20%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 81%);
+      display: block;
+    }
+
+    .app-price {
+      color: #689F38;
+      text-transform: uppercase;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .app-rating {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      height: 16px;
+      width: 70px;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAYElEQVR4AY3QQQeEIRCA4T13iqFDp04dYoh+2vv/7Y7YL4b66j1MPCn6fA+9438hiI0NKrpBhGGJQxKZSp/YbZdJCwvDVda1not7k/ZQm3SPw6qWTYcElDgPRZRw9X2HfsTTkjWVYOnFAAAAAElFTkSuQmCC);
+    }
+
+    .app-rating:before {
+      content: "";
+      display: block;
+      height: 16px;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAY0lEQVR4AWP4jwcSloSB4oTiBCCFQ/JB8QN0SYS+/0CYgCZZXFDcUHyg+ANIEkgeAPIKEJILgIKocAHCWHTpBWh2Fl+AS10AipEgCRY+AIRAGk2y2ADoxwCwogAgy4Co4MMDAQ52uOmaLCe/AAAAAElFTkSuQmCC);
+    }
+
+    .app-rating--1::before {
+      width: 14px;
+    }
+
+    .app-rating--2::before {
+      width: 28px;
+    }
+
+    .app-rating--3::before {
+      width: 42px;
+    }
+
+    .app-rating--4::before {
+      width: 56px;
+    }
+
+    .app-rating--5::before {
+      width: 70px;
+    }
+
+    .app-content>*:hover {
+      text-decoration: underline;
+    }
+
+    /************************************/
+    /** Extra CSS Grid Fallback Things **/
+    /************************************/
+    .inline-helper {
+      height: 100%;
+    }
+
+    .play-store-icons,
+    .app-actions {
+      float: right;
+      height: 100%;
+    }
+
+    @supports (display: flex) {
+
+      .play-store-icons,
+      .app-actions {
+        float: none;
+        height: auto;
+      }
+    }
+
+    @supports (display: grid) and (not (-ms-ime-align: auto)) {
+      .grid-container--outer {
+        grid-template-rows: 60px 48px 1fr;
+        grid-template-columns: 200px 1fr;
+      }
+
+      @media screen and (max-width: 620px) {
+        .grid-container--outer {
+          grid-template-rows: 0 48px 1fr;
+        }
+      }
+
+      .apps-header,
+      .app-grid {
+        width: auto;
+      }
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: #EEE;
+      width: 100%;
+    }
+
+    body {
+      counter-reset: numapps;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    div,
+    button,
+    input {
+      font-family: "Roboto", UILanguageFont, Arial, sans-serif;
+    }
+  </style>
+
+  <script>
+    window.console = window.console || function (t) {};
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+
+
+</head>
+
+<body translate="no">
+  <div class="grid-container grid-container--outer">
+    <div class="flex-container play-header">
+      <div class="logo">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/122932/googplay.png" alt="Google Play">
+      </div>
+      <div class="flex-container play-header-search">
+        <input type="text" class="search-bar" placeholder="Search">
+        <button class="search-button"></button>
+      </div>
+      <div class="inline-helper"></div>
+      <div class="flex-container play-store-icons">
+        <div class="inline-helper"></div>
+        <div class="play-store-icon">
+          <!-- Apps Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#757575" height="24" viewBox="0 0 24 24" width="24">
+            <path
+              d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg>
+        </div>
+        <div class="play-store-icon">
+          <!-- Alert Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#757575" height="24" viewBox="0 0 24 24" width="24">
+            <path
+              d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+          </svg>
+        </div>
+        <div class="play-store-icon play-store-icon--avatar">T</div>
+      </div>
+    </div>
+    <div class="sticky flex-container android-tag">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="#FFF" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z" />
+      </svg>
+      apps
+    </div>
+    <div class="sticky flex-container apps-header">
+      <div class="apps-header-item header-link flex-container categories-dropdown">Categories <svg
+          xmlns="http://www.w3.org/2000/svg" fill="#757575" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+          <path d="M0-.75h24v24H0z" fill="none" />
+        </svg></div>
+      <div class="header-divider"></div>
+      <div class="apps-header-item header-link">Home</div>
+      <div class="apps-header-item header-link">Top Charts</div>
+      <div class="apps-header-item header-link">New Releases</div>
+      <div class="apps-header-item flex-container app-actions">
+        <button class="app-action app-action--questions">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#333" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M19 2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+          </svg>
+        </button>
+        <button class="app-action app-action--settings">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#333" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="sticky flex-container apps-header apps-header--small">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#757575" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+      </div>
+      <div>
+        <div class="logo logo--small">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/122932/googplay.png" alt="Google Play">
+        </div>
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" height="24" viewBox="0 0 24 24" width="24">
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </div>
+    </div>
+    <div class="sidebar-wrapper">
+      <div class="sticky grid-container sidebar">
+        <div class="sidebar-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#757575" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg>
+        </div>
+        <div class="flex-container flex-container--vertical sidebar-top-links">
+          <div class="sidebar-top-link sidebar-primary">My apps</div>
+          <div class="sidebar-top-link sidebar-primary selected">Shop</div>
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-top-link sidebar-secondary">Games</div>
+          <div class="sidebar-top-link sidebar-secondary">Family</div>
+          <div class="sidebar-top-link sidebar-secondary">Editor's Choice</div>
+        </div>
+        <div class="flex-container flex-container--vertical sidebar-bottom-links">
+          <div class="sidebar-bottom-link">Account</div>
+          <div class="sidebar-bottom-link">Redeem</div>
+          <div class="sidebar-bottom-link">Buy gift card</div>
+          <div class="sidebar-bottom-link">My wishlist</div>
+          <div class="sidebar-bottom-link">My Play activity</div>
+          <div class="sidebar-bottom-link">Parent Guide</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container app-grid">
+      <h1 class="apps-title">Working APKs</h1>
+      <div class="app" onclick="window.location.href = '../files/apks/adrod_13.apk'" download>
+        <div class="app-image">
+          <img src="android.png" alt="android logo">
+        </div>
+        <div class="app-content">
+          <div class="app-title">adrod 13</div>
+          <div class="app-publisher">q0x5</div>
+          <div class="app-rating app-rating--4"></div>
+        </div>
+      </div>
+      <div class="app" onclick="window.location.href = '../files/apks/nothing.apk'" download>
+        <div class="app-image">
+          <img src="nothing.png" />
+        </div>
+        <div class="app-content">
+          <div class="app-title">Nothing</div>
+          <div class="app-publisher">Chilango Labs</div>
+          <div class="app-rating app-rating--4"></div>
+        </div>
+      </div>
+      <div class="app" onclick="window.location.href = '../files/apks/adrod_13.apk'" download>
+        <div class="app-image">
+          <img src="undertale.png" />
+        </div>
+        <div class="app-content">
+          <div class="app-title">Undertale</div>
+          <div class="app-publisher">Jockeholm</div>
+          <div class="app-rating app-rating--5"></div>
+        </div>
+      </div>
+      <div class="app" onclick="window.location.href = '../files/apks/Exagear-Windows-Emulator.rar'" download>
+        <div class="app-image">
+          <img src="exagear.png" />
+        </div>
+        <div class="app-content">
+          <div class="app-title">Exagear Windows Emulator</div>
+          <div class="app-publisher">Unknown</div>
+          <div class="app-rating app-rating--4"></div>
+        </div>
+      </div>
+      <div class="app" onclick="window.location.href = '../files/apks/Luckу_Pаtcher.ver.10.2.8.build.1788.apk'"
+        download>
+        <div class="app-image">
+          <img src="luckypatcher.png" />
+        </div>
+        <div class="app-content">
+          <div class="app-title">Lucky Patcher</div>
+          <div class="app-publisher">Some Russian Guy</div>
+          <div class="app-rating app-rating--3"></div>
+        </div>
+      </div>
+    </div>
+    </path>
+</body>
+
+</html>

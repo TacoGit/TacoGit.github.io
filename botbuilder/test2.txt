@@ -1,0 +1,45 @@
+const Discord = require(\"discord.js\");<br>
+const figlet = require(\"figlet\");<br>
+<br>
+module.exports.run = async (bot, message, args) => {<br>
+  const moretext = new Discord.MessageEmbed()<br>
+    .setTitle(<br>
+      `<:redtick:784476092819701820> Error <:redtick:784476092819701820>`<br>
+    )<br>
+    .setColor(`RED`)<br>
+    .setDescription(`Please provide some text`);<br>
+<br>
+  if (!args[0]) return message.channel.send(moretext);<br>
+<br>
+  msg = args.join(\" \");<br>
+<br>
+  const shorterPLS = new Discord.MessageEmbed()<br>
+    .setTitle(<br>
+      `<:redtick:784476092819701820> Error <:redtick:784476092819701820>`<br>
+    )<br>
+    .setColor(`RED`)<br>
+    .setDescription(`Please provide text shorter than 2000 characters`);<br>
+<br>
+  const whatthehell = new Discord.MessageEmbed()<br>
+    .setTitle(<br>
+      `<:redtick:784476092819701820> Error <:redtick:784476092819701820>`<br>
+    )<br>
+    .setColor(`RED`)<br>
+    .setDescription(<br>
+      `Something just happened that i couldnt solve, please try again`<br>
+    );<br>
+<br>
+  figlet.text(msg, function (err, data) {<br>
+    if (err) {<br>
+      message.channel.send(whatthehell);<br>
+    }<br>
+    if (data.length > 2000) return message.channel.send(shorterPLS);<br>
+<br>
+    message.channel.send(\"```\" + data + \"```\");<br>
+  });<br>
+};<br>
+<br>
+module.exports.help = {<br>
+  name: \"ascii\",<br>
+  aliases: [\"asci\"],<br>
+};<br>

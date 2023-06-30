@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 1 html file, bunch of functions. !-->
+<!--  make sure to give credits if u copy paste my site (: !-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="author" content="tanos, tanos.gq">
+  <meta name="description" content="What to code?">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta property="og:title" content="What to code" />
+  <title>What to code</title>
+
+  <style type="text/css">
+    * {
+      filter: invert();
+    }
+
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    font,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td {
+      background: transparent;
+      border: 0;
+      font-size: 150%;
+      margin: 0;
+      outline: 0;
+      padding: 0;
+      vertical-align: baseline;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    blockquote,
+    q {
+      quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: none;
+    }
+
+    :focus {
+      outline: 0;
+    }
+
+    del {
+      text-decoration: line-through;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 1.8em;
+      padding: 0;
+      margin: 0;
+    }
+
+    body,
+    html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      overflow-y: hidden;
+      /* Hide vertical scrollbar */
+      overflow-x: hidden;
+      /* Hide horizontal scrollbar */
+    }
+
+    textarea#content {
+      float: left;
+      width: 100%;
+      height: 100%;
+      font-size: 1em;
+      resize: none;
+      padding: 60px;
+      line-height: 1.3em;
+      border: none;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <textarea type="text" id="content" placeholder="" autofocus="true"></textarea>
+
+  <script src="../jquery.js"></script>
+  <script src="FileSaver.js"></script>
+
+  <script>
+    var list = ["games", "game", "unity", "unreal", "unrealengine", "unreal-engine", "godot", "snowman", "snowmanwithoutsnow", "empty", "roblox"]
+    var i = 0;
+    var txt = '{ERROR WHILE LOADING}';
+
+    var any = 0
+    var unity = 0
+    var roblox = 0
+
+    var hash = window.location.hash
+    hash = hash.substring(1);
+    hash = hash.toLowerCase();
+
+    if (hash == "" || hash == " " || hash == '' || hash == undefined || hash == null || hash == " ") {
+      any = Math.floor(Math.random() * 40) + 1;
+    }
+    else if (hash == "unity" || hash == "unreal" || hash == "unrealengine" || hash == "unreal-engine"
+      || hash == "godot" || hash == "game" || hash == "games") {
+      unity = Math.floor(Math.random() * 5) + 1;
+    }
+    else if (hash == "snowman") {
+      txt = "☃"
+    }
+    else if (hash == "snowmanwithoutsnow") {
+      txt = "⛄︎"
+    }
+    else if (hash == "empty") {
+      txt = ""
+    }
+    else if (hash == "roblox") {
+      roblox = Math.floor(Math.random() * 5) + 1;
+    }
+    else {
+      var resultfirst = filterMatches(hash, list) + ", "
+      var result2 = filterMatches(hash + "*", list) + ", "
+      var result3 = filterMatches(hash.substring(1) + "*", list) + ", "
+      var result4 = filterMatches(hash.substring(2) + "**", list) + ", "
+      var result5 = filterMatches(hash.substring(3) + "***", list) + ", "
+      var result6 = filterMatches(hash.substring(4) + "****", list) + ", "
+      var resultend = filterMatches(hash + "**", list)
+
+      if (resultfirst == ", ")
+        resultfirst = ""
+      if (result2 == ", ")
+        result2 = ""
+      if (result3 == ", ")
+        result3 = ""
+      if (result4 == ", ")
+        result4 = ""
+      if (result5 == ", ")
+        result5 = ""
+      if (result6 == ", ")
+        result6 = ""
+      if (resultend == ", ")
+        resultend = ""
+
+      txt = "Error with the hash, did you mean: [" + resultfirst + result2 + result3 + result4 + result5 + result6 + resultend + "]";
+    }
+
+    switch (any) {
+      case 0: txt = txt
+        break;
+
+      case 1: txt = 'A chat app';
+        break;
+
+      case 2: txt = 'An app to learn languages';
+        break;
+
+      case 3: txt = 'A website with a domain';
+        break;
+
+      case 4: txt = 'A vpn';
+        break;
+
+      case 5: txt = 'Tools to debloat your PC';
+        break;
+
+      case 6: txt = 'Snake but fun';
+        break;
+
+      case 7: txt = 'Maze Generator';
+        break;
+
+      case 8: txt = 'Drawing program but actually useful';
+        break;
+
+      case 9: txt = 'A calculator';
+        break;
+
+      case 10: txt = 'A FaceBook copy';
+        break;
+
+      case 11: txt = 'A PlayStore copycat for Android';
+        break;
+
+      case 12: txt = 'A URL Shortener';
+        break;
+
+      case 13: txt = 'Anti IP Logger';
+        break;
+
+      case 14: txt = 'Discord bot';
+        break;
+
+      case 14: txt = 'PI calculator';
+        break;
+
+      case 15: txt = 'A translator app';
+        break;
+
+      case 16: txt = 'Pong but fun (Animations, effects, rewards etc)';
+        break;
+
+      case 17: txt = 'A Hex Editor';
+        break;
+
+      case 18: txt = 'Any game/console/pc emulator';
+        break;
+
+      case 19: txt = 'Try porting PC games to Androids';
+        break;
+
+      case 20: txt = 'An operating system';
+        break;
+
+      case 21: txt = 'A linux distribution';
+        break;
+
+      case 22: txt = 'A multi-use reddit bot';
+        break;
+
+      case 23: txt = 'Modern MP3 player';
+        break;
+
+      case 24: txt = 'Torrent client';
+        break;
+
+      case 25: txt = 'A screen recorder';
+        break;
+
+      case 26: txt = 'An online text storing place (paste.sh as example)';
+        break;
+
+      case 27: txt = 'Code editors may be fun to make';
+        break;
+
+      case 28: txt = 'An AI chat bot';
+        break;
+
+      case 29: txt = 'Tetris';
+        break;
+
+      case 30: txt = 'A trusted file hosting site';
+        break;
+
+      case 31: txt = 'Grand Theft Auto 5 clone';
+        break;
+
+      case 32: txt = "A game like Untitled Goose Game"
+        break;
+
+      case 33: txt = "A fun adventure game like 'Turnip boy commits tax evasion'"
+        break;
+
+      case 34: txt = "Russian roulette game multiplayer and realistic"
+        break;
+
+      case 35: txt = "Pacman but you are the ghost"
+        break;
+
+      case 36: txt = "A crypto currency miner"
+        break;
+
+      case 37: txt = "A medicat alternative"
+        break;
+
+      case 38: txt = "A better ripcord client"
+        break;
+
+      case 39: txt = "A minimalistic/modern weather app"
+        break;
+
+      case 40: txt = "All in One rainmeter skin (jaxcore.app copycat)"
+        break;
+
+      default: txt = "{ERROR WHILE LOADING}"
+    }
+
+    switch (unity) {
+      case 0: txt = txt
+        break;
+
+      case 1: txt = "Grand Theft Auto clone"
+        break;
+
+      case 2: txt = "A game like Untitled Goose Game"
+        break;
+
+      case 3: txt = "A fun adventure game like 'Turnip boy commits tax evasion'"
+        break;
+
+      case 4: txt = "Russian roulette game multiplayer and realistic"
+        break;
+
+      case 5: txt = "Pacman but you are the ghost"
+        break;
+
+      default: txt = "{ERROR WHILE LOADING [UNITY-LIST]}"
+    }
+
+    switch (roblox) {
+      case 0: txt = txt
+        break;
+
+      case 1: txt = "Untitled Anime Fighting Game"
+        break;
+
+      case 2: txt = "Untitled Tycoon Game"
+        break;
+
+      case 3: txt = "Most fun realistic FPS game possible"
+        break;
+
+      case 4: txt = "Untitled Tower Defense"
+        break;
+
+      case 5: txt = "Racing game"
+        break;
+
+      default: txt = "{ERROR WHILE LOADING [ROBLOX-LIST]}"
+    }
+
+    var speed = 40;
+
+    function typeWriter() {
+      var element = document.getElementById("content")
+      if (i < txt.length) {
+        document.getElementById("content").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+        element.focus();
+        element.setSelectionRange(element.value.length, element.value.length);
+      }
+    }
+
+    function resizeBox() {
+      var windowWidth = $(window).width() - 85;
+      $('#content').css('width', windowWidth);
+    }
+
+    typeWriter()
+
+    $(function () {
+      resizeBox();
+      $(window).resize(resizeBox);
+    });
+
+    function filterMatches(needle, haystack) {
+      const regex = new RegExp('^' + needle.replace(/\*/g, '.') + '$');
+      return haystack.filter(word => regex.test(word));
+    }
+
+    document.getElementById('content').addEventListener('keydown', function (e) {
+      content = document.getElementById('content').value
+      if (content.toLowerCase().includes(":save")) {
+        content = content.replace(":save", "")
+        var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "textfile.txt");
+      }
+    }, false);
+  </script>
+</body>
+
+</html>

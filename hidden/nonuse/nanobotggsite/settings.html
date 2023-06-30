@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nanobot.gg</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon" href="./images/logo.ico">
+</head>
+
+<body>
+  <div class="container">
+    <aside>
+      <div class="top">
+        <div class="close" id="close-btn">
+          <span class="material-icons-sharp"> close </span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <a id="d" onclick="change('dashboard')" href="index.html#dashboard">
+          <span class="material-icons-sharp"> dashboard </span>
+          <h3>Dashboard</h3>
+        </a>
+        <a id="n" onclick="change('ticker')" href="index.html#ticker">
+          <span class="material-icons-sharp"> insights </span>
+          <h3>Nano Ticker</h3>
+        </a>
+        <a id="doc" onclick="change('documentation')" href="index.html#documentation">
+          <span class="material-icons-sharp"> book </span>
+          <h3>Documentation</h3>
+        </a>
+        <a id="e" onclick="change('invite')"
+          href="https://discord.com/oauth2/authorize?client_id=967844118715854908&permissions=8&scope=applications.commands%20bot">
+          <span class="material-icons-sharp"> plus_one </span>
+          <h3>Invite</h3>
+        </a>
+        <a id="b" onclick="change('report')" href="index.html#support">
+          <span class="material-icons-sharp"> report_gmailerrorred </span>
+          <h3>Support</h3>
+        </a>
+        <a id="s" onclick="change('settings')" href="#" class="active">
+          <span class="material-icons-sharp"> settings </span>
+          <h3>Settings</h3>
+        </a>
+        <a id="l" onclick="change('logout')" href="index.html#logout">
+          <span class="material-icons-sharp"> logout </span>
+          <h3>Logout</h3>
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <div class="dashboard">
+        <h1>Settings</h1>
+
+        <div class="insights">
+          <div class="sales">
+            <div class="middle">
+              <div class="left">
+                <h3>Removes all animations from nanobot.gg</h3>
+                <small class="text-muted"> Disabled </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="opacity:0" class="invite">
+          <h1>Foo bar {invite}</h1>
+        </div>
+        <div style="opacity:0" class="settings">
+          <h1>Foo bar {SETTINGS}</h1>
+        </div>
+    </main>
+
+    <div class="right">
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-icons-sharp"> menu </span>
+        </button>
+        <div class="theme-toggler">
+          <span class="material-icons-sharp active"> light_mode </span>
+          <span class="material-icons-sharp"> dark_mode </span>
+        </div>
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b>tanos</b></p>
+            <small class="text-muted">Femto</small>
+          </div>
+          <div class="profile-photo">
+            <img src="./images/profile-1.jpg" style="border-radius: 50%;" alt="Profile Picture" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./constants/recent-order-data.js"></script>
+    <script src="./constants/update-data.js"></script>
+    <script src="./constants/sales-analytics-data.js"></script>
+    <script src="./constants/jquery.js"></script>
+    <script src="./index.js"></script>
+
+    <script>
+      function change(to) {
+        var is_at = "nil"
+
+        document.getElementById("d").classList.remove("active");
+        document.getElementById("n").classList.remove("active");
+        document.getElementById("b").classList.remove("active");
+        document.getElementById("l").classList.remove("active");
+        document.getElementById("s").classList.remove("active");
+        document.getElementById("e").classList.remove("active");
+        document.getElementById("doc").classList.remove("active");
+
+        $(".dashboard").animate({
+          opacity: "0"
+        }, 300);
+        $(".invite").animate({
+          opacity: "0"
+        }, 300);
+        $(".settings").animate({
+          opacity: "0"
+        }, 300);
+
+        if (to == 'invite') {
+          document.getElementById("e").classList.add("active");
+          $(".invite").animate({
+            opacity: "1"
+          }, 150);
+        }
+
+        if (to == 'report') {
+          document.getElementById("b").classList.add("active");
+        }
+
+        if (to == 'settings') {
+          document.getElementById("s").classList.add("active");
+          $(".settings").animate({
+            opacity: "1"
+          }, 150);
+        }
+
+        if (to == 'dashboard') {
+          document.getElementById("d").classList.add("active");
+          $(".dashboard").animate({
+            opacity: "1"
+          }, 150);
+        }
+
+        if (to == 'documentation') {
+          document.getElementById("doc").classList.add("active");
+        }
+
+        if (to == 'logout') {
+          document.getElementById("l").classList.add("active");
+        }
+
+        if (to == 'ticker') {
+          document.getElementById("n").classList.add("active");
+        }
+      }
+    </script>
+</body>
+
+</html>
