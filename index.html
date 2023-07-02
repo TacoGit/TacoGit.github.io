@@ -31,7 +31,7 @@
 </head>
 
 <body>
-  <div id="profile-name" class="profile-name">tanos</div>
+  <div id="profile-name" class="profile-name">tanos'</div>
 
   <a onclick="CopyText('tanos#4079')" style="display: none; opacity:0;" class="links" id="dcNAME">tanos#4079</a>
   <a onclick="CopyText('916798305390964778')" style="display: none; opacity:0;" class="links"
@@ -47,52 +47,52 @@
     target="_blank" , class="links" id="ezw">
     ezWindows</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/typetester/" aria-label="typetester" target="_blank" ,
-    class="links" id="ttr">
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/typetester/" aria-label="typetester"
+    target="_blank" , class="links" id="ttr">
     TypeTester</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/homepage/" aria-label="homepage" target="_blank" ,
-    class="links" id="hmpg">
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/homepage/" aria-label="homepage" target="_blank"
+    , class="links" id="hmpg">
     homepage</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/setup-pc/" aria-label="homepage" target="_blank" ,
-    class="links" id="stpc">
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/setup-pc/" aria-label="homepage" target="_blank"
+    , class="links" id="stpc">
     Setup-PC</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/whattocode/" aria-label="homepage" target="_blank" ,
-    class="links" id="wtc">
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/whattocode/" aria-label="homepage"
+    target="_blank" , class="links" id="wtc">
     What To Code</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/age/" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/age/" aria-label="homepage" target="_blank" ,
     class="links" id="agmr">
     Age Memr</a>
 
-  <a style="display: none; opacity: 0;" href="https://chat.tanos.gq" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://chat.tacogit.github.io" aria-label="homepage" target="_blank" ,
     class="links" id="chat">
     chat dot tanos</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/weather" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/weather" aria-label="homepage" target="_blank" ,
     class="links" id="wetr">
     weather</a>
 
-  <a style="display: none; opacity: 0;" href="https://status.tanos.gq" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://status.tacogit.github.io" aria-label="homepage" target="_blank" ,
     class="links" id="isdown">
-    tanos.gq status</a>
+    tacogit.github.io status</a>
 
-  <a style="display: none; opacity: 0;" href="https://discord.tanos.gq" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://discord.tacogit.github.io" aria-label="homepage" target="_blank" ,
     class="links" id="dbd">
     Discord Bot Builder</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/player" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/player" aria-label="homepage" target="_blank" ,
     class="links" id="mpl">
     Music Player</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/paste" aria-label="homepage" target="_blank" ,
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/paste" aria-label="homepage" target="_blank" ,
     class="links" id="pst">
     PASTE</a>
 
-  <a style="display: none; opacity: 0;" href="https://tanos.gq/ai" aria-label="homepage" target="_blank" , class="links"
-    id="bob">
+  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/ai" aria-label="homepage" target="_blank" ,
+    class="links" id="bob">
     Bob the AI</a>
 
 
@@ -352,7 +352,7 @@
   }
 
   class Particle {
-    constructor({x, y, rotation, shape, color, size, duration, parent}) {
+    constructor({ x, y, rotation, shape, color, size, duration, parent }) {
       this.x = x
       this.y = y
       this.parent = parent
@@ -385,7 +385,7 @@
     }
   }
 
-  function animateParticles({total}) {
+  function animateParticles({ total }) {
     for (let i = 0; i < total; i++) {
       const particle = new Particle({
         x: randomIntBetween(-200, 200),
@@ -402,13 +402,13 @@
   }
 
   const parent = document.querySelector('span')
-  parent.addEventListener("touchstart", () => {}, false);
+  parent.addEventListener("touchstart", () => { }, false);
   parent.addEventListener('click', e => {
-    animateParticles({total: 100})
+    animateParticles({ total: 100 })
   })
 
   function GenerateParticles(amnt) {
-    animateParticles({total: amnt})
+    animateParticles({ total: amnt })
   }
 </script>
 
