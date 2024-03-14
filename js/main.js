@@ -86,12 +86,22 @@
         ssSlickSlider();
         ssPlaceholder();
         ssFinalCountdown();
-        ssAjaxChimp();
+       // ssAjaxChimp();
 
     })();
 
 
 })(jQuery);
+
+function archive() {
+    projects()
+    document.getElementById("tanosprojects").textContent = "tanos - archived projects"
+    document.getElementById("projectstext").textContent = "all projects listed are all thrown away by reasons like no motivation"
+    document.getElementById("fff").textContent = "dont expect too much from thrown away projects, warning ya"
+
+    document.getElementById("pp").style.display = "none";
+    document.getElementById("achd").style.display = "block";
+}
 
 function projects() {
     $("#home").animate({

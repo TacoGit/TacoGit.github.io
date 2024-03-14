@@ -65,6 +65,9 @@
                 <a onclick="projects()" href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
                 </li>
                 <li>
+                <a onclick="archive()" href="#"><i class="fa fa-archive" aria-hidden="true"></i><span>Archive</span></a>
+                </li>
+                <li>
                 <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
                 </li>
                 <li>
@@ -89,32 +92,38 @@
             <div class="row home-content__main">
 
                 <div class="col-eleven home-content__text pull-right">
-                    <h3>tanos - projects.</h3>
+                    <h3 id="tanosprojects">tanos - projects.</h3>
 
-                    <h1>
+                    <h1 id="projectstext">
                     some sites may be corrupted<br>
                     due to changing from tanos.gq
                     </h1>
 
-                    <p style="margin-top: 1rem;">Had most fun coding: ⭐,
+                    <p id="fff" style="margin-top: 1rem;">Had most fun coding: ⭐,
                         Site or app dead: ☠,
                         Useless or not wanted: 💔,
                         Adjusted tutorial code: ✨,
                     </p>
 
-                    <button onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
-                    <button onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
-                    <button onclick="window.location='https://tacogit.github.io/setup-pc/'">Setup-PC 💔</button>
-                    <button onclick="window.location='https://tacogit.github.io/typetester/'">TypeTester ✨</button>
-                    <button onclick="window.location='https://tacogit.github.io/whattocode/'">What To Code ⭐</button>
-                    <button onclick="window.location='https://tacogit.github.io/weather'">weather</button>
-                    <button onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
-                    <button onclick="window.location='https://tacogit.github.io/player'">Music Player</button>
-                    <button onclick="window.location='https://tacogit.github.io/contact/'">Contact tanos</button>
-                    <button onclick="window.location='https://tacogit.github.io/paste'">PASTE ⭐</button>
-                    <button onclick="window.location='https://tacogit.github.io/ai'">Bob the AI</button>
-                    <button onclick="window.location='https://tacogit.github.io/skyline'">Skyline Compatibility List ☠</button>
-                    <button onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
+                    <div id="pp" class="projects">
+                        <button onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
+                        <button onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
+                        <button onclick="window.location='https://tacogit.github.io/setup-pc/'">Setup-PC 💔</button>
+                        <button onclick="window.location='https://tacogit.github.io/typetester/'">TypeTester ✨</button>
+                        <button onclick="window.location='https://tacogit.github.io/whattocode/'">What To Code ⭐</button>
+                        <button onclick="window.location='https://tacogit.github.io/weather'">weather</button>
+                        <button onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
+                        <button onclick="window.location='https://tacogit.github.io/player'">Music Player</button>
+                        <button onclick="window.location='https://tacogit.github.io/contact/'">Contact tanos</button>
+                        <button onclick="window.location='https://tacogit.github.io/paste'">PASTE ⭐</button>
+                        <button onclick="window.location='https://tacogit.github.io/ai'">Bob the AI</button>
+                        <button onclick="window.location='https://tacogit.github.io/skyline'">Skyline Compatibility List ☠</button>
+                        <button onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
+                    </div>
+
+                    <div style="display: none;" id="achd" class="archived">
+                        <button>Files are still being uploaded, please wait a couple days</button>
+                    </div>
                 </div>
 
             </div>
@@ -122,6 +131,9 @@
             <ul class="home-social">
                 <li>
                 <a onclick="projects()" href="#projects"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
+                </li>
+                <li>
+                <a onclick="archive()" href="#"><i class="fa fa-archive" aria-hidden="true"></i><span>Archive</span></a>
                 </li>
                 <li>
                 <a href="#0"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
@@ -143,4 +155,15 @@
     <script src="js/jquery-3.2.1.min.js"></script> <!-- jQuery for animations -->
     <script src="js/plugins.js"></script> <!-- Timers etc -->
     <script src="js/main.js"></script> <!-- Contains all the code -->
+
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '1ad2b3b75ee4a366c32aef5f037203e5',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+        };
+        document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/1ad2b3b75ee4a366c32aef5f037203e5/invoke.js"></scr' + 'ipt>');
+    </script>
 </body></html>
