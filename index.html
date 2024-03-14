@@ -1,485 +1,147 @@
-<!DOCTYPE html>
-<html Lang='en'>
+<html class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded" lang="en" style="" data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0"><head>
+    <meta charset="utf-8">
+    <title>tanos</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<!-- 
-  
-**                                                                  **
-  Hey, welcome to my site.
-  There are custom functions ready for playing around with
-  CopyText() GenerateParticles() and DestroySite()
-  If you dont know what your doing, try to figure out what ur doing.
-**                                                                  **
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-**                                                                  **
-  This site has some playful apis (not made by us)
-**                                                                  **
-  
-!-->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/styles.css">
-  <title>Home</title>
-  <meta property="og:title" content="tanos, the home page.">
-  <meta property="og:locale" content="en_US">
-  <meta name="description" content="im tanos, a full-stack developer">
-  <meta property="og:description" content="im tanos, a full-stack developer">
-  <meta property="og:image:type" content="image/webp">
-  <script src="jquery.js"></script>
-  <script src="play.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 
-<body>
-  <div id="profile-name" class="profile-name">tanos</div>
-
-  <a onclick="CopyText('tanosshi')" style="display: none; opacity:0;" class="links" id="dcNAME">tanosshi</a>
-  <a onclick="CopyText('916798305390964778')" style="display: none; opacity:0;" class="links"
-    id="dcID">916798305390964778</a>
-  <a onclick="CopyText('Sat, 04 Dec 2021 21:09:09 UTC')" style="display: none; opacity:0;" class="links" id="dcAGE">Sat,
-    04 Dec 2021 21:09:09 UTC</a>
-
-  <!-- Projects !-->
-  <a style="display: none; opacity: 0;" href="https://github.com/TacoGit/betterPluginInstaller" aria-label="bpi"
-    target="_blank" class="links" id="bpi">betterPluginInstaller</a>
-
-  <a style="display: none; opacity: 0;" href="https://github.com/TacoGit/ezWindows" aria-label="ezwindows"
-    target="_blank" , class="links" id="ezw">
-    ezWindows</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/typetester/" aria-label="typetester"
-    target="_blank" , class="links" id="ttr">
-    TypeTester</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/homepage/" aria-label="homepage" target="_blank"
-    , class="links" id="hmpg">
-    homepage</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/setup-pc/" aria-label="homepage" target="_blank"
-    , class="links" id="stpc">
-    Setup-PC</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/whattocode/" aria-label="homepage"
-    target="_blank" , class="links" id="wtc">
-    What To Code</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/age/" aria-label="homepage" target="_blank" ,
-    class="links" id="agmr">
-    Age Memr</a>
-
-  <a style="display: none; opacity: 0;" href="https://chat.tacogit.github.io" aria-label="homepage" target="_blank" ,
-    class="links" id="chat">
-    chat dot tanos</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/weather" aria-label="homepage" target="_blank" ,
-    class="links" id="wetr">
-    weather</a>
-
-  <a style="display: none; opacity: 0;" href="https://status.tacogit.github.io" aria-label="homepage" target="_blank" ,
-    class="links" id="isdown">
-    tacogit.github.io status</a>
-
-  <a style="display: none; opacity: 0;" href="https://discord.tacogit.github.io" aria-label="homepage" target="_blank" ,
-    class="links" id="dbd">
-    Discord Bot Builder</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/player" aria-label="homepage" target="_blank" ,
-    class="links" id="mpl">
-    Music Player</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/paste" aria-label="homepage" target="_blank" ,
-    class="links" id="pst">
-    PASTE</a>
-
-  <a style="display: none; opacity: 0;" href="https://tacogit.github.io/ai" aria-label="homepage" target="_blank" ,
-    class="links" id="bob">
-    Bob the AI</a>
-
-
-  <!-- Others !-->
-  <a href="github/index.html" aria-label="github" target="_blank" class="links" id="gh">GitHub</a>
-  <a onclick="showDiscord()" aria-label="discord" target="_blank" , class="links" id="dc">Discord</a>
-  <a onclick="showProjects()" aria-label="sitesettings" id="pj" target="_blank" , class="links">Projects</a>
-
-  <a style="display: none;" onclick="DestroySite()" aria-label="settings" target="_blank" , class="links"
-    id="ds">Destroy site 💥</a>
-
-  <div class="littleline"></div>
-
-  <a style="display: none;" href="https://paypal.me/tanospaypal" aria-label="settings" target="_blank" , class="links"
-    id="pp">Donate to me if u want ☕</a>
-  <a style="display: none;" onclick="GoBack()" aria-label="settings" target="_blank" , class="links" id="gb">Go back
-    👋</a>
-  <a style="display: none; opacity:0;" onclick="GoBackCustom()" aria-label="settings" target="_blank" , class="links"
-    id="gbCustom">Go back
-    👋</a>
-
-  <a onclick="sitesettings()" aria-label="sitesettings" target="_blank" , class="links" id="ss">Site settings</a>
-
-  <div class="footer">with <span style="color:#a7a8aa" data-text="Click Me">❤</span> made by tanos</div>
-
-  <div class="cursor"></div>
-</body>
-
-<script>
-  document.addEventListener('contextmenu', event => event.preventDefault());
-
-  console.log("pls dont bruteforce my site, thanks")
-
-  function DestroySite() {
-    sitesettings()
-    document.querySelectorAll("*").forEach(element => {
-      element.style.display = "None"
-    })
-  }
-
-  const cursor = document.querySelector('.cursor');
-
-  window.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px';
-    cursor.setAttribute('data-fromTop', (cursor.offsetTop - scrollY));
-  });
-
-  window.addEventListener('scroll', () => {
-    const fromTop = cursor.getAttribute('data-fromTop');
-    cursor.style.top = scrollY + parseInt(fromTop) + 'px';
-    console.log(scrollY);
-  });
-
-  window.addEventListener('click', () => {
-    if (cursor.classList.contains('click')) {
-      cursor.classList.remove("click");
-      void cursor.offsetWidth;
-      cursor.classList.add("click");
-    } else {
-      cursor.classList.add("click");
-    }
-  });
-
-  function CopyText(whatTo) {
-    navigator.clipboard.writeText(whatTo);
-    alert("Copied Text")
-  }
-
-
-  function showDiscord() {
-    HideAllButtons()
-
-    document.getElementById("profile-name").innerHTML = "tanos: discord"
-
-    setTimeout(function () {
-      document.getElementById("dcNAME").style.display = "block"
-      document.getElementById("dcID").style.display = "block"
-      document.getElementById("dcAGE").style.display = "block"
-      document.getElementById("gbCustom").style.display = "block"
-
-      $("#dcNAME").animate({
-        opacity: "1"
-      }, 300);
-      $("#dcID").animate({
-        opacity: "1"
-      }, 300);
-      $("#dcAGE").animate({
-        opacity: "1"
-      }, 300);
-      $("#gbCustom").animate({
-        opacity: "1"
-      }, 300);
-    }, 300);
-  }
-
-  function showProjects() {
-    HideAllButtons()
-
-    document.getElementById("profile-name").innerHTML = "tanos: projects"
-
-    setTimeout(function () {
-      document.getElementById("ezw").style.display = "block"
-      document.getElementById("bpi").style.display = "block"
-      document.getElementById("gbCustom").style.display = "block"
-      document.getElementById("ttr").style.display = "block"
-      document.getElementById("hmpg").style.display = "block"
-      document.getElementById("stpc").style.display = "block"
-      document.getElementById("agmr").style.display = "block"
-      document.getElementById("chat").style.display = "block"
-      document.getElementById("wtc").style.display = "block"
-      document.getElementById("wetr").style.display = "block"
-      document.getElementById("isdown").style.display = "block"
-      document.getElementById("dbd").style.display = "block"
-      document.getElementById("mpl").style.display = "block"
-      document.getElementById("bob").style.display = "block"
-      document.getElementById("pst").style.display = "block"
-      $("#ezw").animate({
-        opacity: "1"
-      }, 300);
-      $("#ttr").animate({
-        opacity: "1"
-      }, 300);
-      $("#dbd").animate({
-        opacity: "1"
-      }, 300);
-      $("#hmpg").animate({
-        opacity: "1"
-      }, 300);
-      $("#stpc").animate({
-        opacity: "1"
-      }, 300);
-      $("#wtc").animate({
-        opacity: "1"
-      }, 300);
-      $("#pst").animate({
-        opacity: "1"
-      }, 300);
-      $("#wetr").animate({
-        opacity: "1"
-      }, 300);
-      $("#mpl").animate({
-        opacity: "1"
-      }, 300);
-      $("#bob").animate({
-        opacity: "1"
-      }, 300);
-      $("#agmr").animate({
-        opacity: "1"
-      }, 300);
-      $("#chat").animate({
-        opacity: "1"
-      }, 300);
-      $("#bpi").animate({
-        opacity: "1"
-      }, 300);
-      $("#isdown").animate({
-        opacity: "1"
-      }, 300);
-      $("#gbCustom").animate({
-        opacity: "1"
-      }, 300);
-    }, 300);
-  }
-
-  function HideAllButtons() {
-    document.querySelectorAll(".links").forEach(element => {
-      element.animate({
-        opacity: "0"
-      }, 300);
-      setTimeout(function () {
-        element.style.display = "none";
-      }, 300);
-    })
-  }
-
-  function GoBack() {
-    if (cursor.classList.contains('bigclick')) {
-      cursor.classList.remove("bigclick");
-      void cursor.offsetWidth;
-      cursor.classList.add("bigclick");
-    } else {
-      cursor.classList.add("bigclick");
-    }
-    document.getElementById("dc").style.display = "block";
-    document.getElementById("gh").style.display = "block";
-    document.getElementById("ss").style.display = "block";
-    document.getElementById("ds").style.display = "none";
-    document.getElementById("pp").style.display = "none";
-    document.getElementById("gb").style.display = "none";
-    document.getElementById("pj").style.display = "block";
-  }
-  function GoBackCustom() {
-    HideAllButtons()
-    if (cursor.classList.contains('bigclick')) {
-      cursor.classList.remove("bigclick");
-      void cursor.offsetWidth;
-      cursor.classList.add("bigclick");
-    } else {
-      cursor.classList.add("bigclick");
-    }
-
-    setTimeout(function () {
-      document.getElementById("profile-name").innerHTML = "tanos"
-      document.getElementById("dc").style.display = "block";
-      document.getElementById("gh").style.display = "block";
-      document.getElementById("ss").style.display = "block";
-      document.getElementById("ds").style.display = "none";
-      document.getElementById("pp").style.display = "none";
-      document.getElementById("ezw").style.display = "none";
-      document.getElementById("ttr").style.display = "none";
-      document.getElementById("hmpg").style.display = "none";
-      document.getElementById("stpc").style.display = "none";
-      document.getElementById("wtc").style.display = "none";
-      document.getElementById("agmr").style.display = "none";
-      document.getElementById("wetr").style.display = "none";
-      document.getElementById("isdown").style.display = "none";
-      document.getElementById("dbd").style.display = "none";
-      document.getElementById("mpl").style.display = "none";
-      document.getElementById("bob").style.display = "none";
-      document.getElementById("pst").style.display = "none";
-      document.getElementById("chat").style.display = "none";
-      document.getElementById("bpi").style.display = "none";
-      document.getElementById("dcNAME").style.display = "none"
-      document.getElementById("dcID").style.display = "none"
-      document.getElementById("dcAGE").style.display = "none"
-      document.getElementById("gb").style.display = "none";
-      document.getElementById("pj").style.display = "block";
-    }, 300);
-  }
-
-  function sitesettings() {
-    if (cursor.classList.contains('bigclick')) {
-      cursor.classList.remove("bigclick");
-      void cursor.offsetWidth;
-      cursor.classList.add("bigclick");
-    } else {
-      cursor.classList.add("bigclick");
-    }
-    document.getElementById("dc").style.display = "None";
-    document.getElementById("gh").style.display = "None";
-    document.getElementById("ss").style.display = "None";
-    document.getElementById("ds").style.display = "block";
-    document.getElementById("pp").style.display = "block";
-    document.getElementById("gb").style.display = "block";
-    document.getElementById("pj").style.display = "none";
-  }
-</script>
-
-<script>
-  const colors = ['#e31b23']
-  // const shapes = ['square', 'circle', 'triangle', 'heart']
-  const shapes = ['heart']
-
-  const randomIntBetween = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-
-  class Particle {
-    constructor({ x, y, rotation, shape, color, size, duration, parent }) {
-      this.x = x
-      this.y = y
-      this.parent = parent
-      this.rotation = rotation
-      this.shape = shape
-      this.color = color
-      this.size = size
-      this.duration = duration
-      this.children = document.createElement('div')
-    }
-
-    draw() {
-      this.children.style.setProperty('--x', this.x + 'px')
-      this.children.style.setProperty('--y', this.y + 'px')
-      this.children.style.setProperty('--r', this.rotation + 'deg')
-      this.children.style.setProperty('--c', this.color)
-      this.children.style.setProperty('--size', this.size + 'px')
-      this.children.style.setProperty('--d', this.duration + 'ms')
-      this.children.className = `shape ${this.shape}`
-      this.parent.append(this.children)
-    }
-
-    animate() {
-      this.draw()
-
-      const timer = setTimeout(() => {
-        this.parent.removeChild(this.children)
-        clearTimeout(timer)
-      }, this.duration)
-    }
-  }
-
-  function animateParticles({ total }) {
-    for (let i = 0; i < total; i++) {
-      const particle = new Particle({
-        x: randomIntBetween(-200, 200),
-        y: randomIntBetween(-100, -300),
-        rotation: randomIntBetween(-360 * 5, 360 * 5),
-        shape: shapes[randomIntBetween(0, shapes.length - 1)],
-        color: colors[randomIntBetween(0, colors.length - 1)],
-        size: randomIntBetween(4, 7),
-        duration: randomIntBetween(400, 800),
-        parent
-      })
-      particle.animate()
-    }
-  }
-
-  const parent = document.querySelector('span')
-  parent.addEventListener("touchstart", () => { }, false);
-  parent.addEventListener('click', e => {
-    animateParticles({ total: 100 })
-  })
-
-  function GenerateParticles(amnt) {
-    animateParticles({ total: amnt })
-  }
-</script>
-
-<style>
-  .shape {
-    --size: 8px;
-    position: absolute;
-    top: calc(50% - var(--size));
-    left: calc(50% - var(--size));
-    width: calc(var(--size) * 2);
-    height: calc(var(--size) * 2);
-    animation: popup var(--d) cubic-bezier(.08, .56, .53, .98) forwards;
-  }
-
-  .square {
-    border-radius: 4px;
-    background-color: var(--c);
-  }
-
-  .circle {
-    border-radius: 50%;
-    background-color: var(--c);
-  }
-
-  .triangle {
-    width: 0px;
-    height: 0px;
-    background-color: none;
-    border-top: var(--size) solid transparent;
-    border-bottom: calc(var(--size) * 2) solid var(--c);
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-  }
-
-  .heart {
-    --size: 6px;
-    background-color: var(--c);
-  }
-
-  .heart::before,
-  .heart::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--c);
-    border-radius: 50%;
-  }
-
-  .heart::before {
-    left: -50%;
-  }
-
-  .heart::after {
-    top: -50%;
-  }
-
-  @keyframes popup {
-    0% {
-      opacity: 0;
-    }
-
-    60% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-      transform: translate(var(--x), var(--y)) rotate(var(--r));
-    }
-  }
-</style>
-
-</html>
+<body class="pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+    <main class="s-home s-home--static">
+
+        <div class="overlay"></div>
+
+        <div id="home" style="padding-top: 3rem;" class="home-content">
+            <div style="padding-top: 3rem;" class="row home-content__main">
+
+                <div class="col-eight home-content__text pull-right">
+                    <h3>tanos</h3>
+
+                    <h1>
+                    a random ass site<br>
+                    i made for no reason lol
+                    </h1>
+
+                    <p style="margin-top: 1.2rem;">
+                    im tanos i just make random projects, look at right bar for redirections<br>
+                    or <a style="cursor:pointer" onclick="projects()">view my projects</a> by pressing the highlighted text
+                    </p>
+                </div>
+
+                <div class="col-four home-content__counter">
+                    <h3>something sick will happen in</h3>
+
+                    <div class="home-content__clock"><div class="top"><div class="time days">00 <span>day</span></div></div><div class="time hours">00 <span>H</span></div><div class="time minutes">00 <span>M</span></div><div class="time seconds">00 <span>S</span></div></div>  <!-- end home-content__clock -->
+                </div>
+
+            </div>
+
+            <ul class="home-social">
+                <li>
+                <a onclick="projects()" href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
+                </li>
+                <li>
+                <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
+                </li>
+                <li>
+                <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
+                </li>
+                <li>
+                <a onclick="alert('@tanosshi , 916798305390964778')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
+                </li>
+            </ul>
+
+            <div class="home-content__line"></div>
+
+            <div class="row home-copyright">
+                <!-- <span>site kept active by <a href="https://arc.io">arc.io</a></span> -- Not yet, soon!!  -->
+                <span>site by @tanosshi on discord</span>
+                <span>donate to me via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a></span>
+            </div>
+
+        </div>
+
+        <div style="display: none; opacity:0;" id="projects" class="home-content">
+            <div class="row home-content__main">
+
+                <div class="col-eleven home-content__text pull-right">
+                    <h3>tanos - projects.</h3>
+
+                    <h1>
+                    some sites may be corrupted<br>
+                    due to changing from tanos.gq
+                    </h1>
+
+                    <p style="margin-top: 1rem;">Had most fun coding: ⭐,
+                        Site or app dead: ☠,
+                        Useless or not wanted: 💔,
+                        Adjusted tutorial code: ✨,
+                    </p>
+
+                    <button onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
+                    <button onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
+                    <button onclick="window.location='https://tacogit.github.io/setup-pc/'">Setup-PC 💔</button>
+                    <button onclick="window.location='https://tacogit.github.io/typetester/'">TypeTester ✨</button>
+                    <button onclick="window.location='https://tacogit.github.io/whattocode/'">What To Code ⭐</button>
+                    <button onclick="window.location='https://tacogit.github.io/weather'">weather</button>
+                    <button onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
+                    <button onclick="window.location='https://tacogit.github.io/player'">Music Player</button>
+                    <button onclick="window.location='https://tacogit.github.io/paste'">PASTE ⭐</button>
+                    <button onclick="window.location='https://tacogit.github.io/ai'">Bob the AI</button>
+                    <button onclick="window.location='https://tacogit.github.io/skyline'">Skyline Compatibility List ☠</button>
+                    <button onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
+                </div>
+
+            </div>
+
+            <ul class="home-social">
+                <li>
+                <a onclick="projects()" href="#projects"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
+                </li>
+                <li>
+                <a href="#0"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
+                </li>
+                <li>
+                <a href="#0"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
+                </li>
+                <li>
+                <a href="#0"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
+                </li>
+            </ul>
+
+            <div class="home-content__line"></div>
+
+        </div>
+
+    </main>
+
+    <div id="preloader" style="display: none;">
+        <div id="loader" style="display: none;">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body></html>
