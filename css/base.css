@@ -1,46 +1,7 @@
-/* =================================================================== 
- *
- *  Count v1.0 Base Stylesheet
- *  04-16-2018
- *  ------------------------------------------------------------------
- *
- *  TOC:
- *  # imports 
- *  # normalize
- *  # basic/base setup styles
- *    ## media
- *    ## typography resets
- *    ## links     
- *    ## inputs
- *  # grid
- *    ## medium size devices
- *    ## tablets 
- *    ## mobile devices
- *    ## small mobile devices
- *  # block grids
- *    ## medium size devices
- *    ## tablets
- *    ## mobile devices
- *    ## small mobile devices
- *  # MISC
- *
- * =================================================================== */
 
-
-/* ===================================================================
- * # imports - (_imports.scss)
- *
- * ------------------------------------------------------------------- */
 @import url("font-awesome/css/fontawesome-all.css");
 @import url("fonts.css");
 
-
-/* ===================================================================
- * # normalize - (_normalize.scss)
- * normalize.css v5.0.0 | MIT License | 
- * github.com/necolas/normalize.css
- *
- * ------------------------------------------------------------------- */
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -365,9 +326,6 @@ li {
   display: block;
 }
 
-/* ------------------------------------------------------------------- 
- * ## links - (_basic.scss) 
- * ------------------------------------------------------------------- */
 a {
   text-decoration: none;
   line-height: inherit;
@@ -377,9 +335,6 @@ a img {
   border: none;
 }
 
-/* ------------------------------------------------------------------- 
- * ## inputs - (_basic.scss) 
- * ------------------------------------------------------------------- */
 fieldset {
   margin: 0;
   padding: 0;

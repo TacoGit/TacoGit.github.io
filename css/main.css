@@ -20,7 +20,7 @@ h1{
 
 html,
 body {
-  height: 100%;  /* prevent horizontal scrolling */
+  height: 100%;
   overflow: hidden;
 }
 
@@ -36,9 +36,6 @@ body {
   padding: 0;
 }
 
-/* ------------------------------------------------------------------- 
- * ## links - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 a {
   color: #44763B;
   -webkit-transition: all 0.3s ease-in-out;
@@ -56,12 +53,6 @@ a:active {
   outline: 0;
 }
 
-
-
-/* ===================================================================
- * # typography & general theme styles - (_document-setup.scss)
- * 
- * ------------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "nfont", serif;
   color: #000000;
@@ -291,9 +282,6 @@ hr {
   height: 0;
 }
 
-/* ------------------------------------------------------------------- 
- * ## lists - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 ol {
   list-style: decimal;
 }
@@ -351,9 +339,6 @@ dd {
   margin: 0 0 0 2rem;
 }
 
-/* ------------------------------------------------------------------- 
- * ## responsive video container - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -372,9 +357,6 @@ dd {
   height: 100%;
 }
 
-/* ------------------------------------------------------------------- 
- * ## floated image - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 img.pull-right {
   margin: 1.5rem 0 0 3rem;
 }
@@ -383,9 +365,6 @@ img.pull-left {
   margin: 1.5rem 3rem 0 0;
 }
 
-/* ------------------------------------------------------------------- 
- * ## tables - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 table {
   border-width: 0;
   width: 100%;
@@ -424,9 +403,6 @@ td:last-child {
   -webkit-overflow-scrolling: touch;
 }
 
-/* ------------------------------------------------------------------- 
- * ## Spacing - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 button,
 .btn {
   margin-bottom: 1.2rem;
@@ -453,9 +429,6 @@ form,
   margin-bottom: 3rem;
 }
 
-/* ------------------------------------------------------------------- 
- * ## pace.js styles - minimal - (_document-setup.scss)
- * ------------------------------------------------------------------- */
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -482,12 +455,6 @@ form,
   display: none;
 }
 
-
-
-/* ===================================================================
- * # preloader - (_preloader-line-scale-pulse-out.scss)
- *
- * ------------------------------------------------------------------- */
 #preloader {
   position: fixed;
   top: 0;
@@ -573,12 +540,6 @@ form,
 
 }
 
-
-
-/* ===================================================================
- * # forms - (_forms.scss)
- *
- * ------------------------------------------------------------------- */
 fieldset {
   border: none;
 }
@@ -656,7 +617,6 @@ select {
   transition: all 0.15s ease-in-out;
 }
 
-/* IE9 and below */
 .oldie .ss-custom-select::after {
   display: none;
 }
@@ -708,9 +668,6 @@ label > input[type="radio"] {
   top: .15rem;
 }
 
-/* ------------------------------------------------------------------- 
- * ## style placeholder text
- * ------------------------------------------------------------------- */
 ::-webkit-input-placeholder {
   color: #828282;
 }
@@ -731,9 +688,6 @@ label > input[type="radio"] {
   color: #828282 !important;
 }
 
-/* ------------------------------------------------------------------- 
- * ## change autocomplete styles in chrome
- * ------------------------------------------------------------------- */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus
@@ -748,13 +702,6 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-
-
-
-/* ===================================================================
- * # buttons - (_button.scss)
- *
- * ------------------------------------------------------------------- */
 .btn,
 button,
 input[type="submit"],
@@ -796,8 +743,6 @@ input[type="button"]:focus {
   outline: 0;
 }
 
-/* button primary
- * ------------------------------------------------- */
 .btn.btn--primary,
 button.btn--primary,
 input[type="submit"].btn--primary,
@@ -822,8 +767,6 @@ input[type="button"].btn--primary:focus {
   border-color: #d3007d;
 }
 
-/* button modifiers
- * ------------------------------------------------- */
 .btn.full-width,
 button.full-width {
   width: 100%;
@@ -869,20 +812,6 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
-
-
-
-/* =================================================================== 
- * # additional components - (_others.scss)
- *
- * ------------------------------------------------------------------- */
-
-/* ------------------------------------------------------------------- 
- * ## additional typo styles - (_additional-typo.scss)
- * ------------------------------------------------------------------- */
-
-/* drop cap 
- * ----------------------------------------------- */
 .drop-cap:first-letter {
   float: left;
   margin: 0;
@@ -895,9 +824,6 @@ input::-moz-focus-inner {
   background: transparent;
   color: #000000;
 }
-
-/* line definition style 
- * ----------------------------------------------- */
 .lining dt,
 .lining dd {
   display: inline;
@@ -923,8 +849,6 @@ input::-moz-focus-inner {
   margin-left: -0.2em;
 }
 
-/* dictionary definition style 
- * ----------------------------------------------- */
 .dictionary-style dt {
   display: inline;
   counter-reset: definitions;
@@ -944,18 +868,6 @@ input::-moz-focus-inner {
   content: counter(definitions, decimal) ". ";
 }
 
-/** 
- * Pull Quotes
- * -----------
- * markup:
- *
- * <aside class="pull-quote">
- *    <blockquote>
- *      <p></p>
- *    </blockquote>
- *  </aside>
- *
- * --------------------------------------------------------------------- */
 .pull-quote {
   position: relative;
   padding: 2.1rem 3rem 2.1rem 0px;
@@ -989,19 +901,6 @@ input::-moz-focus-inner {
 .pull-quote blockquote:before {
   content: none;
 }
-
-/** 
- * Stats Tab
- * ---------
- * markup:
- *
- * <ul class="stats-tabs">
- *    <li><a href="#">[value]<em>[name]</em></a></li>
- *  </ul>
- *
- * Extend this object into your markup.
- *
- * --------------------------------------------------------------------- */
 .stats-tabs {
   padding: 0;
   margin: 3rem 0;
@@ -1041,12 +940,6 @@ input::-moz-focus-inner {
   color: #828282;
 }
 
-
-
-/* ===================================================================
- * # home - (_site-layout.scss) 
- *
- * ------------------------------------------------------------------- */
 .s-home {
   z-index: 501;
   display: table;
@@ -1132,10 +1025,6 @@ input::-moz-focus-inner {
   transform: translateX(100%);
 }
 
-
-/* -------------------------------------------------------------------
- * ## home slides  - (_site-layout.scss) 
- * ------------------------------------------------------------------- */
 .home-slider {
   position: absolute;
   top: 0;
@@ -1163,10 +1052,6 @@ input::-moz-focus-inner {
   background: linear-gradient(to right, black 0%, black 20%, transparent 100%);
 }
 
-
-/* -------------------------------------------------------------------
- * ## home particles   - (_site-layout.scss) 
- * ------------------------------------------------------------------- */
 .home-particles {
   position: absolute;
   top: 0;
@@ -1188,9 +1073,6 @@ input::-moz-focus-inner {
 }
 
 
-/* -------------------------------------------------------------------
- * ## site logo  - (_site-layout.scss) 
- * ------------------------------------------------------------------- */
 .home-logo {
   z-index: 502;
   display: block;
@@ -1216,10 +1098,6 @@ input::-moz-focus-inner {
   height: 25px;
 }
 
-
-/* ------------------------------------------------------------------- 
- * ## home content - (_site-layout.scss) 
- * ------------------------------------------------------------------- */
 .home-content {
   display: table-cell;
   width: 100%;
@@ -1398,10 +1276,6 @@ input::-moz-focus-inner {
   bottom: 0;
 }
 
-
-/* ------------------------------------------------------------------- 
- * ## home social - (_site-layout.scss) 
- * ------------------------------------------------------------------- */
 .home-social {
   list-style: none;
   font-family: "nfont", sans-serif;
@@ -1482,10 +1356,6 @@ input::-moz-focus-inner {
   transform: scale(1);
 }
 
-
-/* ------------------------------------------------------------------- 
- * ## home copyright - (_site-layout.scss) 
- * ------------------------------------------------------------------- */
 .home-copyright {
   z-index: 502;
   font-size: 1.5rem;
@@ -1515,9 +1385,6 @@ input::-moz-focus-inner {
 .home-copyright span:last-child::after {
   display: none;
 }
-
-/* animate .home-content__main
- * ------------------------------------------------------------------- */
 html.ss-preload .home-content__main {
   opacity: 0;
 }
@@ -1532,12 +1399,6 @@ html.no-csstransitions .home-content__main {
   opacity: 1;
 }
 
-
-/* ------------------------------------------------------------------- 
- * ## home animations
- * ------------------------------------------------------------------- */
-
-/* fade in */
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -1601,10 +1462,6 @@ html.no-csstransitions .home-content__main {
 
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * home
- * ------------------------------------------------------------------- */
 @media only screen and (max-width:1500px) {
   .home-content h1 {
     font-size: 5.8rem;
@@ -1971,14 +1828,6 @@ html.no-csstransitions .home-content__main {
   }
 
 }
-
-
-
-
-/* ===================================================================
- * # info - (_site-layout.scss) 
- *
- * ------------------------------------------------------------------- */
 .s-info {
   z-index: 500;
   position: fixed;
@@ -2122,9 +1971,6 @@ html.no-csstransitions .home-content__main {
 }
 
 
-/* ------------------------------------------------------------------- 
- * ## info toggle  - (_site-layout.scss)
- * ------------------------------------------------------------------- */
 .info-toggle {
   z-index: 502;
   background-color: #000000;
@@ -2233,11 +2079,6 @@ html.no-csstransitions .home-content__main {
   content: "close";
 }
 
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * info
- * ------------------------------------------------------------------- */
 @media only screen and (max-width:1400px) {
   .s-info h1 {
     font-size: 6rem;
@@ -2343,5 +2184,3 @@ html.no-csstransitions .home-content__main {
   }
 
 }
-
-/*# sourceMappingURL=main.css.map */
