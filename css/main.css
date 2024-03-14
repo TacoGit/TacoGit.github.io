@@ -2,6 +2,10 @@ html {
   font-size: 10px;
 }
 
+*, html, body {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: 'nfont';
   src: url('../Renogare-Regular.ttf');
@@ -2185,4 +2189,14 @@ html.no-csstransitions .home-content__main {
     display: none;
   }
 
+}
+
+
+        
+.specializedP {
+  color: whitesmoke;
+  opacity:1;
+  line-height: 1;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
