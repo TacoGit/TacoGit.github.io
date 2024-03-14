@@ -242,11 +242,6 @@ template {
   display: none;
 }
 
-
-/* ===================================================================
- * # basic/base setup styles - (_basic.scss) 
- *
- * ------------------------------------------------------------------- */
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -265,6 +260,9 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: none;
+  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 body,
@@ -274,18 +272,12 @@ button {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ------------------------------------------------------------------- 
- * ## media - (_basic.scss) 
- * ------------------------------------------------------------------- */
 img,
 video {
   max-width: 100%;
   height: auto;
 }
 
-/* ------------------------------------------------------------------- 
- * ## typography resets - (_basic.scss) 
- * ------------------------------------------------------------------- */
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
   margin: 0;
   padding: 0;
@@ -355,10 +347,6 @@ textarea {
   appearance: none;
 }
 
-/* ===================================================================
- * # grid - (_grid.scss)
- *
- * ------------------------------------------------------------------- */
 .row {
   width: 94%;
   max-width: 1200px;
@@ -378,8 +366,6 @@ textarea {
   margin-right: -20px;
 }
 
-/* column blocks
- * -------------------------------------- */
 [class*="col-"] {
   float: left;
   padding: 0 20px;
@@ -389,8 +375,6 @@ textarea {
   float: right;
 }
 
-/* column width classes 
- * -------------------------------------- */
 .col-one {
   width: 8.33333%;
 }
