@@ -20,9 +20,9 @@
         $("html").addClass('ss-preload');
 
         $WIN.on('load', function() {
-            $("#loader").fadeOut("slow", function() {
-                $("#preloader").delay(300).fadeOut("slow");
-            }); 
+            //$("#loader").fadeOut("slow", function() {
+                //$("#preloader").delay(300).fadeOut("slow");
+            //}); 
             $("html").removeClass('ss-preload');
             $("html").addClass('ss-loaded');
         
