@@ -93,7 +93,7 @@
 
 })(jQuery);
 
-function archive() {
+function archivey() {
     projects()
     document.getElementById("tanosprojects").textContent = "tanos - archived projects"
     document.getElementById("projectstext").textContent = "all projects listed are all thrown away by reasons like no motivation"
