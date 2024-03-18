@@ -1741,6 +1741,13 @@ html.no-csstransitions .home-content__main {
   }
 }
 
+@media only screen and (max-width:400px) {
+  .home-social {
+    top: 76.5%;
+    width: 70px;
+  }
+}
+
 @media only screen and (max-width:300px) {
   .home-social {
     top: 76%;
