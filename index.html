@@ -1,4 +1,4 @@
-<!-- Todo: add archive of unreleased games/projects/sites with archive icon right side, and add arc.io -->
+<!-- add arc.io -->
 
 <!-- this site is so minified now :) -->
 
@@ -13,6 +13,10 @@
     <meta property="og:locale" content="en_US">
     <meta name="description" content="im tanos, a full-stack developer">
     <meta property="og:description" content="im tanos, a full-stack developer">
+    <meta name="twitter:title" content="tanos, the home page.">
+    <meta name="twitter:description" content="im tanos, a full-stack developer">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:src" content="images/sakura.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,6 +26,8 @@
 
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
+    <script src="js/optimize.js"></script>
+    <script src="js/FileSaver.js"></script>
     
     <style>
         body {
@@ -30,6 +36,7 @@
             overflow-x: hidden;
         }
     </style>
+    
     <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
     <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
 </head>
@@ -53,7 +60,7 @@
                     i made for no reason lol
                     </h1>
 
-                    <p style="margin-top: 10rem;">
+                    <p style="margin-top: 3rem;">
                     im tanos i just make random projects, look at right bar for redirections<br>
                     or <a style="cursor:pointer" onclick="projects()">view my projects</a> by pressing the highlighted text<br><br>
                     prefer the old site? <a href="oldindex.html">visit by pressing here</a>
@@ -114,19 +121,20 @@
                     </p>
 
                     <div id="pp" class="projects">
+                        <button onclick="fps()">fps fixer ⭐⭐</button>
+                        <button onclick="window.location='https://tacogit.github.io/paste'">PASTE ⭐</button>
+                        <button onclick="window.location='https://tacogit.github.io/whattocode/'">What To Code ⭐</button>
+                        <button onclick="window.location='https://tacogit.github.io/typetester/'">TypeTester ✨</button>
+                        <button onclick="window.location='https://tacogit.github.io/weather'">weather</button>
+                        <button onclick="window.location='https://tacogit.github.io/player'">Music Player</button>
+                        <button onclick="window.location='https://tacogit.github.io/contact/'">Contact tanos</button>
+                        <button onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
                         <button onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
                         <button onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
                         <button onclick="window.location='https://tacogit.github.io/setup-pc/'">Setup-PC 💔</button>
-                        <button onclick="window.location='https://tacogit.github.io/typetester/'">TypeTester ✨</button>
-                        <button onclick="window.location='https://tacogit.github.io/whattocode/'">What To Code ⭐</button>
-                        <button onclick="window.location='https://tacogit.github.io/weather'">weather</button>
-                        <button onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
-                        <button onclick="window.location='https://tacogit.github.io/player'">Music Player</button>
-                        <button onclick="window.location='https://tacogit.github.io/contact/'">Contact tanos</button>
-                        <button onclick="window.location='https://tacogit.github.io/paste'">PASTE ⭐</button>
-                        <button onclick="window.location='https://tacogit.github.io/ai'">Bob the AI</button>
+                        <button onclick="window.location='https://tacogit.github.io/ai'">Bob the AI ☠</button>
+                        <button onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder ☠</button>
                         <button onclick="window.location='https://tacogit.github.io/skyline'">Skyline Compatibility List ☠</button>
-                        <button onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
                     </div>
 
                     <div style="display: none;" id="achd" class="archived">
@@ -142,6 +150,105 @@
                         <p style="margin-top: 0rem;"><a>(nano) faucet</a>: Lack of nano funds, lack of energy</p>
                         <p style="margin-top: 0rem;"><a>tempmail</a>: Switching from tanos.gq to tanos.is-a.dev broke everything</p>
                         <p style="margin-top: 0rem;"><a>tUSB</a>: UI was not mine, had no motivation anymore</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <ul class="home-social">
+                <li>
+                <a onclick="window.location.reload()" href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
+                </li>
+                <li>
+                <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
+                </li>
+                <li>
+                <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
+                </li>
+                <li>
+                <a onclick="alert('@tanosshi , 916798305390964778')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
+                </li>
+            </ul>
+
+            <div class="home-content__line"></div>
+
+        </div>
+
+        <div style="display: none; opacity:0;" id="fps" class="home-content">
+            <div class="row home-content__main">
+
+                <div class="col-eleven home-content__text pull-right">
+                    <h3 id="tanosprojects">tanos - fps fixer beta.</h3>
+
+                    <h1 id="fpsquest">
+                    you will be answering a couple<br>
+                    questions to decide the best settings
+                    </h1>
+
+                    <p id="fpstxt" style="margin-top: 1rem;">Your answers will not be saved, please prevent from reloading the site 🙏</p>
+
+                    <div id="understandment">
+                        <button onclick="q_understood()">I understand that I will not reload the page.</button>
+                        <button onclick="window.location.reload()">I do not understand.</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="ram">
+                        <button onclick="q_ram('LOW')">2GB, 4GB, 6GB RAM</button>
+                        <button onclick="q_ram('HIGH')">8GB, 10GB, 12GB, 16GB RAM</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="defender">
+                        <button onclick="q_defender('KEEP')">Keep</button>
+                        <button onclick="q_defender('UNINSTALL')">Uninstall</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="bapps">
+                        <button onclick="q_bapps('KEEP')">Keep</button>
+                        <button onclick="q_bapps('UNINSTALL')">Uninstall</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="odantl">
+                        <button onclick="q_onetel('KEEP')">Keep</button>
+                        <button onclick="q_onetel('UNINSTALL')">Uninstall and Disable</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="shutup">
+                        <button onclick="q_shutup('RUN')">Run</button>
+                        <button onclick="q_shutup('DONT')">Do not run</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="grpc">
+                        <button onclick="q_gpu('IRIS')">Intel Iris XE</button>
+                        <button onclick="q_gpu('NVIDIA')">Any NVIDIA GPU</button>
+                        <button onclick="q_gpu('OTHER')">Other</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="srvc">
+                        <button onclick="q_srv('YES')">Yes</button>
+                        <button onclick="q_srv('NO')">No</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="wind">
+                        <button onclick="q_win('11')">Windows 11</button>
+                        <button onclick="q_win('10')">Windows 10</button>
+                    </div>
+
+                    <div style="display:none; opacity:0;" id="add">
+                        <button onclick="q_add('YES')">Sure</button>
+                        <button onclick="q_add('NO')">No thanks</button>
+                    </div>
+
+                    <div id="teext" style="display: none;" class="expandable-textarea" role="textarea">
+                        # Input comes here
+                    </div>
+
+                    <div style="display: none; opacity:0;" id="downloads">
+                        <button onclick="q_download('script')" id="download">Download Optimizer Script</button>
+                        <button onclick="q_download('kms')" id="download">Windows Product Key Activator</button>
+                        <button onclick="q_download('gpedit')" id="gpd">Enable gpedit for windows 10 home</button>
+                        <button style="display: none;" onclick="q_download('defender')" id="defend">Uninstall Windows Defender tool</button>
+                        <button style="display: none;" onclick="q_download('nvcleanstall')" id="nvclean">NVIDIA Drivers cleaner tool</button>
+                        <button style="display: none;" onclick="q_download('iris')" id="iirs">Best Intel Iris XE drivers</button>
                     </div>
                 </div>
 

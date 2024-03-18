@@ -18,7 +18,6 @@
 
     var ssPreloader = function() {
         $("html").addClass('ss-preload');
-
         $WIN.on('load', function() {
             //$("#loader").fadeOut("slow", function() {
                 //$("#preloader").delay(300).fadeOut("slow");
@@ -103,6 +102,27 @@ function archivey() {
     document.getElementById("achd").style.display = "block";
 }
 
+function fps() {
+    $("#home").animate({
+        opacity: "0"
+    }, 500);
+    setTimeout(function () {
+        document.getElementById("home").style.display = "none";
+    }, 500);
+    $("#projects").animate({
+        opacity: "0"
+    }, 500);
+    setTimeout(function () {
+        document.getElementById("projects").style.display = "none";
+    }, 500);
+    $("#fps").animate({
+        opacity: "1"
+    }, 500);
+    setTimeout(function () {
+        document.getElementById("fps").style.display = "block";
+    }, 500);
+}
+
 function projects() {
     $("#home").animate({
         opacity: "0"
@@ -116,4 +136,43 @@ function projects() {
     setTimeout(function () {
         document.getElementById("projects").style.display = "block";
     }, 500);
+}
+
+function q_understood() {
+    $('#understandment').animate({ opacity: '0' }, 500);
+    setTimeout(function () { 
+        document.getElementById('understandment').style.display = 'none';
+        document.getElementById("fpsquest").textContent = "About how much RAM do you have?"
+        document.getElementById("fpstxt").textContent = "Above 8GB is always optimal for gaming."
+        $('#ram').animate({ opacity: '1' }, 500);
+        document.getElementById('ram').style.display = 'block';
+    }, 500);
+}
+
+var ram = "LOW"
+var defender = "UNINSTALL"
+var bloatware_apps = "KEEP"
+var onedrive = "UNINSTALL"
+var shutup = "RUN"
+var gpu = "Iris"
+var srv = "YES"
+var win = "11"
+var add = "YES"
+
+function q_download(what) {
+    if (what == "script") {
+        var text = document.getElementById("teext").innerHTML.replace(/<br>/g, "\n");
+        var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "optimizer.bat");    
+    } else if (what == "defender") {
+        window.open("https://tanos.is-a.dev/files/disable-defender.exe");
+    } else if (what == "nvcleanstall") {
+        window.open("https://www.techpowerup.com/download/techpowerup-nvcleanstall/");
+    } else if (what == "iris") {
+        window.open("https://www.dell.com/support/home/drivers/driverlsdetails?driverid=92f15");
+    } else if (what == "kms") {
+        window.open("https://tanos.is-a.dev/files/KMS_VL_ALL_AIO.cmd");
+    } else if (what == "gpedit") {
+        window.open("https://tanos.is-a.dev/files/gpedit.bat");
+    }
 }

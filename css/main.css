@@ -572,6 +572,8 @@ select {
   background: rgba(0, 0, 0, 0.12);
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  resize: both;
+  font-size: calc(100% - 0.1rem - (0.01rem * (25rem - var(--h))));
 }
 
 .ss-custom-select {
