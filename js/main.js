@@ -1,5 +1,4 @@
 (function($) {
-
     "use strict";
     
     var cfg = {
@@ -19,26 +18,18 @@
     var ssPreloader = function() {
         $("html").addClass('ss-preload');
         $WIN.on('load', function() {
-            //$("#loader").fadeOut("slow", function() {
-                //$("#preloader").delay(300).fadeOut("slow");
-            //}); 
             $("html").removeClass('ss-preload');
             $("html").addClass('ss-loaded');
-        
         });
     };
 
     var ssInfoToggle = function() {
-
-        //open/close lateral navigation
         $('.info-toggle').on('click', function(event) {
             event.preventDefault();
             $('body').toggleClass('info-is-visible');
         });
-
     };
     var ssSlickSlider = function() {
-        
         $('.home-slider').slick({
             arrows: false,
             dots: false,
@@ -47,21 +38,16 @@
             fade: true,
             speed: 3000
         });
-
     };
 
     var ssPlaceholder = function() {
         $('input, textarea, select').placeholder();
     };
 
-
     var ssFinalCountdown = function() {
-
         var finalDate = new Date("February 6, 2025 00:00:00").getTime();
-
         $('.home-content__clock').countdown(finalDate)
         .on('update.countdown finish.countdown', function(event) {
-
             var str = '<div class=\"top\"><div class=\"time days\">' +
                       '%D <span>day%!D</span>' + 
                       '</div></div>' +
@@ -74,22 +60,16 @@
 
             $(this)
             .html(event.strftime(str));
-
         });
     };
 
     (function ssInit() {
-        
         ssPreloader();
         ssInfoToggle();
         ssSlickSlider();
         ssPlaceholder();
         ssFinalCountdown();
-       // ssAjaxChimp();
-
     })();
-
-
 })(jQuery);
 
 function archivey() {

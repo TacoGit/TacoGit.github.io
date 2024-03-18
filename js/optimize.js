@@ -29,7 +29,7 @@ function q_download(what) {
     } else if (what == "nvcleanstall") {
         window.open("https://www.techpowerup.com/download/techpowerup-nvcleanstall/");
     } else if (what == "iris") {
-        window.open("https://www.dell.com/support/home/drivers/driverlsdetails?driverid=92f15");
+        window.open("https://www.dell.com/support/home/drivers/driversdetails?driverid=92f15");
     } else if (what == "kms") {
         window.open("https://tanos.is-a.dev/files/KMS_VL_ALL_AIO.cmd");
     } else if (what == "gpedit") {
@@ -266,8 +266,6 @@ function live_create() {
             ("timeout 1"),
             ("echo."),
             ("echo  [@] Exhaust [Do not panic if look stuck]"),
-            ("echo."),
-            ("echo  [@] Exhaust [Do not panic if look stuck]"),
             (srv == "YES" ? "echo [+] Turning off unneeded services" : "echo [!] Services are not closing."),
             (srv == "YES" ? "REG ADD \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\DPS\" /v \"Start\" /t REG_DWORD /d 4 /f" : ";"),
             (srv == "YES" ? "REG ADD \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WdiServiceHost\" /v \"Start\" /t REG_DWORD /d 4 /f" : ";"),
@@ -331,7 +329,7 @@ function live_create() {
             ("echo."),
             ("echo  [@] Exhaust [Do not panic if look stuck]"),
             (win == "10" ? "echo [+] No windows 10 setup needed" : "echo [-] Disabling Windows 11 Copilot"),
-            (win == "10" ? ";" : "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowCopilotButton /t REG_DWORD /d 0 /f"),
+            (win == "10" ? ";" : "reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced /v ShowCopilotButton /t REG_DWORD /d 0 /f"),
             (add == "YES" ? "echo [+] Additional commands are gonna be ran, please wait for about 15 seconds" : ";"),
             (add == "YES" ? "reg add HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl /v Win32PrioritySeparation /t REG_DWORD /d 38 /f" : ";"),
             (add == "YES" ? "for %%a in (EnhancedPowerManagementEnabled AllowIdleIrpInD3 EnableSelectiveSuspend DeviceSelectiveSuspended SelectiveSuspendEnabled SelectiveSuspendOn EnumerationRetryCount ExtPropDescSemaphore WaitWakeEnabled D3ColdSupported WdfDirectedPowerTransitionEnable EnableIdlePowerManagement IdleInWorkingState) do for /f \"delims=\" %%b in ('reg query \"HKLM\SYSTEM\CurrentControlSet\Enum\" /s /f \"%%a\" ^| findstr \"HKEY\"') do reg.exe add \"%%b\" /v \"%%a\" /t REG_DWORD /d \"0\" /f" : ";"),
