@@ -1726,7 +1726,7 @@ html.no-csstransitions .home-content__main {
   }
 
   #doonat {
-    padding-bottom: 30px;
+    padding-bottom: 31px;
   }
 
   #siteby {
@@ -1736,7 +1736,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:500px) {
   .home-social {
-    top: 81.5%;
+    top: 79.5%;
     width: 70px;
   }
 }
