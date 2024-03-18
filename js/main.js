@@ -102,27 +102,6 @@ function archivey() {
     document.getElementById("achd").style.display = "block";
 }
 
-function fps() {
-    $("#home").animate({
-        opacity: "0"
-    }, 500);
-    setTimeout(function () {
-        document.getElementById("home").style.display = "none";
-    }, 500);
-    $("#projects").animate({
-        opacity: "0"
-    }, 500);
-    setTimeout(function () {
-        document.getElementById("projects").style.display = "none";
-    }, 500);
-    $("#fps").animate({
-        opacity: "1"
-    }, 500);
-    setTimeout(function () {
-        document.getElementById("fps").style.display = "block";
-    }, 500);
-}
-
 function projects() {
     $("#home").animate({
         opacity: "0"
