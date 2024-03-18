@@ -1724,11 +1724,26 @@ html.no-csstransitions .home-content__main {
     top: 83%;
     width: 70px;
   }
+
+  #doonat {
+    padding-bottom: 30px;
+  }
+
+  #siteby {
+    display: none;
+  }
 }
 
 @media only screen and (max-width:500px) {
   .home-social {
     top: 81.5%;
+    width: 70px;
+  }
+}
+
+@media only screen and (max-width:300px) {
+  .home-social {
+    top: 76%;
     width: 70px;
   }
 }
