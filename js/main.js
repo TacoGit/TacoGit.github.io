@@ -84,8 +84,11 @@ function archivey() {
 
 function projects() {
     $("#home").animate({
-        opacity: "0"
+        opacity: "0",
     }, 500);
+    $("#home").css({
+        '-webkit-filter': 'blur(8px)'
+    }).animate({}, 1000);
     setTimeout(function () {
         document.getElementById("home").style.display = "none";
     }, 500);
