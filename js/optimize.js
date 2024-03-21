@@ -3,7 +3,7 @@ var defender = "UNINSTALL"
 var bloatware_apps = "KEEP"
 var onedrive = "UNINSTALL"
 var shutup = "RUN"
-var gpu = "Iris"
+var graphicalcard = "Iris"
 var srv = "YES"
 var win = "11"
 var add = "YES"
@@ -97,9 +97,9 @@ function q_shutup(set) {
     }, 500);
 }
 
-function q_gpu(set) {
-    gpu = set
-    GPU = gpu
+function q_graphicalcard(set) {
+    graphicalcard = set
+    graphicalcard = graphicalcard
     $('#grpc').animate({ opacity: '0' }, 500);
     setTimeout(function () { 
         document.getElementById('grpc').style.display = 'none';
@@ -161,7 +161,7 @@ function live_create() {
             (bloatware_apps == "UNINSTALL" ? "echo [Uninstalling] Bloatware Apps" : "echo [Keeping] Bloatware Apps"),
             (onedrive == "UNINSTALL" ? "echo [Uninstalling] OneDrive and Removing Telemetry" : "echo [Keeping] OneDrive and Removing Telemetry"),
             (shutup == "RUN" ? "echo Running ShutUp10" : "echo Skipping ShutUp10 steps"),
-            ((GPU == "Iris" || GPU == "IRIS") ? "echo (i)GPU set as [Intel Iris XE]" : (GPU == "NVIDIA" ? "echo GPU set for [NVIDIA]" : "echo Unknown GPU, [skipping]")),
+            ((graphicalcard == "Iris" || graphicalcard == "IRIS") ? "echo (i)GPU set as [Intel Iris XE]" : (graphicalcard == "NVIDIA" ? "echo graphicalcard set for [NVIDIA]" : "echo Unknown graphicalcard, [skipping]")),
             (srv == "YES" ? "echo [Cleaning] Browser and Services" : "echo [Skipping] Service Cleanup"),
             (win == "10" ? "echo Script set for [Windows 10]" : "echo Script set for [Windows 11]"),
             (add == "YES" ? "echo [Will] run additional scripts" : "echo [Will not] run additional scripts"),
@@ -372,21 +372,21 @@ function live_create() {
         }, 500);
 
         if (defender == "UNINSTALL")
-            document.getElementById("defend").style.display = "block";
+            {document.getElementById("defend").style.display = "block";}
 
-        if (GPU == "Iris")
-            document.getElementById("iirs").style.display = "block";
+        if (graphicalcard == "Iris")
+            {document.getElementById("iirs").style.display = "block";}
 
         if (win == "10")
-            document.getElementById("gpd").style.display = "block";
+            {document.getElementById("gpd").style.display = "block";}
 
-        if (GPU == "IRIS")
-            document.getElementById("iirs").style.display = "block";
+        if (graphicalcard == "IRIS")
+            {document.getElementById("iirs").style.display = "block";}
 
-        if (GPU == "iris")
-            document.getElementById("iirs").style.display = "block";
+        if (graphicalcard == "iris")
+            {document.getElementById("iirs").style.display = "block";}
 
-        if (GPU == "NVIDIA")
-            document.getElementById("nvclean").style.display = "block";
+        if (graphicalcard == "NVIDIA")
+            {document.getElementById("nvclean").style.display = "block";}
     }, 6500);
 }
