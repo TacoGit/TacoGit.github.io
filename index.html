@@ -304,6 +304,10 @@
             }, 500);
         }
 
+        if (!localStorage.getItem("isPink")) {
+            colorywoo('set')
+        }
+
         if (localStorage.getItem("isPink") == "true") {
             colorywoo('load')
         }
