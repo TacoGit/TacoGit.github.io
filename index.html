@@ -53,7 +53,7 @@
   <div class="pace-progress-inner"></div>
 </div>
 <div class="pace-activity"></div></div>
-    <main class="s-home s-home--static">
+    <main id="shomes" class="s-home s-home--static">
 
         <div class="overlay"></div>
 
@@ -71,13 +71,13 @@
                     <p style="margin-top: 3rem;">
                     im tanos i just make random projects, look at right bar for redirections<br>
                     or <a style="cursor:pointer" onclick="projects()">view my projects</a> by pressing the highlighted text<br><br>
-                    prefer the old site? <a href="oldindex.html">visit by pressing here</a>
+                    prefer the old site? <a href="oldindex.html">visit by pressing here</a> or <a onclick="colorywoo('set')">change the theme to pink</a>
                     </p>
                 </div>
 
                 <div class="col-four home-content__counter">
                     <h3>something epic will happen in</h3>
-                    <div class="home-content__clock"><div class="top"><div class="time days">00 <span>day</span></div></div><div class="time hours">00 <span>H</span></div><div class="time minutes">00 <span>M</span></div><div class="time seconds">00 <span>S</span></div></div>  <!-- end home-content__clock -->
+                    <div class="home-content__clock"><div class="top"><div id="colooor" class="time days">00 <span>day</span></div></div><div class="time hours">00 <span>H</span></div><div class="time minutes">00 <span>M</span></div><div class="time seconds">00 <span>S</span></div></div>  <!-- end home-content__clock -->
                 </div>
 
             </div>
@@ -302,7 +302,33 @@
             setTimeout(function () {
                 document.getElementById("fps").style.display = "block";
             }, 500);
-    }
+        }
+
+        if (localStorage.getItem("isPink") == "true") {
+            colorywoo('load')
+        }
+        
+        function colorywoo(col) {
+            var newColor
+            if (col == "load") {
+                newColor = '#974557';
+                document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
+                document.documentElement.style.setProperty('--green', newColor);
+                localStorage.setItem("isPink", "true");
+            } else {
+                if (localStorage.getItem("isPink") == "true") {
+                    newColor = '#44763B';
+                    document.getElementById("shomes").style.backgroundImage = "url(images/hero-bg.jpg)"
+                    document.documentElement.style.setProperty('--green', newColor);
+                    localStorage.setItem("isPink", "false");
+                } else {
+                    newColor = '#974557';
+                    document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
+                    document.documentElement.style.setProperty('--green', newColor);
+                    localStorage.setItem("isPink", "true");
+                }
+            }
+        }
     </script>
 
     <script src="js/jquery-3.2.1.min.js"></script> <!-- jQuery for animations -->
