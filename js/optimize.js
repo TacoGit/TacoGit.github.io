@@ -1,3 +1,10 @@
+/// 🌸 PC Optimizer by @tanosshi :) ///
+
+// Fix Code Metrics from crying
+/** global: Blob */
+// global: Blob
+///////////////////////////////
+
 var ram = "LOW"
 var defender = "UNINSTALL"
 var bloatware_apps = "KEEP"
@@ -22,7 +29,7 @@ function q_understood() {
 function q_download(what) {
     if (what == "script") {
         var text = document.getElementById("teext").innerHTML.replace(/<br>/g, "\n");
-        var blob = new Blob([text], {type: "text/plain;charset=utf-8"}); /** global: Blob */
+        var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
         saveAs(blob, "optimizer.bat");    
     } else if (what == "defender") {
         window.open("https://tanos.is-a.dev/files/disable-defender.exe");
