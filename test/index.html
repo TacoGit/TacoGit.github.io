@@ -2,15 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>IP Address Display</title>
 </head>
 <body>
-    <script>
-        fetch('https://api.ipify.org?format=json')
-          .then(response => response.json())
-          .then(data => {
-            document.body.innerText = 'Your IP address is: ' + data.ip;
-          })
-          .catch(error => console.error('Error fetching IP address:', error));
-      </script>
+    <iframe src="https://api.ipify.org/" frameborder="0" width="100%" height="100%"></iframe>
 </body>
 </html>
