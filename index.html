@@ -71,7 +71,7 @@
                     <p style="margin-top: 3rem;">
                     im tanos i just make random projects, look at right bar for redirections<br>
                     or <a style="cursor:pointer" onclick="projects()">view my projects</a> by pressing the highlighted text<br><br>
-                    prefer the old site? <a href="oldindex.html">visit by pressing here</a> or <a style="cursor: pointer;" onclick="colorywoo('set')">change the theme to pink</a>
+                    prefer the old site? <a href="oldindex.html">visit by pressing here</a> or <a style="cursor: pointer;" onclick="colorywoo()">change the theme to pink</a>
                     </p>
                 </div>
 
@@ -304,33 +304,22 @@
             }, 500);
         }
 
-        if (!localStorage.getItem("isPink")) {
-            colorywoo('set')
-        }
-
-        if (localStorage.getItem("isPink") == "true") {
-            colorywoo('load')
-        }
+        //if (localStorage.getItem("isPink") == "true") {
+        //    colorywoo()
+        //} //bugged
         
-        function colorywoo(col) {
+        function colorywoo() {
             var newColor
-            if (col == "load") {
+            if (localStorage.getItem("isPink") == "true") {
+                newColor = '#44763B';
+                document.getElementById("shomes").style.backgroundImage = "url(images/hero-bg.jpg)"
+                document.documentElement.style.setProperty('--green', newColor);
+                localStorage.setItem("isPink", "false");
+            } else {
                 newColor = '#974557';
                 document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
                 document.documentElement.style.setProperty('--green', newColor);
                 localStorage.setItem("isPink", "true");
-            } else {
-                if (localStorage.getItem("isPink") == "true") {
-                    newColor = '#44763B';
-                    document.getElementById("shomes").style.backgroundImage = "url(images/hero-bg.jpg)"
-                    document.documentElement.style.setProperty('--green', newColor);
-                    localStorage.setItem("isPink", "false");
-                } else {
-                    newColor = '#974557';
-                    document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
-                    document.documentElement.style.setProperty('--green', newColor);
-                    localStorage.setItem("isPink", "true");
-                }
             }
         }
     </script>
