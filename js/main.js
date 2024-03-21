@@ -3,17 +3,13 @@
     
     var cfg = {
         scrollDuration : 800,
-        mailChimpURL   : 'https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc' 
+        mailChimpURL   : 'https://tanos.is-a.dev' 
     },
 
     $WIN = $(window);
 
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
-
-    if (!Modernizr.svg) {
-        $(".home-logo img").attr("src", "images/logo.png");
-    }
 
     var ssPreloader = function() {
         $("html").addClass('ss-preload');
