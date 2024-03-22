@@ -49,7 +49,7 @@
     <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
 </head>
 
-<body class="pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+<body onload="body_loaded()" class="pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
   <div class="pace-progress-inner"></div>
 </div>
 <div class="pace-activity"></div></div>
@@ -304,9 +304,15 @@
             }, 500);
         }
 
-        //if (localStorage.getItem("isPink") == "true") {
-        //    colorywoo()
-        //} //bugged
+        function body_loaded() {
+            if (!localStorage.getItem("isPink"))
+            {
+                colorywoo() // found pink prettier 😊
+            }
+            if (localStorage.getItem("isPink") == "true") {
+                color_pink_withoutStorage()
+            }
+        }
         
         function colorywoo() {
             var newColor
@@ -321,6 +327,12 @@
                 document.documentElement.style.setProperty('--green', newColor);
                 localStorage.setItem("isPink", "true");
             }
+        }
+
+        function color_pink_withoutStorage() {
+            newColor = '#974557';
+            document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
+            document.documentElement.style.setProperty('--green', newColor);
         }
     </script>
 
