@@ -11,37 +11,8 @@
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
-    var ssPreloader = function() {
-        $("html").addClass('ss-preload');
-        $WIN.on('load', function() {
-            $("html").removeClass('ss-preload');
-            $("html").addClass('ss-loaded');
-        });
-    };
-
-    var ssInfoToggle = function() {
-        $('.info-toggle').on('click', function(event) {
-            event.preventDefault();
-            $('body').toggleClass('info-is-visible');
-        });
-    };
-    var ssSlickSlider = function() {
-        $('.home-slider').slick({
-            arrows: false,
-            dots: false,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            fade: true,
-            speed: 3000
-        });
-    };
-
-    var ssPlaceholder = function() {
-        $('input, textarea, select').placeholder();
-    };
-
     var ssFinalCountdown = function() {
-        var finalDate = new Date("February 6, 2025 00:00:00").getTime();
+        var finalDate = new Date("February 5, 2025 23:59:59").getTime();
         $('.home-content__clock').countdown(finalDate)
         .on('update.countdown finish.countdown', function(event) {
             var str = '<div class=\"top\"><div class=\"time days\">' +
@@ -60,10 +31,6 @@
     };
 
     (function ssInit() {
-        ssPreloader();
-        ssInfoToggle();
-        ssSlickSlider();
-        ssPlaceholder();
         ssFinalCountdown();
     })();
 })(jQuery);
