@@ -981,6 +981,8 @@ input::-moz-focus-inner {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(../images/hero-bg.jpg);
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .s-home--static::before {
@@ -1104,8 +1106,8 @@ input::-moz-focus-inner {
   padding: 0;
   outline: 0;
   border: none;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .home-logo img {
@@ -1120,6 +1122,8 @@ input::-moz-focus-inner {
   vertical-align: middle;
   padding-bottom: 6rem;
   position: relative;
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .home-content h3 {
@@ -1133,6 +1137,8 @@ input::-moz-focus-inner {
   margin-bottom: 3rem;
   padding-left: 55px;
   position: relative;
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .home-content h3::before {
@@ -1144,6 +1150,8 @@ input::-moz-focus-inner {
   position: absolute;
   left: 0;
   top: 50%;
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .home-content h1 {
@@ -1152,6 +1160,8 @@ input::-moz-focus-inner {
   margin-top: 0;
   color: #FFFFFF;
   letter-spacing: 0;
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .home-content__main {
@@ -1159,6 +1169,8 @@ input::-moz-focus-inner {
   padding-top: 15rem;
   position: relative;
   overflow: hidden;
+  -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
+  transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
 
 .home-content__text p {
@@ -1171,24 +1183,24 @@ input::-moz-focus-inner {
 
 .home-content__subscribe {
   max-width: 420px;
-  margin: 4.2rem 0 0 0;
+  margin: 0rem 0 0 0;
   padding: 0;
   position: relative;
 }
 
 #mc-form {
-  width: 100%;
+  width: 150%;
 }
 
 #mc-form input[type="email"] {
-  width: 100%;
+  width: 150%;
   height: 5.4rem;
   font-size: 1.5rem;
   line-height: 3rem;
   padding: 1.2rem 170px 1.2rem 24px;
   background: rgba(255, 255, 255, 0.05);
   color: #FFFFFF;
-  margin-bottom: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
 #mc-form input[type="email"]::-webkit-input-placeholder {
@@ -1219,7 +1231,7 @@ input::-moz-focus-inner {
   margin: 0;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -50%;
 }
 
 #mc-form label {
@@ -1531,7 +1543,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content__subscribe {
-    margin: 3rem 0 0 0;
+    margin: 0rem 0 0 0;
   }
 
   .home-content__counter .time {
@@ -1733,7 +1745,7 @@ html.no-csstransitions .home-content__main {
   }
 
   #doonat {
-    padding-bottom: 31px;
+    padding-bottom: 41px;
   }
 
   #siteby {
@@ -1743,21 +1755,21 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:500px) {
   .home-social {
-    top: 79.5%;
+    top: 76.5%;
     width: 70px;
   }
 }
 
 @media only screen and (max-width:400px) {
   .home-social {
-    top: 76.5%;
+    top: 75.5%;
     width: 70px;
   }
 }
 
 @media only screen and (max-width:300px) {
   .home-social {
-    top: 76%;
+    top: 73%;
     width: 70px;
   }
 }
