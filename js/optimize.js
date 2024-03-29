@@ -155,7 +155,7 @@ function q_add(set) {
 function live_create() {
     document.getElementById("teext").innerHTML = ""
     
-
+    // pain to look at damn
     setTimeout(function() {
         var steps = [
             "@echo off",
@@ -354,6 +354,7 @@ function live_create() {
             (srv == "YES" ? "@powershell Set-Service -Name wermgr -StartupType Disabled" : ";"),
             (srv == "YES" ? "@powershell Set-Service -Name DPS -StartupType Disabled" : ";"),
             (srv == "YES" ? "@powershell Set-Service -Name Themes -StartupType Disabled" : ";"),
+            (srv == "YES" ? "@powershell Set-Service -Name Parsec -StartupType Disabled" : ";"),
             (srv == "YES" ? "echo [2] Disabling hardware acceleration on browsers" : ";"),
             (srv == "YES" ? "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Edge\" /v \"HardwareAccelerationModeEnabled\" /t REG_DWORD /d 0 /f" : ";"),
             (srv == "YES" ? "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Google\\Chrome\" /v \"HardwareAccelerationModeEnabled\" /t REG_DWORD /d 0 /f" : ";"),
@@ -386,6 +387,15 @@ function live_create() {
             (add == "YES" ? "echo [0] Disabling devices in device manager" : ";"),
             (add == "YES" ? "@powershell Disable-PnpDevice -InstanceId \"ROOT\\CompositeBus\\0000\" -Confirm:$false" : ";"),
             (add == "YES" ? "@powershell Disable-PnpDevice -InstanceId \"ACPI\\PNP0103\\0\" -Confirm:$false" : ";"),
+            (add == "YES" ? "@powershell Disable-PnpDevice -InstanceId \"ACPI\\PNP0100\\0\" -Confirm:$false" : ";"),
+            (add == "YES" ? "@powershell Disable-PnpDevice -InstanceId \"ACPI\\PNP0100\\4&4b8afdd&0\" -Confirm:$false" : ";"),
+            (add == "YES" ? "echo [0] Fixing Startup Preferences" : ";"),
+            (add == "YES" ? "for /f \"tokens=2 delims==\" %%G in ('wmic startup list full /format:list ^| findstr /i \"commandline\"') do (" : ";"),
+            (add == "YES" ? "    set \"cmdline=%%G\"" : ";"),
+            (add == "YES" ? "    bcdedit /set {%%G} disabled" : ";"),
+            (add == "YES" ? ")" : ";"),
+            (add == "YES" ? "echo." : ";"),
+            (add == "YES" ? "powercfg -h off" : ";"),
             ("echo [Always On] Fixing Valorant Anticheat"),
             ("reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel\" /v \"MitigationOptions\" /t REG_QWORD /d 4194304 /f"),
             ("reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\TPM\" /v \"Start\" /t REG_DWORD /d 2 /f"),
