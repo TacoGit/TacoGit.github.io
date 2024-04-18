@@ -260,9 +260,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: none;
-  overflow: hidden;
-  overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 body,
