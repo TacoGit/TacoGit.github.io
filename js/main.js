@@ -65,7 +65,7 @@ function projects() {
 
 function fpsa() {
     var contentsfps = document.getElementById("contentsfps");
-    var elementsToLoad = document.createRange().createContextualFragment(`<h3 id="tanosprojects">tanos - project fps fixer beta.</h3>
+    var elementsToLoad = document.createRange().createContextualFragment(`<h3 id="tanosprojects">tanos - project fps fixer (browser ver.).</h3>
 
             <h1 id="fpsquest">
             you will be answering a couple<br>

@@ -16,14 +16,14 @@ var win = "11"
 var add = "YES"
 
 function q_understood() {
-    $('#understandment').animate({ opacity: '0' }, 500);
+    $('#understandment').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('understandment').style.display = 'none';
         document.getElementById("fpsquest").textContent = "About how much RAM do you have?"
         document.getElementById("fpstxt").textContent = "Above 8GB is always optimal for gaming."
-        $('#ram').animate({ opacity: '1' }, 500);
+        $('#ram').animate({ opacity: '1' }, 250);
         document.getElementById('ram').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_download(what) {
@@ -46,110 +46,110 @@ function q_download(what) {
 
 function q_ram(set) {
     ram = set
-    $('#ram').animate({ opacity: '0' }, 500);
+    $('#ram').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('ram').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Would you like to uninstall Windows Defender?"
         document.getElementById("fpstxt").textContent = "Windows Defender usually has 300MB usage on idle, best to uninstall it."
-        $('#defender').animate({ opacity: '1' }, 500);
+        $('#defender').animate({ opacity: '1' }, 250);
         document.getElementById('defender').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_defender(set) {
     defender = set
-    $('#defender').animate({ opacity: '0' }, 500);
+    $('#defender').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('defender').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Would you like to uninstall Windows Bloatware Apps?"
         document.getElementById("fpstxt").textContent = "This includes apps like Feedback Hub, Camera, Calender, Maps, Get Help, etc."
-        $('#bapps').animate({ opacity: '1' }, 500);
+        $('#bapps').animate({ opacity: '1' }, 250);
         document.getElementById('bapps').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_bapps(set) {
     bloatware_apps = set
-    $('#bapps').animate({ opacity: '0' }, 500);
+    $('#bapps').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('bapps').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Uninstall OneDrive and Disable Telemetry?"
         document.getElementById("fpstxt").textContent = "Removing and Disablign Telemetry can help optimize your PC lightly."
-        $('#odantl').animate({ opacity: '1' }, 500);
+        $('#odantl').animate({ opacity: '1' }, 250);
         document.getElementById('odantl').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_onetel(set) {
     onedrive = set
-    $('#odantl').animate({ opacity: '0' }, 500);
+    $('#odantl').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('odantl').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Run O&O ShutUp10?"
         document.getElementById("fpstxt").textContent = "This will disable ads, telemetry and fix privacy parameters"
-        $('#shutup').animate({ opacity: '1' }, 500);
+        $('#shutup').animate({ opacity: '1' }, 250);
         document.getElementById('shutup').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_shutup(set) {
     shutup = set
-    $('#shutup').animate({ opacity: '0' }, 500);
+    $('#shutup').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('shutup').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Press your graphics card if its listed"
         document.getElementById("fpstxt").textContent = "Press 'other' if you do not want to install recommended drivers."
-        $('#grpc').animate({ opacity: '1' }, 500);
+        $('#grpc').animate({ opacity: '1' }, 250);
         document.getElementById('grpc').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_graphicalcard(set) {
     graphicalcard = set
     graphicalcard = graphicalcard
-    $('#grpc').animate({ opacity: '0' }, 500);
+    $('#grpc').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('grpc').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Cleanup Browser, Registry and Services?"
         document.getElementById("fpstxt").textContent = "Handy to turn off browser acceleration and unneeded services."
-        $('#srvc').animate({ opacity: '1' }, 500);
+        $('#srvc').animate({ opacity: '1' }, 250);
         document.getElementById('srvc').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_srv(set) {
     srv = set
-    $('#srvc').animate({ opacity: '0' }, 500);
+    $('#srvc').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('srvc').style.display = 'none';
         document.getElementById("fpsquest").textContent = "What Windows Version are you on?"
         document.getElementById("fpstxt").textContent = "This will be used to savely run scripts"
-        $('#wind').animate({ opacity: '1' }, 500);
+        $('#wind').animate({ opacity: '1' }, 250);
         document.getElementById('wind').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_win(set) {
     add = set
-    $('#wind').animate({ opacity: '0' }, 500);
+    $('#wind').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('wind').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Run some additional commands?"
         document.getElementById("fpstxt").textContent = "These commands are undescribable but will significally improve FPS, they will be listed in the BAT file."
-        $('#add').animate({ opacity: '1' }, 500);
+        $('#add').animate({ opacity: '1' }, 250);
         document.getElementById('add').style.display = 'block';
-    }, 500);
+    }, 250);
 }
 
 function q_add(set) {
     add = set
     live_create()
-    $('#add').animate({ opacity: '0' }, 500);
+    $('#add').animate({ opacity: '0' }, 250);
     setTimeout(function () { 
         document.getElementById('add').style.display = 'none';
         document.getElementById("fpsquest").textContent = "Your answers are being processed"
         document.getElementById("fpstxt").innerHTML = "Please wait while the BAT files are being made, press <a style='cursor:pointer;' onclick='document.getElementById(\"teext\").style.display=\"block\"'>here</a> to see it being built (might be buggy)."
-    }, 500);
+    }, 250);
 }
 
 function live_create() {
@@ -427,7 +427,7 @@ function live_create() {
         document.getElementById("downloads").style.display = "block";
         $("#downloads").animate({
             opacity: "1"
-        }, 500);
+        }, 250);
 
         if (defender == "UNINSTALL")
             {document.getElementById("defend").style.display = "block";}
@@ -446,5 +446,5 @@ function live_create() {
 
         if (graphicalcard == "NVIDIA")
             {document.getElementById("nvclean").style.display = "block";}
-    }, 6500);
+    }, 6000);
 }
