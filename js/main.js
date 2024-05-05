@@ -188,3 +188,19 @@ function color_pink_withoutStorage() {
     document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
     document.documentElement.style.setProperty('--green', newColor);
 }
+
+function s_a_p() {
+    var buttons = document.querySelectorAll('.nonquality');
+
+    buttons.forEach(function(button) {
+      button.style.display = 'inline-block';
+    });
+}
+
+function s_q_p() {
+    var buttons = document.querySelectorAll('.nonquality');
+
+    buttons.forEach(function(button) {
+      button.style.display = 'none';
+    });
+}

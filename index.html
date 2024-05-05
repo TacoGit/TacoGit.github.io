@@ -42,7 +42,7 @@
     <script async src="https://fundingchoicesmessages.google.com/i/pub-7778233389870640?ers=1" nonce="zAJhrTTwV1WFKvyl5kqsRQ"></script><script nonce="zAJhrTTwV1WFKvyl5kqsRQ">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 </head>
 
-<body>
+<body onload="body_loaded()" >
     <main id="shomes" class="s-home s-home--static">
 
         <div class="overlay"></div>
@@ -51,7 +51,7 @@
             <div style="padding-top: 3rem;" class="row home-content__main">
 
                 <div class="col-eight home-content__text pull-right">
-                    <h3 onload="body_loaded()">tanos</h3>
+                    <h3>tanos</h3>
 
                     <h1>
                     a random site<br>
@@ -79,7 +79,7 @@
                 <a onclick="archivey()" href="#"><i class="fa fa-archive" aria-hidden="true"></i><span>Archive</span></a>
                 </li>
                 <li>
-                <a onclick="window.location='/files'" href="#"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span>Piracy</span></a>
+                <a onclick="window.location='/files'" href="#"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span>FileList</span></a>
                 </li>
                 <li>
                 <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
@@ -111,28 +111,32 @@
                     due to changing from tanos.gq
                     </h1>
 
-                    <p id="fff" style="margin-top: 1rem;">Had most fun coding: ⭐,
-                        Site or app dead: ☠,
-                        Useless or not wanted: 💔,
-                        Adjusted tutorial code: ✨,
+                    <a onclick="s_a_p()" style="cursor:pointer; text-decoration:underline;">Show all projects</a>
+                    <a onclick="s_q_p()" style="cursor:pointer; text-decoration:underline;">Only show quality projects</a>
+                    <p id="fff" style="margin-top: 1rem;"><a style="filter: brightness(150%); color:yellow; opacity: 0.5;">Had most fun coding: ⭐,</a>
+                        <a style="filter: brightness(150%); color:gray; opacity: 0.5;">Game port: 🎮,</a>
+                        <a style="filter: brightness(150%); color:green; opacity: 0.5;">Adjusted tutorial code: ✨,</a>
+                        <a style="filter: brightness(150%); color: teal; opacity: 0.5;">Site or app dead: ☠,</a>
+                        <a style="filter: brightness(150%); color:red; opacity: 0.5;">Useless or not wanted: 💔,</a>
                     </p>
 
                     <div id="pp" class="projects">
-                        <button onclick="fpsa()">project fps fixer ⭐⭐⭐</button>
                         <button href="#">tanos.is-a.dev ⭐</button>
+                        <button onclick="fpsa()">project fps fixer ⭐</button>
                         <button onclick="window.location='https://tacogit.github.io/project/paste'">PASTE ⭐</button>
                         <button onclick="window.location='https://tacogit.github.io/project/whattocode/'">What To Code ⭐</button>
+                        <button onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator 3 Android Port 🎮</button>
                         <button onclick="window.location='https://tacogit.github.io/project/typetester/'">TypeTester ✨</button>
                         <button onclick="window.location='https://tacogit.github.io/project/weather'">weather</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/player'">Music Player</button>
-                        <button onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/contact/'">Contact tanos 💔</button>
-                        <button onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
-                        <button onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/setup-pc/'">Setup-PC 💔</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/ai'">Bob the AI ☠</button>
-                        <button onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder ☠</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/skyline'">Skyline Compatibility List ☠</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/player'">Music Player</button>
+                        <button class="nonquality" onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/contact/'">Contact tanos 💔</button>
+                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
+                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/setup-pc/'">Setup-PC 💔</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/ai'">Bob the AI ☠</button>
+                        <button class="nonquality" onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder ☠</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/skyline'">Skyline Compatibility List ☠</button>
                     </div>
 
                     <div style="display: none;" id="achd" class="archived">
@@ -155,6 +159,9 @@
             <ul class="home-social">
                 <li>
                 <a onclick="window.location.reload()" href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
+                </li>
+                <li>
+                <a onclick="window.location='/files'" href="#"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span>FileList</span></a>
                 </li>
                 <li>
                 <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
