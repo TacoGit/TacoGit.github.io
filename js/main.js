@@ -1,12 +1,12 @@
 (function($) {
     "use strict";
-    
-    var cfg = {
-        scrollDuration : 800,
-        mailChimpURL   : 'https://tanos.is-a.dev' 
-    },
 
-    $WIN = $(window);
+    var cfg = {
+            scrollDuration: 800,
+            mailChimpURL: 'https://tanos.is-a.dev'
+        },
+
+        $WIN = $(window);
 
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
@@ -14,20 +14,20 @@
     var ssFinalCountdown = function() {
         var finalDate = new Date("February 5, 2025 23:59:59").getTime();
         $('.home-content__clock').countdown(finalDate)
-        .on('update.countdown finish.countdown', function(event) {
-            var str = '<div class=\"top\"><div class=\"time days\">' +
-                      '%D <span>day%!D</span>' + 
-                      '</div></div>' +
-                      '<div class=\"time hours\">' +
-                      '%H <span>H</span></div>' +
-                      '<div class=\"time minutes\">' +
-                      '%M <span>M</span></div>' +
-                      '<div class=\"time seconds\">' +
-                      '%S <span>S</span></div>';
+            .on('update.countdown finish.countdown', function(event) {
+                var str = '<div class=\"top\"><div class=\"time days\">' +
+                    '%D <span>day%!D</span>' +
+                    '</div></div>' +
+                    '<div class=\"time hours\">' +
+                    '%H <span>H</span></div>' +
+                    '<div class=\"time minutes\">' +
+                    '%M <span>M</span></div>' +
+                    '<div class=\"time seconds\">' +
+                    '%S <span>S</span></div>';
 
-            $(this)
-            .html(event.strftime(str));
-        });
+                $(this)
+                    .html(event.strftime(str));
+            });
     };
 
     (function ssInit() {
@@ -52,13 +52,13 @@ function projects() {
     $("#home").css({
         '-webkit-filter': 'blur(8px)'
     }).animate({}, 1000);
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById("home").style.display = "none";
     }, 500);
     $("#projects").animate({
         opacity: "1"
     }, 500);
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById("projects").style.display = "block";
     }, 500);
 }
@@ -141,59 +141,62 @@ function fpsa() {
     $("#home").animate({
         opacity: "0"
     }, 500);
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById("home").style.display = "none";
     }, 500);
     $("#projects").animate({
         opacity: "0"
     }, 500);
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById("projects").style.display = "none";
     }, 500);
     $("#fps").animate({
         opacity: "1"
     }, 500);
-    setTimeout(function () {
+    setTimeout(function() {
         document.getElementById("fps").style.display = "block";
     }, 500);
 }
 
 function body_loaded() {
-    if (!localStorage.getItem("isPink"))
-    {
-        colorywoo() // found pink prettier 😊
-    }
-    if (localStorage.getItem("isPink") == "true") {
-        color_pink_withoutStorage()
-    }
+    //newColor = '#974557';
+    //document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
+    //document.documentElement.style.setProperty('--green', newColor);
+    //if (!localStorage.getItem("isPink"))
+    //{
+    //    colorywoo() // found pink prettier 😊
+    //}
+    //if (localStorage.getItem("isPink") == "true") {
+    //    color_pink_withoutStorage()
+    //}
 }
 
-function colorywoo() {
-    var newColor
-    if (localStorage.getItem("isPink") == "true") {
-        newColor = '#44763B';
-        document.getElementById("shomes").style.backgroundImage = "url(images/hero-bg.jpg)"
-        document.documentElement.style.setProperty('--green', newColor);
-        localStorage.setItem("isPink", "false");
-    } else {
-        newColor = '#974557';
-        document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
-        document.documentElement.style.setProperty('--green', newColor);
-        localStorage.setItem("isPink", "true");
-    }
-}
-
-function color_pink_withoutStorage() {
-    newColor = '#974557';
-    document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
-    document.documentElement.style.setProperty('--green', newColor);
-}
+//function colorywoo() {
+//    var newColor
+//    if (localStorage.getItem("isPink") == "true") {
+//        newColor = '#44763B';
+//        document.getElementById("shomes").style.backgroundImage = "url(images/hero-bg.jpg)"
+//        document.documentElement.style.setProperty('--green', newColor);
+//        localStorage.setItem("isPink", "false");
+//    } else {
+//        newColor = '#974557';
+//        document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
+//        document.documentElement.style.setProperty('--green', newColor);
+//        localStorage.setItem("isPink", "true");
+//    }
+//}
+//
+//function color_pink_withoutStorage() {
+//    newColor = '#974557';
+//    document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
+//    document.documentElement.style.setProperty('--green', newColor);
+//}
 
 function s_a_p() {
     var buttons = document.querySelectorAll('.nonquality');
 
     buttons.forEach(function(button) {
-      button.style.display = 'inline-block';
+        button.style.display = 'inline-block';
     });
 }
 
@@ -201,6 +204,6 @@ function s_q_p() {
     var buttons = document.querySelectorAll('.nonquality');
 
     buttons.forEach(function(button) {
-      button.style.display = 'none';
+        button.style.display = 'none';
     });
 }

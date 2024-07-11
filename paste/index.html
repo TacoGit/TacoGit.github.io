@@ -99,7 +99,7 @@
   }
 
   function reURL() {
-    console.log("changing ")
+    console.log("changing")
     text = document.getElementById("x").value;
     base64 = btoa(unescape(encodeURIComponent(text)));
     window.location.hash = '#' + base64;
