@@ -40,6 +40,8 @@
     <script src="js/pace.min.js"></script>
     <script src="js/optimize.js"></script>
     <script src="js/FileSaver.js"></script>
+
+    <meta name="darkreader-lock">
 </head>
 
 <body onload="body_loaded()">
@@ -51,16 +53,20 @@
             <div style="padding-top: 3rem;" class="row home-content__main">
 
                 <div class="col-eight home-content__text pull-right">
-                    <h3>tanos</h3>
+                    <h3>by tanos</h3>
 
-                    <h1>
-                        a random site<br> made for fun lol
+                    <h1 id="jsorono">
+                        javascript is<br> loading, wait.
                     </h1>
 
                     <p id="intro" style="margin-top: 3rem;">
-                        im tanos i just make random projects, look at right bar for redirections<br> or <a style="cursor:pointer" onclick="projects()">view my projects</a> by pressing the highlighted text<br>new dc @tanossh.i<br><br> prefer the old site?
-                        <a href="oldindex.html">visit by pressing here</a>
+                        im tanos i just make random projects or decompilations<br> <a style="cursor:pointer" onclick="projects()">view my projects</a> or use the bar on the right for tabs<br>
+                        new discord account <a>@tanossh.i</a><br><br>
+                        prefer the site before the previous update?
+                        <a href="beforeupdate.html">visit by pressing here</a>
                     </p>
+
+                    <h1 id="underlinetextredirectionsforthemodernpage">interested in   <a id="effectedmore">even more</a> ? <a href="https://myanimelist.net/profile/taanos" target="_blank" id="utrfmp">MyAnimeList</a>, <a href="https://www.last.fm/user/tanosshi" target="_blank" id="utrfmp">Last.fm</a>, <a href="https://tracker.gg/valorant/profile/riot/tanos%231337/performance" target="_blank" id="utrfmp">Valorant Tracker</a>, <a href="https://www.roblox.com/users/424051643/profile" target="_blank" id="utrfmp">Roblox</a>, <a href="https://sky.shiiyu.moe/stats/tanosmc/Banana" target="_blank" id="utrfmp">Hypixel Skyblock</a></h1>
                 </div>
 
                 <div class="col-four home-content__counter">
@@ -81,9 +87,6 @@
                     <a onclick="projects()" href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
                 </li>
                 <li>
-                    <a onclick="archivey()" href="#"><i class="fa fa-archive" aria-hidden="true"></i><span>Archive</span></a>
-                </li>
-                <li>
                     <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
                 </li>
                 <li>
@@ -99,7 +102,7 @@
             <div class="row home-copyright">
                 <img width="10px" style="cursor: pointer;" onclick="alert('THANKS ALEPH!!')" src="images/pink.gif"></img>
                 <span id="siteby">site by @tanossh.i on discord</span>
-                <span id="doonat">donate to me via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a> or <a href="/donate" style="cursor:pointer;" onclick="window.location = '/donate'">crypto</a></span>
+                <span id="doonat">donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a></span>
             </div>
         </div>
 
@@ -113,50 +116,36 @@
                         some sites may be corrupted<br> due to changing from tanos.gq
                     </h1>
 
-                    <a onclick="s_a_p()" style="cursor:pointer; text-decoration:underline;">Show all projects</a>
+                    <a onclick="s_a_p()" style="cursor:pointer; text-decoration:underline;">Show all projects</a> •
                     <a onclick="s_q_p()" style="cursor:pointer; text-decoration:underline;">Only show quality projects</a>
-                    <p id="fff" style="margin-top: 1rem;"><a style="filter: brightness(150%); color:yellow; opacity: 0.5;">Had most fun coding: ⭐,</a>
-                        <a style="filter: brightness(150%); color:gray; opacity: 0.5;">Game port: 🎮,</a>
-                        <a style="filter: brightness(150%); color: rgb(192, 192, 122); opacity: 0.5;">Soon: ⏳,</a>
-                        <a style="filter: brightness(150%); color:green; opacity: 0.5;">Adjusted tutorial code: ✨,</a>
-                        <a style="filter: brightness(150%); color: teal; opacity: 0.5;">Site or app dead: ☠,</a>
-                        <a style="filter: brightness(150%); color:red; opacity: 0.5;">Useless or not wanted: 💔,</a>
-                    </p>
 
                     <div id="pp" class="projects">
-                        <button href="#">tanos.is-a.dev ⭐</button>
-                        <button onclick="fpsa()">project fps fixer ⭐</button>
-                        <button onclick="window.location='https://tacogit.github.io/paste'">PASTE ⭐</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/whattocode/'">What To Code ⭐</button>
-                        <button onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator 3 Android Port 🎮</button>
-                        <button onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator Decomp and Android Port ⏳</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/typetester/'">TypeTester ✨</button>
+                        <h3 style="margin-top: 3.5rem;" id="projectid">QUALITY</h3>
+                        <button href="#">tanos.is-a.dev </button>
+                        <button onclick="fpsa()">project fps fixer</button>
+                        <button onclick="window.location='https://tacogit.github.io/paste'">PASTE</button>
+                        <button onclick="window.location='https://tacogit.github.io/project/whattocode/'">What To Code</button>
+                        <br>
+                        <h3 id="projectid">DECOMPILATIONS OR PORTS</h3>
+                        <button onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator 3 Android Port</button>
+                        <button onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator Decompilation</button>
+                        <br>
+                        <h3 id="projectid">BASICS</h3>
                         <button onclick="window.location='https://tacogit.github.io/project/weather'">weather</button>
                         <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/player'">Music Player</button>
                         <button class="nonquality" onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/contact/'">Contact tanos 💔</button>
-                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller 💔</button>
-                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows 💔</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/setup-pc/'">Setup-PC 💔</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/ai'">Bob the AI ☠</button>
-                        <button class="nonquality" onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder ☠</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/skyline'">Skyline Compatibility List ☠</button>
-                    </div>
-
-                    <div style="display: none;" id="achd" class="archived">
-                        <p style="margin-top: 0rem;">Game links + Source codes coming soon</p>
-                        <p style="margin-top: 5rem;">
-                            <a> </p>
-                        <p style="margin-top: 0rem;"><a style="color: #1c2841;">A rhythm game done right</a>: Godot does not have proper rhythm game functions, unless hardcoded 😢</p>
-                        <p style="margin-top: 0rem;"><a>Project Dive</a>: No reason to continue</p>
-                        <p style="margin-top: 0rem;"><a>Project Mouse</a>: Wasnt suppose to be a real project</p>
-                        <p style="margin-top: 0rem;"><a>Project Minigame</a>: Requires a ton of pixel art skills</p>
-                        <p style="margin-top: 0rem;"><a>Project School</a>: Was just a bunch of unity models, didnt involve any real coding experience</p>
-                        <p style="margin-top: 0rem;"><a>survive</a>: Corrupted files</p>
-                        <p style="margin-top: 7rem;">Site links coming soon</p>
-                        <p style="margin-top: 0rem;"><a>nano2go and nano faucet</a>: Lack of nano funds, lack of energy</p>
-                        <p style="margin-top: 0rem;"><a>tempmail</a>: Switching from tanos.gq to tanos.is-a.dev broke everything</p>
-                        <p style="margin-top: 0rem;"><a>tUSB</a>: UI was not mine, had no motivation anymore</p>
+                        <br>
+                        <h3 id="projectid">ONLY PARTIALLY MINE</h3>
+                        <button onclick="window.location='https://tacogit.github.io/project/typetester/'">TypeTester</button>
+                        <br>
+                        <h3 id="projectid">BROKEN, DROPPED OR USELESS</h3>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/contact/'">Contact tanos</button>
+                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller</button>
+                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/setup-pc/'">Setup-PC </button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/ai'">Bob the AI</button>
+                        <button class="nonquality" onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
+                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/skyline'">Skyline Compatibility List</button>
                     </div>
                 </div>
             </div>
@@ -172,7 +161,7 @@
                     <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
                 </li>
                 <li>
-                    <a onclick="alert('@tanossh.i , 852608934623182848')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
+                    <a onclick="alert('@tanossh.i id:852608934623182848')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
                 </li>
             </ul>
             <div class="home-content__line"></div>
@@ -201,6 +190,12 @@
             <div class="home-content__line"></div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("jsorono").innerHTML = "a random site<br> made for fun lol";
+        });
+    </script>
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <!-- jQuery for animations -->

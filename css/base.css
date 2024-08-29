@@ -883,8 +883,6 @@ textarea {
 }
 
 /*# sourceMappingURL=base.css.map */
-
-
         
 .specializedP {
   color: whitesmoke;
@@ -892,4 +890,19 @@ textarea {
   line-height: 1;
   margin-top: 0rem;
   margin-bottom: 0rem;
+}
+
+#underlinetextredirectionsforthemodernpage {
+  font-size: 1.4rem;
+  margin-top: -23px;
+  font-weight: initial;
+  opacity: 0.8;
+  color: lightgray;
+  font-style: italic;
+}
+
+#utrfmp {
+  opacity: 1;
+  color: #c06b7d;
+  cursor: pointer;
 }

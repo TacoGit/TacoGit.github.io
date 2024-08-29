@@ -1323,11 +1323,12 @@ input::-moz-focus-inner {
 .home-content__line {
     display: block;
     width: 1px;
-    height: 12rem;
+    height: 15rem;
     background-color: var(--green);
     position: absolute;
-    right: 84px;
+    right: 90px;
     bottom: 0;
+    opacity: 0.3;
 }
 
 .home-social {
@@ -2205,4 +2206,50 @@ html.no-csstransitions .home-content__main {
     line-height: 1;
     margin-top: 0rem;
     margin-bottom: 0rem;
+}
+
+#effectedmore { 
+    color: white;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: baseline;
+}
+
+#effectedmore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(151,69,87, 0.5) 0%, rgb(151,69,87) 100%);
+    animation: glint 3s infinite;
+}
+
+@keyframes glint {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+::-moz-selection {
+  color: white;
+  background: #974557;
+}
+  
+::selection {
+  color: white;
+  background: #974557;
+}
+
+#projectid {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
 }
