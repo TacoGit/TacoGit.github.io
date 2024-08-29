@@ -205,6 +205,69 @@
     <!-- Contains all the code -->
 </body>
 
+<!-- LAST BACKUP METHOD, WILL REMOVE AFTER ERROR RESOLVED-->
+ <style>
+ #underlinetextredirectionsforthemodernpage {
+    font-size: 1.4rem;
+    margin-top: -23px;
+    font-weight: initial;
+    opacity: 0.8;
+    color: lightgray;
+    font-style: italic;
+  }
+  
+  #utrfmp {
+    opacity: 1;
+    color: #c06b7d;
+    cursor: pointer;
+  }
+  #effectedmore { 
+    color: white;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: baseline;
+}
+
+#effectedmore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(151,69,87, 0.5) 0%, rgb(151,69,87) 100%);
+    animation: glint 3s infinite;
+}
+
+@keyframes glint {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+::-moz-selection {
+  color: white;
+  background: #974557;
+}
+  
+::selection {
+  color: white;
+  background: #974557;
+}
+
+#projectid {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+  </style>
+
 </html>
 
 <!-- site by @tanossh.i, TacoGit.github.io -->
