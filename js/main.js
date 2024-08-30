@@ -35,22 +35,17 @@
     })();
 })(jQuery);
 
-function archivey() {
-    projects()
-    document.getElementById("tanosprojects").textContent = "tanos - archived projects"
-    document.getElementById("projectstext").textContent = "abandoned projects"
-    document.getElementById("fff").textContent = ""
-
-    document.getElementById("pp").style.display = "none";
-    document.getElementById("achd").style.display = "block";
-}
+// this should load faster than the jquery one!!!! but ensures the script exists
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("jsorono").innerHTML = "a random site<br> made for fun lol";
+});
 
 function projects() {
     $("#home").animate({
         opacity: "0",
     }, 500);
     $("#home").css({
-        '-webkit-filter': 'blur(8px)'
+        '-webkit-filter': 'blur(18px)'
     }).animate({}, 1000);
     setTimeout(function() {
         document.getElementById("home").style.display = "none";
@@ -158,40 +153,6 @@ function fpsa() {
     }, 500);
 }
 
-function body_loaded() {
-    //newColor = '#974557';
-    //document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
-    //document.documentElement.style.setProperty('--green', newColor);
-    //if (!localStorage.getItem("isPink"))
-    //{
-    //    colorywoo() // found pink prettier 😊
-    //}
-    //if (localStorage.getItem("isPink") == "true") {
-    //    color_pink_withoutStorage()
-    //}
-}
-
-//function colorywoo() {
-//    var newColor
-//    if (localStorage.getItem("isPink") == "true") {
-//        newColor = '#44763B';
-//        document.getElementById("shomes").style.backgroundImage = "url(images/hero-bg.jpg)"
-//        document.documentElement.style.setProperty('--green', newColor);
-//        localStorage.setItem("isPink", "false");
-//    } else {
-//        newColor = '#974557';
-//        document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
-//        document.documentElement.style.setProperty('--green', newColor);
-//        localStorage.setItem("isPink", "true");
-//    }
-//}
-//
-//function color_pink_withoutStorage() {
-//    newColor = '#974557';
-//    document.getElementById("shomes").style.backgroundImage = "url(images/puresakura.png)"
-//    document.documentElement.style.setProperty('--green', newColor);
-//}
-
 function s_a_p() {
     var buttons = document.querySelectorAll('.nonquality');
 
@@ -207,3 +168,21 @@ function s_q_p() {
         button.style.display = 'none';
     });
 }
+
+function adjustTextonSizeChange() { //messy code i got it
+    console.log(window.innerWidth)
+    if (window.innerWidth <= 800) {
+        document.getElementById("canbechangedbywindowpreferences").innerText = "bottom";
+        document.getElementById("siteby").style.display = "none";
+        document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "normal"; // its for readablity on smaller devices
+        document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "0px";
+    } else {
+        document.getElementById("canbechangedbywindowpreferences").innerText = "right";
+        document.getElementById("siteby").style.display = "inline-block";
+        document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "italic";
+        document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "-23px";
+    }
+}
+
+window.addEventListener('resize', adjustTextonSizeChange);
+adjustTextonSizeChange();
