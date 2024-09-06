@@ -2253,3 +2253,39 @@ html.no-csstransitions .home-content__main {
     margin-top: 1.5rem;
     margin-bottom: 2rem;
 }
+
+#titledFm {
+    cursor: pointer;
+    color: white;
+    opacity: 0.6;
+    font-size: 1.8rem;
+    margin-bottom: -0.5rem;
+}
+
+#playsngenreFm {
+    color: white;
+    opacity: 0.6;
+    font-size: 1.3rem;
+}
+
+#fmLoved {
+    opacity: 1;
+    display: none;
+    color: rgba(255,255,255,1);
+}
+
+#fmPlaying {
+    color: #d4788c;
+}
+
+#fmInformant {
+    font-size: 1.1rem;
+    margin-left: 0.1rem;
+    animation: fadeInOut 4s infinite;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0.1; }
+}
