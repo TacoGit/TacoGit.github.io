@@ -1730,27 +1730,6 @@ html.no-csstransitions .home-content__main {
     }
 }
 
-@media only screen and (max-width:500px) {
-    .home-social {
-        top: 76.5%;
-        width: 70px;
-    }
-}
-
-@media only screen and (max-width:400px) {
-    .home-social {
-        top: 75.5%;
-        width: 70px;
-    }
-}
-
-@media only screen and (max-width:300px) {
-    .home-social {
-        top: 73%;
-        width: 70px;
-    }
-}
-
 @media only screen and (max-width:700px) {
     .home-content h1 {
         font-size: 4rem;
@@ -2287,13 +2266,14 @@ html.no-csstransitions .home-content__main {
 }
 
 #fmInformant {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-left: 0.1rem;
-    animation: fadeInOut 4s infinite;
+    animation: fadeInOut 3s infinite;
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0.1; }
+    0% { opacity: 0.3; }
     50% { opacity: 0.9; }
-    100% { opacity: 0.1; }
+    90% { opacity: 0.7; }
+    100% { opacity: 0.3; }
 }

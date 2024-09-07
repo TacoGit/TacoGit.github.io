@@ -68,101 +68,6 @@ function projects() {
     }, 500);
 }
 
-function fpsa() {
-    var contentsfps = document.getElementById("contentsfps");
-    var elementsToLoad = document.createRange().createContextualFragment(`<h3 id="tanosprojects">tanos - project fps fixer (browser ver.).</h3>
-
-            <h1 id="fpsquest">
-            you will be answering a couple<br>
-            questions to decide the best settings
-            </h1>
-
-            <p id="fpstxt" style="margin-top: 1rem;">Your answers will not be saved, please prevent from reloading the site 🙏</p>
-
-            <div id="understandment">
-                <button onclick="q_understood()">I understand that I will not reload the page.</button>
-                <button onclick="window.location.reload()">I do not understand.</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="ram">
-                <button onclick="q_ram('LOW')">2GB, 4GB, 6GB RAM</button>
-                <button onclick="q_ram('HIGH')">8GB, 10GB, 12GB, 16GB RAM</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="defender">
-                <button onclick="q_defender('KEEP')">Keep</button>
-                <button onclick="q_defender('UNINSTALL')">Uninstall</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="bapps">
-                <button onclick="q_bapps('KEEP')">Keep</button>
-                <button onclick="q_bapps('UNINSTALL')">Uninstall</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="odantl">
-                <button onclick="q_onetel('KEEP')">Keep</button>
-                <button onclick="q_onetel('UNINSTALL')">Uninstall and Disable</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="shutup">
-                <button onclick="q_shutup('RUN')">Run</button>
-                <button onclick="q_shutup('DONT')">Do not run</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="grpc">
-                <button onclick="q_graphicalcard('IRIS')">Intel Iris XE</button>
-                <button onclick="q_graphicalcard('NVIDIA')">Any NVIDIA GPU</button>
-                <button onclick="q_graphicalcard('OTHER')">Other</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="srvc">
-                <button onclick="q_srv('YES')">Yes</button>
-                <button onclick="q_srv('NO')">No</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="wind">
-                <button onclick="q_win('11')">Windows 11</button>
-                <button onclick="q_win('10')">Windows 10</button>
-            </div>
-
-            <div style="display:none; opacity:0;" id="add">
-                <button onclick="q_add('YES')">Sure</button>
-                <button onclick="q_add('NO')">No thanks</button>
-            </div>
-
-            <div id="teext" style="display: none;" class="expandable-textarea" role="textarea">
-                # Input comes here
-            </div>
-
-            <div style="display: none; opacity:0;" id="downloads">
-                <button onclick="q_download('script')" id="download">Download Optimizer Script</button>
-                <button onclick="q_download('kms')" id="download">Windows Product Key Activator</button>
-                <button onclick="q_download('gpedit')" id="gpd">Enable gpedit for windows 10 home</button>
-                <button style="display: none;" onclick="q_download('defender')" id="defend">Uninstall Windows Defender tool</button>
-                <button style="display: none;" onclick="q_download('nvcleanstall')" id="nvclean">NVIDIA Drivers cleaner tool</button>
-                <button style="display: none;" onclick="q_download('iris')" id="iirs">Best Intel Iris XE drivers</button>
-            </div>`);
-    contentsfps.appendChild(elementsToLoad);
-    $("#home").animate({
-        opacity: "0"
-    }, 500);
-    setTimeout(function() {
-        document.getElementById("home").style.display = "none";
-    }, 500);
-    $("#projects").animate({
-        opacity: "0"
-    }, 500);
-    setTimeout(function() {
-        document.getElementById("projects").style.display = "none";
-    }, 500);
-    $("#fps").animate({
-        opacity: "1"
-    }, 500);
-    setTimeout(function() {
-        document.getElementById("fps").style.display = "block";
-    }, 500);
-}
-
 function s_a_p() {
     var buttons = document.querySelectorAll('.nonquality');
 
@@ -184,19 +89,23 @@ function adjustTextonSizeChange() { // messy code i got it
         document.getElementById("canbechangedbywindowpreferences").innerText = "bottom";
         document.getElementById("siteby").style.display = "none";
         document.getElementById("doonat").style.display = "none";
+        document.getElementById("sitecon").style.display = "none";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "normal"; // its for readablity on smaller devices
         document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "0px";
     } else {
         document.getElementById("canbechangedbywindowpreferences").innerText = "right";
         document.getElementById("siteby").style.display = "inline-block";
         document.getElementById("doonat").style.display = "inline-block";
+        document.getElementById("sitecon").style.display = "inline-block";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "italic";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "-23px";
     }
 }
 
+var fmPrivacyMode = true;
+
 function updateLastFM(additional) {
-    document.documentElement.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt fuck ths up
+    document.body.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt mess this up
     var cache = new LastFMCache(); // Request Cache
 
     var lastfm = new LastFM({
@@ -215,13 +124,21 @@ function updateLastFM(additional) {
         var attemptAtConnection = undefined;
       }
 
+      if (fmPrivacyMode && attemptAtConnection != undefined) {
+        if (["fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse"].includes(data.recenttracks.track[0].artist['#text'])) {
+            attemptAtConnection = undefined;
+            console.log("[FM]: Privacy Mode toggled");
+        }
+      }
+
       if(attemptAtConnection == undefined || attemptAtConnection == null) {
         document.getElementById("titledFm").innerHTML = `tanos is currently not listening to anything <a id="fmInformant">∙ according to last.fm</a>`
         var sadSentences = [
             "how unfortunate !",
             "or last.fm could be down ?",
             "you'll live dont worry",
-            "thats crazy"
+            "thats crazy",
+            ":("
         ];
         document.getElementById("playsngenreFm").innerHTML = `${sadSentences[Math.floor(Math.random() * sadSentences.length)]} <a id="fmPlays">, will automatically rebuild after activity found</a><a id="fmGenre"></a>`
       }
@@ -299,19 +216,15 @@ function updateLastFM(additional) {
 }
 
 function hideFM() {
-    document.getElementById("titledFm").style.display = "none";
-    document.getElementById("playsngenreFm").style.display = "none";
-    document.getElementById("titledFm").style.display = "none";
-    document.getElementById("fmGenre").style.display = "none";
-    document.getElementById("fmPlaying").style.display = "none";
-   }
+    ["titledFm", "playsngenreFm", "fmGenre", "fmPlaying"].forEach(id => document.getElementById(id).style.display = "none");
+}
 
 function rebuildFm() {
     document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>{updating site please wait}</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ {updating site please wait}</a>";
     document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>{updating site please wait}</a> plays on this song - <a id='fmGenre'>{updating site please wait}</a>";
 }
 
-setInterval(updateLastFM, 5000);
+setInterval(updateLastFM, 7852);
 
 window.addEventListener('resize', adjustTextonSizeChange);
 adjustTextonSizeChange();
