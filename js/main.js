@@ -196,6 +196,7 @@ function adjustTextonSizeChange() { // messy code i got it
 }
 
 function updateLastFM(additional) {
+    document.documentElement.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt fuck ths up
     var cache = new LastFMCache(); // Request Cache
 
     var lastfm = new LastFM({
@@ -258,6 +259,8 @@ function updateLastFM(additional) {
             topTags = topTags.replace(/rape|official shit|garbage|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|urine|gore|vore/g, ""); // Tag cleanify
             topTags = topTags.replace(", ,", ","); // After cleanup
 
+            topTags = topTags.toLowerCase()
+
             // Set
             document.getElementById("fmGenre").textContent = `${topTags}` || "no genres found, assumably slowcore?";
 
@@ -270,33 +273,29 @@ function updateLastFM(additional) {
 
             var lovedSentences = [
                 "∙ ooh! this one is personally loved by tanos",
-                "∙ this song has been set as loved by tanos",
-                "∙ tanos is inlove with this one",
-                "∙ this track has been marked as loved by tanos",
-                "∙ tanos really loves this track personally"
+                "∙ ouh! this one is personally loved by tanos",
+                "∙ !! this one is personally loved by tanos",
+                "∙ set as loved by tanos",
+                "∙ tanos is in love with this one",
+                "∙ marked as loved by tanos"
             ];
             var informantSentences = [
                 "∙ live updated by last.fm",
                 "∙ automatically refreshed !",
-                "∙ live information provided by last.fm",
+                "∙ live information by last.fm",
                 "∙ automatically updated !"
             ];
 
             document.getElementById("fmInformant").style.color = "rgba(255, 255, 255, 0.7);";
-            if (trackInfo.userloved == "1") {
-                document.getElementById("fmLoved").style.display = "inline-block";
-                document.getElementById("fmInformant").textContent = lovedSentences[Math.floor(Math.random() * lovedSentences.length)];
-                document.getElementById("fmInformant").style.color = "rgb(226, 85, 214, 1)";
-            } else {
-                document.getElementById("fmLoved").style.display = "none";
-                document.getElementById("fmInformant").style.color = "rgba(255, 255, 255, 0.7);";
-                document.getElementById("fmInformant").textContent = informantSentences[Math.floor(Math.random() * informantSentences.length)];
-            }
+            const isLoved = trackInfo.userloved === "1";
+            document.getElementById("fmLoved").style.display = isLoved ? "inline-block" : "none";
+            document.getElementById("fmInformant").textContent = isLoved ? lovedSentences[Math.floor(Math.random() * lovedSentences.length)] : informantSentences[Math.floor(Math.random() * informantSentences.length)];
+            document.getElementById("fmInformant").style.color = isLoved ? "rgb(226, 85, 214, 1)" : "rgba(255, 255, 255, 0.7)";
         }});
 
       } else { hideFM() }
 
-    }, error: function(code, message){ hideFM() }});
+    }, error: function(code, message){ hideFM(); console.log(code, message) }});
 }
 
 function hideFM() {
@@ -312,8 +311,7 @@ function rebuildFm() {
     document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>{updating site please wait}</a> plays on this song - <a id='fmGenre'>{updating site please wait}</a>";
 }
 
-setInterval(updateLastFM, 10000);
-
+setInterval(updateLastFM, 5000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
 adjustTextonSizeChange();

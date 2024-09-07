@@ -2258,14 +2258,14 @@ html.no-csstransitions .home-content__main {
     cursor: pointer;
     color: white;
     opacity: 0.6;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     margin-bottom: -0.5rem;
 }
 
 #playsngenreFm {
     color: white;
     opacity: 0.6;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 #fmLoved {
@@ -2274,12 +2274,20 @@ html.no-csstransitions .home-content__main {
     color: rgba(255,255,255,1);
 }
 
+@media only screen and (max-width: 1000px) {
+    .lastplayed {
+        margin-top: 1rem;
+        margin-bottom: -4rem;
+        padding-bottom: 1.2rem;
+    }
+}
+
 #fmPlaying {
     color: #d4788c;
 }
 
 #fmInformant {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-left: 0.1rem;
     animation: fadeInOut 4s infinite;
 }
