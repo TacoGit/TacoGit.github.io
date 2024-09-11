@@ -1,17 +1,11 @@
+var finalDate;
 (function($) {
     "use strict";
-
-    var cfg = {
-            scrollDuration: 800,
-            mailChimpURL: 'https://tanos.is-a.dev'
-        },
-
-        $WIN = $(window);
 
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
-    var ssFinalCountdown = function() {
+    function ssFinalCountdown() {
         var finalDate = new Date("February 6, 2025 00:00:00").getTime();
         $('.home-content__clock').countdown(finalDate)
             .on('update.countdown finish.countdown', function(event) {
@@ -28,7 +22,7 @@
                 $(this)
                     .html(event.strftime(str));
             });
-    };
+    }
 
     (function ssInit() {
         ssFinalCountdown();
@@ -43,11 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentTime = new Date().getHours();
     const greetingElement = document.getElementById("gdaygnight");
 
-    if (currentTime >= 19 || currentTime <= 6) {
+    if (currentTime >= 19 || currentTime <= 6)
         greetingElement.textContent = "make sure to have a good night";
-    } else {
+    else 
         greetingElement.textContent = "make sure to make the most of your day";
-    }
 });
 
 function projects() {
@@ -125,7 +118,7 @@ function updateLastFM(additional) {
       }
 
       if (fmPrivacyMode && attemptAtConnection != undefined) {
-        if (["fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse"].includes(data.recenttracks.track[0].artist['#text'])) {
+        if (["fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight"].includes(data.recenttracks.track[0].artist['#text'])) {
             attemptAtConnection = undefined;
             console.log("[FM]: Privacy Mode toggled");
         }
@@ -140,7 +133,7 @@ function updateLastFM(additional) {
             "thats crazy",
             ":("
         ];
-        document.getElementById("playsngenreFm").innerHTML = `${sadSentences[Math.floor(Math.random() * sadSentences.length)]} <a id="fmPlays">, will automatically rebuild after activity found</a><a id="fmGenre"></a>`
+        document.getElementById("playsngenreFm").innerHTML = `${sadSentences[Math.floor(Math.random() * sadSentences.length)]}<a id="fmPlays">, will automatically rebuild after activity found</a><a id="fmGenre"></a>`
       }
       else if(data.recenttracks.track.length > 0) {
         if (document.getElementById("titledFm").innerHTML == `tanos is currently not listening to anything <a id="fmInformant">∙ according to last.fm</a>`) {
@@ -192,7 +185,6 @@ function updateLastFM(additional) {
                 "∙ ooh! this one is personally loved by tanos",
                 "∙ ouh! this one is personally loved by tanos",
                 "∙ !! this one is personally loved by tanos",
-                "∙ set as loved by tanos",
                 "∙ tanos is in love with this one",
                 "∙ marked as loved by tanos"
             ];
@@ -222,9 +214,18 @@ function hideFM() {
 function rebuildFm() {
     document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>{updating site please wait}</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ {updating site please wait}</a>";
     document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>{updating site please wait}</a> plays on this song - <a id='fmGenre'>{updating site please wait}</a>";
+    updateLastFM()
+}
+
+function updateClock() {
+    if($('.time.days').html() == "00 <span>day</span>" && $('.time.hours').html() == "00 <span>H</span>" && $('.time.seconds').html() == "00 <span>S</span>") {
+        document.getElementById("updateableEpicness").innerText = "i wasted your time lol";
+        document.getElementById("updateableEpicness").style.textTransform = "lowercase";
+    }
 }
 
 setInterval(updateLastFM, 7852);
+setInterval(updateClock, 30000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
 adjustTextonSizeChange();

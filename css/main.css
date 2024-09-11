@@ -1,7 +1,6 @@
 :root {
+    --main: #974557;
     --pink: #974557;
-    --green: #974557;
-    /*--green: #44763B;*/
 }
 
 html {
@@ -47,7 +46,7 @@ body {
 }
 
 a {
-    color: var(--green);
+    color: var(--main);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -369,7 +368,7 @@ ul.disc li::before {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--green);
+    background: var(--main);
     position: absolute;
     left: -17px;
     top: 11px;
@@ -378,7 +377,7 @@ ul.disc li::before {
 
 dt {
     margin: 0;
-    color: var(--green);
+    color: var(--main);
 }
 
 dd {
@@ -488,7 +487,7 @@ form,
 }
 
 .pace .pace-progress {
-    background: var(--green);
+    background: var(--main);
     position: fixed;
     z-index: 900;
     top: 0;
@@ -526,7 +525,7 @@ form,
 }
 
 .line-scale-pulse-out>div {
-    background-color: var(--green);
+    background-color: var(--main);
     width: 4px;
     height: 35px;
     border-radius: 2px;
@@ -740,7 +739,7 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--green);
+    -webkit-text-fill-color: var(--main);
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -790,8 +789,8 @@ button.btn--primary,
 input[type="submit"].btn--primary,
 input[type="reset"].btn--primary,
 input[type="button"].btn--primary {
-    background: var(--green);
-    border-color: var(--green);
+    background: var(--main);
+    border-color: var(--main);
     color: #FFFFFF;
 }
 
@@ -973,7 +972,7 @@ input::-moz-focus-inner {
 }
 
 .stats-tabs li a:hover {
-    color: var(--green);
+    color: var(--main);
 }
 
 .stats-tabs li a em {
@@ -1172,7 +1171,7 @@ input::-moz-focus-inner {
 .home-content h3::before {
     content: "";
     display: block;
-    background-color: var(--green);
+    background-color: var(--main);
     width: 40px;
     height: 1px;
     position: absolute;
@@ -1252,8 +1251,8 @@ input::-moz-focus-inner {
 
 #mc-form input[type=submit] {
     color: #FFFFFF;
-    background: var(--green);
-    border-color: var(--green);
+    background: var(--main);
+    border-color: var(--main);
     padding: 0 25px;
     margin: 0;
     position: absolute;
@@ -1304,7 +1303,7 @@ input::-moz-focus-inner {
 
 .home-content__counter .days {
     font-family: "nfont", sans-serif;
-    font-size: 17.5rem;
+    font-size: 11.5rem;
     letter-spacing: -.5rem;
     padding-right: 6rem;
     margin-top: -0.9rem;
@@ -1314,7 +1313,7 @@ input::-moz-focus-inner {
     display: inline-block;
     font-family: "nfont", sans-serif;
     letter-spacing: 0;
-    background-color: var(--green);
+    background-color: var(--main);
     color: #FFFFFF;
     padding: 9px 12px;
     bottom: 1.3em;
@@ -1324,7 +1323,7 @@ input::-moz-focus-inner {
     display: block;
     width: 1px;
     height: 15rem;
-    background-color: var(--green);
+    background-color: var(--main);
     position: absolute;
     right: 90px;
     bottom: 0;
@@ -1380,7 +1379,7 @@ input::-moz-focus-inner {
 
 .home-social span {
     font-size: 1.2rem;
-    color: var(--green);
+    color: var(--main);
     right: 6rem;
     opacity: 0;
     visibility: hidden;
@@ -1888,7 +1887,7 @@ html.no-csstransitions .home-content__main {
     content: "";
     width: 80px;
     height: 1px;
-    background-color: var(--green);
+    background-color: var(--main);
     position: absolute;
     left: 3px;
     top: -3.6rem;
@@ -1898,7 +1897,7 @@ html.no-csstransitions .home-content__main {
     font-family: "nfont", sans-serif;
     font-size: 1.4rem;
     line-height: 1.286;
-    color: var(--green);
+    color: var(--main);
 }
 
 .info-wrapper {
@@ -2032,7 +2031,7 @@ html.no-csstransitions .home-content__main {
     top: 50%;
     right: auto;
     bottom: auto;
-    background-color: var(--green);
+    background-color: var(--main);
     -webkit-transition: background 0.2s ease-in-out;
     transition: background 0.2s ease-in-out;
 }
@@ -2069,7 +2068,7 @@ html.no-csstransitions .home-content__main {
 
 .info-is-visible .info-menu-icon::before,
 .info-is-visible .info-menu-icon::after {
-    background-color: var(--green);
+    background-color: var(--main);
     -webkit-transition-delay: 0s, 0.2s;
     transition-delay: 0s, 0.2s;
 }
@@ -2276,4 +2275,15 @@ html.no-csstransitions .home-content__main {
     50% { opacity: 0.9; }
     90% { opacity: 0.7; }
     100% { opacity: 0.3; }
+}
+
+#personalityType {
+    color: white;
+    padding: 5px 10px; 
+    margin-left: 3px;
+    margin-bottom: 1px;
+    font-size: 1.024rem;
+    background-color: #974557;
+    border-radius: 1px;
+    cursor: pointer;
 }
