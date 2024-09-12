@@ -2219,12 +2219,12 @@ html.no-csstransitions .home-content__main {
 
 ::-moz-selection {
   color: white;
-  background: #974557;
+  background: var(--main);
 }
   
 ::selection {
   color: white;
-  background: #974557;
+  background: var(--main);
 }
 
 #projectid {
@@ -2283,7 +2283,7 @@ html.no-csstransitions .home-content__main {
     margin-left: 3px;
     margin-bottom: 1px;
     font-size: 1.024rem;
-    background-color: #974557;
+    background-color: var(--main);
     border-radius: 1px;
     cursor: pointer;
 }

@@ -148,8 +148,11 @@ function updateLastFM(additional) {
             case "Lamp / Lamp, Kaori Sakakibara / 榊原香保里 / サカキバラカオリ, Lamp / Lamp / ランプ, Taiyou Someya / 染谷大陽 / ソメヤタイヨウ":
                 doCorruptReadability = 1;
                 break;
-            case "Azumi Takahashi, Lotus Juice, ATLUS Sound Team, ATLUS GAME MUSIC, Lotus Juice, ATLUS Sound Team, ATLUS Sound Team - It's Going Down Now":
+            case "Azumi Takahashi, Lotus Juice, ATLUS Sound Team, ATLUS GAME MUSIC, Lotus Juice, ATLUS Sound Team, ATLUS Sound Team":
                 doCorruptReadability = 2;
+                break;
+            case lastTrack.artist['#text'].toLowerCase().includes("lamp"):
+                doCorruptReadability = 1;
                 break;
         }
 
@@ -224,7 +227,7 @@ function updateClock() {
     }
 }
 
-setInterval(updateLastFM, 7852);
+setInterval(updateLastFM, 5852);
 setInterval(updateClock, 30000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
