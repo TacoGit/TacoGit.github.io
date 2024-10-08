@@ -118,7 +118,7 @@ function updateLastFM(additional) {
       }
 
       if (fmPrivacyMode && attemptAtConnection != undefined) {
-        if (["fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight"].includes(data.recenttracks.track[0].artist['#text'])) {
+        if (["wockstxrr", "unknown", "Testimony", "PW1", "Unknown", "wockstarr", "Big Man Gaming", "slitue", "Tonil", "null", "1uke", "fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight"].includes(data.recenttracks.track[0].artist['#text'])) {
             attemptAtConnection = undefined;
             console.log("[FM]: Privacy Mode toggled");
         }
@@ -157,7 +157,7 @@ function updateLastFM(additional) {
         }
 
         if (additional == "direct")
-            window.location.href = `https://www.last.fm/music/${lastTrack.artist['#text']}/_/${(lastTrack.name).replace(" ", "+").replace(" ", "+").replace(" ", "+")}`;
+            window.location.href = `https://www.last.fm/music/${lastTrack.artist['#text']}/_/${(lastTrack.name).replace(" ", "+").replace(" ", "+").replace(" ", "+")}`; // 3 different unicodes i believe
 
         playingSong = `${doCorruptReadability === 1 ? "Lamp" : doCorruptReadability === 2 ? "Azumi Takahashi" : lastTrack.artist['#text']} - ${lastTrack.name}`
         document.getElementById("fmPlaying").textContent = playingSong;
