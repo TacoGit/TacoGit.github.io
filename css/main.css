@@ -2264,6 +2264,12 @@ html.no-csstransitions .home-content__main {
     color: #d4788c;
 }
 
+#fmSwitchable {
+    color: #f18ea3;
+    border-bottom: 1px dashed var(--main);
+    cursor: pointer;
+}
+
 #fmInformant {
     font-size: 0.95rem;
     margin-left: 0.1rem;
@@ -2286,4 +2292,9 @@ html.no-csstransitions .home-content__main {
     background-color: var(--main);
     border-radius: 1px;
     cursor: pointer;
+}
+
+#fmfoot_err {
+    opacity: 0.6;
+    color: #e769b5;
 }

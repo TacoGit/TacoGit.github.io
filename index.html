@@ -100,10 +100,10 @@
 
             <div class="row home-copyright lastplayed lastfm">
                 <p id="titledFm">tanos is currently listening to <a onclick="updateLastFM('direct')" id="fmPlaying">...</a> <a id="fmLoved">💕</a><a id="fmInformant">∙ live updated by last.fm</a></p>
-                <p id="playsngenreFm">has <a id="fmPlays">...</a> plays on this song - <a id="fmGenre">genre, genre, genre</a></p>
+                <p id="playsngenreFm">has <a id="fmPlays">...</a> plays on this <a onclick="rebuildFm('switch')" id="fmSwitchable">song</a> - <a id="fmGenre">genre, genre, genre</a></p>
             </div>
 
-            <div class="row home-copyright">
+            <div class="row home-copyright" style="pointer-events: none;">
                 <img id="sitecon" width="10px" style="cursor: pointer;" onclick="alert('THANKS ALEPH!!')" src="images/pink.gif"></img>
                 <span id="siteby">site by @tanossh.i on discord</span>
                 <span id="doonat">donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a></span>

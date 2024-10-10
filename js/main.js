@@ -79,31 +79,33 @@ function s_q_p() {
 
 function adjustTextonSizeChange() { // messy code i got it
     if (window.innerWidth <= 800) {
+        var elementsToHide = ["siteby", "doonat", "sitecon"];
+        elementsToHide.forEach(function(elementId) {
+            document.getElementById(elementId).style.display = "none";
+        });
         document.getElementById("canbechangedbywindowpreferences").innerText = "bottom";
-        document.getElementById("siteby").style.display = "none";
-        document.getElementById("doonat").style.display = "none";
-        document.getElementById("sitecon").style.display = "none";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "normal"; // its for readablity on smaller devices
         document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "0px";
     } else {
+        ["canbechangedbywindowpreferences", "siteby", "doonat", "sitecon"].forEach(id => {
+            document.getElementById(id).style.display = "inline-block";
+        });
         document.getElementById("canbechangedbywindowpreferences").innerText = "right";
-        document.getElementById("siteby").style.display = "inline-block";
-        document.getElementById("doonat").style.display = "inline-block";
-        document.getElementById("sitecon").style.display = "inline-block";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "italic";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "-23px";
     }
 }
 
 var fmPrivacyMode = true;
+var setModus = "song";
 
 function updateLastFM(additional) {
+    document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
     document.body.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt mess this up
     var cache = new LastFMCache(); // Request Cache
 
     var lastfm = new LastFM({
       apiKey    : '219c75f1150728c565372e20d648430e',
-      apiSecret : 'eca874a2ba992f143fe5fa4c745c2351',
       cache     : cache
     });
 
@@ -179,9 +181,10 @@ function updateLastFM(additional) {
 
         }});
         
-        // Get user playcount, if broken set question-mark
+        // Get playcount, if broken set question-mark
         lastfm.track.getInfo({artist: `${lastTrack.artist['#text']}`, track: `${lastTrack.name}`, user: "tanosshi"}, {success: function(data){
             var trackInfo = data.track;
+
             document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
 
             var lovedSentences = [
@@ -205,6 +208,25 @@ function updateLastFM(additional) {
             document.getElementById("fmInformant").style.color = isLoved ? "rgb(226, 85, 214, 1)" : "rgba(255, 255, 255, 0.7)";
         }});
 
+        if (setModus == "artist" || additional == "artist") {
+            var arts = `${lastTrack.artist['#text']}`
+            lastfm.user.getTopArtists({user: "tanosshi"}, {success: function(data){
+                const artistData = data.topartists.artist.find(artist => artist.name === arts);
+                if (artistData) {
+                    const playcount = artistData.playcount; // Get the playcount
+                    document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
+                } else {
+                    document.getElementById("doonat").innerHTML = `<a id="fmfoot_err">!! playcount not available for this artist</a>`;
+                    console.log(`Artist ${arts} not found in top artists.`);
+                }
+            }});
+        }
+
+        document.getElementById('fmSwitchable').textContent = setModus
+        const fmTextElement = document.getElementById('fmPlaying');
+        if (fmTextElement.textContent.length > 40)
+            fmTextElement.textContent = fmTextElement.textContent.substring(0, 40) + '...';
+
       } else { hideFM() }
 
     }, error: function(code, message){ hideFM(); console.log(code, message) }});
@@ -214,10 +236,18 @@ function hideFM() {
     ["titledFm", "playsngenreFm", "fmGenre", "fmPlaying"].forEach(id => document.getElementById(id).style.display = "none");
 }
 
-function rebuildFm() {
+function rebuildFm(mode) {
+    console.log("forcing a rebuild")
+    if (mode == 'switch') {
+        if (document.getElementById('fmSwitchable').textContent == 'song')
+            setModus = "artist";
+        else
+            setModus = "song";
+    }
+
     document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>{updating site please wait}</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ {updating site please wait}</a>";
-    document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>{updating site please wait}</a> plays on this song - <a id='fmGenre'>{updating site please wait}</a>";
-    updateLastFM()
+    document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>{updating site please wait}</a> plays on this <a onclick=\"rebuildFm('switch')\" id=\"fmSwitchable\">...</a> - <a id='fmGenre'>{updating site please wait}</a>";
+    updateLastFM(setModus)
 }
 
 function updateClock() {
@@ -227,7 +257,7 @@ function updateClock() {
     }
 }
 
-setInterval(updateLastFM, 5852);
+setInterval(updateLastFM, 8852);
 setInterval(updateClock, 30000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
