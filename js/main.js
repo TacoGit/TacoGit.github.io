@@ -224,8 +224,8 @@ function updateLastFM(additional) {
 
         document.getElementById('fmSwitchable').textContent = setModus
         const fmTextElement = document.getElementById('fmPlaying');
-        if (fmTextElement.textContent.length > 40)
-            fmTextElement.textContent = fmTextElement.textContent.substring(0, 40) + '...';
+        if (fmTextElement.textContent.length > 50)
+            fmTextElement.textContent = fmTextElement.textContent.substring(0, 50) + '...';
 
       } else { hideFM() }
 
