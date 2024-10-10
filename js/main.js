@@ -185,7 +185,8 @@ function updateLastFM(additional) {
         lastfm.track.getInfo({artist: `${lastTrack.artist['#text']}`, track: `${lastTrack.name}`, user: "tanosshi"}, {success: function(data){
             var trackInfo = data.track;
 
-            document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
+            if (setModus == "song")
+                 document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
 
             var lovedSentences = [
                 "∙ ooh! this one is personally loved by tanos",
