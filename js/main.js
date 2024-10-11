@@ -98,9 +98,9 @@ function adjustTextonSizeChange() { // messy code i got it
 
 var fmPrivacyMode = true;
 var setModus = "song";
+var show_paypal = false;
 
 function updateLastFM(additional) {
-    document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
     document.body.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt mess this up
     var cache = new LastFMCache(); // Request Cache
 
@@ -112,6 +112,7 @@ function updateLastFM(additional) {
     var playingSong = "...";
 
     // Load the current playing music, or the last played music
+    console.log("Loading user.getRecentTracks => Artist Information, Music Title")
     lastfm.user.getRecentTracks({user: 'tanosshi'}, {success: function(data){
       try {
         var attemptAtConnection = data.recenttracks.track[0]["@attr"].nowplaying // i shall not overload the fm servers
@@ -165,6 +166,7 @@ function updateLastFM(additional) {
         document.getElementById("fmPlaying").textContent = playingSong;
 
         // Get top 3 genres and add it to the genre tag
+        console.log("Loading artist.getTopTags => Artist genres")
         lastfm.artist.getTopTags({artist: `${doCorruptReadability === 1 ? "Lamp" : doCorruptReadability === 2 ? "Azumi Takahashi" : lastTrack.artist['#text']}`, user: "tanosshi"}, {success: function(data){
 
             // Grab tags
@@ -181,12 +183,16 @@ function updateLastFM(additional) {
 
         }});
         
+        var cached_playcount = `...`
         // Get playcount, if broken set question-mark
+        console.log("Loading track.getInfo => Song playcount, favorite")
         lastfm.track.getInfo({artist: `${lastTrack.artist['#text']}`, track: `${lastTrack.name}`, user: "tanosshi"}, {success: function(data){
             var trackInfo = data.track;
-
-            if (setModus == "song")
-                 document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
+            cached_playcount = `${trackInfo.userplaycount}`
+            if (setModus == "song") {
+                document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
+                document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
+            }
 
             var lovedSentences = [
                 "∙ ooh! this one is personally loved by tanos",
@@ -207,21 +213,28 @@ function updateLastFM(additional) {
             document.getElementById("fmLoved").style.display = isLoved ? "inline-block" : "none";
             document.getElementById("fmInformant").textContent = isLoved ? lovedSentences[Math.floor(Math.random() * lovedSentences.length)] : informantSentences[Math.floor(Math.random() * informantSentences.length)];
             document.getElementById("fmInformant").style.color = isLoved ? "rgb(226, 85, 214, 1)" : "rgba(255, 255, 255, 0.7)";
-        }});
 
-        if (setModus == "artist" || additional == "artist") {
-            var arts = `${lastTrack.artist['#text']}`
-            lastfm.user.getTopArtists({user: "tanosshi"}, {success: function(data){
-                const artistData = data.topartists.artist.find(artist => artist.name === arts);
-                if (artistData) {
-                    const playcount = artistData.playcount; // Get the playcount
-                    document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
-                } else {
-                    document.getElementById("doonat").innerHTML = `<a id="fmfoot_err">!! playcount not available for this artist</a>`;
-                    console.log(`Artist ${arts} not found in top artists.`);
-                }
-            }});
-        }
+            if (setModus == "artist" || additional == "artist") {
+                var arts = `${lastTrack.artist['#text']}`
+                console.log("Loading user.getTopArtists => Get artist playcount")
+                lastfm.user.getTopArtists({user: "tanosshi"}, {success: function(data){
+                    const artistData = data.topartists.artist.find(artist => artist.name === arts);
+                    if (artistData) {
+                        const playcount = artistData.playcount; // Get the playcount
+                        document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
+                        show_paypal = true;
+                    } else {
+                        document.getElementById("fmPlays").textContent = `${cached_playcount || "?"} plays`;
+                        document.getElementById("doonat").innerHTML = `<a id="fmfoot_err">!! artist playcount not available for this artist</a>`;
+                        show_paypal = false;
+                        console.log(`Artist ${arts} not found in top artists.`);
+                    }
+                }});
+            }
+
+            if (show_paypal)
+                document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
+        }});
 
         document.getElementById('fmSwitchable').textContent = setModus
         const fmTextElement = document.getElementById('fmPlaying');
@@ -246,8 +259,8 @@ function rebuildFm(mode) {
             setModus = "song";
     }
 
-    document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>{updating site please wait}</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ {updating site please wait}</a>";
-    document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>{updating site please wait}</a> plays on this <a onclick=\"rebuildFm('switch')\" id=\"fmSwitchable\">...</a> - <a id='fmGenre'>{updating site please wait}</a>";
+    document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>one moment..</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ one moment..</a>";
+    document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>one moment..</a> plays on this <a onclick=\"rebuildFm('switch')\" id=\"fmSwitchable\">one moment..</a> - <a id='fmGenre'>one moment..</a>";
     updateLastFM(setModus)
 }
 
@@ -258,7 +271,7 @@ function updateClock() {
     }
 }
 
-setInterval(updateLastFM, 8852);
+setInterval(updateLastFM, 4852);
 setInterval(updateClock, 30000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
