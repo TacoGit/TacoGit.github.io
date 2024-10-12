@@ -100,7 +100,23 @@ var fmPrivacyMode = true;
 var setModus = "song";
 var show_paypal = false;
 
+var prev;
+
+function forceLastFM(isForeign) { // required because sometimes gets fucked up by the request data saver
+    // <Start>
+    prev = "";
+    setModus = "song";
+    fmPrivacyMode = true;
+    playingSong = "...";
+
+    if (!isForeign) {
+        updateLastFM()
+    } 
+    // <Finish>
+}
+
 function updateLastFM(additional) {
+    // <Start>
     document.body.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt mess this up
     var cache = new LastFMCache(); // Request Cache
 
@@ -112,7 +128,7 @@ function updateLastFM(additional) {
     var playingSong = "...";
 
     // Load the current playing music, or the last played music
-    console.log("Loading user.getRecentTracks => Artist Information, Music Title")
+    console.log("[REQ] Loading user.getRecentTracks => Artist Information, Music Title")
     lastfm.user.getRecentTracks({user: 'tanosshi'}, {success: function(data){
       try {
         var attemptAtConnection = data.recenttracks.track[0]["@attr"].nowplaying // i shall not overload the fm servers
@@ -121,7 +137,7 @@ function updateLastFM(additional) {
       }
 
       if (fmPrivacyMode && attemptAtConnection != undefined) {
-        if (["wockstxrr", "unknown", "Testimony", "PW1", "Unknown", "wockstarr", "Big Man Gaming", "slitue", "Tonil", "null", "1uke", "fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight"].includes(data.recenttracks.track[0].artist['#text'])) {
+        if (["wockstxrr", "unknown", "Testimony", "PW1", "Unknown", "wockstarr", "Big Man Gaming", "slitue", "Tonil", "null", "1uke", "fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight", "#Real", "some random name", "kxrrvpt", "tiktokaudioguy", "wockstarr"].includes(data.recenttracks.track[0].artist['#text'])) {
             attemptAtConnection = undefined;
             console.log("[FM]: Privacy Mode toggled");
         }
@@ -134,6 +150,11 @@ function updateLastFM(additional) {
             "or last.fm could be down ?",
             "you'll live dont worry",
             "thats crazy",
+            "unfortunate",
+            "lol maybe another time",
+            "err time to mind your own business",
+            "¯\_(ツ)_/¯",
+            "🤷",
             ":("
         ];
         document.getElementById("playsngenreFm").innerHTML = `${sadSentences[Math.floor(Math.random() * sadSentences.length)]}<a id="fmPlays">, will automatically rebuild after activity found</a><a id="fmGenre"></a>`
@@ -162,85 +183,108 @@ function updateLastFM(additional) {
         if (additional == "direct")
             window.location.href = `https://www.last.fm/music/${lastTrack.artist['#text']}/_/${(lastTrack.name).replace(" ", "+").replace(" ", "+").replace(" ", "+")}`; // 3 different unicodes i believe
 
+        // <Main>
         playingSong = `${doCorruptReadability === 1 ? "Lamp" : doCorruptReadability === 2 ? "Azumi Takahashi" : lastTrack.artist['#text']} - ${lastTrack.name}`
         document.getElementById("fmPlaying").textContent = playingSong;
 
         // Get top 3 genres and add it to the genre tag
-        console.log("Loading artist.getTopTags => Artist genres")
-        lastfm.artist.getTopTags({artist: `${doCorruptReadability === 1 ? "Lamp" : doCorruptReadability === 2 ? "Azumi Takahashi" : lastTrack.artist['#text']}`, user: "tanosshi"}, {success: function(data){
+        if(prev != playingSong + " => " + setModus) {
+            console.log("[REQ] Loading artist.getTopTags => Artist genres")
+            lastfm.artist.getTopTags({artist: `${doCorruptReadability === 1 ? "Lamp" : doCorruptReadability === 2 ? "Azumi Takahashi" : lastTrack.artist['#text']}`, user: "tanosshi"}, {success: function(data){
 
-            // Grab tags
-            var topTags = data.toptags.tag.slice(0, 3).map(tag => tag.name).join(', ');
+                // Grab tags
+                var topTags = data.toptags.tag.slice(0, 3).map(tag => tag.name).join(', ');
 
-            // Minify NSFW or troll tags created by the Last.fm community
-            topTags = topTags.replace(/rape|official shit|garbage|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|urine|gore|vore/g, ""); // Tag cleanify
-            topTags = topTags.replace(", ,", ","); // After cleanup
+                // Minify NSFW or troll tags created by the Last.fm community
+                topTags = topTags.replace(/rape|official shit|garbage|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|urine|gore|vore/g, ""); // Tag cleanify
+                topTags = topTags.replace(", ,", ","); // After cleanup
+                topTags = topTags.replace("seen live", "live artist"); // Misunderstanding of tags
 
-            topTags = topTags.toLowerCase()
+                topTags = topTags.toLowerCase()
 
-            // Set
-            document.getElementById("fmGenre").textContent = `${topTags}` || "no genres found, assumably slowcore?";
+                // Set
+                document.getElementById("fmGenre").textContent = `${topTags}` || "no genres found, assumably slowcore?";
 
-        }});
+            }});
+        }
+        else {
+            console.log("[REQ BLOCKED:1] Previous song is too familiar to the current.")
+        }
         
         var cached_playcount = `...`
+        // <Middle>
         // Get playcount, if broken set question-mark
-        console.log("Loading track.getInfo => Song playcount, favorite")
-        lastfm.track.getInfo({artist: `${lastTrack.artist['#text']}`, track: `${lastTrack.name}`, user: "tanosshi"}, {success: function(data){
-            var trackInfo = data.track;
-            cached_playcount = `${trackInfo.userplaycount}`
-            if (setModus == "song") {
-                document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
-                document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
-            }
+        if(prev != playingSong + " => " + setModus) {
+            console.log("[REQ] Loading track.getInfo => Song playcount, favorite")
+            lastfm.track.getInfo({artist: `${lastTrack.artist['#text']}`, track: `${lastTrack.name}`, user: "tanosshi"}, {success: function(data){
+                var trackInfo = data.track;
+                cached_playcount = `${trackInfo.userplaycount}`
+    
+                if (setModus == "song") {
+                    document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
+                    document.getElementById("fmPlays").textContent = `${trackInfo.userplaycount || "?"} plays`;
+                }
+    
+                var lovedSentences = [
+                    "∙ ooh! this one is personally loved by tanos",
+                    "∙ ouh! this one is personally loved by tanos",
+                    "∙ !! this one is personally loved by tanos",
+                    "∙ marked as favorite by tanos",
+                    "∙ tanos found this song pretty good",
+                    "∙ tanos is in love with this one",
+                    "∙ YEAAH THIS ONE IS GOOD, <3 from tanos",
+                    "∙ marked as loved by tanos"
+                ];
+                var informantSentences = [
+                    "∙ live updated by last.fm",
+                    "∙ automatically refreshed !",
+                    "∙ live information by last.fm",
+                    "∙ automatically updated !",
+                    "∙ live data by last.fm",
+                    "∙ automatically changing !",
+                ];
+    
+                document.getElementById("fmInformant").style.color = "rgba(255, 255, 255, 0.7);";
+                const isLoved = trackInfo.userloved === "1";
+                document.getElementById("fmLoved").style.display = isLoved ? "inline-block" : "none";
+                document.getElementById("fmInformant").textContent = isLoved ? lovedSentences[Math.floor(Math.random() * lovedSentences.length)] : informantSentences[Math.floor(Math.random() * informantSentences.length)];
+                document.getElementById("fmInformant").style.color = isLoved ? "rgb(226, 85, 214, 1)" : "rgba(255, 255, 255, 0.7)";
+    
+                if (setModus == "artist" || additional == "artist") {
+                    var arts = `${lastTrack.artist['#text']}`
+                    console.log("[REQ] Loading user.getTopArtists => Get artist playcount")
+                    lastfm.user.getTopArtists({user: "tanosshi"}, {success: function(data){
+                        const artistData = data.topartists.artist.find(artist => artist.name === arts);
+                        if (artistData) {
+                            const playcount = artistData.playcount; // Get the playcount
+                            document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
+                            show_paypal = true;
+                        } else {
+                            document.getElementById("fmPlays").textContent = `${cached_playcount || "?"} plays`;
+                            document.getElementById("doonat").innerHTML = `<a id="fmfoot_err">!! artist playcount not available for this artist</a>`;
+                            show_paypal = false;
+                            console.log(`Artist ${arts} not found in top artists.`);
+                        }
+                    }});
+                }
+    
+                if (show_paypal)
+                    document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
+            }});
+        }
+        else {
+            console.log("[REQ BLOCKED:2+3] Previous song is too familiar to the current.")
+        }
 
-            var lovedSentences = [
-                "∙ ooh! this one is personally loved by tanos",
-                "∙ ouh! this one is personally loved by tanos",
-                "∙ !! this one is personally loved by tanos",
-                "∙ tanos is in love with this one",
-                "∙ marked as loved by tanos"
-            ];
-            var informantSentences = [
-                "∙ live updated by last.fm",
-                "∙ automatically refreshed !",
-                "∙ live information by last.fm",
-                "∙ automatically updated !"
-            ];
-
-            document.getElementById("fmInformant").style.color = "rgba(255, 255, 255, 0.7);";
-            const isLoved = trackInfo.userloved === "1";
-            document.getElementById("fmLoved").style.display = isLoved ? "inline-block" : "none";
-            document.getElementById("fmInformant").textContent = isLoved ? lovedSentences[Math.floor(Math.random() * lovedSentences.length)] : informantSentences[Math.floor(Math.random() * informantSentences.length)];
-            document.getElementById("fmInformant").style.color = isLoved ? "rgb(226, 85, 214, 1)" : "rgba(255, 255, 255, 0.7)";
-
-            if (setModus == "artist" || additional == "artist") {
-                var arts = `${lastTrack.artist['#text']}`
-                console.log("Loading user.getTopArtists => Get artist playcount")
-                lastfm.user.getTopArtists({user: "tanosshi"}, {success: function(data){
-                    const artistData = data.topartists.artist.find(artist => artist.name === arts);
-                    if (artistData) {
-                        const playcount = artistData.playcount; // Get the playcount
-                        document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
-                        show_paypal = true;
-                    } else {
-                        document.getElementById("fmPlays").textContent = `${cached_playcount || "?"} plays`;
-                        document.getElementById("doonat").innerHTML = `<a id="fmfoot_err">!! artist playcount not available for this artist</a>`;
-                        show_paypal = false;
-                        console.log(`Artist ${arts} not found in top artists.`);
-                    }
-                }});
-            }
-
-            if (show_paypal)
-                document.getElementById("doonat").innerHTML = `donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a>`;
-        }});
-
+        // <Finish>
         document.getElementById('fmSwitchable').textContent = setModus
         const fmTextElement = document.getElementById('fmPlaying');
-        if (fmTextElement.textContent.length > 50)
-            fmTextElement.textContent = fmTextElement.textContent.substring(0, 50) + '...';
 
+        if (playingSong.toLowerCase().indexOf("i really want to stay") === -1 && fmTextElement.textContent.length > 50)
+            fmTextElement.textContent = fmTextElement.textContent.substring(0, 50) + '...';
+                
+        prev = playingSong + " => " + setModus;
+        console.log(" ")
       } else { hideFM() }
 
     }, error: function(code, message){ hideFM(); console.log(code, message) }});
@@ -250,7 +294,10 @@ function hideFM() {
     ["titledFm", "playsngenreFm", "fmGenre", "fmPlaying"].forEach(id => document.getElementById(id).style.display = "none");
 }
 
+var onRebuildWait = "one moment.."
+
 function rebuildFm(mode) {
+    forceLastFM(true)
     console.log("forcing a rebuild")
     if (mode == 'switch') {
         if (document.getElementById('fmSwitchable').textContent == 'song')
@@ -259,8 +306,8 @@ function rebuildFm(mode) {
             setModus = "song";
     }
 
-    document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>one moment..</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ one moment..</a>";
-    document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>one moment..</a> plays on this <a onclick=\"rebuildFm('switch')\" id=\"fmSwitchable\">one moment..</a> - <a id='fmGenre'>one moment..</a>";
+    document.getElementById("titledFm").innerHTML = "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>" + onRebuildWait + "</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ " + onRebuildWait + "</a>";
+    document.getElementById("playsngenreFm").innerHTML = "has <a id='fmPlays'>" + onRebuildWait + "</a> plays on this <a onclick=\"rebuildFm('switch')\" id=\"fmSwitchable\">" + onRebuildWait + "</a> - <a id='fmGenre'>" + onRebuildWait + "</a>";
     updateLastFM(setModus)
 }
 
@@ -271,7 +318,8 @@ function updateClock() {
     }
 }
 
-setInterval(updateLastFM, 4852);
+setInterval(updateLastFM, 5543);
+setInterval(forceLastFM, 10326);
 setInterval(updateClock, 30000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
