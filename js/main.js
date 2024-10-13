@@ -6,7 +6,7 @@ var finalDate;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
     function ssFinalCountdown() {
-        var finalDate = new Date("February 6, 2025 00:00:00").getTime();
+        var finalDate = new Date("February 6, 2025 00:00:01").getTime();
         $('.home-content__clock').countdown(finalDate)
             .on('update.countdown finish.countdown', function(event) {
                 var str = '<div class=\"top\"><div class=\"time days\">' +
@@ -47,15 +47,19 @@ function projects() {
     $("#home").animate({
         opacity: "0",
     }, 500);
+
     $("#home").css({
         '-webkit-filter': 'blur(18px)'
     }).animate({}, 1000);
+
     setTimeout(function() {
         document.getElementById("home").style.display = "none";
     }, 500);
+
     $("#projects").animate({
         opacity: "1"
     }, 500);
+
     setTimeout(function() {
         document.getElementById("projects").style.display = "block";
     }, 500);
@@ -83,6 +87,7 @@ function adjustTextonSizeChange() { // messy code i got it
         elementsToHide.forEach(function(elementId) {
             document.getElementById(elementId).style.display = "none";
         });
+
         document.getElementById("canbechangedbywindowpreferences").innerText = "bottom";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "normal"; // its for readablity on smaller devices
         document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "0px";
@@ -90,6 +95,7 @@ function adjustTextonSizeChange() { // messy code i got it
         ["canbechangedbywindowpreferences", "siteby", "doonat", "sitecon"].forEach(id => {
             document.getElementById(id).style.display = "inline-block";
         });
+
         document.getElementById("canbechangedbywindowpreferences").innerText = "right";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "italic";
         document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "-23px";
@@ -137,7 +143,7 @@ function updateLastFM(additional) {
       }
 
       if (fmPrivacyMode && attemptAtConnection != undefined) {
-        if (["wockstxrr", "unknown", "Testimony", "PW1", "Unknown", "wockstarr", "Big Man Gaming", "slitue", "Tonil", "null", "1uke", "fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight", "#Real", "some random name", "kxrrvpt", "tiktokaudioguy", "wockstarr"].includes(data.recenttracks.track[0].artist['#text'])) {
+        if (["wockstxrr", "unknown", "Testimony", "PW1", "Unknown", "wockstarr", "Big Man Gaming", "slitue", "Tonil", "null", "1uke", "fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight", "#Real", "some random name", "kxrrvpt", "tiktokaudioguy", "wockstarr", "crazycookiemaniac", "User "].includes(data.recenttracks.track[0].artist['#text'])) {
             attemptAtConnection = undefined;
             console.log("[FM]: Privacy Mode toggled");
         }
@@ -153,7 +159,7 @@ function updateLastFM(additional) {
             "unfortunate",
             "lol maybe another time",
             "err time to mind your own business",
-            "¯\_(ツ)_/¯",
+            `¯\_(ツ)_/¯`,
             "🤷",
             ":("
         ];
@@ -185,6 +191,13 @@ function updateLastFM(additional) {
 
         // <Main>
         playingSong = `${doCorruptReadability === 1 ? "Lamp" : doCorruptReadability === 2 ? "Azumi Takahashi" : lastTrack.artist['#text']} - ${lastTrack.name}`
+        
+        // Check if title contains a different language ?->switch
+        if (/[^a-zA-Z0-9\s\-\[\]&é,.()'$*]/.test(playingSong) || /[!]/.test(playingSong))
+            document.getElementById("fmPlaying").style.fontFamily = "altlang";
+        else
+            document.getElementById("fmPlaying").style.fontFamily = "nfont";
+        
         document.getElementById("fmPlaying").textContent = playingSong;
 
         // Get top 3 genres and add it to the genre tag
@@ -212,6 +225,7 @@ function updateLastFM(additional) {
         }
         
         var cached_playcount = `...`
+
         // <Middle>
         // Get playcount, if broken set question-mark
         if(prev != playingSong + " => " + setModus) {
@@ -280,7 +294,7 @@ function updateLastFM(additional) {
         document.getElementById('fmSwitchable').textContent = setModus
         const fmTextElement = document.getElementById('fmPlaying');
 
-        if (playingSong.toLowerCase().indexOf("i really want to stay") === -1 && fmTextElement.textContent.length > 50)
+        if (playingSong.toLowerCase().indexOf("i really want to stay") === -1 && playingSong.toLowerCase().indexOf("mass of the fermenting dregs") === -1 && fmTextElement.textContent.length > 50)
             fmTextElement.textContent = fmTextElement.textContent.substring(0, 50) + '...';
                 
         prev = playingSong + " => " + setModus;
@@ -298,7 +312,7 @@ var onRebuildWait = "one moment.."
 
 function rebuildFm(mode) {
     forceLastFM(true)
-    console.log("forcing a rebuild")
+    console.log("[<>] forcing a rebuild")
     if (mode == 'switch') {
         if (document.getElementById('fmSwitchable').textContent == 'song')
             setModus = "artist";

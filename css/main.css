@@ -13,9 +13,26 @@ body {
     scroll-behavior: smooth;
 }
 
-@font-face {
+@font-face { /*Default*/
     font-family: 'nfont';
     src: url('../Renogare-Regular.ttf');
+}
+
+@font-face { /*Foreign*/
+    font-family: 'altlang';
+    src: url('./fonts/multi-lang/NotoSansJP-VariableFont_wght.ttf');
+    font-weight: 650;
+}
+
+@font-face { /*Backup Foreign*/
+    font-family: 'multilang';
+    src: url('./fonts/multi-lang/ë─ÉΣè█âSâVâbâN.ttf');
+}
+
+body:lang(ja),
+body:lang(ko),
+body:lang(x-unknown) {
+    font-family: 'altlang';
 }
 
 h1 {
@@ -2233,7 +2250,6 @@ html.no-csstransitions .home-content__main {
 }
 
 #titledFm {
-    cursor: pointer;
     color: white;
     opacity: 0.6;
     font-size: 1.7rem;
@@ -2262,6 +2278,7 @@ html.no-csstransitions .home-content__main {
 
 #fmPlaying {
     color: #d4788c;
+    cursor: pointer;
 }
 
 #fmSwitchable {
