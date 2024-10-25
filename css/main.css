@@ -2290,13 +2290,14 @@ html.no-csstransitions .home-content__main {
 #fmInformant {
     font-size: 0.95rem;
     margin-left: 0.1rem;
-    animation: fadeInOut 3s infinite;
+    animation: fadeInOut 2.9s infinite;
 }
 
 @keyframes fadeInOut {
     0% { opacity: 0.3; }
+
     50% { opacity: 0.9; }
-    90% { opacity: 0.7; }
+
     100% { opacity: 0.3; }
 }
 

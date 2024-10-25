@@ -4,7 +4,7 @@
 html {
   font-family: sans-serif;
   line-height: 1.15;
-  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -258,7 +258,7 @@ body {
   word-wrap: break-word;
   text-rendering: optimizeLegibility;
   -webkit-overflow-scrolling: touch;
-  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 body,
