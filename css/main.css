@@ -2301,6 +2301,19 @@ html.no-csstransitions .home-content__main {
     100% { opacity: 0.3; }
 }
 
+#evangelionref {
+    animation: evngln 5s infinite;
+    color: #b56fd6;
+} /*Not the exact mech color but it looks better lighter*/
+
+@keyframes evngln {
+    0% { color: #b56fd6; }
+
+    50% { color: #A3D139; }
+
+    100% { color: #b56fd6; }
+}
+
 #personalityType {
     color: white;
     padding: 5px 10px; 
