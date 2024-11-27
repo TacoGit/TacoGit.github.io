@@ -29,6 +29,12 @@ var finalDate;
     })();
 })(jQuery);
 
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+//////                ============== PRIMARY CODE ==============                //////
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
 // this should load faster than the jquery one!!!! but ensures the script exists
 document.addEventListener('DOMContentLoaded', function() {
     log("[!!] Javascript initialized")
@@ -55,6 +61,28 @@ function projects() {
 
     setTimeout(function() {
         document.getElementById("projects").style.display = "block";
+    }, 500);
+}
+
+function site_settings() {
+    $("#home").animate({
+        opacity: "0",
+    }, 500);
+
+    $("#home").css({
+        '-webkit-filter': 'blur(18px)'
+    }).animate({}, 1000);
+
+    setTimeout(function() {
+        document.getElementById("home").style.display = "none";
+    }, 500);
+
+    $("#settings").animate({
+        opacity: "1"
+    }, 500);
+
+    setTimeout(function() {
+        document.getElementById("settings").style.display = "block";
     }, 500);
 }
 
@@ -112,6 +140,12 @@ function siteHealth() {
         }
     }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+//////             ==============LAST FM CODE BELOW ==============             //////
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 var fmPrivacyMode = true;
 var setModus = "song";
@@ -322,6 +356,7 @@ function updateLastFM(additional) {
                     case "Megumi Hayashibara":
                     case "林原めぐみ":
                     case "datfootdive":
+                    case "鷺巣詩郎":
                         additional_topTags = '<a id="evangelionref">evangelion!!!!!!!</a>';
                         break;
                     default:
@@ -428,7 +463,7 @@ function updateLastFM(additional) {
         document.getElementById("titledFm").innerHTML = last_fm_user !== "tanosshi" ? document.getElementById("titledFm").innerHTML.replace("tanos", last_fm_user) : document.getElementById("titledFm").innerHTML;
                 
         prev = playingSong + " => " + setModus;
-        log("[i] " + prev + "<> Tick:" + tick)
+        log("[i] " + prev + " <> Tick:" + tick)
       } else { hideFM() }
 
     }, error: function(code, message){ hideFM(); log("[!!] " + code, message) }});
