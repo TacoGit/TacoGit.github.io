@@ -33,7 +33,7 @@ function log(col) {
             case col.includes(`[i]`):
             case col.includes(`[o]`):
             case col.includes(`[?]`):
-                console.log(`\x1b[90m%s\x1b[0m`, col); // Gray foreground
+                console.log(`\x1b[90m%s\x1b[0m`, col);
                 break;
             case col.includes(`[REQ BLOCKED`):
             case col.includes(`[!!`):
@@ -41,13 +41,13 @@ function log(col) {
             case col.includes(`[ERR`):
             case col.includes(`Err`):
             case col.includes(`err`):
-                console.log(`\x1b[31m%s\x1b[0m`, col); // Red foreground
+                console.log(`\x1b[31m%s\x1b[0m`, col);
                 break;
             case col.includes(`[REQ]`):
             case col.includes(`[FM`):
             case col.includes(`[L`):
             case col.includes(`[SET`):
-                console.log(`\x1b[44m%s\x1b[0m`, col); // Blue background
+                console.log(`\x1b[44m%s\x1b[0m`, col);
                 break;
             default:
                 console.log(col);

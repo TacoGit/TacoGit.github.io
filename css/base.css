@@ -49,7 +49,6 @@ pre {
 
 a {
   background-color: transparent;
-  -webkit-text-decoration-skip: objects;
 }
 
 a:active,
