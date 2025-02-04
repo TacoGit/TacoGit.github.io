@@ -475,15 +475,14 @@ function hideFM() {
 
 function updateClock() {
     log("[ADD] Reading if clock is nilled..");
-    if($('.time.days').html() == "00 <span>day</span>" && $('.time.hours').html() == "00 <span>H</span>" && $('.time.seconds').html() == "00 <span>S</span>") {
-        document.getElementById("updateableEpicness").innerText = "i wasted your time lol";
-        document.getElementById("updateableEpicness").style.textTransform = "lowercase";
+    if($('.time.days').html() == "00 <span>day</span>" && $('.time.hours').html() == "00 <span>H</span>" && $('.time.minutes').html() == "00 <span>M</span>" && $('.time.seconds').html() == "00 <span>S</span>") {
+        cook()
     }
 }
 
 setInterval(updateLastFM, 4543 + tick);
 setInterval(forceLastFM, 11326);
-setInterval(updateClock, 30000);
+setInterval(updateClock, 1000);
 setInterval(siteHealth, 1000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
