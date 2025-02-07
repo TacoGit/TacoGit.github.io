@@ -1,3 +1,5 @@
+// this part remains but wont be used again
+
 function cook() {
     document.getElementById("updateableEpicness").innerText = "i wasted your time lol";
     document.getElementById("updateableEpicness").style.textTransform = "lowercase";
@@ -6,7 +8,7 @@ function cook() {
                         <br>(new discord account remains <a>@tanossh.i</a>)`;
 }
 
-var countdownDate = new Date("February 7, 2025 00:01:00").getTime();
+var countdownDate = new Date("January 1, 2038 00:01:00").getTime();
 var countdownFunction = setInterval(function() {
     var now = new Date().getTime();
     var distance = countdownDate - now;
