@@ -6,7 +6,7 @@ var finalDate;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
     function ssFinalCountdown() {
-        var finalDate = new Date("January 1, 2038 00:00:01").getTime();
+        var finalDate = new Date("February 6, 2026 00:00:01").getTime();
         $('.home-content__clock').countdown(finalDate)
             .on('update.countdown finish.countdown', function(event) {
                 var str = '<div class=\"top\"><div class=\"time days\">' +
@@ -30,14 +30,11 @@ var finalDate;
 })(jQuery);
 
 /////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////
-//////                ============== PRIMARY CODE ==============                //////
-/////////////////////////////////////////////////////////////////////////////////////
+//////                ============== PRIMARY CODE ==============                /////
 /////////////////////////////////////////////////////////////////////////////////////
 
 // this should load faster than the jquery one!!!! but ensures the script exists
 document.addEventListener('DOMContentLoaded', function() {
-    log("[!!] Javascript initialized")
     document.getElementById("jsorono").innerHTML = "a random site<br> made for fun lol";
     updateLastFM()
 });
@@ -103,11 +100,6 @@ function s_q_p() {
 }
 
 function adjustTextonSizeChange() { // messy code i got it
-    try {
-        log("[o] Changing CSS view for viewport " + window.innerWidth); // colored
-    } catch {
-        console.log("[o] Changing CSS view for viewport " + window.innerWidth); // colorless
-    }
     if (window.innerWidth <= 800) {
         var elementsToHide = ["siteby", "doonat", "sitecon"];
         elementsToHide.forEach(function(elementId) {
@@ -130,11 +122,8 @@ function adjustTextonSizeChange() { // messy code i got it
 
 var c_sh_i = 0;
 function siteHealth() {
-    log("[L] Running a quick site diagnositcs")
     if (!document.querySelector('.lastfm')) {
         c_sh_i = c_sh_i +1;
-        log("[i] Site damage: [" + c_sh_i + "/4]")
-        log("[!!] Site is unhealthy, forcing a refresh if equals to 4/4..")
         if (c_sh_i >= 4) {
             window.location.reload();
         }
@@ -173,7 +162,6 @@ var onRebuildWait = "one moment.."
 
 function rebuildFm(mode) {
     forceLastFM(true)
-    log("[<>] forcing a rebuild")
     if (mode == 'switch') {
         if (document.getElementById('fmSwitchable').textContent == 'song')
             setModus = "artist";
@@ -187,57 +175,40 @@ function rebuildFm(mode) {
 }
 
 function updateLastFM(additional) {
-    log("< Start >");
-    document.body.style.filter = "invert(0)"; // Make sure any dark reader extension doesnt mess this up
+    document.body.style.filter = "invert(0)";
+
     var cache = new LastFMCache(); // Request Cache
 
-    log("[i] Creating a LastFM session")
     var lastfm = new LastFM({
       apiKey    : '219c75f1150728c565372e20d648430e',
       cache     : cache
     });
-    log("[i] LastFM session created, err:0")
 
     var playingSong = "...";
 
     if (last_fm_user != "tanosshi" && setModus == "privacy" && isHardPrivacyToggled != true) {
-        log("[!!] Error, changes found in variables, recreating self")
         forceLastFM(false);
         rebuildFm();
         updateLastFM();
     }
 
-    log("< Load the current playing music, or the last played music >")
-    log("[REQ] Loading user.getRecentTracks => Artist Information, Music Title")
-    lastfm.user.getRecentTracks({user: last_fm_user}, {success: function(data){ // change this to tanosshi to compare playcount
-      log("[?] Loads")
+    lastfm.user.getRecentTracks({user: last_fm_user}, {success: function(data){
       try {
         var attemptAtConnection = data.recenttracks.track[0]["@attr"].nowplaying // i shall not overload the fm servers
       } catch {
         var attemptAtConnection = undefined;
       }
 
-      log("< Setting privacy >")
       if (fmPrivacyMode && attemptAtConnection != undefined) {
         if (["wockstxrr", "unknown", "Testimony", "PW1", "Unknown", "wockstarr", "Big Man Gaming", "slitue", "Tonil", "null", "1uke", "fred", "KyaGaKill", "DIXMONDZ", "lain", "ansu", "your audio plug.", "matias", "thriiiedd", "jaleelsthinking", "mentallyscared", "Tonilk_2", "Tonilk", "ciaffa", "Devil's Work", "l.o.f.e", "alexedits", "Mashstache", "KILLxKILL", "Tonilk_", "Jean", "rayy", "666ep", "finesse", "Zeroh", "dex535", "User 45410008", "zeroh", "TrenHub", "daexnight", "#Real", "some random name", "kxrrvpt", "tiktokaudioguy", "wockstarr", "crazycookiemaniac", "User ", "maxnotwell327", "tea", "kingpin. (real)", "real", "kxrr", ""].includes(data.recenttracks.track[0].artist['#text'])) {
             attemptAtConnection = undefined;
-            log("[FM]: Privacy Mode toggled");
         }
       }
       
-      log("< Is privacy right? >")
       attemptAtConnection = !document.querySelector('.lastfm') ? undefined : attemptAtConnection;
 
-      var d = new Date();
-      var n = d.getTimezoneOffset();
-      var timezone = n / -60;
-
-      log("< Is rest needed ? >")
-      if (timezone < 6 && last_fm_user == "tanosshi" || isHardPrivacyToggled) {
-        log("[>] Needs privacy?")
-
+      if (last_fm_user == "tanosshi" || isHardPrivacyToggled) {
         var hr = new Date().getHours()
-        log("[i] Current hour(s) is " + hr);
         if ((hr >= 1 && hr <= 6) || isHardPrivacyToggled) {
             attemptAtConnection = undefined;
             setModus = "privacy";
@@ -248,7 +219,6 @@ function updateLastFM(additional) {
         }
       }
 
-      log("< Setting privacy rule >")
       if(attemptAtConnection == undefined || attemptAtConnection == null) {
         try {
             if (setModus == "privacy") {
@@ -286,25 +256,20 @@ function updateLastFM(additional) {
             }
         }
         catch {
-            log("[x] Ignore")
+            //
         }
       }
-      else if(data.recenttracks.track.length > 0) {
-        log("< Cleaning source page >")
+      else if (data.recenttracks.track.length > 0) {
         if (document.getElementById("titledFm").innerHTML == `tanos is currently not listening to anything <a id="fmInformant">∙ according to last.fm</a>` || document.getElementById("titledFm").innerHTML.includes("has forced privacy mode"))
             rebuildFm()
         
         var lastTrack = data.recenttracks.track[0];
 
-        log("< Checking if source of call is unknown >")
-
         if (additional == "direct")
             window.location.href = `https://www.last.fm/music/${lastTrack.artist['#text']}/_/${(lastTrack.name).replace(" ", "+").replace(" ", "+").replace(" ", "+")}`; // 3 different unicodes i believe
 
-        log("< Initializing main code >")
         playingSong = `${lastTrack.artist['#text'].includes('luxTypes') ? "luxTypes" : lastTrack.artist['#text']} - ${lastTrack.name}`
         
-        log("< title.lang = english ? foreign >")
         if (/[^a-zA-Z0-9\s\-\[\]&é,.()'$*!+\/%"]/.test(playingSong))
             document.getElementById("fmPlaying").style.fontFamily = "altlang";
         else
@@ -312,9 +277,7 @@ function updateLastFM(additional) {
         
         document.getElementById("fmPlaying").textContent = playingSong;
 
-        log("< Grabbing tags >")
         if(prev != playingSong + " => " + setModus) {
-            log("[REQ] Loading artist.getTopTags => Artist genres")
             var thefinalartist
             
             if (!lastTrack.artist['#text'].toLowerCase() != "tyler, the creator")
@@ -322,20 +285,16 @@ function updateLastFM(additional) {
             else
                 thefinalartist = lastTrack.artist['#text'];
 
-            log("[i] Artist set to check for tags == " + thefinalartist);
             lastfm.artist.getTopTags({artist: thefinalartist, user: last_fm_user}, {success: function(data){
-                log("< Loading tags >")
                 var topTags = data.toptags.tag.slice(0, 3).map(tag => tag.name).join(', ');
 
-                log("< Minifying NSFW tags if found >")
-                topTags = topTags.replace(/rape|official shit|garbage|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|urine|gore|vore|ukraine/g, ""); // Tag cleanify
+                topTags = topTags.replace(/rape|official shit|garbage|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|urine|furry|gore|vore|ukraine/g, ""); // Tag cleanify
                 topTags = topTags.replace(", ,", ","); // After cleanup
                 topTags = topTags.replace("seen live", "live artist"); // Misunderstanding of tags
 
                 topTags = topTags.toLowerCase()
                 var additional_topTags = "";
 
-                log("< Setting tag >")
 
                 switch (thefinalartist) {
                     case 'luxTypes':
@@ -366,22 +325,17 @@ function updateLastFM(additional) {
                         break;
                 }
                 
-                log("[SET] " + topTags);
                 
                 document.getElementById("fmGenre").innerHTML = `${topTags}${additional_topTags.length > 1 ? ', ' + additional_topTags : ''}`;
                 
             }});
         }
         else {
-            log("[REQ BLOCKED:1] Previous song is too familiar to the current.")
         }
         
         var cached_playcount = `...`
 
-        log("< Proceeding to the middle of the code >")
-        log("< Grabbing playcount >")
         if(prev != playingSong + " => " + setModus) {
-            log("[REQ] Loading track.getInfo => Song playcount, favorite")
             lastfm.track.getInfo({artist: `${lastTrack.artist['#text']}`, track: `${lastTrack.name}`, user: last_fm_user}, {success: function(data){
                 var trackInfo = data.track;
                 cached_playcount = `${trackInfo.userplaycount}`
@@ -421,19 +375,16 @@ function updateLastFM(additional) {
     
                 if (setModus == "artist" || additional == "artist") {
                     var arts = `${lastTrack.artist['#text']}`
-                    log("[REQ] Loading user.getTopArtists => Get artist playcount")
                     lastfm.user.getTopArtists({user: last_fm_user}, {success: function(data){
                         const artistData = data.topartists.artist.find(artist => artist.name === arts);
                         if (artistData) {
                             const playcount = artistData.playcount; // Get the playcount
                             document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
-                            log(playcount);
                             show_paypal = true;
                         } else {
                             document.getElementById("fmPlays").textContent = `${cached_playcount || "?"} plays`;
                             document.getElementById("doonat").innerHTML = `<a id="fmfoot_err">!! artist playcount not available for this artist</a>`;
                             show_paypal = false;
-                            log(`Artist ${arts} not found in top artists.`);
                         }
                     }});
                 }
@@ -443,47 +394,40 @@ function updateLastFM(additional) {
             }});
         }
         else {
-            log("[REQ BLOCKED:2+3] Previous song is too familiar to the current.")
         }
 
-        log("< Final Checkup >")
-        log("[i]" + " これを読む価値はあるでしょうか？ : {} " + cached_playcount);
         if (document.getElementById("fmPlays").innerHTML == "...") // would be too late here for a check, unless you want the site to look slow
             document.getElementById("fmPlays").innerHTML = cached_playcount === undefined ? "?" : cached_playcount;
 
-        log("< Finishing up >")
         tick = tick+1;
         document.getElementById('fmSwitchable').textContent = setModus
         const fmTextElement = document.getElementById('fmPlaying');
 
-        log("[i] Characters in total playing is " + fmTextElement.textContent.length)
         if (playingSong.toLowerCase().indexOf("i really want to stay") === -1 && playingSong.toLowerCase().indexOf("mass of the fermenting dregs") === -1 && fmTextElement.textContent.length > 85)
             fmTextElement.textContent = fmTextElement.textContent.substring(0, 50) + '...';
 
         document.getElementById("titledFm").innerHTML = last_fm_user !== "tanosshi" ? document.getElementById("titledFm").innerHTML.replace("tanos", last_fm_user) : document.getElementById("titledFm").innerHTML;
                 
         prev = playingSong + " => " + setModus;
-        log("[i] " + prev + " <> Tick:" + tick)
       } else { hideFM() }
-
-    }, error: function(code, message){ hideFM(); log("[!!] " + code, message) }});
-}
+}, error: function(code, message){ hideFM(); log("[!!] " + code, message) }});}
 
 function hideFM() {
     ["titledFm", "playsngenreFm", "fmGenre", "fmPlaying"].forEach(id => document.getElementById(id).style.display = "none");
 }
 
 function updateClock() {
-    log("[ADD] Reading if clock is nilled..");
     if($('.time.days').html() == "00 <span>day</span>" && $('.time.hours').html() == "00 <span>H</span>" && $('.time.minutes').html() == "00 <span>M</span>" && $('.time.seconds').html() == "00 <span>S</span>") {
-        cook()
+        //cook() feature isnt implemented
     }
 }
 
 setInterval(updateLastFM, 4543 + tick);
 setInterval(forceLastFM, 11326);
-setInterval(updateClock, 1000);
-setInterval(siteHealth, 1000);
+
+setInterval(updateClock, 10000);
+
+setInterval(siteHealth, 2251);
 
 window.addEventListener('resize', adjustTextonSizeChange);
 adjustTextonSizeChange();

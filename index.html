@@ -91,7 +91,7 @@
                     <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
                 </li>
                 <li>
-                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
+                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
                 </li>
                 <li>
                     <a onclick="window.location='https://discord.com/users/852608934623182848'" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
@@ -104,8 +104,16 @@
             <div class="home-content__line"></div>
 
             <div class="row home-copyright lastplayed lastfm">
-                <p id="titledFm">tanos is currently listening to <a onclick="updateLastFM('direct')" id="fmPlaying">...</a> <a id="fmLoved">💕</a><a id="fmInformant">∙ live updated by last.fm</a></p>
-                <p id="playsngenreFm">has <a id="fmPlays">...</a> plays on this <a onclick="rebuildFm('switch')" id="fmSwitchable">song</a> - <a id="fmGenre">genre, genre, genre</a></p>
+                <p id="titledFm" ondblclick="alert('hii')">tanos is currently listening to 
+                    <a onclick="updateLastFM('direct')" id="fmPlaying">...</a> 
+                    <a id="fmLoved">💕</a>
+                    <a id="fmInformant">∙ live updated by last.fm</a></p>
+
+                <p id="playsngenreFm">has 
+                    <a id="fmPlays">...</a> 
+                    plays on this <a onclick="rebuildFm('switch')" id="fmSwitchable">song</a> - 
+                    <a id="fmGenre">genre, genre, genre</a>
+                </p>
             </div>
 
             <div class="row home-copyright" style="pointer-events: none;">
@@ -155,6 +163,7 @@
                         <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/ai'">Bob the AI</button>
                         <button class="nonquality" onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
                         <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/skyline'">Skyline Compatibility List</button>
+                        <button class="nonquality" onclick="window.location='https://tanos.is-a.dev/fwee'">silly birthday giveaway page</button>
                     </div>
                 </div>
             </div>
@@ -167,10 +176,13 @@
                     <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
                 </li>
                 <li>
-                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
+                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
                 </li>
                 <li>
                     <a onclick="alert('@tanossh.i id:852608934623182848')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
+                </li>
+                <li>
+                    <a onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'" href="#"><i class="fa fa-gamepad" aria-hidden="true"></i><span>Games</span></a>
                 </li>
             </ul>
             <div class="home-content__line"></div>
