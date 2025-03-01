@@ -89,7 +89,7 @@
 
   document.getElementById("x").value = decodeURIComponent(escape(window.atob(hash)));
 
-  if (hash == " " || hash == " ")
+  if (hash == " " || hash == " " || hash == "" || hash == "undefined" || !hash)
     document.getElementById("x").value = "This site is encrypted with Base64. Simply type or paste code here and share the URL.";
 
   function reset() {
