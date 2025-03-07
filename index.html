@@ -50,7 +50,7 @@
 
         <div class="overlay"></div>
 
-        <div id="home" style="padding-top: 3rem;" class="home-content">
+        <div id="home" style="padding-top: 3rem; " class="home-content">
             <div style="padding-top: 3rem;" class="row home-content__main">
 
                 <div class="col-eight home-content__text pull-right">
@@ -63,8 +63,7 @@
                     <p id="intro" style="margin-top: 3rem;">
                         im tanos i just make random projects or decompilations<br> <a style="cursor:pointer" onclick="projects()">view my projects</a> or use the bar on the <a style="color:#757575;" id="canbechangedbywindowpreferences">right</a> for tabs<br>
                         new discord account <a>@tanossh.i</a><br><br>
-                        test out the new ui demo!
-                        <a href="demo/index.html">visit by pressing here</a>
+                        <a style="cursor: pointer;" onclick="proper_projects()">skip the bs and show me your project list in a formated way</a>
                     </p>
 
                     <h1 id="underlinetextredirectionsforthemodernpage">interested in   <a id="effectedmore">even more</a> ? <a href="https://myanimelist.net/profile/taanos" target="_blank" id="utrfmp">MyAnimeList</a>, <a href="https://www.last.fm/user/tanosshi" target="_blank" id="utrfmp">Last.fm</a>, <a href="https://tracker.gg/valorant/profile/riot/tanos%231337/performance" target="_blank" id="utrfmp">Valorant Tracker</a>, <a href="https://www.roblox.com/users/424051643/profile" target="_blank" id="utrfmp">Roblox</a>, <a href="https://sky.shiiyu.moe/stats/tanosmc/Banana" target="_blank" id="utrfmp">Hypixel Skyblock</a>, <a href="https://www.paypal.com/paypalme/tanospaypal" target="_blank" id="utrfmp">PayPal</a></h1>
@@ -123,6 +122,32 @@
             </div>
         </div>
 
+        <div id="txtprj" style="display:none; opacity:0;" class="home-content">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <pre style="white-space: pre-wrap; line-height: 1;" id="outputs"><span id="prjs">Javascript is not loaded in, silly</span></pre> 
+                </div>
+                
+                <ul class="home-social">
+                    <li>
+                        <a onclick="projects()" href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
+                    </li>
+                    <li>
+                        <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
+                    </li>
+                    <li>
+                        <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
+                    </li>
+                    <li>
+                        <a onclick="window.location='https://discord.com/users/852608934623182848'" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
+                    </li>
+                    <li>
+                        <a onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'" href="#"><i class="fa fa-gamepad" aria-hidden="true"></i><span>Games</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <div style="display: none; opacity:0;" id="projects" class="home-content">
             <div class="row home-content__main">
 
@@ -134,35 +159,37 @@
                     </h1>
 
                     <a onclick="s_a_p()" style="cursor:pointer; text-decoration:underline;">Show all projects</a> •
-                    <a onclick="s_q_p()" style="cursor:pointer; text-decoration:underline;">Only show quality projects</a>
+                    <a onclick="s_q_p()" style="cursor:pointer; text-decoration:underline;">Only show quality projects</a> •
+                    <a onclick="proper_projects()" style="cursor:pointer; text-decoration:underline;">Show the projects list in a tree form</a>
 
                     <div id="pp" class="projects">
                         <h3 style="margin-top: 3.5rem;" id="projectid">QUALITY</h3>
                         <button href="#">tanos.is-a.dev </button>
                         <button onclick="window.location='https://github.com/TacoGit/rei'">rei (prev; project fps fixer)</button> <!-- run fpsa() in console if you prefer the project fps fixer version -->
                         <button onclick="window.location='https://tacogit.github.io/paste'">PASTE</button>
-                        <button onclick="window.location='https://tacogit.github.io/project/whattocode/'">What To Code</button>
+                        <button onclick="window.location='../project/whattocode/'">What To Code</button>
                         <br>
                         <h3 id="projectid">DECOMPILATIONS OR PORTS</h3>
                         <button onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator 3 Android Port</button>
                         <button onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator Decompilation</button>
                         <br>
                         <h3 id="projectid">BASICS</h3>
-                        <button onclick="window.location='https://tacogit.github.io/project/weather'">weather</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/player'">Music Player</button>
+                        <button onclick="window.location='../project/weather'">weather</button>
+                        <button class="nonquality" onclick="window.location='../project/player'">Music Player</button>
                         <button class="nonquality" onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
+                        <button class="nonquality" onclick="window.location='../project/trackers'">Torrent Tracker List generator</button>
                         <br>
                         <h3 id="projectid">ONLY PARTIALLY MINE</h3>
-                        <button onclick="window.location='https://tacogit.github.io/project/typetester/'">TypeTester</button>
+                        <button onclick="window.location='../project/typetester/'">TypeTester</button>
                         <br>
                         <h3 id="projectid">BROKEN, DROPPED OR USELESS</h3>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/contact/'">Contact tanos</button>
+                        <button class="nonquality" onclick="window.location='../project/contact/'">Contact tanos</button>
                         <button class="nonquality" onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller</button>
                         <button class="nonquality" onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/setup-pc/'">Setup-PC </button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/ai'">Bob the AI</button>
+                        <button class="nonquality" onclick="window.location='../project/setup-pc/'">Setup-PC </button>
+                        <button class="nonquality" onclick="window.location='../project/ai'">Bob the AI</button>
                         <button class="nonquality" onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
-                        <button class="nonquality" onclick="window.location='https://tacogit.github.io/project/skyline'">Skyline Compatibility List</button>
+                        <button class="nonquality" onclick="window.location='../project/skyline'">Skyline Compatibility List</button>
                         <button class="nonquality" onclick="window.location='https://tanos.is-a.dev/fwee'">silly birthday giveaway page</button>
                     </div>
                 </div>
@@ -222,6 +249,7 @@
     <!-- Timers etc -->
 
     <script src="js/main.js"></script>
+    <script src="js/TextScrambler.js"></script>
     <!-- Contains all the code -->
 
     <script type="text/javascript" src="js/lastfm.api.md5.js"></script>

@@ -43,6 +43,9 @@ function projects() {
     $("#home").animate({
         opacity: "0",
     }, 500);
+    $("#txtprj").animate({
+        opacity: "0",
+    }, 500);
 
     $("#home").css({
         '-webkit-filter': 'blur(18px)'
@@ -50,6 +53,7 @@ function projects() {
 
     setTimeout(function() {
         document.getElementById("home").style.display = "none";
+        document.getElementById("txtprj").style.display = "none";
     }, 500);
 
     $("#projects").animate({
@@ -65,6 +69,9 @@ function site_settings() {
     $("#home").animate({
         opacity: "0",
     }, 500);
+    $("#txtprj").animate({
+        opacity: "0",
+    }, 500);
 
     $("#home").css({
         '-webkit-filter': 'blur(18px)'
@@ -72,6 +79,7 @@ function site_settings() {
 
     setTimeout(function() {
         document.getElementById("home").style.display = "none";
+        document.getElementById("txtprj").style.display = "none";
     }, 500);
 
     $("#settings").animate({
@@ -122,12 +130,78 @@ function adjustTextonSizeChange() { // messy code i got it
 
 var c_sh_i = 0;
 function siteHealth() {
+    if(are_proper_projects_rendered)
+        document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
+
     if (!document.querySelector('.lastfm')) {
         c_sh_i = c_sh_i +1;
         if (c_sh_i >= 4) {
             window.location.reload();
         }
     }
+}
+
+var are_proper_projects_rendered = false;
+let projectslii = `<pre style="white-space: pre-wrap; line-height: 1;" id='outputs'>
+    • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ projects ᓚᘏᗢ\n
+    ┊     ?     ┊     ┊     ★ Quality\n
+    ┊           ┊     ┊     ° . <a onclick="window.location='https://tanos.is-a.dev'">tanos.is-a.dev</a>     \n
+    ┊           ┊     ┊     ₊ . <a onclick="window.location='https://tacogit.github.io/paste'">paste</a>                                                                                    \n
+    ┊           ┊     ┊     . ✫ <a onclick="window.location='../project/whattocode'">what to code</a>          \n
+    ┊           ┊     ┊\n
+    ┊           ┊     ✫ Decompilations or android ports\n
+    ┊           ┊     ⊹ ｡ <a onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator successful decompilation</a>\n
+    ┊           ┊     ︶  ۫ <a onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator android port</a>\n
+    ┊           ┊\n
+    ┊           𐐪 Basics\n
+    ┊          ﹒〣  <a onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot $XNO crypto wallet <strong>base</strong> for the discord bot</a>      \n
+    ┊           ↷ ⋯ <a onclick="window.location='../project/player/'">Web MP3/OGG Player</a> \n
+    ┊           ¨ 🎞 <a onclick="window.location='../project/weather/'">Simplest weather site</a> \n
+    ┊           ¨ ⑅ <a onclick="window.location='../project/trackers/'">Torrent Tracker List generator</a> \n
+    ┊\n
+    糸 Broken, useless or unfinished projects\n
+    ˎˊ- Broken - <a onclick="window.location='../project/ai/'">Bob the AI</a>
+    ˎˊ- Broken - <a onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder (Link broken)</a>
+    ˎˊ- Useless - <a onclick="window.location='https://github.com/TacoGit/contact'">Contact tanos</a>
+    ˎˊ- Useless - <a onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">betterPluginInstaller (BetterDiscord)</a>
+    ˎˊ- Useless - <a onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows</a>
+    ˎˊ- Useless - <a onclick="window.location='../project/setup-pc/'">Setup-PC</a>
+    ˎˊ- Useless - <a onclick="window.location='../project/skyline/'">Skyline Emulator Compatibility List</a>
+    ˎˊ- Unfinished - <a onclick="window.location='https://tacogit.github.io/fwee/'">silly birthday "giveaway"</a>
+    ˎˊ- Unfinished - <a onclick="window.location='../project/typetester'">Type Tester (Only partially mine)</a>
+    
+    ⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖  ᓚ₍ ^. .^₎  ▬▬ι═══════ﺤ 
+    </pre>`;
+
+function proper_projects() {
+    project_simplified = projectslii.replace("Nanobot $XNO crypto wallet <strong>base</strong> for the discord bot</a>", "Nanobot $XNO crypto wallet <strong>base</strong> bot</a>");
+    project_simplified = project_simplified.replace("successful ", "");
+    project_simplified = project_simplified.replace("Kuudere Simulator ", "Kuudere Sim ");
+
+    document.getElementById("txtprj").style.display = "block";
+    document.getElementById("prjs").innerHTML = projectslii.replace(/[^\n]/g, (match, index) => { return index % 3 === 0 ? '{' : index % 3 === 1 ? '}' : 'i'; });
+    $("#home").animate({
+        opacity: "0",
+    }, 500);
+    $("#projects").animate({
+        opacity: "0",
+    }, 500);
+    $("#txtprj").animate({
+        opacity: "1",
+    }, 500);
+    new TextScrambler('#prjs', {
+        updateInterval: 0.02,
+        restoreDelay: 1,
+        restoreInterval: 1,
+        bulkSize: 30 
+    }, () => {
+        are_proper_projects_rendered = true;
+        document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
+    });
+    setTimeout(function() {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("projects").style.display = "none";
+    }, 500);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
