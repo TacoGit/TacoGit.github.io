@@ -147,7 +147,8 @@ let projectslii = `<pre style="white-space: pre-wrap; line-height: 1;" id='outpu
     ┊     ?     ┊     ┊     ★ Quality\n
     ┊           ┊     ┊     ° . <a onclick="window.location='https://tanos.is-a.dev'">tanos.is-a.dev</a>     \n
     ┊           ┊     ┊     ₊ . <a onclick="window.location='https://tacogit.github.io/paste'">paste</a>                                                                                    \n
-    ┊           ┊     ┊     . ✫ <a onclick="window.location='../project/whattocode'">what to code</a>          \n
+    ┊           ┊     ┊     . ✫ <a onclick="window.location='../project/whattocode'">what to code</a>          \n                                                                       \n
+    ┊           ┊     ┊     . ₊ <a onclick="window.location='https://github.com/TacoGit/tanos.fm'">tanos.fm</a>          \n
     ┊           ┊     ┊\n
     ┊           ┊     ✫ Decompilations or android ports\n
     ┊           ┊     ⊹ ｡ <a onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator successful decompilation</a>\n
@@ -155,6 +156,7 @@ let projectslii = `<pre style="white-space: pre-wrap; line-height: 1;" id='outpu
     ┊           ┊\n
     ┊           𐐪 Basics\n
     ┊          ﹒〣  <a onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot $XNO crypto wallet <strong>base</strong> for the discord bot</a>      \n
+    ┊          ﹒〣  <a onclick="window.location='https://bot.the-cat.pro/'">Partial Lucy (Previously known as Power) discord bot</a>      \n
     ┊           ↷ ⋯ <a onclick="window.location='../project/player/'">Web MP3/OGG Player</a> \n
     ┊           ¨ 🎞 <a onclick="window.location='../project/weather/'">Simplest weather site</a> \n
     ┊           ¨ ⑅ <a onclick="window.location='../project/trackers/'">Torrent Tracker List generator</a> \n
