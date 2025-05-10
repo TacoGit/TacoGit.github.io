@@ -1,6 +1,8 @@
 <!-- site by @tanossh.i, TacoGit.github.io -->
 
-<html class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded" lang="en"
+<html
+    class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded"
+    lang="en"
     data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0">
 
 <head>
@@ -35,6 +37,8 @@
 
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/connection.css">
 
     <script src="js/pace.min.js"></script>
     <script src="js/optimize.js"></script>
@@ -47,6 +51,34 @@
 
 <body>
     <main id="shomes" class="s-home s-home--static">
+        <nav id="navvy" class="navbar">
+            <div class="nav-item" onclick="home()">
+                <i class="icon fa fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" onclick="projects()">
+                <i class="icon fa fa-folder"></i>
+                <span>Projects</span>
+            </div>
+            <div class="nav-dot-separator"></div>
+            <div class="nav-item" onclick="window.location='https://github.com/TacoGit'">
+                <i class="icon fab fa-github"></i>
+                <span>GitHub</span>
+            </div>
+            <div class="nav-item"
+                onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'">
+                <i class="icon fab fa-steam"></i>
+                <span>Steam</span>
+            </div>
+            <div class="nav-item" onclick="alert('@tanossh.i id:852608934623182848')">
+                <i class="icon fab fa-discord"></i>
+                <span>Discord</span>
+            </div>
+            <div class="nav-item" onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'">
+                <i class="icon fa fa-gamepad"></i>
+                <span>Games</span>
+            </div>
+        </nav>
 
         <div class="overlay"></div>
 
@@ -54,19 +86,30 @@
             <div style="padding-top: 3rem;" class="row home-content__main">
 
                 <div class="col-eight home-content__text pull-right">
-                    <h3>by tanos <a href="https://www.16personalities.com/profiles/449ae37cf4fa4" id="personalityType">ISFP-T, E4 (w5)</a></h3>
+                    <h3>by tanos <a href="https://www.16personalities.com/profiles/449ae37cf4fa4"
+                            id="personalityType">ISFP-T, E4 (w5)</a></h3>
 
                     <h1 id="jsorono">
                         01011000<br> 1010011001.
                     </h1>
 
                     <p id="intro" style="margin-top: 3rem;">
-                        im tanos i just make random projects or decompilations<br> <a style="cursor:pointer" onclick="projects()">view my projects</a> or use the bar on the <a style="color:#757575;" id="canbechangedbywindowpreferences">right</a> for tabs<br>
-                        new discord account <a>@tanossh.i</a><br><br>
-                        <a style="cursor: pointer;" onclick="proper_projects()">skip the bs and show me your project list in a formated way</a>
+                        im tanos i just make random projects or decompilations<br> <a style="cursor:pointer"
+                            onclick="projects()">view my projects</a> or use the bar on the <a style="color:#757575;"
+                            id="canbechangedbywindowpreferences">right</a> for tabs<br>
+                        <a style="cursor: pointer;" onclick="proper_projects()">skip the bs and show me your project
+                            list in a formated way</a>
                     </p>
 
-                    <h1 id="underlinetextredirectionsforthemodernpage">interested in   <a id="effectedmore">even more</a> ? <a href="https://anilist.co/user/tanos" target="_blank" id="utrfmp">Anime List (co)</a>, <a href="https://www.last.fm/user/tanosshi" target="_blank" id="utrfmp">Last.fm</a>, <a href="https://tracker.gg/valorant/profile/riot/tanos%231337/performance" target="_blank" id="utrfmp">Valorant Tracker</a>, <a href="https://www.roblox.com/users/424051643/profile" target="_blank" id="utrfmp">Roblox</a>, <a href="https://sky.shiiyu.moe/stats/tanosmc/Banana" target="_blank" id="utrfmp">Hypixel Skyblock</a>, <a href="https://www.paypal.com/paypalme/tanospaypal" target="_blank" id="utrfmp">PayPal</a></h1>
+                    <h1 id="underlinetextredirectionsforthemodernpage">interested in <a id="effectedmore">even more</a>
+                        ? <a href="https://anilist.co/user/tanos" target="_blank" id="utrfmp">Anime List (co)</a>, <a
+                            href="https://www.last.fm/user/tanosshi" target="_blank" id="utrfmp">Last.fm</a>, <a
+                            href="https://tracker.gg/valorant/profile/riot/tanos%231337/performance" target="_blank"
+                            id="utrfmp">Valorant Tracker</a>, <a href="https://www.roblox.com/users/424051643/profile"
+                            target="_blank" id="utrfmp">Roblox</a>, <a
+                            href="https://sky.shiiyu.moe/stats/tanosmc/Banana" target="_blank" id="utrfmp">Hypixel
+                            Skyblock</a>, <a href="https://www.paypal.com/paypalme/tanospaypal" target="_blank"
+                            id="utrfmp">PayPal</a></h1>
                 </div>
 
                 <div class="col-four home-content__counter">
@@ -82,69 +125,68 @@
                 </div>
             </div>
 
-            <ul class="home-social">
-                <li>
-                    <a onclick="projects()" href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://discord.com/users/852608934623182848'" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'" href="#"><i class="fa fa-gamepad" aria-hidden="true"></i><span>Games</span></a>
-                </li>
-            </ul>
-
             <div class="home-content__line"></div>
 
             <div class="row home-copyright lastplayed lastfm">
-                <p id="titledFm" ondblclick="alert('hii')">tanos is currently listening to 
-                    <a onclick="updateLastFM('direct')" id="fmPlaying">...</a> 
+                <p id="titledFm" ondblclick="alert('hii')">tanos is currently listening to
+                    <a onclick="updateLastFM('direct')" id="fmPlaying">...</a>
                     <a id="fmLoved">💕</a>
-                    <a id="fmInformant">∙ live updated by last.fm</a></p>
+                    <a id="fmInformant">∙ live updated by last.fm</a>
+                </p>
 
-                <p id="playsngenreFm">has 
-                    <a id="fmPlays">...</a> 
-                    plays on this <a onclick="rebuildFm('switch')" id="fmSwitchable">song</a> - 
+                <p id="playsngenreFm">has
+                    <a id="fmPlays">...</a>
+                    plays on this <a onclick="rebuildFm('switch')" id="fmSwitchable">song</a> -
                     <a id="fmGenre">genre, genre, genre</a>
                 </p>
             </div>
 
             <div class="row home-copyright" style="pointer-events: none;">
-                <img id="sitecon" width="10px" style="cursor: pointer;" alt="meow" onclick="alert('THANKS ALEPH!!')" src="images/pink.gif"></img>
+                <img id="sitecon" width="10px" style="cursor: pointer;" alt="meow" onclick="alert('THANKS ALEPH!!')"
+                    src="images/pink.gif"></img>
                 <span id="siteby">site by @tanossh.i on discord</span>
-                <span id="doonat">donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal" style="cursor:pointer;" onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a></span>
+                <span id="doonat">donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal"
+                        style="cursor:pointer;"
+                        onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a></span>
+            </div>
+        </div>
+
+        <div style="display:none; opacity:0;" id="connection">
+            <div class="wrapper">
+                <div style="z-index: 1;" class="background-blur"></div>
+                <div style="z-index: 3;" class="main-content">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/external-glyph-on-circles-amoghdesign/96/000000/external-combination-law-crime-and-justice-glyph-on-circles-amoghdesign.png"/>
+                    </div>
+                    <div class="description">
+                        <span>Loading...</span>
+                        <div class="line-base">
+                            <div class="line">
+                                <div class="left"></div>
+                                <div class="center"></div>
+                                <div class="right"></div>
+                            </div>
+                        </div>
+                        <span>Trying to create a connection...</span>
+                    </div>
+                </div>
+                <div class="download-options">
+                    <h3>Having issues?</h3>
+                    <div class="buttons">
+                        <a onclick="downloadFile()">[ Download</a>
+                        <a id="orr">or</a>
+                        <a onclick="locateExe()">Locate manually ]</a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="txtprj" style="display:none; opacity:0;" class="home-content">
             <div class="content-wrapper">
                 <div class="main-content">
-                    <pre style="white-space: pre-wrap; line-height: 1;" id="outputs"><span id="prjs">Javascript is not loaded in, silly</span></pre> 
+                    <pre style="white-space: pre-wrap; line-height: 1;"
+                        id="outputs"><span id="prjs">Javascript is not loaded in, silly</span></pre>
                 </div>
-                
-                <ul class="home-social">
-                    <li>
-                        <a onclick="projects()" href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Projects</span></a>
-                    </li>
-                    <li>
-                        <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
-                    </li>
-                    <li>
-                        <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
-                    </li>
-                    <li>
-                        <a onclick="window.location='https://discord.com/users/852608934623182848'" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
-                    </li>
-                    <li>
-                        <a onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'" href="#"><i class="fa fa-gamepad" aria-hidden="true"></i><span>Games</span></a>
-                    </li>
-                </ul>
             </div>
         </div>
 
@@ -159,61 +201,57 @@
                     </h1>
 
                     <a onclick="s_a_p()" style="cursor:pointer; text-decoration:underline;">Show all projects</a> •
-                    <a onclick="s_q_p()" style="cursor:pointer; text-decoration:underline;">Only show quality projects</a> •
-                    <a onclick="proper_projects()" style="cursor:pointer; text-decoration:underline;">Show the projects list in a tree form</a>
+                    <a onclick="s_q_p()" style="cursor:pointer; text-decoration:underline;">Only show quality
+                        projects</a> •
+                    <a onclick="proper_projects()" style="cursor:pointer; text-decoration:underline;">Show the projects
+                        list in a tree form</a>
 
                     <div id="pp" class="projects">
                         <h3 style="margin-top: 3.5rem;" id="projectid">QUALITY</h3>
                         <button href="#">tanos.is-a.dev </button>
-                        <button onclick="window.location='https://github.com/TacoGit/rei'">rei (prev; project fps fixer)</button> <!-- run fpsa() in console if you prefer the project fps fixer version -->
+                        <button onclick="window.location='https://github.com/TacoGit/rei'">rei (prev; project fps
+                            fixer)</button> <!-- run fpsa() in console if you prefer the project fps fixer version -->
                         <button onclick="window.location='https://tacogit.github.io/paste'">PASTE</button>
                         <button onclick="window.location='../project/whattocode/'">What To Code</button>
                         <button onclick="window.location='https://github.com/TacoGit/tanos.fm'">tanos.fm</button>
                         <br>
                         <h3 id="projectid">DECOMPILATIONS OR PORTS</h3>
-                        <button onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator 3 Android Port</button>
-                        <button onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator Decompilation</button>
+                        <button onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator 3
+                            Android Port</button>
+                        <button onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator
+                            Decompilation</button>
                         <br>
                         <h3 id="projectid">BASICS</h3>
                         <button onclick="window.location='../project/weather'">weather</button>
                         <button class="nonquality" onclick="window.location='../project/player'">Music Player</button>
-                        <button class="nonquality" onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
-                        <button class="nonquality" onclick="window.location='../project/trackers'">Torrent Tracker List generator</button>
+                        <button class="nonquality"
+                            onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot Base</button>
+                        <button class="nonquality" onclick="window.location='../project/trackers'">Torrent Tracker List
+                            generator</button>
                         <br>
                         <h3 id="projectid">ONLY PARTIALLY MINE</h3>
                         <button onclick="window.location='../project/typetester/'">TypeTester</button>
-                        <button onclick="window.location='https://bot.the-cat.pro/'">Lucy (Previously known. Power) discord bot</button>
+                        <button onclick="window.location='https://bot.the-cat.pro/'">Lucy (Previously known. Power)
+                            discord bot</button>
                         <br>
                         <h3 id="projectid">BROKEN, DROPPED OR USELESS</h3>
-                        <button class="nonquality" onclick="window.location='../project/contact/'">Contact tanos</button>
-                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller</button>
-                        <button class="nonquality" onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows</button>
+                        <button class="nonquality" onclick="window.location='../project/contact/'">Contact
+                            tanos</button>
+                        <button class="nonquality"
+                            onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">BetterPluginInstaller</button>
+                        <button class="nonquality"
+                            onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows</button>
                         <button class="nonquality" onclick="window.location='../project/setup-pc/'">Setup-PC </button>
                         <button class="nonquality" onclick="window.location='../project/ai'">Bob the AI</button>
-                        <button class="nonquality" onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
-                        <button class="nonquality" onclick="window.location='../project/skyline'">Skyline Compatibility List</button>
-                        <button class="nonquality" onclick="window.location='https://tanos.is-a.dev/fwee'">silly birthday giveaway page</button>
+                        <button class="nonquality"
+                            onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder</button>
+                        <button class="nonquality" onclick="window.location='../project/skyline'">Skyline Compatibility
+                            List</button>
+                        <button class="nonquality" onclick="window.location='https://tanos.is-a.dev/fwee'">silly
+                            birthday giveaway page</button>
                     </div>
                 </div>
             </div>
-
-            <ul class="home-social">
-                <li>
-                    <a onclick="window.location.reload()" href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://github.com/TacoGit'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
-                </li>
-                <li>
-                    <a onclick="alert('@tanossh.i id:852608934623182848')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'" href="#"><i class="fa fa-gamepad" aria-hidden="true"></i><span>Games</span></a>
-                </li>
-            </ul>
             <div class="home-content__line"></div>
         </div>
 
@@ -222,21 +260,6 @@
                 <div id="contentsfps" class="col-eleven home-content__text pull-right">
                 </div>
             </div>
-
-            <ul class="home-social">
-                <li>
-                    <a onclick="window.location.reload()" href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://tacogit.github.io/github'" href="#crazy"><i class="fab fa-github" aria-hidden="true"></i><span>Github</span></a>
-                </li>
-                <li>
-                    <a onclick="window.location='https://steamdb.info/calculator/76561199144445918/'" href="#"><i class="fab fa-steam" aria-hidden="true"></i><span>Steam</span></a>
-                </li>
-                <li>
-                    <a onclick="alert('@tanossh.i id:852608934623182848')" href="#"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
-                </li>
-            </ul>
             <div class="home-content__line"></div>
         </div>
     </main>

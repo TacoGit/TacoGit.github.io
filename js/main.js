@@ -37,33 +37,214 @@ var finalDate;
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("jsorono").innerHTML = "a random site<br> made for fun lol";
     updateLastFM()
+    home()
 });
 
+const $home = $("#home");
+const $txtprj = $("#txtprj");
+const $projects = $("#projects");
+const $connection = $("#connection");
+const $overlay = $("#overlay");
+
 function projects() {
-    $("#home").animate({
-        opacity: "0",
-    }, 500);
-    $("#txtprj").animate({
-        opacity: "0",
-    }, 500);
-
-    $("#home").css({
-        '-webkit-filter': 'blur(18px)'
-    }).animate({}, 1000);
-
-    setTimeout(function() {
-        document.getElementById("home").style.display = "none";
-        document.getElementById("txtprj").style.display = "none";
-    }, 500);
-
-    $("#projects").animate({
-        opacity: "1"
-    }, 500);
-
-    setTimeout(function() {
-        document.getElementById("projects").style.display = "block";
-    }, 500);
+    $home.addClass("transition-element");
+    $txtprj.addClass("transition-element");
+    $projects.addClass("transition-element");
+    
+    // Remove active class from all nav items
+    document.querySelectorAll(".nav-item").forEach(item => {
+        item.classList.remove("active");
+        // Add active class to the Projects nav item
+        const spanText = item.querySelector("span")?.textContent;
+        if (spanText === "Projects") {
+            item.classList.add("active");
+        }
+    });
+    
+    $home.css({
+        'opacity': '0',
+        'filter': 'blur(18px)',
+        'transform': 'scale(0.95)'
+    });
+    
+    $txtprj.css({
+        'opacity': '0',
+        'transform': 'translateY(-20px)'
+    });
+    
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            $home.hide();
+            $txtprj.hide();
+            
+            $projects.css({
+                'display': 'block',
+                'opacity': '0',
+                'transform': 'translateY(20px)'
+            });
+            
+            $projects[0].offsetHeight;
+            
+            requestAnimationFrame(() => {
+                $projects.css({
+                    'opacity': '1',
+                    'transform': 'translateY(0)'
+                });
+            });
+        }, 300);
+    });
 }
+
+function home() {
+    $home.addClass("transition-element");
+    $txtprj.addClass("transition-element");
+    $projects.addClass("transition-element");
+    
+    // Remove active class from all nav items
+    document.querySelectorAll(".nav-item").forEach(item => {
+        item.classList.remove("active");
+        // Add active class to the Home nav item
+        const spanText = item.querySelector("span")?.textContent;
+        if (spanText === "Home") {
+            item.classList.add("active");
+        }
+    });
+    
+    $projects.css({
+        'opacity': '0',
+        'transform': 'translateY(20px)'
+    });
+
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            $projects.hide();
+
+            $home.css({
+                'display': '',
+                'opacity': '0',
+                'filter': 'blur(18px)',
+                'transform': 'scale(0.95)'
+            });
+
+            $home[0].offsetHeight;
+
+            requestAnimationFrame(() => {
+                $home.css({
+                    'opacity': '1',
+                    'filter': 'blur(0)',
+                    'transform': 'scale(1)'
+                });
+            });
+        }, 300);
+    });
+}
+
+function conn() {
+    let navbar = document.querySelector('nav#navvy');
+    $home.addClass("transition-element");
+    $txtprj.addClass("transition-element");
+    $projects.addClass("transition-element");
+    
+    // Add active class to the Connect nav item
+    document.querySelectorAll(".nav-item").forEach(item => {
+        const spanText = item.querySelector("span")?.textContent;
+        if (spanText === "Connect") {
+            item.classList.add("active");
+        }
+    });
+    
+    $projects.css({
+        'opacity': '0',
+        'transform': 'translateY(20px)'
+    });
+    $home.css({
+        'opacity': '0',
+        'transform': 'translateY(20px)'
+    });
+
+    // Show download options after 3 seconds
+    setTimeout(() => {
+        const wrapper = document.querySelector('#connection .wrapper');
+        const downloadOptions = document.querySelector('#connection .download-options');
+        if (wrapper && downloadOptions) {
+            wrapper.classList.add('expanded');
+            downloadOptions.classList.add('visible');
+        }
+    }, 3000);
+
+
+    document.querySelectorAll(".nav-item").forEach(item => {
+        const spanText = item.querySelector("span")?.textContent;
+        if (spanText === "Home" || spanText === "Projects") {
+            item.classList.add("nav-hide");
+        }
+    });
+
+    let files = ['👨‍💻.css', 'panel.css', '🎨.css', '🌀.css'];
+
+    files.forEach(file => {
+      let link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `../css/😘/${file}`;
+      document.head.appendChild(link);
+    });
+
+    let link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `../css/nav.css`;
+    document.head.appendChild(link);
+
+    let connection = document.querySelector('#connection');
+
+    let htmlTag = document.documentElement;
+    htmlTag.removeAttribute('class');
+    htmlTag.removeAttribute('lang');
+    htmlTag.removeAttribute('data-useragent');
+
+    let bodyTag = document.body;
+    bodyTag.removeAttribute('style');
+    bodyTag.removeAttribute('class');
+
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            $projects.hide();
+            $home.hide();
+
+            $connection.css({
+                'display': '',
+                'opacity': '0',
+                'filter': 'blur(18px)',
+                'transform': 'scale(0.95)'
+            });
+
+            requestAnimationFrame(() => {
+                $connection.css({
+                    'opacity': '1',
+                    'filter': 'blur(0)',
+                    'transform': 'scale(1)'
+                });
+
+                $overlay.css({
+                    'opacity': '1',
+                });
+
+               // $txtprj.css({
+               //     'opacity': '1',
+               //     'transform': 'translateY(0)'
+               // });
+            });
+
+            document.querySelectorAll(".nav-item").forEach(item => {
+                const spanText = item.querySelector("span")?.textContent;
+                if (spanText === "Home" || spanText === "Projects") {
+                    item.style.display = "none";
+                }
+            });
+            document.body.appendChild(navbar);
+        }, 300);
+    });
+}
+
 
 function site_settings() {
     $("#home").animate({
@@ -107,29 +288,34 @@ function s_q_p() {
     });
 }
 
-function adjustTextonSizeChange() { // messy code i got it
-    if (window.innerWidth <= 800) {
-        var elementsToHide = ["siteby", "doonat", "sitecon"];
-        elementsToHide.forEach(function(elementId) {
-            document.getElementById(elementId).style.display = "none";
-        });
+function adjustTextonSizeChange() {
+    const w = window.innerWidth, txt = document.getElementById("canbechangedbywindowpreferences"),
+          redir = document.getElementById("underlinetextredirectionsforthemodernpage"),
+          hide = ["siteby", "doonat", "sitecon"];
 
-        document.getElementById("canbechangedbywindowpreferences").innerText = "bottom";
-        document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "normal"; // its for readablity on smaller devices
-        document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "0px";
+    if (w <= 510) txt.innerText = "bottom";
+    if (w <= 800) {
+        hide.forEach(id => document.getElementById(id).style.display = "none");
+        redir.style.fontStyle = "normal";
+        redir.style.marginTop = "0px";
     } else {
-        ["canbechangedbywindowpreferences", "siteby", "doonat", "sitecon"].forEach(id => {
-            document.getElementById(id).style.display = "inline-block";
-        });
-
-        document.getElementById("canbechangedbywindowpreferences").innerText = "right";
-        document.getElementById("underlinetextredirectionsforthemodernpage").style.fontStyle = "italic";
-        document.getElementById("underlinetextredirectionsforthemodernpage").style.marginTop = "-23px";
+        ["canbechangedbywindowpreferences", ...hide].forEach(id =>
+            document.getElementById(id).style.display = "inline-block"
+        );
+        txt.innerText = "top";
+        redir.style.fontStyle = "italic";
+        redir.style.marginTop = "-23px";
     }
 }
 
 var c_sh_i = 0;
 function siteHealth() {
+    document.querySelectorAll('[class*="pace"]').forEach(el => {
+        el.classList.forEach(cls => {
+            if (cls.includes("pace")) el.classList.remove(cls);
+        });
+    });
+
     if(are_proper_projects_rendered)
         document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
 
@@ -364,7 +550,7 @@ function updateLastFM(additional) {
             lastfm.artist.getTopTags({artist: thefinalartist, user: last_fm_user}, {success: function(data){
                 var topTags = data.toptags.tag.slice(0, 3).map(tag => tag.name).join(', ');
 
-                topTags = topTags.replace(/rape|official shit|garbage|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|urine|furry|gore|vore|ukraine/g, ""); // Tag cleanify
+                topTags = topTags.replace(/rape|official shit|garbage|pedophile|ugly|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|brony|swiftie|bullshit|urine|furry|gore|vore|ukraine/g, ""); // Tag cleanify
                 topTags = topTags.replace(", ,", ","); // After cleanup
                 topTags = topTags.replace("seen live", "live artist"); // Misunderstanding of tags
 
