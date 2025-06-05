@@ -46,15 +46,75 @@ const $projects = $("#projects");
 const $connection = $("#connection");
 const $overlay = $("#overlay");
 
+function loadProjects(projectData) {
+  const container = document.getElementById("pp");
+  container.innerHTML = "";
+
+  projectData.forEach(section => {
+    const h3 = document.createElement("h3");
+    h3.textContent = section.category;
+    h3.id = "projectid";
+
+    if (section.category === "QUALITY") {
+      h3.style.marginTop = "3.5rem";
+    }
+
+    container.appendChild(h3);
+
+    section.projects.forEach(project => {
+      const btn = document.createElement("button");
+      btn.textContent = project.name;
+
+      if (project.class) {
+        btn.classList.add(project.class);
+      }
+
+      btn.onclick = () => {
+        window.location = project.url;
+      };
+
+      container.appendChild(btn);
+    });
+
+    container.appendChild(document.createElement("br"));
+  });
+}
+
+function fetchProjectswithFailDetection(url1, url2) {
+  fetch(url1)
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to load " + url1);
+      return res.json();
+    })
+    .then(data => {
+      if (!data || data.length === 0) throw new Error("No data in " + url1);
+      loadProjects(data);
+    })
+    .catch(() => {
+      fetch(url2)
+        .then(res => {
+          if (!res.ok) throw new Error("Failed to load " + url2);
+          return res.json();
+        })
+        .then(data => {
+          if (!data || data.length === 0) throw new Error("No data in " + url2);
+          loadProjects(data);
+        })
+        .catch(err => {
+          console.error("Failed to load both files:", err);
+        });
+    });
+}
+
 function projects() {
     $home.addClass("transition-element");
     $txtprj.addClass("transition-element");
     $projects.addClass("transition-element");
+
+    fetchProjectswithFailDetection('projects.json', 'https://tanos.is-a.dev/projects.json');
     
-    // Remove active class from all nav items
     document.querySelectorAll(".nav-item").forEach(item => {
         item.classList.remove("active");
-        // Add active class to the Projects nav item
         const spanText = item.querySelector("span")?.textContent;
         if (spanText === "Projects") {
             item.classList.add("active");
@@ -316,8 +376,8 @@ function siteHealth() {
         });
     });
 
-    if(are_proper_projects_rendered)
-        document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
+    //if(are_proper_projects_rendered)
+    //    document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
 
     if (!document.querySelector('.lastfm')) {
         c_sh_i = c_sh_i +1;
@@ -328,46 +388,103 @@ function siteHealth() {
 }
 
 var are_proper_projects_rendered = false;
-let projectslii = `<pre style="white-space: pre-wrap; line-height: 1;" id='outputs'>
-    • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ projects ᓚᘏᗢ\n
-    ┊     ?     ┊     ┊     ★ Quality\n
-    ┊           ┊     ┊     ° . <a onclick="window.location='https://tanos.is-a.dev'">tanos.is-a.dev</a>     \n
-    ┊           ┊     ┊     ₊ . <a onclick="window.location='https://tacogit.github.io/paste'">paste</a>                                                                                    \n
-    ┊           ┊     ┊     . ✫ <a onclick="window.location='../project/whattocode'">what to code</a>          \n                                                                       \n
-    ┊           ┊     ┊     . ₊ <a onclick="window.location='https://github.com/TacoGit/tanos.fm'">tanos.fm</a>          \n
-    ┊           ┊     ┊\n
-    ┊           ┊     ✫ Decompilations or android ports\n
-    ┊           ┊     ⊹ ｡ <a onclick="window.location='https://github.com/TacoGit/YanSimAndroid'">Yandere Simulator successful decompilation</a>\n
-    ┊           ┊     ︶  ۫ <a onclick="window.location='https://github.com/TacoGit/KS3Android'">Kuudere Simulator android port</a>\n
-    ┊           ┊\n
-    ┊           𐐪 Basics\n
-    ┊          ﹒〣  <a onclick="window.location='https://top.gg/bot/967844118715854908'">Nanobot $XNO crypto wallet <strong>base</strong> for the discord bot</a>      \n
-    ┊          ﹒〣  <a onclick="window.location='https://bot.the-cat.pro/'">Partial Lucy (Previously known as Power) discord bot</a>      \n
-    ┊           ↷ ⋯ <a onclick="window.location='../project/player/'">Web MP3/OGG Player</a> \n
-    ┊           ¨ 🎞 <a onclick="window.location='../project/weather/'">Simplest weather site</a> \n
-    ┊           ¨ ⑅ <a onclick="window.location='../project/trackers/'">Torrent Tracker List generator</a> \n
-    ┊\n
-    糸 Broken, useless or unfinished projects\n
-    ˎˊ- Broken - <a onclick="window.location='../project/ai/'">Bob the AI</a>
-    ˎˊ- Broken - <a onclick="window.location='https://discord.tacogit.github.io/'">Discord Bot Builder (Link broken)</a>
-    ˎˊ- Useless - <a onclick="window.location='https://github.com/TacoGit/contact'">Contact tanos</a>
-    ˎˊ- Useless - <a onclick="window.location='https://github.com/TacoGit/betterPluginInstaller'">betterPluginInstaller (BetterDiscord)</a>
-    ˎˊ- Useless - <a onclick="window.location='https://github.com/TacoGit/ezWindows'">ezWindows</a>
-    ˎˊ- Useless - <a onclick="window.location='../project/setup-pc/'">Setup-PC</a>
-    ˎˊ- Useless - <a onclick="window.location='../project/skyline/'">Skyline Emulator Compatibility List</a>
-    ˎˊ- Unfinished - <a onclick="window.location='https://tacogit.github.io/fwee/'">silly birthday "giveaway"</a>
-    ˎˊ- Unfinished - <a onclick="window.location='../project/typetester'">Type Tester (Only partially mine)</a>
+
+function generateProjectsASCII(projectsData) {
+    let output = '';
     
-    ⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖  ᓚ₍ ^. .^₎  ▬▬ι═══════ﺤ 
-    </pre>`;
+    // Header
+    output += '    • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ projects ᓚᘏᗢ\\n\n';
+    output += '    ┊     ?     ┊     ┊     ★ Quality\\n';
+    
+    // Quality projects
+    const qualityProjects = projectsData.find(cat => cat.category === 'QUALITY')?.projects || [];
+    qualityProjects.forEach(project => {
+        const symbol = Math.random() > 0.5 ? '°' : '₊';
+        output += `    ┊           ┊     ┊     ${symbol} . <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
+    });
+    
+    output += '    ┊           ┊     ┊\\n';
+    
+    // Decompilations/Ports section
+    output += '    ┊           ┊     ✫ Decompilations or android ports\\n';
+    const decompsProjects = projectsData.find(cat => cat.category === 'DECOMPILATIONS OR PORTS')?.projects || [];
+    decompsProjects.forEach((project, index) => {
+        const symbol = index === 0 ? '⊹ ｡' : '︶  ۫';
+        output += `    ┊           ┊     ${symbol} <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
+    });
+    
+    output += '    ┊           ┊\\n';
+    
+    // Basics section
+    output += '    ┊           𐐪 Basics\\n';
+    const basicsProjects = projectsData.find(cat => cat.category === 'BASICS')?.projects || [];
+    basicsProjects.forEach((project, index) => {
+        const symbols = ['﹒〣', '↷ ⋯', '¨ 🎞', '¨ ⑅', '◦ ★'];
+        const symbol = symbols[index % symbols.length];
+        
+        // Add special formatting for certain projects
+        let projectName = project.name;
+        if (project.name.toLowerCase().includes('nanobot')) {
+            projectName = `${project.name} <strong>base</strong> for the discord bot`;
+        }
+        
+        output += `    ┊          ${symbol}  <a onclick="window.location='${project.url}'">${projectName}</a>\\n`;
+    });
+    
+    // Partially mine section
+    const partialProjects = projectsData.find(cat => cat.category === 'ONLY PARTIALLY MINE')?.projects || [];
+    partialProjects.forEach(project => {
+        output += `    ┊          ﹒〣  <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
+    });
+    
+    output += '    ┊\\n';
+    
+    // Broken/Useless/Unfinished section
+    output += '    糸 Broken, useless or unfinished projects\\n';
+    const brokenProjects = projectsData.find(cat => cat.category === 'BROKEN, DROPPED OR USELESS')?.projects || [];
+    
+    brokenProjects.forEach(project => {
+        let status = 'Useless'; // default
+        
+        // Determine status based on project name/description
+        if (project.name.toLowerCase().includes('bob the ai') || 
+            project.name.toLowerCase().includes('discord bot builder')) {
+            status = 'Broken';
+        } else if (project.name.toLowerCase().includes('giveaway') || 
+                   project.name.toLowerCase().includes('typetester')) {
+            status = 'Unfinished';
+        }
+        
+        output += `    ˎˊ- ${status} - <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
+    });
+    
+    // Footer
+    output += '\\n    ⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖  ᓚ₍ ^. .^₎  ▬▬ι═══════ﺤ \\n';
+    
+    return output;
+}
 
 function proper_projects() {
-    project_simplified = projectslii.replace("Nanobot $XNO crypto wallet <strong>base</strong> for the discord bot</a>", "Nanobot $XNO crypto wallet <strong>base</strong> bot</a>");
-    project_simplified = project_simplified.replace("successful ", "");
-    project_simplified = project_simplified.replace("Kuudere Simulator ", "Kuudere Sim ");
-
     document.getElementById("txtprj").style.display = "block";
-    document.getElementById("prjs").innerHTML = projectslii.replace(/[^\n]/g, (match, index) => { return index % 3 === 0 ? '{' : index % 3 === 1 ? '}' : 'i'; });
+  //  document.getElementById("prjs").innerHTML = projectslii.replace(/[^\n]/g, (match, index) => { return index % 3 === 0 ? '{' : index % 3 === 1 ? '}' : 'i'; });
+    
+  
+fetch('projects.json')
+  .then(res => {
+    if (!res.ok) throw new Error('failed to load projects.json');
+    return res.json();
+  })
+  .then(data => {
+    var ascii = generateProjectsASCII(data);
+    ascii = ascii.replace("Nanobot $XNO crypto wallet <strong>base</strong> for the discord bot</a>", "Nanobot $XNO crypto wallet <strong>base</strong> bot</a>");
+    ascii = ascii.replace("successful ", "");
+    ascii = ascii.replace("Kuudere Simulator ", "Kuudere Sim ");
+    document.getElementById("prjs").innerHTML = ascii.replace(/[^\n]/g, (match, index) => { return index % 3 === 0 ? '{' : index % 3 === 1 ? '}' : 'i'; });
+})
+  .catch(err => {
+    console.error('error loading project data:', err);
+  });  
+
     $("#home").animate({
         opacity: "0",
     }, 500);
@@ -384,7 +501,7 @@ function proper_projects() {
         bulkSize: 30 
     }, () => {
         are_proper_projects_rendered = true;
-        document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
+        //document.getElementById("prjs").innerHTML = window.screen.width <= 435 ? project_simplified : projectslii;
     });
     setTimeout(function() {
         document.getElementById("home").style.display = "none";
@@ -490,8 +607,11 @@ function updateLastFM(additional) {
                     "mind your own business now",
                     "see ya another time",
                     "mmh sleepy sleepy",
+                    "have a fine night tonight",
+                    "fine night tonight",
                     "sleep well",
                     "good night",
+                    "and you dont seem to understand",
                     "sleeeeppyyy",
                     "ahaaaaaaaaaaaa",
                     "meow meow",
@@ -506,7 +626,10 @@ function updateLastFM(additional) {
                     "or last.fm could be down ?",
                     "you'll live dont worry",
                     "thats crazy",
+                    "thats sad",
                     "unfortunate",
+                    "unfortunate",
+                    "as if you'd care lol",
                     "lol maybe another time",
                     "err time to mind your own business",
                     `¯\\_(ツ)_/¯`,
@@ -582,7 +705,7 @@ function updateLastFM(additional) {
                         break;
                     default:
                         if (topTags.length < 2) {
-                            topTags = "no genres found, assumably slowcore?";
+                            topTags = "no genres found";
                         }
                         break;
                 }
@@ -614,6 +737,9 @@ function updateLastFM(additional) {
                     "∙ marked as favorite by tanos",
                     "∙ tanos found this song pretty good",
                     "∙ tanos is in love with this one",
+                    "∙ love love love !!",
+                    "∙ hearted by tanos",
+                    "∙ yessssssssssssssssssss",
                     "∙ YEAAH THIS ONE IS GOOD, love from tanos!!",
                     "∙ marked as loved by tanos"
                 ];
@@ -625,6 +751,9 @@ function updateLastFM(additional) {
                     "∙ live data by last.fm",
                     "∙ automatically changing !",
                     "∙ updates automatically",
+                    "∙ provided by last fm",
+                    "∙ by last fm",
+                    "∙ grabbed with last fm",
                     "∙ live data",
                     "∙ up to date information"
                 ];
@@ -641,7 +770,10 @@ function updateLastFM(additional) {
                         const artistData = data.topartists.artist.find(artist => artist.name === arts);
                         if (artistData) {
                             const playcount = artistData.playcount; // Get the playcount
-                            document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
+                            if (cached_playcount < playcount) // last fm is sometimes really buggy idk why
+                                document.getElementById("fmPlays").textContent = `${playcount || "?"} plays`;
+                            else
+                                document.getElementById("fmPlays").textContent = `${cached_playcount || "?"} plays`;
                             show_paypal = true;
                         } else {
                             document.getElementById("fmPlays").textContent = `${cached_playcount || "?"} plays`;
@@ -680,7 +812,7 @@ function hideFM() {
 
 function updateClock() {
     if($('.time.days').html() == "00 <span>day</span>" && $('.time.hours').html() == "00 <span>H</span>" && $('.time.minutes').html() == "00 <span>M</span>" && $('.time.seconds').html() == "00 <span>S</span>") {
-        //cook() feature isnt implemented
+        //cook() feature isnt implemented anymore
     }
 }
 
@@ -690,6 +822,11 @@ setInterval(forceLastFM, 11326);
 setInterval(updateClock, 10000);
 
 setInterval(siteHealth, 2251);
+
+function autoReload() {
+    window.location.reload();
+}
+setInterval(autoReload, 86400000);
 
 window.addEventListener('resize', adjustTextonSizeChange);
 adjustTextonSizeChange();

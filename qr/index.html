@@ -1,0 +1,307 @@
+<!-- site by @tanossh.i, TacoGit.github.io -->
+
+<html
+    class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded"
+    lang="en"
+    data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="tanos">
+    <title>tanos, the home page</title>
+    <meta name="theme-color" content="#974557">
+
+    <script type="text/javascript" src="qr-code-styling.js"></script>
+
+    <meta property="title" content="tanos, the home page.">
+    <meta property="og:title" content="tanos, the home page.">
+    <meta name="twitter:title" content="tanos, the home page.">
+
+    <meta property="locale" content="en_US">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="description" content="im tanos, a full-stack developer">
+    <meta property="og:description" content="im tanos, a full-stack developer">
+    <meta name="twitter:description" content="im tanos, a full-stack developer">
+
+    <meta name="twitter:image:src" content="https://tanos.is-a.dev/images/sakura.png">
+    <meta property="og:image" content="https://tanos.is-a.dev/images/sakura.png">
+    <meta content='https://tanos.is-a.dev/images/sakura.png' property='og:image'>
+
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="250">
+    <meta property="og:image:height" content="250">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="../images/pink.gif" type="image/gif">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav.css">
+
+    <meta name="darkreader-lock">
+</head>
+
+<body>
+    <main id="shomes" class="s-home s-home--static">
+        <nav id="navvy" class="navbar">
+            <div class="nav-item" onclick="window.location='https://tacogit.github.io/'">
+                <i class="icon fa fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item active" href="#">
+                <i class="icon fa fa-qrcode"></i>
+                <span>QR Maker</span>
+            </div>
+            <div class="nav-dot-separator"></div>
+            <div class="nav-item" onclick="window.location='https://github.com/TacoGit'">
+                <i class="icon fab fa-github"></i>
+                <span>GitHub</span>
+            </div>
+            <div class="nav-item"
+                onclick="window.location='https://steamdb.info/calculator/76561199144445918/?cc=eu&all_games'">
+                <i class="icon fab fa-steam"></i>
+                <span>Steam</span>
+            </div>
+            <div class="nav-item" onclick="alert('@tanossh.i id:852608934623182848')">
+                <i class="icon fab fa-discord"></i>
+                <span>Discord</span>
+            </div>
+            <div class="nav-item" onclick="window.location='https://www.backloggd.com/u/tanos/games/user-rating/'">
+                <i class="icon fa fa-gamepad"></i>
+                <span>Games</span>
+            </div>
+        </nav>
+
+        <div class="overlay"></div>
+
+        <div id="home" style="padding-top: 3rem; " class="home-content">
+            <div style="padding-top: 3rem;" class="row home-content__main">
+
+                <div class="col-eight home-content__text pull-right">
+                    <h3>by tanos <a href="https://tacogit.github.io" id="personalityType">:)</a></h3>
+
+                    <h1 id="jsorono">
+                        QR code creator<br>
+                    </h1>
+
+                    <p id="intro" style="margin-top: 3rem;">
+                        <textarea id="qrLink" placeholder="Insert anything in here, literally anything.">https://tanos.is-a.dev/</textarea>
+                        <br>
+                    <div class="additionals">
+                        <label for="Square" class="toggle__button">
+                            <input type="checkbox" name="room__facilities" id="Square">
+                            <i class="fa fa-square"></i>
+                            <span class="text">Square</span>
+                        </label>
+                        <label for="rounded" class="toggle__button">
+                            <input type="checkbox" name="room__facilities" id="rounded">
+                            <i class="fa fa-circle"></i>
+                            <span class="text">Rounded</span>
+                        </label>
+                        <label for="extra-rounded" class="toggle__button">
+                            <input type="checkbox" name="room__facilities" id="extra-rounded" checked>
+                            <i class="fa fa-circle"></i>
+                            <span class="text">Extra Rounded</span>
+                        </label>
+                        <label for="classy-rounded" class="toggle__button">
+                            <input type="checkbox" name="room__facilities" id="classy-rounded">
+                            <i class="fa fa-filter"></i>
+                            <span class="text">Futuristic</span>
+                        </label>
+                        <textarea id="qrColor">#974557</textarea>
+                    </div>
+                    </p>
+                </div>
+
+                <div class="col-four home-content__counter">
+                    <h3 id="updateableEpicness">YOUR QR APPEARS HERE</h3>
+                    <div class="home-content__clock">
+                        <div id="canvas"></div>
+                    </div>
+                    <p style="font-size: 12px; transform: translateX(35px);">press the qr to download it as svg</p>
+                </div>
+            </div>
+
+            <div class="home-content__line"></div>
+
+            <div class="row home-copyright" style="pointer-events: none;">
+                <span id="siteby">site by @tanossh.i on discord</span>
+                <span id="doonat">donations accepted via <a href="https://www.paypal.com/paypalme/tanospaypal"
+                        style="cursor:pointer; pointer-events: all;"
+                        onclick="window.location = 'https://www.paypal.com/paypalme/tanospaypal'">paypal</a> although it isnt my api lol</span>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    const qrbox = document.getElementById('qrLink');
+    const qrcolor = document.getElementById('qrColor');
+
+    document.querySelectorAll('.additionals input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function () {
+    if (this.checked) {
+      document.querySelectorAll('.additionals input[type="checkbox"]').forEach(cb => {
+        if (cb !== this) cb.checked = false;
+      });
+      global_type = this.id;
+    } else {
+      const noneChecked = [...document.querySelectorAll('.additionals input[type="checkbox"]')]
+        .every(cb => !cb.checked);
+
+      if (noneChecked) {
+        const fallback = document.getElementById('extra-rounded');
+        fallback.checked = true;
+        global_type = 'extra-rounded';
+      } else {
+        global_type = document.querySelector('.additionals input[type="checkbox"]:checked')?.id || 'extra-rounded';
+      }
+    }
+
+    changeQR();
+  });
+});
+
+    var global_type = "extra-rounded"
+
+    function changeQR() {
+        if (qrbox.value != null | undefined) {
+            const canvasDiv = document.getElementById('canvas');
+            const svg = canvasDiv.querySelector('svg');
+
+            if (svg)
+                svg.remove();
+
+            const qrCode = new QRCodeStyling({
+                width: 300,
+                height: 300,
+                type: "svg",
+                data: qrbox.value,
+                dotsOptions: {
+                    color: qrcolor.value,
+                    type: global_type
+                },
+                backgroundOptions: {
+                    color: "transparent",
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 20
+                }
+            });
+
+            qrCode.append(document.getElementById("canvas"));
+            setTimeout(() => {
+                const svg = canvas.querySelector("svg");
+                if (svg) {
+                    svg.style.cursor = "pointer";
+                    svg.onclick = () => {
+                        qrCode.download({ name: "qr", extension: "svg" });
+                    };
+                }
+            }, 100);
+        }
+    }
+
+    qrbox.addEventListener('input', () => {
+        changeQR()
+    });
+    qrcolor.addEventListener('input', () => {
+        changeQR()
+    });
+    changeQR()
+</script>
+
+<style>
+    @media only screen and (max-width: 600px) {
+	.navbar, .nav-bar {
+        display: none;
+    }
+    }
+
+    #qrColor {
+        width: 140px;
+        max-width: 145px;
+        height: 50px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        resize: none;
+        font-size: 1.2rem;
+        font-family: inherit;
+        outline: none;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 1.9;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    #qrLink {
+        width: 100%;
+        max-width: 600px;
+        height: 50px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        resize: none;
+        font-size: 1.6rem;
+        line-height: 1.5;
+        font-family: inherit;
+        outline: none;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #qrLink:focus {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 0 2px var(--main);
+    }
+
+    .additionals {
+        max-width: 700px;
+        margin: 2rem 0;
+        padding: 0;
+        border: none;
+        flex-flow: row wrap;
+        gap: 1rem;
+        display: flex;
+
+        & .toggle__button {
+            position: relative;
+            width: fit-content;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: rgba(245, 245, 245, 0.81);
+            font-size: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row nowrap;
+            column-gap: 0.5rem;
+            display: inline-flex;
+            cursor: pointer;
+            transition: background-color 350ms ease-in;
+
+            &:has(:checked) {
+                color: whitesmoke;
+                background-color: var(--main);
+            }
+
+            & input[type="checkbox"] {
+                position: absolute;
+                inset: 0;
+                appearance: none;
+                z-index: -1;
+            }
+        }
+    }
+</style>
+
+</html>
+
+<!-- site by @tanossh.i, TacoGit.github.io -->
