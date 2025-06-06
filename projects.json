@@ -30,7 +30,7 @@
     "category": "ONLY PARTIALLY MINE",
     "projects": [
       { "name": "TypeTester", "url": "../project/typetester/" },
-      { "name": "Lucy (Previously known. Power) discord bot", "url": "https://bot.the-cat.pro/" }
+      { "name": "Lucy (Previously known. Power) discord bot", "url": "../files/lucy.html" }
     ]
   },
   {
