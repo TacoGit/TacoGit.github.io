@@ -2,7 +2,7 @@
 
 💖 Star us on Github - it helps us alot!
 
-[tanos.is-a.dev](https://TacoGit.github.io) is a random site i made for fun
+[tanos.is-a.dev](https://tanos.is-a.dev) is a random site i made for fun
 that contains redirections to other projects ive made.
 
-![tanos-frontend](https://raw.githubusercontent.com/TacoGit/TacoGit.github.io/main/images/sakura.png)
+![tanos-frontend](https://raw.githubusercontent.com/tanosshi/tanosshi.github.io/main/images/sakura.png)

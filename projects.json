@@ -3,26 +3,47 @@
     "category": "QUALITY",
     "projects": [
       { "name": "tanos.is-a.dev", "url": "#" },
-      { "name": "rei (prev; project fps fixer)", "url": "https://github.com/TacoGit/rei" },
-      { "name": "PASTE", "url": "https://tacogit.github.io/paste" },
+      {
+        "name": "rei (prev; project fps fixer)",
+        "url": "https://github.com/tanosshi/rei"
+      },
+      { "name": "PASTE", "url": "https://tanosshi.github.io/paste" },
       { "name": "What To Code", "url": "../project/whattocode/" },
-      { "name": "tanos.fm", "url": "https://github.com/TacoGit/tanos.fm" }
+      { "name": "tanos.fm", "url": "https://github.com/tanosshi/tanos.fm" }
     ]
   },
   {
     "category": "DECOMPILATIONS OR PORTS",
     "projects": [
-      { "name": "Kuudere Simulator 3 Android Port", "url": "https://github.com/TacoGit/KS3Android" },
-      { "name": "Yandere Simulator Decompilation", "url": "https://github.com/TacoGit/YanSimAndroid" }
+      {
+        "name": "Kuudere Simulator 3 Android Port",
+        "url": "https://github.com/tanosshi/KS3Android"
+      },
+      {
+        "name": "Yandere Simulator Decompilation",
+        "url": "https://github.com/tanosshi/YanSimAndroid"
+      }
     ]
   },
   {
     "category": "BASICS",
     "projects": [
       { "name": "weather", "url": "../project/weather" },
-      { "name": "Music Player", "url": "../project/player", "class": "nonquality" },
-      { "name": "Nanobot Base", "url": "https://top.gg/bot/967844118715854908", "class": "nonquality" },
-      { "name": "Torrent Tracker List generator", "url": "../project/trackers", "class": "nonquality" },
+      {
+        "name": "Music Player",
+        "url": "../project/player",
+        "class": "nonquality"
+      },
+      {
+        "name": "Nanobot Base",
+        "url": "https://top.gg/bot/967844118715854908",
+        "class": "nonquality"
+      },
+      {
+        "name": "Torrent Tracker List generator",
+        "url": "../project/trackers",
+        "class": "nonquality"
+      },
       { "name": "QR code generator", "url": "../qr" }
     ]
   },
@@ -30,21 +51,56 @@
     "category": "ONLY PARTIALLY MINE",
     "projects": [
       { "name": "TypeTester", "url": "../project/typetester/" },
-      { "name": "Lucy (Previously known. Power) discord bot", "url": "../files/lucy.html" }
+      {
+        "name": "Lucy (Previously known. Power) discord bot",
+        "url": "../files/lucy.html"
+      }
     ]
   },
   {
     "category": "BROKEN, DROPPED OR USELESS",
     "projects": [
-      { "name": "Contact tanos", "url": "../project/contact/", "class": "nonquality" },
-      { "name": "BetterPluginInstaller", "url": "https://github.com/TacoGit/betterPluginInstaller", "class": "nonquality" },
-      { "name": "ezWindows", "url": "https://github.com/TacoGit/ezWindows", "class": "nonquality" },
-      { "name": "Setup-PC", "url": "../project/setup-pc/", "class": "nonquality" },
+      {
+        "name": "Contact tanos",
+        "url": "../project/contact/",
+        "class": "nonquality"
+      },
+      {
+        "name": "BetterPluginInstaller",
+        "url": "https://github.com/tanosshi/betterPluginInstaller",
+        "class": "nonquality"
+      },
+      {
+        "name": "ezWindows",
+        "url": "https://github.com/tanosshi/ezWindows",
+        "class": "nonquality"
+      },
+      {
+        "name": "Setup-PC",
+        "url": "../project/setup-pc/",
+        "class": "nonquality"
+      },
       { "name": "Bob the AI", "url": "../project/ai", "class": "nonquality" },
-      { "name": "nano2go (before early 2023 launch)", "url": "http://nano2go.vercel.app/", "class": "nonquality" },
-      { "name": "Discord Bot Builder", "url": "https://discord.tacogit.github.io/", "class": "nonquality" },
-      { "name": "Skyline Compatibility List", "url": "../project/skyline", "class": "nonquality" },
-      { "name": "silly birthday giveaway page", "url": "https://tanos.is-a.dev/fwee", "class": "nonquality" }
+      {
+        "name": "nano2go (before early 2023 launch)",
+        "url": "http://nano2go.vercel.app/",
+        "class": "nonquality"
+      },
+      {
+        "name": "Discord Bot Builder",
+        "url": "https://discord.tanosshi.github.io/",
+        "class": "nonquality"
+      },
+      {
+        "name": "Skyline Compatibility List",
+        "url": "../project/skyline",
+        "class": "nonquality"
+      },
+      {
+        "name": "silly birthday giveaway page",
+        "url": "https://tanos.is-a.dev/fwee",
+        "class": "nonquality"
+      }
     ]
   }
 ]

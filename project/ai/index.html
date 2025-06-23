@@ -1,211 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>ai</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="index,follow" />
+    <meta http-equiv="content-language" content="en" />
+    <meta
+      name="description"
+      content="Generate all sort of things in one page"
+    />
+    <meta
+      name="keywords"
+      content="ai, generate, image, text, roblox, minecraft, paint, color, picture, generation, genz, chatgpt, chat, chat gpt, gpt3, chat gpt 3, ai learning, learning, algorithm, tanos, tanos.gq, tanos.gq/ai, taanos, hi there this is an easter egg, yes, burger, davinci, all in one, aio, artifical"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tanos.is-a.dev/ai" />
+    <meta property="og:title" content="ai" />
+    <meta
+      property="og:description"
+      content="Generate all sort of things in one page"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <meta
+      name="google-site-verification"
+      content="9SUv4ucHGBgEE-EiVt6Ed7Z2QSQNbk-mJXrmHdhxioI"
+    />
 
-<head>
-  <title>ai</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="robots" content="index,follow" />
-  <meta http-equiv="content-language" content="en" />
-  <meta name="description" content="Generate all sort of things in one page" />
-  <meta name="keywords"
-    content="ai, generate, image, text, roblox, minecraft, paint, color, picture, generation, genz, chatgpt, chat, chat gpt, gpt3, chat gpt 3, ai learning, learning, algorithm, tanos, tanos.gq, tanos.gq/ai, taanos, hi there this is an easter egg, yes, burger, davinci, all in one, aio, artifical" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tanos.is-a.dev/ai" />
-  <meta property="og:title" content="ai" />
-  <meta property="og:description" content="Generate all sort of things in one page" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-  <meta name="google-site-verification" content="9SUv4ucHGBgEE-EiVt6Ed7Z2QSQNbk-mJXrmHdhxioI" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/00c0ef6cb0.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="https://kit.fontawesome.com/00c0ef6cb0.js" crossorigin="anonymous"></script>
-
-
-  <script type="application/ld+json">
-    {
+    <script type="application/ld+json">
+      {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "url": "https://tanos.is-a.dev/ai/"
-    }
-</script>
-<script src="https://tacogit.github.io/jquery.js"></script>
-<script src="../../jquery.js"></script>
-</head>
+      }
+    </script>
+    <script src="../../jquery.js"></script>
+  </head>
 
-<body>
-  <i style="pointer-events: auto;" onclick="home()" id="hhh" class="fa-solid fa-house homeb"></i>
-  <i style="display:none;" id="lll" class="fa-solid fa-location-pin homeb"></i>
-  <i style="pointer-events: auto;" onclick="transform_hiden('customTraining')" class="fa-solid fa-scroll sendinfo"></i>
+  <body>
+    <i
+      style="pointer-events: auto"
+      onclick="home()"
+      id="hhh"
+      class="fa-solid fa-house homeb"
+    ></i>
+    <i
+      style="display: none"
+      id="lll"
+      class="fa-solid fa-location-pin homeb"
+    ></i>
+    <i
+      style="pointer-events: auto"
+      onclick="transform_hiden('customTraining')"
+      class="fa-solid fa-scroll sendinfo"
+    ></i>
 
-  <div class="ipinfo">
-    <h3 style="font-size: 1rem;">these information wont be sent anywhere</h3>
-    <h4 style="font-size: 1rem;">198.0.0.1</h4>
-    <h4 style="font-size: 1rem;">London, NYC</h4>
-  </div>
+    <div class="ipinfo">
+      <h3 style="font-size: 1rem">these information wont be sent anywhere</h3>
+      <h4 style="font-size: 1rem">198.0.0.1</h4>
+      <h4 style="font-size: 1rem">London, NYC</h4>
+    </div>
 
-  <div id="sidebar-menu-mask" style="display: none;"></div>
-  <div id="app-mount">
-    <div class="clearfix"></div>
-    <div id="main-wrapper" class="page-welcome">
-      <div class="container">
-        <div style="display:block;" id="xhome">
-          <h2>Good afternoon, tanos!</h2>
-          <br>
-          <h1>Try our newest features</h1>
-          <br>
-          <div class="selection">
-            <a onclick="transform_hiden('questions')" class="selections">
-              <div class="image1 images"></div>
-              <p>Questions</p>
-            </a>
-            <a onclick="transform_hiden('imageso')" class="selections">
-              <div class="image2 images"></div>
-              <p>Images</p>
-            </a>
-            <a onclick="transform_hiden('code')" class="selections">
-              <div class="image3 images"></div>
-              <p>Code</p>
-            </a>
-            <a onclick="transform_hiden('maths')" class="selections">
-              <div class="image4 images"></div>
-              <p>Math</p>
-            </a>
-            <a onclick="transform_hiden('apis')" class="selections">
-              <div class="image5 images"></div>
-              <p>APIs</p>
-            </a>
-            <a onclick="transform_hiden('essays')" class="selections">
-              <div class="image6 images"></div>
-              <p>Essays</p>
-            </a>
-          </div>
-          <br><br>
-          <h1>Example Prompts</h1>
-          <br>
-          <div class="prompts">
-            <div class="prompt">
-              <h4>Write a 50 word essay about dogs</h4>
-              <i class="fa-solid fa-play play"></i>
-              <h5>category: essays</h5>
+    <div id="sidebar-menu-mask" style="display: none"></div>
+    <div id="app-mount">
+      <div class="clearfix"></div>
+      <div id="main-wrapper" class="page-welcome">
+        <div class="container">
+          <div style="display: block" id="xhome">
+            <h2>Good afternoon, tanos!</h2>
+            <br />
+            <h1>Try our newest features</h1>
+            <br />
+            <div class="selection">
+              <a onclick="transform_hiden('questions')" class="selections">
+                <div class="image1 images"></div>
+                <p>Questions</p>
+              </a>
+              <a onclick="transform_hiden('imageso')" class="selections">
+                <div class="image2 images"></div>
+                <p>Images</p>
+              </a>
+              <a onclick="transform_hiden('code')" class="selections">
+                <div class="image3 images"></div>
+                <p>Code</p>
+              </a>
+              <a onclick="transform_hiden('maths')" class="selections">
+                <div class="image4 images"></div>
+                <p>Math</p>
+              </a>
+              <a onclick="transform_hiden('apis')" class="selections">
+                <div class="image5 images"></div>
+                <p>APIs</p>
+              </a>
+              <a onclick="transform_hiden('essays')" class="selections">
+                <div class="image6 images"></div>
+                <p>Essays</p>
+              </a>
             </div>
-            <br>
-            <div class="prompt">
-              <h4>HTML5 Login Page</h4>
-              <i class="fa-solid fa-play play"></i>
-              <h5>category: code</h5>
-            </div>
-          </div>
-
-          <div style="display:none;" class="xcontent">
-            <h2>Is this site illegal to use?</h2>
-            <p><strong>No</strong>, this site is fully legally used with free sorts of APIs,
-              there may be keys for paid ones but its all for global use.
-              It is possible that you might piss off people with generated art as example.
-              <br>This is currently what is possible with <strong>tanos.gq/ai</strong> :
-            </p>
-
-            <ul class="nostyle">
-              <li><i class="fas fa-check-circle me-3"></i><strong class="focus">Generate Art:</strong> using the
-                <strong>pollinations.ai</strong> free API. Arg: -image
-              </li>
-              <li><i class="fas fa-check-circle me-3"></i><strong class="focus">Generate
-                  Answers:</strong> using the <strong>text-davinci-003</strong> API. Arg: -answer
-              </li>
-              <li><i class="fa fa-exclamation-circle" style="color: #c52033;"></i><strong class="focus">Generate
-                  Essays:</strong> using the <strong>OpenAI</strong> API, somewhat broken. Arg: -essay
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="display:none;" id="pages">
-          <div id="questions" class="questions">
-            <br><br><br>
-            <h2>you got questions, tanos?</h2>
-            <br>
-            <h1 id="bob">Ask Bob anything.</h1>
-            <br>
-            <div class="search">
-              <input id="gg" class="form-control" placeholder="Enter anything" name="keyword">
-              <button onclick="start('question')">Generate</button>
-              <div class="clearfix"></div>
-            </div>
-            <br><br>
-            <textarea id="inp" readonly onchange="scrollToBottom();"
-              placeholder="I am always here for you, ask me anything."></textarea>
-          </div>
-
-          <div id="imageso" class="imageso">
-            <br><br><br>
-            <h2>hows the weather, tanos.</h2>
-            <br>
-            <h1 id="bob2">Generate images.</h1>
-            <br>
-            <div class="search">
-              <input id="ggp" class="form-control" placeholder="Enter anything" name="keyword">
-              <button onclick="start('images')">Generate</button>
-              <div class="clearfix"></div>
-            </div>
-            <br><br>
-          </div>
-
-          <div id="essays" class="essays">
-            <br><br><br>
-            <h2>whatcha writing, tanos.</h2>
-            <br>
-            <h1 id="bob3">Make Bob do your essays.</h1>
-            <br>
-            <div class="search">
-              <input id="gg2" class="form-control" placeholder="Enter anything" name="keyword">
-              <button onclick="start('essay')">Generate</button>
-              <div class="clearfix"></div>
+            <br /><br />
+            <h1>Example Prompts</h1>
+            <br />
+            <div class="prompts">
+              <div class="prompt">
+                <h4>Write a 50 word essay about dogs</h4>
+                <i class="fa-solid fa-play play"></i>
+                <h5>category: essays</h5>
+              </div>
+              <br />
+              <div class="prompt">
+                <h4>HTML5 Login Page</h4>
+                <i class="fa-solid fa-play play"></i>
+                <h5>category: code</h5>
+              </div>
             </div>
 
-            <textarea style="margin-top: 10px;" id="inp2" readonly onchange="scrollToBottom();"
-              placeholder="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."></textarea>
-            <br><br>
+            <div style="display: none" class="xcontent">
+              <h2>Is this site illegal to use?</h2>
+              <p>
+                <strong>No</strong>, this site is fully legally used with free
+                sorts of APIs, there may be keys for paid ones but its all for
+                global use. It is possible that you might piss off people with
+                generated art as example. <br />This is currently what is
+                possible with <strong>tanos.gq/ai</strong> :
+              </p>
+
+              <ul class="nostyle">
+                <li>
+                  <i class="fas fa-check-circle me-3"></i
+                  ><strong class="focus">Generate Art:</strong> using the
+                  <strong>pollinations.ai</strong> free API. Arg: -image
+                </li>
+                <li>
+                  <i class="fas fa-check-circle me-3"></i
+                  ><strong class="focus">Generate Answers:</strong> using the
+                  <strong>text-davinci-003</strong> API. Arg: -answer
+                </li>
+                <li>
+                  <i class="fa fa-exclamation-circle" style="color: #c52033"></i
+                  ><strong class="focus">Generate Essays:</strong> using the
+                  <strong>OpenAI</strong> API, somewhat broken. Arg: -essay
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div id="customTraining" class="customTraining">
-            <br><br><br>
-            <h2>be <h7 style="color:#673d79;">careful</h7> while editing this, tanos.</h2>
-            <br>
-            <h1 id="bob3">Train Bob, this will not be saved so be careful.</h1>
-            <br>
+          <div style="display: none" id="pages">
+            <div id="questions" class="questions">
+              <br /><br /><br />
+              <h2>you got questions, tanos?</h2>
+              <br />
+              <h1 id="bob">Ask Bob anything.</h1>
+              <br />
+              <div class="search">
+                <input
+                  id="gg"
+                  class="form-control"
+                  placeholder="Enter anything"
+                  name="keyword"
+                />
+                <button onclick="start('question')">Generate</button>
+                <div class="clearfix"></div>
+              </div>
+              <br /><br />
+              <textarea
+                id="inp"
+                readonly
+                onchange="scrollToBottom();"
+                placeholder="I am always here for you, ask me anything."
+              ></textarea>
+            </div>
 
-            <textarea style="margin-top: 10px;" id="ccs" onchange="scrollToBottom();"
-              placeholder="Be detailed to not confuse Bob, tell something about yourself."></textarea>
-            <br><br>
+            <div id="imageso" class="imageso">
+              <br /><br /><br />
+              <h2>hows the weather, tanos.</h2>
+              <br />
+              <h1 id="bob2">Generate images.</h1>
+              <br />
+              <div class="search">
+                <input
+                  id="ggp"
+                  class="form-control"
+                  placeholder="Enter anything"
+                  name="keyword"
+                />
+                <button onclick="start('images')">Generate</button>
+                <div class="clearfix"></div>
+              </div>
+              <br /><br />
+            </div>
 
-            <input style="border: none;" id="uukey" placeholder="Edit the OpenAI api key here" class="form-control"
-              name="keyword">
+            <div id="essays" class="essays">
+              <br /><br /><br />
+              <h2>whatcha writing, tanos.</h2>
+              <br />
+              <h1 id="bob3">Make Bob do your essays.</h1>
+              <br />
+              <div class="search">
+                <input
+                  id="gg2"
+                  class="form-control"
+                  placeholder="Enter anything"
+                  name="keyword"
+                />
+                <button onclick="start('essay')">Generate</button>
+                <div class="clearfix"></div>
+              </div>
+
+              <textarea
+                style="margin-top: 10px"
+                id="inp2"
+                readonly
+                onchange="scrollToBottom();"
+                placeholder="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."
+              ></textarea>
+              <br /><br />
+            </div>
+
+            <div id="customTraining" class="customTraining">
+              <br /><br /><br />
+              <h2>
+                be <h7 style="color: #673d79">careful</h7> while editing this,
+                tanos.
+              </h2>
+              <br />
+              <h1 id="bob3">
+                Train Bob, this will not be saved so be careful.
+              </h1>
+              <br />
+
+              <textarea
+                style="margin-top: 10px"
+                id="ccs"
+                onchange="scrollToBottom();"
+                placeholder="Be detailed to not confuse Bob, tell something about yourself."
+              ></textarea>
+              <br /><br />
+
+              <input
+                style="border: none"
+                id="uukey"
+                placeholder="Edit the OpenAI api key here"
+                class="form-control"
+                name="keyword"
+              />
+            </div>
           </div>
         </div>
       </div>
-
-    </div>
-    <div id="footer">
-      <div class="container">
-        <div class="footer_about">
-          ai is a free site to generate any kind of content. We do not store any information on our servers, all
-          information
-          are collected from the internet from 3rd party websites.
+      <div id="footer">
+        <div class="container">
+          <div class="footer_about">
+            ai is a free site to generate any kind of content. We do not store
+            any information on our servers, all information are collected from
+            the internet from 3rd party websites.
+          </div>
+          <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
