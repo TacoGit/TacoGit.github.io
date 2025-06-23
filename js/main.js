@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const $home = $("#home");
 const $txtprj = $("#txtprj");
 const $projects = $("#projects");
-const $connection = $("#connection");
 const $overlay = $("#overlay");
 
 function loadProjects(projectData) {
@@ -200,111 +199,6 @@ function home() {
           transform: "scale(1)",
         });
       });
-    }, 300);
-  });
-}
-
-function conn() {
-  let navbar = document.querySelector("nav#navvy");
-  $home.addClass("transition-element");
-  $txtprj.addClass("transition-element");
-  $projects.addClass("transition-element");
-
-  document.querySelectorAll(".nav-item").forEach((item) => {
-    const spanText = item.querySelector("span")?.textContent;
-    if (spanText === "Connect") {
-      item.classList.add("active");
-    }
-  });
-
-  $projects.css({
-    opacity: "0",
-    transform: "translateY(20px)",
-  });
-  $home.css({
-    opacity: "0",
-    transform: "translateY(20px)",
-  });
-
-  setTimeout(() => {
-    const wrapper = document.querySelector("#connection .wrapper");
-    const downloadOptions = document.querySelector(
-      "#connection .download-options"
-    );
-    if (wrapper && downloadOptions) {
-      wrapper.classList.add("expanded");
-      downloadOptions.classList.add("visible");
-    }
-  }, 3000);
-
-  document.querySelectorAll(".nav-item").forEach((item) => {
-    const spanText = item.querySelector("span")?.textContent;
-    if (spanText === "Home" || spanText === "Projects") {
-      item.classList.add("nav-hide");
-    }
-  });
-
-  let files = ["👨‍💻.css", "panel.css", "🎨.css", "🌀.css"];
-
-  files.forEach((file) => {
-    let link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = `../css/😘/${file}`;
-    document.head.appendChild(link);
-  });
-
-  let link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = `../css/nav.css`;
-  document.head.appendChild(link);
-
-  let connection = document.querySelector("#connection");
-
-  let htmlTag = document.documentElement;
-  htmlTag.removeAttribute("class");
-  htmlTag.removeAttribute("lang");
-  htmlTag.removeAttribute("data-useragent");
-
-  let bodyTag = document.body;
-  bodyTag.removeAttribute("style");
-  bodyTag.removeAttribute("class");
-
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      $projects.hide();
-      $home.hide();
-
-      $connection.css({
-        display: "",
-        opacity: "0",
-        filter: "blur(18px)",
-        transform: "scale(0.95)",
-      });
-
-      requestAnimationFrame(() => {
-        $connection.css({
-          opacity: "1",
-          filter: "blur(0)",
-          transform: "scale(1)",
-        });
-
-        $overlay.css({
-          opacity: "1",
-        });
-
-        // $txtprj.css({
-        //     'opacity': '1',
-        //     'transform': 'translateY(0)'
-        // });
-      });
-
-      document.querySelectorAll(".nav-item").forEach((item) => {
-        const spanText = item.querySelector("span")?.textContent;
-        if (spanText === "Home" || spanText === "Projects") {
-          item.style.display = "none";
-        }
-      });
-      document.body.appendChild(navbar);
     }, 300);
   });
 }

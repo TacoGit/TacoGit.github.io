@@ -41,6 +41,7 @@
       { "name": "ezWindows", "url": "https://github.com/TacoGit/ezWindows", "class": "nonquality" },
       { "name": "Setup-PC", "url": "../project/setup-pc/", "class": "nonquality" },
       { "name": "Bob the AI", "url": "../project/ai", "class": "nonquality" },
+      { "name": "nano2go (before early 2023 launch)", "url": "http://nano2go.vercel.app/", "class": "nonquality" },
       { "name": "Discord Bot Builder", "url": "https://discord.tacogit.github.io/", "class": "nonquality" },
       { "name": "Skyline Compatibility List", "url": "../project/skyline", "class": "nonquality" },
       { "name": "silly birthday giveaway page", "url": "https://tanos.is-a.dev/fwee", "class": "nonquality" }
