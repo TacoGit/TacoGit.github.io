@@ -36,6 +36,9 @@ var finalDate;
 
 // this should load faster than the jquery one!!!! but ensures the script exists
 document.addEventListener("DOMContentLoaded", function () {
+  if (navigator.userAgent.includes("SamsungBrowser"))
+    document.body.classList.add("samsung-browser");
+
   document.getElementById("jsorono").innerHTML =
     "a random site<br> made for fun lol";
   updateLastFM();
@@ -267,6 +270,10 @@ function adjustTextonSizeChange() {
   console.log(w);
 
   if (w <= 510) txt.innerText = "bottom";
+
+  if (navigator.userAgent.includes("SamsungBrowser"))
+    if (w <= 510) txt.innerText = "very bottom, scroll down twice";
+
   if (w <= 800) {
     hide.forEach((id) => (document.getElementById(id).style.display = "none"));
     redir.style.fontStyle = "normal";

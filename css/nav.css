@@ -257,3 +257,9 @@
     top: 65%;
   }
 }
+
+@media only screen and (max-height: 800px) and (max-width: 400px) {
+  .samsung-browser .navbar {
+    top: 85%;
+  }
+}
