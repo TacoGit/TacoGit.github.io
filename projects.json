@@ -3,10 +3,6 @@
     "category": "QUALITY",
     "projects": [
       { "name": "tanos.is-a.dev", "url": "#" },
-      {
-        "name": "rei (prev; project fps fixer)",
-        "url": "https://github.com/tanosshi/rei"
-      },
       { "name": "PASTE", "url": "https://tanosshi.github.io/paste" },
       { "name": "What To Code", "url": "../project/whattocode/" },
       { "name": "tanos.fm", "url": "https://github.com/tanosshi/tanos.fm" }
@@ -33,6 +29,10 @@
         "name": "Music Player",
         "url": "../project/player",
         "class": "nonquality"
+      },
+      {
+        "name": "rei (prev; project fps fixer)",
+        "url": "https://github.com/tanosshi/rei"
       },
       {
         "name": "Nanobot Base",
@@ -98,7 +98,7 @@
       },
       {
         "name": "silly birthday giveaway page",
-        "url": "https://tanos.is-a.dev/fwee",
+        "url": "https://tanos.is-a.dev/project/fwee",
         "class": "nonquality"
       }
     ]

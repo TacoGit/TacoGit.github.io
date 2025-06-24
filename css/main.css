@@ -15,7 +15,7 @@ html {
 
 @font-face {
   font-family: nfont;
-  src: url(https://tanos.is-a.dev/Renogare-Regular.ttf);
+  src: url(/css/fonts/Renogare-Regular.ttf);
 }
 
 @font-face {

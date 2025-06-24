@@ -114,7 +114,7 @@ function projects() {
 
   if (document.getElementById("pp") != ("" || " "))
     fetchProjectswithFailDetection(
-      "projects.json",
+      "/projects.json",
       "https://tanos.is-a.dev/projects.json"
     );
 
@@ -264,6 +264,8 @@ function adjustTextonSizeChange() {
     ),
     hide = ["siteby", "doonat", "sitecon"];
 
+  console.log(w);
+
   if (w <= 510) txt.innerText = "bottom";
   if (w <= 800) {
     hide.forEach((id) => (document.getElementById(id).style.display = "none"));
@@ -287,7 +289,10 @@ function siteHealth() {
     });
   });
 
-  if (!document.querySelector(".lastfm") || (!document.querySelectorAll("#shomes"))) {
+  if (
+    !document.querySelector(".lastfm") ||
+    !document.querySelectorAll("#shomes")
+  ) {
     c_sh_i = c_sh_i + 1;
     if (c_sh_i >= 4) {
       window.location.reload();
@@ -296,83 +301,6 @@ function siteHealth() {
 }
 
 var are_proper_projects_rendered = false;
-
-function generateProjectsASCII(projectsData) {
-  let output = "";
-
-  output += "    • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ • ┈┈┈ projects ᓚᘏᗢ\\n\n";
-  output += "    ┊     ?     ┊     ┊     ★ Quality\\n";
-
-  const qualityProjects =
-    projectsData.find((cat) => cat.category === "QUALITY")?.projects || [];
-  qualityProjects.forEach((project) => {
-    const symbol = Math.random() > 0.5 ? "°" : "₊";
-    output += `    ┊           ┊     ┊     ${symbol} . <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
-  });
-
-  output += "    ┊           ┊     ┊\\n";
-
-  output += "    ┊           ┊     ✫ Decompilations or android ports\\n";
-  const decompsProjects =
-    projectsData.find((cat) => cat.category === "DECOMPILATIONS OR PORTS")
-      ?.projects || [];
-  decompsProjects.forEach((project, index) => {
-    const symbol = index === 0 ? "⊹ ｡" : "︶  ۫";
-    output += `    ┊           ┊     ${symbol} <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
-  });
-
-  output += "    ┊           ┊\\n";
-
-  output += "    ┊           𐐪 Basics\\n";
-  const basicsProjects =
-    projectsData.find((cat) => cat.category === "BASICS")?.projects || [];
-  basicsProjects.forEach((project, index) => {
-    const symbols = ["﹒〣", "↷ ⋯", "¨ 🎞", "¨ ⑅", "◦ ★"];
-    const symbol = symbols[index % symbols.length];
-
-    let projectName = project.name;
-    if (project.name.toLowerCase().includes("nanobot")) {
-      projectName = `${project.name} <strong>base</strong> for the discord bot`;
-    }
-
-    output += `    ┊          ${symbol}  <a onclick="window.location='${project.url}'">${projectName}</a>\\n`;
-  });
-
-  const partialProjects =
-    projectsData.find((cat) => cat.category === "ONLY PARTIALLY MINE")
-      ?.projects || [];
-  partialProjects.forEach((project) => {
-    output += `    ┊          ﹒〣  <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
-  });
-
-  output += "    ┊\\n";
-
-  output += "    糸 Broken, useless or unfinished projects\\n";
-  const brokenProjects =
-    projectsData.find((cat) => cat.category === "BROKEN, DROPPED OR USELESS")
-      ?.projects || [];
-
-  brokenProjects.forEach((project) => {
-    let status = "Useless";
-    if (
-      project.name.toLowerCase().includes("bob the ai") ||
-      project.name.toLowerCase().includes("discord bot builder")
-    ) {
-      status = "Broken";
-    } else if (
-      project.name.toLowerCase().includes("giveaway") ||
-      project.name.toLowerCase().includes("typetester")
-    ) {
-      status = "Unfinished";
-    }
-
-    output += `    ˎˊ- ${status} - <a onclick="window.location='${project.url}'">${project.name}</a>\\n`;
-  });
-
-  output += "\\n    ⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖  ᓚ₍ ^. .^₎  ▬▬ι═══════ﺤ \\n";
-
-  return output;
-}
 
 function proper_projects() {
   document.getElementById("txtprj").style.display = "block";
@@ -529,61 +457,7 @@ function updateLastFM(additional) {
 
         if (fmPrivacyMode && attemptAtConnection != undefined) {
           if (
-            [
-              "wockstxrr",
-              "unknown",
-              "Testimony",
-              "PW1",
-              "Unknown",
-              "wockstarr",
-              "Big Man Gaming",
-              "slitue",
-              "Tonil",
-              "null",
-              "1uke",
-              "fred",
-              "KyaGaKill",
-              "DIXMONDZ",
-              "lain",
-              "ansu",
-              "your audio plug.",
-              "matias",
-              "thriiiedd",
-              "jaleelsthinking",
-              "mentallyscared",
-              "Tonilk_2",
-              "Tonilk",
-              "ciaffa",
-              "Devil's Work",
-              "l.o.f.e",
-              "alexedits",
-              "Mashstache",
-              "KILLxKILL",
-              "Tonilk_",
-              "Jean",
-              "rayy",
-              "666ep",
-              "finesse",
-              "Zeroh",
-              "dex535",
-              "User 45410008",
-              "zeroh",
-              "TrenHub",
-              "daexnight",
-              "#Real",
-              "some random name",
-              "kxrrvpt",
-              "tiktokaudioguy",
-              "wockstarr",
-              "crazycookiemaniac",
-              "User ",
-              "maxnotwell327",
-              "tea",
-              "kingpin. (real)",
-              "real",
-              "kxrr",
-              "",
-            ].includes(data.recenttracks.track[0].artist["#text"])
+            ["Sewerslvt"].includes(data.recenttracks.track[0].artist["#text"])
           ) {
             attemptAtConnection = undefined;
           }
@@ -920,21 +794,21 @@ function hideFM() {
   );
 }
 
-function updateClock() {
-  if (
-    $(".time.days").html() == "00 <span>day</span>" &&
-    $(".time.hours").html() == "00 <span>H</span>" &&
-    $(".time.minutes").html() == "00 <span>M</span>" &&
-    $(".time.seconds").html() == "00 <span>S</span>"
-  ) {
-    //cook() feature isnt implemented anymore
-  }
-}
+//function updateClock() {
+//  if (
+//    $(".time.days").html() == "00 <span>day</span>" &&
+//    $(".time.hours").html() == "00 <span>H</span>" &&
+//    $(".time.minutes").html() == "00 <span>M</span>" &&
+//    $(".time.seconds").html() == "00 <span>S</span>"
+//  ) {
+//    //cook() feature isnt implemented anymore
+//  }
+//}
 
 setInterval(updateLastFM, 4543 + tick);
 setInterval(forceLastFM, 11326);
 
-setInterval(updateClock, 10000);
+//setInterval(updateClock, 10000);
 
 setInterval(siteHealth, 2251);
 
