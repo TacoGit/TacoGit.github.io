@@ -44,6 +44,10 @@
         "class": "nonquality"
       },
       {
+        "name": "tanos.fm (old bugged static)",
+        "url": "https://moonlit-malasada-a5e63c.netlify.app/"
+      },
+      {
         "name": "Torrent Tracker List generator",
         "url": "../project/trackers",
         "class": "nonquality"
@@ -58,6 +62,23 @@
       {
         "name": "Lucy (Previously known. Power) discord bot",
         "url": "../files/lucy.html"
+      }
+    ]
+  },
+  {
+    "category": "2021/2022 ARCHIVED PAGES",
+    "projects": [
+      {
+        "name": "1ll3g4l",
+        "url": "https://1ll3g4l.netlify.app/"
+      },
+      {
+        "name": "ip-information",
+        "url": "https://ip-information.netlify.app/"
+      },
+      {
+        "name": "better-docs",
+        "url": "https://better-docs.netlify.app/"
       }
     ]
   },

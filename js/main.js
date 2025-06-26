@@ -50,9 +50,11 @@ const $txtprj = $("#txtprj");
 const $projects = $("#projects");
 const $overlay = $("#overlay");
 
-function loadProjects(projectData) {
+var preloaded = 0;
+
+function loadProjects(projectData, noclear) {
   const container = document.getElementById("pp");
-  container.innerHTML = "";
+  if (!noclear) container.innerHTML = "";
 
   projectData.forEach((section) => {
     const h3 = document.createElement("h3");
@@ -84,7 +86,7 @@ function loadProjects(projectData) {
   });
 }
 
-function fetchProjectswithFailDetection(url1, url2) {
+function fetchProjectswithFailDetection(url1, url2, noclear) {
   fetch(url1)
     .then((res) => {
       if (!res.ok) throw new Error("Failed to load " + url1);
@@ -92,7 +94,7 @@ function fetchProjectswithFailDetection(url1, url2) {
     })
     .then((data) => {
       if (!data || data.length === 0) throw new Error("No data in " + url1);
-      loadProjects(data);
+      loadProjects(data, noclear);
     })
     .catch(() => {
       fetch(url2)
@@ -102,7 +104,7 @@ function fetchProjectswithFailDetection(url1, url2) {
         })
         .then((data) => {
           if (!data || data.length === 0) throw new Error("No data in " + url2);
-          loadProjects(data);
+          loadProjects(data, noclear);
         })
         .catch((err) => {
           console.error("Failed to load both files:", err);
@@ -116,9 +118,11 @@ function projects() {
   $projects.addClass("transition-element");
 
   if (document.getElementById("pp") != ("" || " "))
+    // this shouldnt be ran unless projects.json has been relocated
     fetchProjectswithFailDetection(
       "/projects.json",
-      "https://tanos.is-a.dev/projects.json"
+      "https://tanos.is-a.dev/json/projects.json",
+      false
     );
 
   document.querySelectorAll(".nav-item").forEach((item) => {
@@ -183,6 +187,7 @@ function home() {
 
   requestAnimationFrame(() => {
     document.getElementById("pp").innerHTML = "";
+    preloaded = 0;
     setTimeout(() => {
       $projects.hide();
 
@@ -591,7 +596,7 @@ function updateLastFM(additional) {
                     .join(", ");
 
                   topTags = topTags.replace(
-                    /rape|official shit|garbage|pedophile|ugly|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|brony|swiftie|bullshit|urine|furry|gore|vore|ukraine/g,
+                    /rape|official shit|childrens music|garbage|pedophile|ugly|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|brony|swiftie|bullshit|urine|furry|gore|vore|ukraine/g,
                     ""
                   ); // Tag cleanify
                   topTags = topTags.replace(", ,", ","); // After cleanup

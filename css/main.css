@@ -426,6 +426,7 @@ button::-moz-focus-inner {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(https://tanos.is-a.dev/images/hero-bg.jpg);
+  background-attachment: fixed;
   -webkit-transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
   transition: transform 0.7s cubic-bezier(0.86, 0.01, 0.77, 0.78);
 }
