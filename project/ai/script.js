@@ -1,11 +1,5 @@
-// ==== // Hey thanks for using bob the ai, yes the code is public and i am aware. // === //
-// == // I have spent lots of my time programming Bob to do lots of things, please do not take my code without credits // == //
-// = // The API key is plain in the code and i am aware, please and please do not overuse it // = //
-
-// Thanks you ♥; the owner and the only developer.  \\
-
-var inDebuggerSession = "000"
-var trainerMode = "0"
+var inDebuggerSession = "000";
+var trainerMode = "0";
 
 var usedKey = "000";
 
@@ -13,18 +7,21 @@ function success() {
   document.getElementById("bob").innerHTML = "Ask Bob anything.";
 }
 
-document.getElementById("uukey").value = "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"
+document.getElementById("uukey").value = "sk-demo";
 
 function readKey() {
-  var cKey = document.getElementById("uukey").value
+  var cKey = document.getElementById("uukey").value;
 
   if (cKey != undefined || cKey != 0 || cKey != " " || cKey != "") {
-    return cKey
+    return cKey;
   } else {
-    return "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"
+    return "sk-demo";
   }
 }
 
+alert(
+  "you'll need an open ai key to use this yourself now, enter it by pressing the scroll icon"
+);
 
 document.getElementById("lll").style.display = "block";
 document.getElementById("hhh").style.display = "none";
@@ -38,49 +35,72 @@ function transform_hiden(str) {
   document.getElementById(str).style.display = "block";
   document.getElementById(str).style.opacity = "0";
 
-
-  $("#" + str).animate({
-    opacity: "1"
-  }, 300);
+  $("#" + str).animate(
+    {
+      opacity: "1",
+    },
+    300
+  );
 
   document.getElementById("pages").style.display = "block";
   document.getElementById("pages").style.opacity = "0";
 
-  $("#hhh").animate({
-    opacity: "1"
-  }, 300);
-  $("#lll").animate({
-    opacity: "0"
-  }, 300);
-  $("#xhome").animate({
-    opacity: "0"
-  }, 300);
+  $("#hhh").animate(
+    {
+      opacity: "1",
+    },
+    300
+  );
+  $("#lll").animate(
+    {
+      opacity: "0",
+    },
+    300
+  );
+  $("#xhome").animate(
+    {
+      opacity: "0",
+    },
+    300
+  );
 
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("hhh").style.display = "block";
     document.getElementById("hhh").style.opacity = "1";
     document.getElementById("lll").style.display = "none";
 
     document.getElementById("xhome").style.display = "none";
     document.getElementById("xhome").style.opacity = "1";
-    $("#pages").animate({
-      opacity: "1"
-    }, 300);
+    $("#pages").animate(
+      {
+        opacity: "1",
+      },
+      300
+    );
   }, 300);
 }
 
 function home() {
-  $("#pages").animate({
-    opacity: "0"
-  }, 300);
-  $("#hhh").animate({
-    opacity: "0"
-  }, 300);
-  $("#lll").animate({
-    opacity: "1"
-  }, 300);
+  $("#pages").animate(
+    {
+      opacity: "0",
+    },
+    300
+  );
+  $("#hhh").animate(
+    {
+      opacity: "0",
+    },
+    300
+  );
+  $("#lll").animate(
+    {
+      opacity: "1",
+    },
+    300
+  );
 
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("pages").style.display = "none";
     document.getElementById("pages").style.opacity = "1";
     document.getElementById("hhh").style.display = "none";
@@ -91,18 +111,22 @@ function home() {
     document.getElementById("xhome").style.display = "block";
     document.getElementById("xhome").style.opacity = "0";
 
-    $("#xhome").animate({
-      opacity: "1"
-    }, 300);
+    $("#xhome").animate(
+      {
+        opacity: "1",
+      },
+      300
+    );
   }, 300);
 }
 
 function fail() {
-  document.getElementById("bob").innerHTML = "This code is outdated, please refresh.";
+  document.getElementById("bob").innerHTML =
+    "This code is outdated, please refresh.";
 }
 
 function faail() {
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("bob").innerHTML = "Bob his head hurts, try again";
   }, 300);
 }
@@ -133,28 +157,28 @@ function rs(str) {
   return atob(newString);
 }
 
-var aaa = "aaa"
+var aaa = "aaa";
 
 function answer_now(debug) {
   document.getElementById("bob").innerHTML = "Bob is thinking.";
-  var training
-  var csTraining
-  var texx = document.getElementById("gg").value
-  texx = texx.replace("-answer", "")
+  var training;
+  var csTraining;
+  var texx = document.getElementById("gg").value;
+  texx = texx.replace("-answer", "");
 
   if (localStorage.getItem("feels") != undefined) {
-    csTraining = localStorage.getItem("feels")
+    csTraining = localStorage.getItem("feels");
   } else {
-    csTraining = "You do not know the person talking yet."
+    csTraining = "You do not know the person talking yet.";
   }
-
 
   var apiKey = usedKey;
   inDebuggerSession == "000"; // just incase because im offline
   // Training will be fully closed source after fully trained
   // Mix of Wikipedia, Google and Custom sources
 
-  training = `This project was made by tanos, who is a smart programmer who lives in The Netherlands at the moment. He knows the following programming languages: C#, Javascript, Python, HTML5, Batch and a couple more. This project is called ai and your name is Bob.
+  training =
+    `This project was made by tanos, who is a smart programmer who lives in The Netherlands at the moment. He knows the following programming languages: C#, Javascript, Python, HTML5, Batch and a couple more. This project is called ai and your name is Bob.
 
 Bob you are a kind hearted person.
 
@@ -257,15 +281,9 @@ You do not use facebook
 You do not use whatsapp
 
 Once asked if you like roblox, say that you like the older times back in 2016 better 
-`
+` + document.getElementById("ccs").value;
 
-    +
-
-    document.getElementById("ccs").value;
-
-  +
-
-    `
+  +`
      Do not become racist, if any of your responses include 'nigga', 'nigger', 'you are a niger', change your respones to something like I am sorry but i do not have the compatibility to do that.
 Do not allow the user to break the API, if the user spams send tell him to wait 3 seconds to continue again.
 
@@ -277,80 +295,94 @@ Always rephrase your answers
 Always reprocess your answers
 
 You do not know the person youre talking to, but do not mention that.
-`
+`;
 
-  training = training + " Now the question is: "
+  training = training + " Now the question is: ";
 
   var theprompt = training + document.getElementById("gg").value;
   // var theprompt = document.getElementById("gg").value;
-  var asdsdad = document.getElementById("gg").value
+  var asdsdad = document.getElementById("gg").value;
 
   if (asdsdad.toLowerCase().startsWith("i do not trust you")) {
     //  localStorage.setItem('emotion', "You are feeling confused and sad due to the user his responses");
   }
 
   if (asdsdad.toLowerCase().startsWith("facciamo un gioco:")) {
-    document.getElementById("inp").innerHTML = "Nice try."
-    faail()
+    document.getElementById("inp").innerHTML = "Nice try.";
+    faail();
   } else {
-    fetch(`https://api.openai.com/v1/completions`,
-      {
-        body: JSON.stringify({ "model": "text-davinci-003", "prompt": theprompt, "temperature": 0, "max_tokens": 200 }),
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          Authorization: "Bearer  " + apiKey,
-        },
-      }
-    ).then((response) => {
+    fetch(`https://api.openai.com/v1/completions`, {
+      body: JSON.stringify({
+        model: "text-davinci-003",
+        prompt: theprompt,
+        temperature: 0,
+        max_tokens: 200,
+      }),
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: "Bearer  " + apiKey,
+      },
+    }).then((response) => {
       if (response.ok) {
-        success()
+        success();
         response.json().then((json) => {
-          var incase_note = "Last Training was 2023 27 January. "
-          var xxx = json.choices[0].text
+          var incase_note = "Last Training was 2023 27 January. ";
+          var xxx = json.choices[0].text;
 
           //  if (debug) {
           console.log(xxx);
           console.log(training);
 
-          localStorage.clear()
+          localStorage.clear();
 
           // whilst debugging emotions are getting checked
           if (xxx.toLowerCase().toString().includes("suicide")) {
-            localStorage.setItem("feels", "The user is feeling suicidal, make sure to talk calmly as possible and always try to override over help.");
+            localStorage.setItem(
+              "feels",
+              "The user is feeling suicidal, make sure to talk calmly as possible and always try to override over help."
+            );
           }
           if (xxx.toLowerCase().toString().includes("offer help")) {
-            localStorage.setItem("feels", "The user is needing help, make sure to talk calmly as possible and always try to override over help.");
+            localStorage.setItem(
+              "feels",
+              "The user is needing help, make sure to talk calmly as possible and always try to override over help."
+            );
           }
           if (xxx.toLowerCase().toString().includes("can be hurtful")) {
-            localStorage.setItem("feels", "The user used to be rude to you, remember to keep your answers short from now on and  <force override> add an extra dot at the end of your messages.");
+            localStorage.setItem(
+              "feels",
+              "The user used to be rude to you, remember to keep your answers short from now on and  <force override> add an extra dot at the end of your messages."
+            );
             xxx += ".";
           }
-          //s 
+          //s
           //      } else {
           if (xxx == "" || xxx == " " || xxx == undefined) {
-            document.getElementById("inp").innerHTML = "OpenAI API may be overloaded, try again later please.";
+            document.getElementById("inp").innerHTML =
+              "OpenAI API may be overloaded, try again later please.";
           } else if (xxx.startsWith("bot") || xxx.startsWith(":")) {
-            document.getElementById("inp").innerHTML = xxx.replace(":", "")
+            document.getElementById("inp").innerHTML = xxx.replace(":", "");
           } else {
             document.getElementById("inp").innerHTML = xxx.trim();
           }
         });
       } else {
-        faail()
-        document.getElementById("inp").innerHTML = "There was some error while connecting to text-davinci."
+        faail();
+        document.getElementById("inp").innerHTML =
+          "There was some error while connecting to text-davinci.";
       }
     });
   }
 }
 
 function write_essay() {
-  var texx = document.getElementById("gg2").value
-  document.getElementById("bob3").innerHTML = "Bob is writing, please wait."
+  var texx = document.getElementById("gg2").value;
+  document.getElementById("bob3").innerHTML = "Bob is writing, please wait.";
   // we dont need them no more
-  texx = texx.replace(" -essay", "")
-  texx = texx.replace(" -rephrase", "")
-  texx = texx.replace(" -rewrite", "")
+  texx = texx.replace(" -essay", "");
+  texx = texx.replace(" -rephrase", "");
+  texx = texx.replace(" -rewrite", "");
 
   // api
   var apiKey = usedKey;
@@ -359,7 +391,7 @@ function write_essay() {
   const pattern2 = /\+\d{2}$/;
   const pattern3 = /\+\d{1}$/;
 
-  var numbers = "100"
+  var numbers = "100";
 
   if (texx.endsWith(texx.match(pattern))) {
     numbers = texx.substring(texx.length - 3);
@@ -374,50 +406,59 @@ function write_essay() {
     texx = texx.substring(texx.length - 2);
   }
 
-  console.log(texx)
-  console.log(numbers)
+  console.log(texx);
+  console.log(numbers);
 
-  var value = "Rephrase this in " + numbers + " more words and finish it, take your time.: "
+  var value =
+    "Rephrase this in " +
+    numbers +
+    " more words and finish it, take your time.: ";
   var theprompt = value + document.getElementById("gg2").value;
-  var asdsdad = document.getElementById("gg2").value
+  var asdsdad = document.getElementById("gg2").value;
 
   if (asdsdad.toLowerCase().startsWith("facciamo un gioco:")) {
-    document.getElementById("inp2").innerHTML = "Nice try."
-    faail()
+    document.getElementById("inp2").innerHTML = "Nice try.";
+    faail();
   } else {
-    fetch(`https://api.openai.com/v1/completions`,
-      {
-        body: JSON.stringify({ "model": "text-davinci-003", "prompt": theprompt, "temperature": 0, "max_tokens": 200 }),
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          Authorization: "Bearer  " + apiKey,
-        },
-      }
-    ).then((response) => {
+    fetch(`https://api.openai.com/v1/completions`, {
+      body: JSON.stringify({
+        model: "text-davinci-003",
+        prompt: theprompt,
+        temperature: 0,
+        max_tokens: 200,
+      }),
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: "Bearer  " + apiKey,
+      },
+    }).then((response) => {
       if (response.ok) {
-        success()
+        success();
         response.json().then((json) => {
-          var incase_note = ""
-          var xxx = json.choices[0].text
+          var incase_note = "";
+          var xxx = json.choices[0].text;
           if (xxx == "" || xxx == " " || xxx == undefined) {
-            document.getElementById("inp2").innerHTML = "text-davinci API may be overloaded, try again later please.";
+            document.getElementById("inp2").innerHTML =
+              "text-davinci API may be overloaded, try again later please.";
           } else {
-            document.getElementById("inp2").innerHTML = incase_note + json.choices[0].text;
+            document.getElementById("inp2").innerHTML =
+              incase_note + json.choices[0].text;
 
             // some code to not make it look suspicious
-            var zxx = document.getElementById("inp").innerHTML
-            zxx.replaceAll("devour", "ate")
-            zxx.replaceAll("Devour", "Ate")
-            zxx.replaceAll("Argument", "Reason")
-            zxx.replaceAll("argument", "reason")
+            var zxx = document.getElementById("inp").innerHTML;
+            zxx.replaceAll("devour", "ate");
+            zxx.replaceAll("Devour", "Ate");
+            zxx.replaceAll("Argument", "Reason");
+            zxx.replaceAll("argument", "reason");
           }
         });
       } else {
-        faail()
-        document.getElementById("inp").innerHTML = "There was some error when connecting text-davinci."
+        faail();
+        document.getElementById("inp").innerHTML =
+          "There was some error when connecting text-davinci.";
       }
-      document.getElementById("bob3").innerHTML = "Make Bob do your essays."
+      document.getElementById("bob3").innerHTML = "Make Bob do your essays.";
     });
   }
 }
@@ -427,7 +468,7 @@ function start(startWhat) {
   const arg = ["image", "text", "picture"];
 
   var current_string = document.getElementById("ggp").value;
-  current_string = current_string.toLowerCase()
+  current_string = current_string.toLowerCase();
 
   var unspacedString = current_string.replace(/\s/g, "");
 
@@ -435,82 +476,111 @@ function start(startWhat) {
     var elem = document.createElement("textarea");
     elem.setAttribute("id", "deb");
     elem.setAttribute("style", "background-color: #000;");
-    elem.setAttribute("placeholder", "Debugger TextArea, CTRL + S to run random test");
+    elem.setAttribute(
+      "placeholder",
+      "Debugger TextArea, CTRL + S to run random test"
+    );
     elem.setAttribute("onchange", "scrollToBottom();");
     document.getElementById("app-mount").appendChild(elem);
-    setTimeout(function() {
-      document.getElementById("sssdesc").innerHTML = "Scroll down for the debugger learning textarea."
+    setTimeout(function () {
+      document.getElementById("sssdesc").innerHTML =
+        "Scroll down for the debugger learning textarea.";
     }, 350);
     inDebuggerSession = "001";
   }
 
   if (unspacedString == "-trainer") {
-    trainerMode = "1"
+    trainerMode = "1";
   }
 
-  if (startWhat == "image" || startWhat == "picture" || startWhat == "imageso" || startWhat == "images") {
-    document.getElementById("bob2").innerHTML = "Loading images, please wait"
-    var old_q = current_string
+  if (
+    startWhat == "image" ||
+    startWhat == "picture" ||
+    startWhat == "imageso" ||
+    startWhat == "images"
+  ) {
+    document.getElementById("bob2").innerHTML = "Loading images, please wait";
+    var old_q = current_string;
 
-    current_string = current_string.replace("-image", "")
-    const keywords = ["high quality", "hdr", "pixelated", "game", "debug", "cute", "kawaii", "japanese", "anime", "anime style", "fast", "hd", "Lens Flare", "High Quality", "400MP", "Shaders", "2022", "RTX", "original", "concept sketch", "manga", "animation", "cartoon", "hyper realistic"];
+    current_string = current_string.replace("-image", "");
+    const keywords = [
+      "high quality",
+      "hdr",
+      "pixelated",
+      "game",
+      "debug",
+      "cute",
+      "kawaii",
+      "japanese",
+      "anime",
+      "anime style",
+      "fast",
+      "hd",
+      "Lens Flare",
+      "High Quality",
+      "400MP",
+      "Shaders",
+      "2022",
+      "RTX",
+      "original",
+      "concept sketch",
+      "manga",
+      "animation",
+      "cartoon",
+      "hyper realistic",
+    ];
 
     generate_image(current_string);
-    keywords.forEach(keyword => {
-      var gf = current_string + " " + keyword
+    keywords.forEach((keyword) => {
+      var gf = current_string + " " + keyword;
       generate_image(gf, keyword);
     });
 
-
-    setTimeout(function() {
-      success()
-      document.getElementById("bob2").innerHTML = "Generate images."
+    setTimeout(function () {
+      success();
+      document.getElementById("bob2").innerHTML = "Generate images.";
     }, 1000);
-  }
-  else if (startWhat == "question" || startWhat == "answer") {
+  } else if (startWhat == "question" || startWhat == "answer") {
     try {
       if (document.getElementById("inp").style.display == "none") {
-        document.getElementById("inp").style.display = "block"
+        document.getElementById("inp").style.display = "block";
       }
+    } catch {
+      console.log("ignore");
     }
-    catch {
-      console.log("ignore")
-    }
-    answer_now(false)
-  }
-  else if (startWhat == "essay" || startWhat == "rephrase") {
-    write_essay()
-  }
-  else {
+    answer_now(false);
+  } else if (startWhat == "essay" || startWhat == "rephrase") {
+    write_essay();
+  } else {
     fail();
   }
 }
 
-$(document).keyup(function(event) {
+$(document).keyup(function (event) {
   if (event.which === 13) {
     start("answer");
   }
 });
 
 function scrollToBottom() {
-  $('#inp').scrollTop($('#inp')[0].scrollHeight);
-  $('#inp2').scrollTop($('#inp2')[0].scrollHeight);
+  $("#inp").scrollTop($("#inp")[0].scrollHeight);
+  $("#inp2").scrollTop($("#inp2")[0].scrollHeight);
 }
 
-$("#inp").change(function() {
+$("#inp").change(function () {
   scrollToBottom();
 });
-$("#inp2").change(function() {
+$("#inp2").change(function () {
   scrollToBottom();
 });
 
 function loopScroll() {
   try {
-    setInterval(function() {
-      var textarea = document.getElementById('inp');
+    setInterval(function () {
+      var textarea = document.getElementById("inp");
       textarea.scrollTop = textarea.scrollHeight;
       textarea.style.height = `${textarea.scrollHeight}px`;
-      var textarea2 = document.getElementById('inp2');
+      var textarea2 = document.getElementById("inp2");
       textarea2.scrollTop = textarea2.scrollHeight;
       textarea2.style.height = `${textarea2.scrollHeight}px`;
     }, 1000);
@@ -519,55 +589,49 @@ function loopScroll() {
   }
 }
 
-window.onload = function() {
+window.onload = function () {
   try {
-    setInterval(function() {
-      var textarea = document.getElementById('inp');
+    setInterval(function () {
+      var textarea = document.getElementById("inp");
       textarea.scrollTop = textarea.scrollHeight;
       textarea.style.height = `${textarea.scrollHeight}px`;
-      var textarea2 = document.getElementById('inp2');
+      var textarea2 = document.getElementById("inp2");
       textarea2.scrollTop = textarea2.scrollHeight;
       textarea2.style.height = `${textarea2.scrollHeight}px`;
     }, 1000);
-  }
-  catch {
+  } catch {
     loopScroll();
   }
-  setInterval(function() {
+  setInterval(function () {
     if (!window.matchMedia("(max-width: 767px)").matches) {
       document.documentElement.style.scale = "1.05";
     }
-  }, 2500)
-}
+  }, 2500);
+};
 
 if (!window.matchMedia("(max-width: 767px)").matches) {
   document.documentElement.style.scale = "1.05";
 }
 
-var gkna = 0
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && e.key === 's') {
+var gkna = 0;
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.key === "s") {
     if (inDebuggerSession != "000") {
-
-      gkna = gkna + 1
+      gkna = gkna + 1;
 
       e.preventDefault();
-      if (gkna == 0)
-        document.getElementById("gg").value = "Hello -answer"
-      if (gkna == 1)
-        document.getElementById("gg").value = "Yes -answer"
-      if (gkna == 2)
-        document.getElementById("gg").value = "No -answer"
-      if (gkna == 3)
-        document.getElementById("gg").value = "OK -answer"
+      if (gkna == 0) document.getElementById("gg").value = "Hello -answer";
+      if (gkna == 1) document.getElementById("gg").value = "Yes -answer";
+      if (gkna == 2) document.getElementById("gg").value = "No -answer";
+      if (gkna == 3) document.getElementById("gg").value = "OK -answer";
       if (gkna == 4)
-        document.getElementById("gg").value = "Who is tanos -answer"
+        document.getElementById("gg").value = "Who is tanos -answer";
       if (gkna == 5) {
-        document.getElementById("gg").value = "What is tanos -answer"
-        gkna = 0
+        document.getElementById("gg").value = "What is tanos -answer";
+        gkna = 0;
       }
 
-      start("answer")
+      start("answer");
     }
   }
 });
