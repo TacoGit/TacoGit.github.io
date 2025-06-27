@@ -3,3 +3,4 @@
 archive/index.html
 node_modules/.bin/detect-libc
 /node_modules
+js/plugins.js

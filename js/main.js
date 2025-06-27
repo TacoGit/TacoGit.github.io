@@ -294,7 +294,30 @@ function adjustTextonSizeChange() {
 }
 
 var c_sh_i = 0;
+var fm_sh_i = 0;
 function siteHealth() {
+  if (document.getElementById("fmPlaying")) {
+    const text = document.getElementById("fmPlaying").textContent;
+    if ((text.match(/\./g) || []).length > 2) {
+      fm_sh_i = fm_sh_i + 1;
+      if (fm_sh_i > 3) {
+        document.getElementById("titledFm").innerHTML =
+          "tanos is currently listening to <a onclick='updateLastFM(\"direct\")' id='fmPlaying'>" +
+          "Last.fm might be down" +
+          "</a> <a id='fmLoved'>💕</a><a id='fmInformant'>∙ " +
+          "could not grab any valid response" +
+          "</a>";
+        document.getElementById("playsngenreFm").innerHTML =
+          "The API key might be outdated, or Last.fm is having some issues, try again later. <a id='fmPlays'>" +
+          '</a><a onclick="rebuildFm(\'switch\')" id="fmSwitchable">' +
+          "or try rebuilding by pressing this" +
+          "</a> - <a id='fmGenre'>" +
+          "" +
+          "</a>";
+      }
+    }
+  }
+
   document.querySelectorAll('[class*="pace"]').forEach((el) => {
     el.classList.forEach((cls) => {
       if (cls.includes("pace")) el.classList.remove(cls);
@@ -400,6 +423,7 @@ function forceLastFM(isForeign) {
   setModus = "song";
   fmPrivacyMode = true;
   playingSong = "...";
+  fm_shi_i = 0;
 
   if (!isForeign) {
     updateLastFM();
@@ -494,6 +518,7 @@ function updateLastFM(additional) {
         }
 
         if (attemptAtConnection == undefined || attemptAtConnection == null) {
+          if (tick < 12364) tick = tick + 1000; // tick should reset somewhere
           try {
             if (setModus == "privacy") {
               document.getElementById(
@@ -503,7 +528,7 @@ function updateLastFM(additional) {
                 "automatically enables at night",
                 "mind your own business now",
                 "see ya another time",
-                "mmh sleepy sleepy",
+                "was my music taste that interesting",
                 "have a fine night tonight",
                 "fine night tonight",
                 "sleep well",
@@ -513,6 +538,7 @@ function updateLastFM(additional) {
                 "ahaaaaaaaaaaaa",
                 "meow meow",
                 "meeoooooow",
+                "there might a surprise here https://www.youtube.com/watch?v=xvFZjo5PgG0",
               ];
               document.getElementById("playsngenreFm").innerHTML = `${
                 sadSentences[Math.floor(Math.random() * sadSentences.length)]
@@ -531,12 +557,12 @@ function updateLastFM(additional) {
                 "unfortunate",
                 "unfortunate",
                 "as if you'd care lol",
+                "i dont think anyone is looking at this anyway",
                 "lol maybe another time",
                 "err time to mind your own business",
                 `¯\\_(ツ)_/¯`,
                 "🤷",
                 ":(",
-                "wooof wooof",
               ];
               document.getElementById("playsngenreFm").innerHTML = `${
                 sadSentences[Math.floor(Math.random() * sadSentences.length)]
@@ -546,6 +572,8 @@ function updateLastFM(additional) {
             //
           }
         } else if (data.recenttracks.track.length > 0) {
+          if (tick > 5000) tick = 50;
+
           if (
             document.getElementById("titledFm").innerHTML ==
               `tanos is currently not listening to anything <a id="fmInformant">∙ according to last.fm</a>` ||
@@ -596,7 +624,7 @@ function updateLastFM(additional) {
                     .join(", ");
 
                   topTags = topTags.replace(
-                    /rape|official shit|childrens music|garbage|pedophile|ugly|trannycore|pedocore|earrape|nazism|nsbm|lolicore|jermacore|jermastep|brony|swiftie|bullshit|urine|furry|gore|vore|ukraine/g,
+                    /rape|official shit|childrens music|garbage|pedophile|ugly|trannycore|pedocore|earrape|nazism|nazi|nsbm|lolicore|jermacore|canadian|jermastep|brony|swiftie|bullshit|urine|furry|gore|vore|ukraine/g,
                     ""
                   ); // Tag cleanify
                   topTags = topTags.replace(", ,", ","); // After cleanup
@@ -676,10 +704,10 @@ function updateLastFM(additional) {
                     "∙ marked as favorite by tanos",
                     "∙ tanos found this song pretty good",
                     "∙ tanos is in love with this one",
-                    "∙ love love love !!",
                     "∙ hearted by tanos",
                     "∙ yessssssssssssssssssss",
-                    "∙ YEAAH THIS ONE IS GOOD, love from tanos!!",
+                    "∙ yesssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+                    "∙ yesssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                     "∙ marked as loved by tanos",
                   ];
                   var informantSentences = [
@@ -758,7 +786,6 @@ function updateLastFM(additional) {
                 },
               }
             );
-          } else {
           }
 
           if (document.getElementById("fmPlays").innerHTML == "...")

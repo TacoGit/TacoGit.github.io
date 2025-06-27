@@ -1,0 +1,105 @@
+<html
+    class="js svg audio canvas cssremunit csscalc cssgradients supports no-touchevents video cssanimations cssfilters flexbox flexboxlegacy no-flexboxtweener flexwrap csstransforms csstransforms3d csstransitions backgroundblendmode ss-loaded"
+    lang="en"
+    data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="tanos">
+    <title>tanos, the home page</title>
+    <meta name="theme-color" content="#974557">
+
+    <meta property="title" content="tanos, the home page.">
+    <meta property="og:title" content="tanos, the home page.">
+    <meta name="twitter:title" content="tanos, the home page.">
+
+    <meta property="locale" content="en_US">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="description" content="im tanos, a full-stack developer">
+    <meta property="og:description" content="im tanos, a full-stack developer">
+    <meta name="twitter:description" content="im tanos, a full-stack developer">
+
+    <meta name="twitter:image:src" content="https://tanos.is-a.dev/images/sakura.png">
+    <meta property="og:image" content="https://tanos.is-a.dev/images/sakura.png">
+    <meta content='https://tanos.is-a.dev/images/sakura.png' property='og:image'>
+
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="250">
+    <meta property="og:image:height" content="250">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../shared.css">
+</head>
+
+<body class="pace-done">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99"
+            style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    <main class="s-home s-home--static">
+
+        <div class="overlay"></div>
+
+        <div id="home" style="padding-top: 3rem;" class="home-content">
+            <div style="padding-top: 3rem;" class="row home-content__main">
+
+                <div class="col-eight home-content__text">
+                    <h1>
+                        project dive<br>
+                    </h1>
+
+                    <p id="tt" style="margin-top: 3rem;">
+                        which version do you want<br>1. a game with all menus, proper animations but bugged graphics
+                        (preferred)<br>
+                        2. a version where you load instantly in to the game but no menus or animations, but fixed
+                        graphics<br>
+                        <a style="color:#974557; cursor:pointer;">1. <br><br>if you want to play, type the number of the
+                            version (e.g. 1) into
+                            the text box without
+                            quotations<br>
+                        </a>
+                        <textarea id="tt2">wow its a text box</textarea>
+                    <p id="downloaa">the download button will be here once confirmed</p>
+                    </p>
+                </div>
+            </div>
+
+            <div style="background-color: #974557" class="home-content__line"></div>
+
+            <div class="row home-copyright">
+                <span id="siteby">no i did put not any effort in this page</span>
+                <span id="doonat">game engine used is <a
+                        onclick="window.location.href='https://godotengine.org/'">godot</a></span>
+            </div>
+
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tt = document.getElementById("tt");
+            const downloaa = document.getElementById("downloaa");
+            const tt2 = document.getElementById("tt2");
+
+            tt2.addEventListener("input", function () {
+                if (tt2.value === "1") {
+                    downloaa.innerHTML = '<a href="../alpha 2, 1.5 (issues with forward).zip" style="color:#974557; cursor:pointer;">download 1</a>';
+                } else if (tt2.value === "2") {
+                    downloaa.innerHTML = '<a href="../alpha 1.5 (forward+ pushback).zip" style="color:#974557; cursor:pointer;">download 2</a>';
+                } else {
+                    downloaa.innerHTML = 'im waiting';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

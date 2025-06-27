@@ -66,19 +66,19 @@
     ]
   },
   {
-    "category": "2021/2022 ARCHIVED PAGES",
+    "category": "GAMES",
     "projects": [
       {
-        "name": "1ll3g4l",
-        "url": "https://1ll3g4l.netlify.app/"
+        "name": "(a) Rhythm game done right (crazily broken, bpm unfixed, old version)",
+        "url": "../files/rgdr"
       },
       {
-        "name": "ip-information",
-        "url": "https://ip-information.netlify.app/"
+        "name": "survive (debug v0.3, broken, old version, assets are placeholders)",
+        "url": "../files/survive"
       },
       {
-        "name": "better-docs",
-        "url": "https://better-docs.netlify.app/"
+        "name": "project dive (2 versions, rhythm game)",
+        "url": "../files/projectdive/"
       }
     ]
   },
@@ -125,6 +125,27 @@
         "name": "silly birthday giveaway page",
         "url": "https://tanos.is-a.dev/project/fwee",
         "class": "nonquality"
+      }
+    ]
+  },
+  {
+    "category": "2021/2022 ARCHIVED NETLIFY PAGES (BROKEN AND DEPRECATED)",
+    "projects": [
+      {
+        "name": "1ll3g4l",
+        "url": "https://1ll3g4l.netlify.app/"
+      },
+      {
+        "name": "ip-information",
+        "url": "https://ip-information.netlify.app/"
+      },
+      {
+        "name": "better-docs",
+        "url": "https://better-docs.netlify.app/"
+      },
+      {
+        "name": "tanos, the home page (late 2022)",
+        "url": "https://taanos.netlify.app/"
       }
     ]
   }
