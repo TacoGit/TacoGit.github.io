@@ -1587,3 +1587,62 @@ pre > a {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.089) transparent;
 }
+.comment_smth {
+  position: fixed;
+  bottom: 40px;
+  right: 4%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 52px;
+  height: 52px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0);
+  z-index: 90;
+  cursor: pointer;
+}
+
+.comment_smth:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 55px;
+  height: 55px;
+}
+.comment_smth:hover > i {
+  left: 5%;
+}
+
+.comment_smth:active > i,
+.comment_smth.clicked > i {
+  left: -15%;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.comment_smth:active,
+.comment_smth.clicked {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 6px 36px rgba(151, 69, 87, 0.18);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 40%;
+}
+
+.comment_smth > i {
+  font-size: 1.5rem;
+  padding: 6px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}

@@ -167,6 +167,38 @@ function projects() {
   });
 }
 
+function professional() {
+  // Disable the Last.fm function
+  tick = 999999;
+  fmPrivacyMode = true;
+  setModus = "privacy";
+  isHardPrivacyToggled = true;
+  prev = "<0>";
+
+  var intro = document.getElementById("intro");
+  var title = document.getElementById("jsorono");
+  var personality_type = document.getElementById("personalityType");
+  var interested_in_even_more = document.getElementById(
+    "underlinetextredirectionsforthemodernpage"
+  );
+  var projects = document.getElementById("projectstext");
+
+  document.getElementById("titledFm").style.display = "none";
+  document.getElementById("playsngenreFm").innerHTML =
+    '<p id="playsngenreFm">Refresh the page to go back to the normal version <a id="fmPlays"></a><a id="fmSwitchable"></a><a id="fmGenre"></a></p>';
+  document.getElementById("fmPlaying").style.display = "none";
+  document.getElementById("fmGenre").style.display = "none";
+  document.getElementById("fmSwitchable").style.display = "none";
+
+  projects.innerHTML = "A proper projects list.";
+  title.innerHTML = "tanos, the home page";
+  intro.innerHTML =
+    "pseudonym's tanos, i preferably make things in c# or nodejs,<br> python is a thing i sometimes use, i only do html5 for my own site<br>and i only use unity for experimenting";
+  personality_type.innerHTML = "professional mode";
+  interested_in_even_more.innerHTML =
+    'node.js projects that might interest you · <a href="../files/lucy.html" target="_blank" id="utrfmp">Lucy, a discord bot (all in one bot)</a>, <a href="https://github.com/tanosshi/tanos.fm" target="_blank" id="utrfmp">tanos.fm (music piracy in reactjs)</a>';
+}
+
 function home() {
   $home.addClass("transition-element");
   $txtprj.addClass("transition-element");
@@ -284,9 +316,11 @@ function adjustTextonSizeChange() {
     redir.style.fontStyle = "normal";
     redir.style.marginTop = "0px";
   } else {
-    ["canbechangedbywindowpreferences", ...hide].forEach(
-      (id) => (document.getElementById(id).style.display = "inline-block")
-    );
+    try {
+      ["canbechangedbywindowpreferences", ...hide].forEach(
+        (id) => (document.getElementById(id).style.display = "inline-block")
+      );
+    } catch {}
     txt.innerText = "top";
     redir.style.fontStyle = "italic";
     redir.style.marginTop = "-23px";
@@ -461,6 +495,8 @@ function rebuildFm(mode) {
 function updateLastFM(additional) {
   document.body.style.filter = "invert(0)";
 
+  if (tick > 50000) return;
+
   var cache = new LastFMCache(); // Request Cache
 
   var lastfm = new LastFM({
@@ -520,7 +556,7 @@ function updateLastFM(additional) {
         if (attemptAtConnection == undefined || attemptAtConnection == null) {
           if (tick < 12364) tick = tick + 1000; // tick should reset somewhere
           try {
-            if (setModus == "privacy") {
+            if (setModus == "privacy" && tick > 50000) {
               document.getElementById(
                 "titledFm"
               ).innerHTML = `tanos has forced privacy mode <a id='fmPlaying'></a><a id='fmLoved'>💤</a><a id="fmInformant"> ∙  according to the clock</a>`;
@@ -572,14 +608,15 @@ function updateLastFM(additional) {
             //
           }
         } else if (data.recenttracks.track.length > 0) {
-          if (tick > 5000) tick = 50;
+          if (tick > 5000 && tick != 999999) tick = 50;
 
           if (
             document.getElementById("titledFm").innerHTML ==
               `tanos is currently not listening to anything <a id="fmInformant">∙ according to last.fm</a>` ||
-            document
+            (document
               .getElementById("titledFm")
-              .innerHTML.includes("has forced privacy mode")
+              .innerHTML.includes("has forced privacy mode") &&
+              tick > 50000)
           )
             rebuildFm();
 
