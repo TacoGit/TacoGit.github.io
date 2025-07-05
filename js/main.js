@@ -327,9 +327,31 @@ function adjustTextonSizeChange() {
   }
 }
 
+function privacyUpdater() {
+  const ams = new Date();
+  const options = { timeZone: "Europe/Amsterdam", hour12: false };
+  const timeStr = new Intl.DateTimeFormat("en-GB", {
+    ...options,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(ams);
+
+  const [hour, minute, second] = timeStr.split(":").map(Number);
+
+  const isNight = hour >= 0 && hour < 8;
+
+  var hr = new Date().getHours();
+  if ((hr >= 4 && hr <= 9) || isHardPrivacyToggled || isNight) {
+    attemptAtConnection = undefined;
+    setModus = "privacy";
+  }
+}
+
 var c_sh_i = 0;
 var fm_sh_i = 0;
 function siteHealth() {
+  privacyUpdater();
   if (document.getElementById("fmPlaying")) {
     const text = document.getElementById("fmPlaying").textContent;
     if ((text.match(/\./g) || []).length > 2) {
@@ -540,8 +562,8 @@ function updateLastFM(additional) {
           : attemptAtConnection;
 
         if (last_fm_user == "tanosshi" || isHardPrivacyToggled) {
-          var hr = new Date().getHours();
-          if ((hr >= 1 && hr <= 6) || isHardPrivacyToggled) {
+          privacyUpdater(); // its gonna check here okay
+          if (setModus == "privacy") {
             attemptAtConnection = undefined;
             setModus = "privacy";
           } else {
@@ -556,7 +578,7 @@ function updateLastFM(additional) {
         if (attemptAtConnection == undefined || attemptAtConnection == null) {
           if (tick < 12364) tick = tick + 1000; // tick should reset somewhere
           try {
-            if (setModus == "privacy" && tick > 50000) {
+            if (setModus == "privacy" && tick > 45000) {
               document.getElementById(
                 "titledFm"
               ).innerHTML = `tanos has forced privacy mode <a id='fmPlaying'></a><a id='fmLoved'>💤</a><a id="fmInformant"> ∙  according to the clock</a>`;
